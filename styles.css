@@ -1518,3 +1518,42 @@ body.ui2 main > section.wrap.is-surface.band{
   #roi .roi-grid{ grid-template-columns: 1fr; }
   #roi .roi-big{ font-size: 42px; }
 }
+/* =========================================================
+   Step 4.1 (ROI polish): CTA punch + KPI calm
+   ========================================================= */
+
+#roi .roi-impact{
+  border-radius: 18px;
+}
+
+#roi .roi-impact .kpi{
+  padding: 14px 14px;
+  border-radius: 14px;
+}
+
+#roi .roi-impact .kpi-label{
+  font-size: 13px;
+}
+
+#roi .roi-impact .kpi-value{
+  font-size: 18px;
+  font-weight: 900;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+#roi .roi-actions .btn.primary{
+  background: var(--ui-accent);
+  border-color: transparent;
+  color: #061018;
+  box-shadow: none;
+}
+
+#roi .roi-actions .btn.primary:hover{
+  opacity: 0.96;
+}
+
+#roi .roi-actions .btn.primary:focus-visible{
+  outline: 2px solid rgba(255,255,255,0.55);
+  outline-offset: 2px;
+}
