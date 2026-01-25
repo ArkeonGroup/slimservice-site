@@ -1441,3 +1441,80 @@ body.ui2 main > section.wrap.is-surface.band{
   border-color: rgba(124,92,255,.55);
   box-shadow: 0 0 0 3px rgba(124,92,255,.12);
 }
+/* =========================================================
+   Step 4 (ROI POP): split input/output + impact panel
+   Scope: ROI only (#roi)
+   ========================================================= */
+
+#roi .roi-grid{
+  align-items: start;
+  gap: 18px;
+  grid-template-columns: 1.15fr 0.85fr;
+}
+
+#roi .roi-input{
+  box-shadow: none;
+}
+
+#roi .roi-impact{
+  background: linear-gradient(180deg, #0b0d12 0%, #0a0c10 100%);
+  color: rgba(238,241,255,0.98);
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: none;
+  padding: 18px;
+}
+
+#roi .roi-impact .muted,
+#roi .roi-impact .kpi-label,
+#roi .roi-sub{
+  color: rgba(238,241,255,0.70);
+}
+
+#roi .roi-kicker{
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(238,241,255,0.70);
+  margin-bottom: 8px;
+}
+
+#roi .roi-big{
+  font-weight: 950;
+  font-size: 48px;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin: 2px 0 6px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+#roi .roi-kpis{
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+#roi .roi-impact .kpi{
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+#roi .roi-impact .kpi-value{
+  color: rgba(238,241,255,0.98);
+}
+
+#roi .roi-actions{
+  margin-top: 14px;
+}
+
+#roi .roi-actions .btn{
+  width: 100%;
+  justify-content: center;
+}
+
+/* Mobile: keep it stacked and readable */
+@media (max-width: 860px){
+  #roi .roi-grid{ grid-template-columns: 1fr; }
+  #roi .roi-big{ font-size: 42px; }
+}
