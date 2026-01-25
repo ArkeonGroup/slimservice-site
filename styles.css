@@ -1381,6 +1381,12 @@ body.ui2 .muted{ color: var(--ui-muted); }
   --ui-focus: rgba(124,92,255,.40);
   --ui-accent: var(--accent);
   color-scheme: light;
+  /* Bridge legacy tokens so existing CSS (var(--text)/var(--muted)) works in light bands */
+  --bg: var(--ui-bg);
+  --text: var(--ui-text);
+  --muted: var(--ui-muted);
+  --line: var(--ui-border);
+  --shadow: var(--ui-shadow);  
 }
 
 /* Baseline readability inside bands */
