@@ -1408,3 +1408,30 @@ body.ui2 .muted{ color: var(--ui-muted); }
   outline: 2px solid var(--ui-focus);
   outline-offset: 2px;
 }
+/* =========================================================
+   Step 2 (ROI only): ensure .band overrides UI2 is-surface
+   Applies ONLY when a section has BOTH: is-surface + band
+   ========================================================= */
+
+body.ui2 main > section.wrap.is-surface.band{
+  background: var(--ui-bg);
+  color: var(--ui-text);
+  border-color: var(--ui-border);
+  box-shadow: none;
+}
+
+/* ROI components inside light band */
+.band .kpi{
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+}
+
+.band :is(label, .form .lbl, .kpi-label, .note){
+  color: var(--ui-muted);
+}
+
+/* Inputs focus style inside light band (keeps it premium + readable) */
+.band.theme-light input:focus{
+  border-color: rgba(124,92,255,.55);
+  box-shadow: 0 0 0 3px rgba(124,92,255,.12);
+}
