@@ -194,9 +194,9 @@ SlimService is een WhatsApp intake-systeem voor afspraak-gedreven vakmensen. Het
 
   <!-- Right: impact -->
   <div class="card roi-impact">
-    <div class="roi-kicker">Impact</div>
-    <div class="roi-big" id="roi_big">--</div>
-    <div class="roi-sub">per maand (indicatief)</div>
+<div class="roi-kicker">Kosten van niets doen</div>
+<div class="roi-big" id="roi_big">--</div>
+<div class="roi-sub">gemiste waarde per maand (indicatief)</div>
 
     <div class="roi-kpis">
       <div class="kpi">
@@ -220,7 +220,7 @@ SlimService is een WhatsApp intake-systeem voor afspraak-gedreven vakmensen. Het
     </div>
 
     <div class="roi-actions">
-      <a class="btn primary" href="#contact">Stuur mij dit resultaat</a>
+     <a class="btn primary" id="roi_send" href="#" target="_blank" rel="noopener">Stuur mij dit resultaat</a>
     </div>
   </div>
 
@@ -613,6 +613,37 @@ SlimService is een WhatsApp intake-systeem voor afspraak-gedreven vakmensen. Het
   ['roi_q','roi_min','roi_pct','roi_days','roi_rate'].forEach(id => {
     const el = document.getElementById(id);
     if(el) el.addEventListener('input', calcROI);
+    // --- ROI Lead Capture (WhatsApp prefill) ---
+const sendEl = document.getElementById('roi_send');
+
+if (sendEl) {
+  const hoursTxt = hEl?.textContent || "";
+  const valueTxt = vEl?.textContent || "";
+  const costTxt  = cEl?.textContent || "";
+
+  const wa = document.querySelector('a[href^="https://wa.me/"]');
+  const waBase = wa ? wa.href.split('?')[0] : "";
+
+  const msg =
+`SlimService ROI (indicatief)
+- Kosten van niets doen: ${costTxt}
+- Tijdwinst: ${hoursTxt}
+- Besparing: ${valueTxt}
+
+Mijn cijfers:
+- Vragen/dag: ${q}
+- Min/vraag: ${mins}
+- % standaard: ${Math.round(pct*100)}
+- Werkdagen: ${days}
+- € per uur: ${rate}
+
+Kun je dit checken en de snelste next step sturen?`;
+
+  if (waBase) {
+    sendEl.href = waBase + "?text=" + encodeURIComponent(msg);
+  }
+}
+
   });
   calcROI();
 </script>
