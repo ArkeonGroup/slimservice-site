@@ -601,10 +601,13 @@ SlimService is een WhatsApp intake-systeem voor afspraak-gedreven vakmensen. Het
     const hEl = document.getElementById('roi_hours');
     const vEl = document.getElementById('roi_value');
     const cEl = document.getElementById('roi_cost');
+    const bEl = document.getElementById('roi_big');
+
 
     if(hEl) hEl.textContent = hoursPerMonth.toFixed(1) + " uur / maand";
     if(vEl) vEl.textContent = "\u20AC " + valuePerMonth.toFixed(0) + " / maand";
     if(cEl) cEl.textContent = "\u20AC " + costPerMonth.toFixed(0) + " / maand (gemiste waarde)";
+    if(bEl) bEl.textContent = "€ " + costPerMonth.toFixed(0);
   }
 
   ['roi_q','roi_min','roi_pct','roi_days','roi_rate'].forEach(id => {
