@@ -155,59 +155,77 @@ SlimService is een WhatsApp intake-systeem voor afspraak-gedreven vakmensen. Het
 <h2>Wat levert het op in tijd en geld?</h2>
 <p class="muted">Geen loze beloftes. Vul je eigen cijfers in. Dit is een rekentool, geen claim.</p>
 </div>
-<div class="grid-2">
-<div class="card">
-<h3>Snelle winst-check</h3>
-<p class="muted">
-            Tel alles mee wat nu bij jou binnenkomt: WhatsApp, telefoon, Instagram DM. SlimService pakt het standaardwerk en zet door als het nodig is.
-          </p>
-<div class="form">
-<label>
-<span class="lbl">Klantvragen per dag (WhatsApp / telefoon / Instagram)</span>
-<input id="roi_q" min="0" step="1" type="number" value="25"/>
-</label>
-<label>
-<span class="lbl">Aantal minuten per klantvraag (gemiddeld)</span>
-<input id="roi_min" min="0" step="1" type="number" value="3"/>
-</label>
-<label>
-<span class="lbl">Aandeel standaardvragen (%)</span>
-<input id="roi_pct" max="100" min="0" step="5" type="number" value="60"/>
-</label>
-<label>
-<span class="lbl">Werkdagen per maand (standaard 22)</span>
-<input id="roi_days" min="0" step="1" type="number" value="22"/>
-</label>
-<label class="span-2">
-<span class="lbl">Bruto salaris per uur (&euro;)</span>
-<input id="roi_rate" min="0" step="1" type="number" value="50"/>
-</label>
-</div>
-<div class="roi-out">
-  <div class="kpi">
-    <div class="kpi-label">Geschatte tijdwinst</div>
-    <div class="kpi-value" id="roi_hours">--</div>
+<div class="grid-2 roi-grid">
+
+  <!-- Left: input -->
+  <div class="card roi-input">
+    <h3>Snelle winst-check</h3>
+    <p class="muted">
+      Tel alles mee wat nu bij jou binnenkomt: WhatsApp, telefoon, Instagram DM. SlimService pakt het standaardwerk en zet door als het nodig is.
+    </p>
+
+    <div class="form">
+      <label>
+        <span class="lbl">Klantvragen per dag (WhatsApp / telefoon / Instagram)</span>
+        <input id="roi_q" min="0" step="1" type="number" value="25"/>
+      </label>
+
+      <label>
+        <span class="lbl">Aantal minuten per klantvraag (gemiddeld)</span>
+        <input id="roi_min" min="0" step="1" type="number" value="3"/>
+      </label>
+
+      <label>
+        <span class="lbl">Aandeel standaardvragen (%)</span>
+        <input id="roi_pct" max="100" min="0" step="5" type="number" value="60"/>
+      </label>
+
+      <label>
+        <span class="lbl">Werkdagen per maand (standaard 22)</span>
+        <input id="roi_days" min="0" step="1" type="number" value="22"/>
+      </label>
+
+      <label class="span-2">
+        <span class="lbl">Bruto salaris per uur (&euro;)</span>
+        <input id="roi_rate" min="0" step="1" type="number" value="50"/>
+      </label>
+    </div>
   </div>
 
-  <div class="kpi">
-    <div class="kpi-label">Indicatieve besparing (&euro;)</div>
-    <div class="kpi-value" id="roi_value">--</div>
+  <!-- Right: impact -->
+  <div class="card roi-impact">
+    <div class="roi-kicker">Impact</div>
+    <div class="roi-big" id="roi_big">--</div>
+    <div class="roi-sub">per maand (indicatief)</div>
+
+    <div class="roi-kpis">
+      <div class="kpi">
+        <div class="kpi-label">Geschatte tijdwinst</div>
+        <div class="kpi-value" id="roi_hours">--</div>
+      </div>
+
+      <div class="kpi">
+        <div class="kpi-label">Indicatieve besparing (&euro;)</div>
+        <div class="kpi-value" id="roi_value">--</div>
+      </div>
+
+      <div class="kpi">
+        <div class="kpi-label">Kosten van niets doen</div>
+        <div class="kpi-value" id="roi_cost">--</div>
+      </div>
+    </div>
+
+    <div class="note">
+      Zo rekenen we: klantvragen/dag × minuten × aandeel standaard × werkdagen ÷ 60 × &euro; per uur.
+    </div>
+
+    <div class="roi-actions">
+      <a class="btn primary" href="#contact">Stuur mij dit resultaat</a>
+    </div>
   </div>
 
-   <div class="kpi">
-    <div class="kpi-label">Kosten van niets doen</div>
-    <div class="kpi-value" id="roi_cost">--</div>
-  </div>
+</div> <!-- /roi-grid -->
 
-  <div class="note">
-    Zo rekenen we: klantvragen/dag × minuten × aandeel standaard × werkdagen ÷ 60 × &euro; per uur.
-  </div>
-</div> <!-- /roi-out -->
-
-
-</div> <!-- /card (ROI) -->
-
-</div> <!-- /grid-2 -->
 </section> <!-- /roi -->
 
 <section class="wrap is-surface" id="scenarios">
