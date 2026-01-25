@@ -1339,3 +1339,72 @@ body.ui2 main > section.wrap + section.wrap{
   margin-top: clamp(10px, 1.6vw, 16px);
 }
 
+/* =========================================================
+   UI-CONTRACT v1 — Theme tokens + Band mechanic (NO-DRIFT)
+   Inserted after line 1341 (end of file)
+   Goal: prepare Light Bands without breaking existing UI.
+   ========================================================= */
+
+/* Contract tokens map (defaults = current dark UI) */
+:root{
+  --ui-bg: var(--bg);
+  --ui-text: var(--text);
+  --ui-muted: var(--muted);
+  --ui-border: var(--line);
+  --ui-surface: rgba(255,255,255,.06);
+  --ui-surface-2: rgba(255,255,255,.09);
+  --ui-shadow: var(--shadow);
+
+  --ui-accent: var(--accent);
+  --ui-focus: rgba(110,231,255,.45); /* safe default */
+}
+
+/* Fix: .muted should actually be muted (hierarchy) */
+body.ui2 .muted{ color: var(--ui-muted); }
+
+/* Band scope (only applies where we add class="band") */
+.band{
+  background: var(--ui-bg);
+  color: var(--ui-text);
+  color-scheme: dark;
+}
+
+/* Light band override (activate via class="band theme-light") */
+.band.theme-light{
+  --ui-bg: #f7f8fb;
+  --ui-text: #0a0c10;
+  --ui-muted: rgba(10,12,16,.72);
+  --ui-border: rgba(10,12,16,.14);
+  --ui-surface: #ffffff;
+  --ui-surface-2: #ffffff;
+  --ui-shadow: 0 16px 40px rgba(16,24,40,.14);
+  --ui-focus: rgba(124,92,255,.40);
+  --ui-accent: var(--accent);
+  color-scheme: light;
+}
+
+/* Baseline readability inside bands */
+.band :is(h1,h2,h3,h4,h5,h6){ color: var(--ui-text); }
+.band :is(p,li){ color: var(--ui-text); }
+.band .muted{ color: var(--ui-muted); }
+
+/* Baseline surfaces/cards inside bands (only if present) */
+.band :is(.card,.panel,.surface){
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  box-shadow: none;
+}
+
+/* Baseline form controls inside bands */
+.band :is(input,textarea,select){
+  background: var(--ui-surface);
+  color: var(--ui-text);
+  border: 1px solid var(--ui-border);
+}
+
+.band :is(input,textarea,select)::placeholder{ color: var(--ui-muted); }
+
+.band :is(a,button,input,textarea,select):focus-visible{
+  outline: 2px solid var(--ui-focus);
+  outline-offset: 2px;
+}
