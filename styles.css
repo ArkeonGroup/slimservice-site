@@ -1149,6 +1149,107 @@ body.ui2 details.card summary{
 #scenarios .scenario-cta{
   margin-top:auto;
 }
+/* Proof wall + X1 mini-cases (UI2) */
+body.ui2 #proof .proof-wall{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 2.2vw, 18px);
+}
+
+@media (max-width: 920px){
+  body.ui2 #proof .proof-wall{ grid-template-columns: 1fr; }
+}
+
+body.ui2 #proof .proof-logos{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 8px;
+}
+
+body.ui2 #proof .proof-logo{
+  display:inline-flex;
+  align-items:center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--ui-border);
+  background: transparent;
+  font-size: 13px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+body.ui2 #proof .proof-metrics{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+body.ui2 #proof .proof-num{
+  font-variant-numeric: tabular-nums;
+}
+
+body.ui2 #proof .proof-quotes{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:grid;
+  gap: 10px;
+}
+
+body.ui2 #proof .proof-quotes li{
+  padding-left: 14px;
+  position: relative;
+}
+
+body.ui2 #proof .proof-quotes li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 99px;
+  background: var(--ui-border);
+}
+
+/* X1 — Mini-case tiles */
+body.ui2 #proof .case-tiles{
+  margin-top: clamp(12px, 2.2vw, 18px);
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 2.2vw, 18px);
+}
+
+@media (min-width: 921px) and (max-width: 1180px){
+  body.ui2 #proof .case-tiles{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 920px){
+  body.ui2 #proof .case-tiles{ grid-template-columns: 1fr; }
+}
+
+body.ui2 #proof .case-tile{
+  text-decoration:none;
+  color:inherit;
+  display:flex;
+  flex-direction:column;
+  min-height: 180px;
+  transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+}
+
+body.ui2 #proof .case-tile .case-meta{
+  margin-top:auto;
+  display:flex;
+  flex-wrap:wrap;
+  gap: 8px;
+  padding-top: 10px;
+}
+
+body.ui2 #proof .case-tile:hover{
+  transform: translateY(-1px);
+}
+
+
 /* UI2: consistent section rhythm (premium whitespace) */
 body.ui2 main > section.wrap{
   padding-top: clamp(26px, 3.2vw, 54px);
