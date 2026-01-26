@@ -1544,6 +1544,19 @@ body.ui2 main > section.wrap.is-surface.band{
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
+/* ROI impact KPI alignment — mobile fix (NO DRIFT) */
+@media (max-width: 420px){
+  #roi .roi-impact .kpi{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  #roi .roi-impact .kpi-value{
+    white-space: normal;   /* override nowrap on small screens */
+    align-self: flex-end;  /* value stays right */
+    text-align: right;
+  }
+}
 
 #roi .roi-actions .btn.primary{
   background: var(--ui-accent);
