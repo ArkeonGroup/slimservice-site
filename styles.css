@@ -90,6 +90,10 @@ a:hover{opacity:.92}
 .btn.primary{border-color: rgba(110,231,255,.42);background: rgba(110,231,255,.14)}
 .btn.secondary{border-color: rgba(183,255,110,.34);background: rgba(183,255,110,.10)}
 .btn.tertiary{border-color: rgba(170,176,197,.34);background: rgba(255,255,255,.06)}
+.btn.ghost{
+  background: transparent;
+  border-color: rgba(170,176,197,.34);
+}
 
 .inline{
   text-decoration: underline;
