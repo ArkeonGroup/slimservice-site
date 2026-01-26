@@ -1149,6 +1149,36 @@ body.ui2 details.card summary{
 #scenarios .scenario-cta{
   margin-top:auto;
 }
+/* X2 — Proof visuals (UI2, perf-safe, no CLS) */
+body.ui2 #proof .visual-tiles{
+  margin-top: clamp(12px, 2.2vw, 18px);
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 2.2vw, 18px);
+}
+
+@media (max-width: 920px){
+  body.ui2 #proof .visual-tiles{ grid-template-columns: 1fr; }
+}
+
+body.ui2 #proof .visual-tile{
+  padding:0;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+
+body.ui2 #proof .visual-tile img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+body.ui2 #proof .visual-meta{
+  padding: 14px;
+}
+
 /* Proof wall + X1 mini-cases (UI2) */
 body.ui2 #proof .proof-wall{
   display:grid;
