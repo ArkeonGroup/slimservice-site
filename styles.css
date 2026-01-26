@@ -391,12 +391,15 @@ body.footer-on .sticky-cta{
 }
 
 #roi .form .lbl{
-  min-height:0 !important;
-  height:auto !important;
-  margin:0 !important;
-  padding:0 !important;
   line-height:1.2;
+  min-height:0; /* mobile/default */
 }
+
+/* desktop: force equal label height so inputs align */
+@media (min-width: 861px){
+  #roi .form .lbl{ min-height: 2.6em; } /* ~2 lines */
+}
+
 
 #roi .form{
   margin:12px 0 6px;
