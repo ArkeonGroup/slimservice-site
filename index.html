@@ -602,33 +602,24 @@ SlimService is een WhatsApp intake-systeem voor afspraak-gedreven vakmensen. Het
     const vEl = document.getElementById('roi_value');
     const cEl = document.getElementById('roi_cost');
     const bEl = document.getElementById('roi_big');
-
+    const sendEl = document.getElementById('roi_send');
 
     if(hEl) hEl.textContent = hoursPerMonth.toFixed(1) + " uur / maand";
     if(vEl) vEl.textContent = "\u20AC " + valuePerMonth.toFixed(0) + " / maand";
     if(cEl) cEl.textContent = "\u20AC " + costPerMonth.toFixed(0) + " / maand (gemiste waarde)";
     if(bEl) bEl.textContent = "€ " + costPerMonth.toFixed(0);
-  }
 
-  ['roi_q','roi_min','roi_pct','roi_days','roi_rate'].forEach(id => {
-    const el = document.getElementById(id);
-    if(el) el.addEventListener('input', calcROI);
-    // --- ROI Lead Capture (WhatsApp prefill) ---
-const sendEl = document.getElementById('roi_send');
+    // --- ROI Lead Capture (WhatsApp prefill) — scope-safe ---
+    if (sendEl) {
+      // Source-of-truth: eerste bestaande wa.me link op de pagina (hero/cta/footer)
+      const wa = document.querySelector('a[href*="wa.me/"]');
+      const waBase = (wa ? wa.href : "https://wa.me/31687699731").split('?')[0];
 
-if (sendEl) {
-  const hoursTxt = hEl?.textContent || "";
-  const valueTxt = vEl?.textContent || "";
-  const costTxt  = cEl?.textContent || "";
-
-  const wa = document.querySelector('a[href^="https://wa.me/"]');
-  const waBase = wa ? wa.href.split('?')[0] : "";
-
-  const msg =
+      const msg =
 `SlimService ROI (indicatief)
-- Kosten van niets doen: ${costTxt}
-- Tijdwinst: ${hoursTxt}
-- Besparing: ${valueTxt}
+- Kosten van niets doen: € ${costPerMonth.toFixed(0)} / maand
+- Tijdwinst: ${hoursPerMonth.toFixed(1)} uur / maand
+- Besparing: € ${valuePerMonth.toFixed(0)} / maand
 
 Mijn cijfers:
 - Vragen/dag: ${q}
@@ -637,14 +628,17 @@ Mijn cijfers:
 - Werkdagen: ${days}
 - € per uur: ${rate}
 
-Kun je dit checken en de snelste next step sturen?`;
+[ROI_CALC] Kun je dit checken en de snelste next step sturen?`;
 
-  if (waBase) {
-    sendEl.href = waBase + "?text=" + encodeURIComponent(msg);
+      sendEl.href = waBase + "?text=" + encodeURIComponent(msg);
+    }
   }
-}
 
+  ['roi_q','roi_min','roi_pct','roi_days','roi_rate'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.addEventListener('input', calcROI);
   });
+
   calcROI();
 </script>
 
