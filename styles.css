@@ -1263,6 +1263,87 @@ body.ui2 .btn:focus-visible{
   color: var(--text);
   font-weight: 900;
 }
+/* Proof wall (QW1) — hero → proof → sprint (NO-DRIFT) */
+.proof-row{ padding-top: 6px; }
+
+.proof-wall{
+  display:grid;
+  grid-template-columns: 1.1fr .9fr 1fr;
+  gap:14px;
+  margin-top: 12px;
+}
+
+.proof-box{
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.02);
+  border-radius: var(--radius);
+  padding:14px;
+}
+
+.proof-logos{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top: 8px;
+}
+
+.proof-logo{
+  height:34px;
+  padding:0 10px;
+  display:inline-flex;
+  align-items:center;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.02);
+  color: var(--muted);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.18px;
+  text-transform:uppercase;
+}
+
+.proof-chips{
+  margin-top:10px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.proof-metrics{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:8px;
+}
+
+.proof-metric{ min-width: 110px; }
+
+.proof-num{
+  font-size:18px;
+  font-weight:900;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  line-height:1.1;
+}
+
+.proof-quotes{
+  list-style:none;
+  margin:8px 0 0;
+  padding:0;
+  display:grid;
+  gap:8px;
+}
+
+.proof-quotes li{
+  color: var(--muted);
+  font-size:13px;
+  border-left:2px solid rgba(255,255,255,.10);
+  padding-left:10px;
+}
+
+@media (max-width: 920px){
+  .proof-wall{ grid-template-columns: 1fr; }
+}
 
 /* Pricing highlight badge + subtle glow */
 .price.card.highlight{
