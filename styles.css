@@ -12,7 +12,7 @@
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", Arial, "Apple Color Emoji","Segoe UI Emoji";
+    font-family: var(--font-sans);
   background:
     radial-gradient(1100px 620px at 50% 42%, rgba(255,255,255,.06), transparent 62%),
     radial-gradient(1200px 600px at 15% 10%, rgba(110,231,255,.12), transparent 55%),
@@ -20,7 +20,7 @@ body{
     radial-gradient(1400px 900px at 50% 55%, rgba(0,0,0,0), rgba(0,0,0,.55) 72%),
     var(--bg);
   color:var(--text);
-  line-height:1.45;
+    line-height: var(--lh-body);
 }
 a{color:inherit;text-decoration:none}
 a:hover{opacity:.92}
@@ -160,7 +160,7 @@ a:hover{opacity:.92}
 .bubble.ss{align-self:flex-start;border-color:rgba(110,231,255,.25);background:rgba(110,231,255,.08)}
 
 .grid3{display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:14px;padding-bottom:6px}
-.grid3 h2{margin:0 0 6px;font-size:18px}
+.grid3 h3{margin:0 0 6px;font-size: var(--fs-h3); line-height: var(--lh-h3);}
 .grid3 p{margin:0;color:var(--muted)}
 
 .split{display:grid;grid-template-columns:1.05fr .95fr;gap:14px;align-items:start;padding-top:10px}
@@ -482,8 +482,8 @@ body.footer-on .sticky-cta{
 }
 
 #roi .grid-2 > .card h3{
-  font-size: 28px !important;
-  line-height: 1.15;
+  font-size: var(--fs-h3) !important;
+  line-height: var(--lh-h3);
 }
 
 #roi .grid-2 > .card .muted{
@@ -935,13 +935,6 @@ body.ui2 .kicker{
   opacity: .85;
 }
 
-body.ui2 .lead{
-  font-size: clamp(16px, 2vw, 19px);
-  line-height: 1.65;
-  max-width: 62ch;
-  opacity: .92;
-}
-
 /* Hero spacing */
 body.ui2 .hero{
   gap: clamp(16px, 3.2vw, 36px);
@@ -1305,12 +1298,8 @@ body.ui2 main > section.wrap.hero{
   padding-bottom: clamp(22px, 3vw, 40px);
 }
 
-/* Section headings: strak en consistent */
 body.ui2 .section-head h2{
   margin:0;
-  font-size: clamp(24px, 3.2vw, 34px);
-  letter-spacing: -0.02em;
-  line-height: 1.12;
 }
 
 body.ui2 .section-head p{
@@ -1354,6 +1343,13 @@ body.ui2{
 body.ui2 h1, body.ui2 h2, body.ui2 h3{ text-wrap: balance; }
 body.ui2 p{ text-wrap: pretty; }
 
+/* Type scale: all H2 consistent (section titles) */
+body.ui2 h2{
+  font-size: var(--fs-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: -0.02em;
+}
+
 body.ui2 .hero h1{
   font-size: clamp(32px, 4.4vw, 52px);
   letter-spacing: -0.03em;
@@ -1363,6 +1359,7 @@ body.ui2 .lead{
   font-size: clamp(16px, 1.6vw, 19px);
   line-height: 1.45;
   max-width: 62ch;
+    opacity: .92;
 }
 
 body.ui2 .hero-about{
@@ -1589,6 +1586,15 @@ body.ui2 main > section.wrap + section.wrap{
 
   --ui-accent: var(--accent);
   --ui-focus: rgba(110,231,255,.45); /* safe default */
+    /* Type contract (Relay/Group safe) */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", Arial, "Apple Color Emoji","Segoe UI Emoji";
+  --lh-body: 1.45;
+
+  --fs-h2: clamp(24px, 3.2vw, 34px);
+  --lh-h2: 1.12;
+
+  --fs-h3: 18px;
+  --lh-h3: 1.2;
 }
 
 /* Fix: .muted should actually be muted (hierarchy) */
