@@ -1099,7 +1099,7 @@ body.ui2 details.card summary{
   gap: 4px;
 }
 
-#scenarios .scenario-head h4{
+#scenarios .scenario-head h3{
   margin:0;
   font-size:16px;
   letter-spacing:-0.01em;
