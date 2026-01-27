@@ -391,8 +391,8 @@ body.footer-on .sticky-cta{
 }
 
 /* Add-ons: align price lines */
-#addons .card.small{display:flex;flex-direction:column}
-#addons .card.small .price-line{margin-top:auto}
+body.home #addons .card.small{display:flex;flex-direction:column}
+body.home #addons .card.small .price-line{margin-top:auto}
 
 /* v7.6.1 ROI calculator label spacing fix (desktop + mobile) */
 .form label{gap:4px;}
@@ -401,108 +401,108 @@ body.footer-on .sticky-cta{
   .form .lbl{min-height:38px;}
 }
 /* v7.6.1 ROI label alignment fix v2 (force override) */
-#roi .form label{
+body.home #roi .form label{
   display:flex;
   flex-direction:column;
   gap:8px;
 }
 
-#roi .form .lbl{
+body.home #roi .form .lbl{
   line-height:1.2;
   min-height:0; /* mobile/default */
 }
 
 /* desktop: force equal label height so inputs align */
 @media (min-width: 861px){
-  #roi .form .lbl{ min-height: 2.6em; } /* ~2 lines */
+ body.home #roi .form .lbl{ min-height: 2.6em; } /* ~2 lines */
 }
 
 
-#roi .form{
+body.home #roi .form{
   margin:12px 0 6px;
 }
 /* === v7.6.2 TYPO + LAYOUT ALIGN (ROI vs Scenarios) === */
 
 /* 1) Maak typografie gelijk: dezelfde basis, labels iets groter */
-#roi, #scenarios{
+body.home #roi, body.home #scenarios{
   font-size: 16px;
   line-height: 1.45;
 }
 
-#roi h2, #scenarios h2{
+body.home #roi h2,body.home  #scenarios h2{
   font-size: 28px;
   line-height: 1.15;
 }
 
 /* ROI labels + input tekst: omhoog zodat het matcht met rechts */
-#roi .form .lbl{
+body.home #roi .form .lbl{
   font-size: 14px !important;
   line-height: 1.2;
 }
 
-#roi input{
+body.home #roi input{
   font-size: 16px;
 }
 
 /* 2) Haal overtollige lucht onderin ROI weg */
-#roi{
+body.home #roi{
   padding-bottom: 18px;
 }
 
-#roi .note,
-#roi .formula,
-#roi .calc-note{
+body.home #roi .note,
+body.home #roi .formula,
+body.home #roi .calc-note{
   margin-top: 12px !important;
 }
 
 /* 3) Zorg dat beide panelen 'evenredig' vullen (stretch + flex kolom) */
-#roi, #scenarios{
+body.home #roi,body.home  #scenarios{
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
 /* Als je een container hebt die de knoppen onderin draagt (vaak .cta, .actions, .buttons) */
-#scenarios .cta,
-#scenarios .actions,
-#scenarios .buttons{
+body.home #scenarios .cta,
+body.home #scenarios .actions,
+body.home #scenarios .buttons{
   margin-top: auto;
 }
 
-#roi .results,
-#roi .result,
-#roi .outputs{
+body.home #roi .results,
+body.home #roi .result,
+body.home #roi .outputs{
   margin-top: auto;
 }
 /* === v7.6.3 ROI + Scenarios: typography parity (targets BOTH cards inside #roi) === */
 
-#roi .grid-2 > .card{
+body.home #roi .grid-2 > .card{
   font-size: 16px !important;
   line-height: 1.45;
 }
 
-#roi .grid-2 > .card h3{
+body.home #roi .grid-2 > .card h3{
   font-size: var(--fs-h3) !important;
   line-height: var(--lh-h3);
 }
 
-#roi .grid-2 > .card .muted{
+body.home #roi .grid-2 > .card .muted{
   font-size: 16px !important;
 }
 
-#roi .grid-2 > .card .tab{
+body.home #roi .grid-2 > .card .tab{
   font-size: 15px !important;
 }
 
 /* ROI labels blijven iets kleiner (is goed), maar nu consistent */
-#roi .form .lbl{
+body.home #roi .form .lbl{
   font-size: 14px !important;
   line-height: 1.2;
 }
 
 /* Neem net wat lucht weg onderin ROI */
-#roi .roi-out{ margin-top: 14px !important; }
-#roi .note{ margin-top: 12px !important; }
+body.home #roi .roi-out{ margin-top: 14px !important; }
+body.home #roi .note{ margin-top: 12px !important; }
 
 
 
@@ -1064,11 +1064,11 @@ body.ui2 details.card summary{
   padding-bottom: 14px;
 }
 /* ROI: scenarios is aparte sectie, dus ROI moet full-width */
-#roi .grid-2{
+body.home #roi .grid-2{
   grid-template-columns: 1fr;
 }
 /* Scenarios — 3 conversion cards (no tabs, no click friction) */
-#scenarios .scenario-grid{
+body.home #scenarios .scenario-grid{
   display:grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(12px, 2.2vw, 18px);
@@ -1076,48 +1076,48 @@ body.ui2 details.card summary{
 }
 
 @media (min-width: 921px) and (max-width: 1180px){
-  #scenarios .scenario-grid{
+body.home   #scenarios .scenario-grid{
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 920px){
-  #scenarios .scenario-grid{
+body.home   #scenarios .scenario-grid{
     grid-template-columns: 1fr;
   }
 }
 
-#scenarios .scenario-card{
+body.home #scenarios .scenario-card{
   display:flex;
   flex-direction:column;
   gap: 10px;
 }
 
-#scenarios .scenario-head{
+body.home #scenarios .scenario-head{
   display:flex;
   flex-direction:column;
   gap: 4px;
 }
 
-#scenarios .scenario-head h3{
+body.home #scenarios .scenario-head h3{
   margin:0;
   font-size:16px;
   letter-spacing:-0.01em;
 }
 
-#scenarios .scenario-sub{
+body.home #scenarios .scenario-sub{
   font-size:12px;
   color: var(--muted);
 }
 
-#scenarios .scenario-lead{
+body.home #scenarios .scenario-lead{
   margin:0;
   color: var(--muted);
   font-size:14px;
   line-height:1.55;
 }
 
-#scenarios .scenario-steps{
+body.home #scenarios .scenario-steps{
   margin: 10px 0 0;
   padding: 0;
   list-style:none;
@@ -1126,7 +1126,7 @@ body.ui2 details.card summary{
   counter-reset: sc;
 }
 
-#scenarios .scenario-steps li{
+body.home #scenarios .scenario-steps li{
   counter-increment: sc;
   display:flex;
   gap:10px;
@@ -1136,7 +1136,7 @@ body.ui2 details.card summary{
   line-height:1.45;
 }
 
-#scenarios .scenario-steps li::before{
+body.home #scenarios .scenario-steps li::before{
   content: counter(sc);
   width:20px;
   height:20px;
@@ -1152,7 +1152,7 @@ body.ui2 details.card summary{
   margin-top:1px;
 }
 
-#scenarios .scenario-cta{
+body.home #scenarios .scenario-cta{
   margin-top:auto;
 }
 /* X2 — Proof visuals (UI2, perf-safe, no CLS) */
@@ -1164,10 +1164,10 @@ body.ui2 #proof .visual-tiles{
 }
 
 @media (max-width: 920px){
-  body.ui2 #proof .visual-tiles{ grid-template-columns: 1fr; }
+  body.home.ui2 #proof .visual-tiles{ grid-template-columns: 1fr; }
 }
 
-body.ui2 #proof .visual-tile{
+body.home.ui2 #proof .visual-tile{
   padding:0;
   overflow:hidden;
   display:flex;
@@ -1175,34 +1175,34 @@ body.ui2 #proof .visual-tile{
   min-width:0;
 }
 
-body.ui2 #proof .visual-tile img{
+body.home.ui2 #proof .visual-tile img{
   display:block;
   width:100%;
   height:auto;
 }
 
-body.ui2 #proof .visual-meta{
+body.home.ui2 #proof .visual-meta{
   padding: 14px;
 }
 
 /* Proof wall + X1 mini-cases (UI2) */
-body.ui2 #proof .proof-wall{
+body.home.ui2 #proof .proof-wall{
   display:grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(12px, 2.2vw, 18px);
 }
 
 @media (max-width: 920px){
-  body.ui2 #proof .proof-wall{ grid-template-columns: 1fr; }
+  body.home.ui2 #proof .proof-wall{ grid-template-columns: 1fr; }
 }
 
-body.ui2 #proof .proof-logos{
+body.home.ui2 #proof .proof-logos{
   display:flex;
   flex-wrap:wrap;
   gap: 8px;
 }
 
-body.ui2 #proof .proof-logo{
+body.home.ui2 #proof .proof-logo{
   display:inline-flex;
   align-items:center;
   padding: 6px 10px;
@@ -1214,17 +1214,17 @@ body.ui2 #proof .proof-logo{
   white-space: nowrap;
 }
 
-body.ui2 #proof .proof-metrics{
+body.home.ui2 #proof .proof-metrics{
   display:grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
 }
 
-body.ui2 #proof .proof-num{
+body.home.ui2 #proof .proof-num{
   font-variant-numeric: tabular-nums;
 }
 
-body.ui2 #proof .proof-quotes{
+body.home.ui2 #proof .proof-quotes{
   list-style:none;
   padding:0;
   margin:0;
@@ -1232,12 +1232,12 @@ body.ui2 #proof .proof-quotes{
   gap: 10px;
 }
 
-body.ui2 #proof .proof-quotes li{
+body.home.ui2 #proof .proof-quotes li{
   padding-left: 14px;
   position: relative;
 }
 
-body.ui2 #proof .proof-quotes li::before{
+body.home.ui2 #proof .proof-quotes li::before{
   content:"";
   position:absolute;
   left:0;
@@ -1249,7 +1249,7 @@ body.ui2 #proof .proof-quotes li::before{
 }
 
 /* X1 — Mini-case tiles */
-body.ui2 #proof .case-tiles{
+body.home.ui2 #proof .case-tiles{
   margin-top: clamp(12px, 2.2vw, 18px);
   display:grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1257,14 +1257,14 @@ body.ui2 #proof .case-tiles{
 }
 
 @media (min-width: 921px) and (max-width: 1180px){
-  body.ui2 #proof .case-tiles{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+ body.home.ui2 #proof .case-tiles{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 920px){
-  body.ui2 #proof .case-tiles{ grid-template-columns: 1fr; }
+ body.home.ui2 #proof .case-tiles{ grid-template-columns: 1fr; }
 }
 
-body.ui2 #proof .case-tile{
+body.home.ui2 #proof .case-tile{
   text-decoration:none;
   color:inherit;
   display:flex;
@@ -1273,7 +1273,7 @@ body.ui2 #proof .case-tile{
   transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
 }
 
-body.ui2 #proof .case-tile .case-meta{
+body.home.ui2 #proof .case-tile .case-meta{
   margin-top:auto;
   display:flex;
   flex-wrap:wrap;
@@ -1281,7 +1281,7 @@ body.ui2 #proof .case-tile .case-meta{
   padding-top: 10px;
 }
 
-body.ui2 #proof .case-tile:hover{
+body.home.ui2 #proof .case-tile:hover{
   transform: translateY(-1px);
 }
 
@@ -1684,17 +1684,17 @@ body.ui2 main > section.wrap.is-surface.band{
    Scope: ROI only (#roi)
    ========================================================= */
 
-#roi .roi-grid{
+body.home #roi .roi-grid{
   align-items: start;
   gap: 18px;
   grid-template-columns: 1.15fr 0.85fr;
 }
 
-#roi .roi-input{
+body.home #roi .roi-input{
   box-shadow: none;
 }
 
-#roi .roi-impact{
+body.home #roi .roi-impact{
   background: linear-gradient(180deg, #0b0d12 0%, #0a0c10 100%);
   color: rgba(238,241,255,0.98);
   border: 1px solid rgba(255,255,255,0.10);
@@ -1702,13 +1702,13 @@ body.ui2 main > section.wrap.is-surface.band{
   padding: 18px;
 }
 
-#roi .roi-impact .muted,
-#roi .roi-impact .kpi-label,
-#roi .roi-sub{
+body.home #roi .roi-impact .muted,
+body.home #roi .roi-impact .kpi-label,
+body.home #roi .roi-sub{
   color: rgba(238,241,255,0.70);
 }
 
-#roi .roi-kicker{
+body.home #roi .roi-kicker{
   font-size: 12px;
   font-weight: 900;
   letter-spacing: 0.22em;
@@ -1717,7 +1717,7 @@ body.ui2 main > section.wrap.is-surface.band{
   margin-bottom: 8px;
 }
 
-#roi .roi-big{
+body.home #roi .roi-big{
   font-weight: 950;
   font-size: 48px;
   line-height: 1.02;
@@ -1727,53 +1727,53 @@ body.ui2 main > section.wrap.is-surface.band{
   white-space: nowrap;
 }
 
-#roi .roi-kpis{
+body.home #roi .roi-kpis{
   display: grid;
   gap: 10px;
   margin-top: 14px;
 }
 
-#roi .roi-impact .kpi{
+body.home #roi .roi-impact .kpi{
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.10);
 }
 
-#roi .roi-impact .kpi-value{
+body.home #roi .roi-impact .kpi-value{
   color: rgba(238,241,255,0.98);
 }
 
-#roi .roi-actions{
+body.home #roi .roi-actions{
   margin-top: 14px;
 }
 
-#roi .roi-actions .btn{
+body.home #roi .roi-actions .btn{
   width: 100%;
   justify-content: center;
 }
 
 /* Mobile: keep it stacked and readable */
 @media (max-width: 860px){
-  #roi .roi-grid{ grid-template-columns: 1fr; }
-  #roi .roi-big{ font-size: 42px; }
+body.home   #roi .roi-grid{ grid-template-columns: 1fr; }
+body.home  #roi .roi-big{ font-size: 42px; }
 }
 /* =========================================================
    Step 4.1 (ROI polish): CTA punch + KPI calm
    ========================================================= */
 
-#roi .roi-impact{
+body.home #roi .roi-impact{
   border-radius: 18px;
 }
 
-#roi .roi-impact .kpi{
+body.home #roi .roi-impact .kpi{
   padding: 14px 14px;
   border-radius: 14px;
 }
 
-#roi .roi-impact .kpi-label{
+body.home #roi .roi-impact .kpi-label{
   font-size: 13px;
 }
 
-#roi .roi-impact .kpi-value{
+body.home #roi .roi-impact .kpi-value{
   font-size: 18px;
   font-weight: 900;
   white-space: nowrap;
@@ -1781,59 +1781,59 @@ body.ui2 main > section.wrap.is-surface.band{
 }
 /* ROI impact KPI alignment — mobile fix (NO DRIFT) */
 @media (max-width: 420px){
-  #roi .roi-impact .kpi{
+body.home   #roi .roi-impact .kpi{
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
   }
-  #roi .roi-impact .kpi-value{
+body.home   #roi .roi-impact .kpi-value{
     white-space: normal;   /* override nowrap on small screens */
     align-self: flex-end;  /* value stays right */
     text-align: right;
   }
 }
 
-#roi .roi-actions .btn.primary{
+body.home #roi .roi-actions .btn.primary{
   background: var(--ui-accent);
   border-color: transparent;
   color: #061018;
   box-shadow: none;
 }
 
-#roi .roi-actions .btn.primary:hover{
+body.home #roi .roi-actions .btn.primary:hover{
   opacity: 0.96;
 }
 
-#roi .roi-actions .btn.primary:focus-visible{
+body.home #roi .roi-actions .btn.primary:focus-visible{
   outline: 2px solid rgba(255,255,255,0.55);
   outline-offset: 2px;
 }
 /* Proof wall — desktop tiles enforcement (NO-DRIFT) */
-#proof .proof-wall{
+body.home #proof .proof-wall{
   display:grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap:14px;
 }
 @media (max-width: 920px){
-  #proof .proof-wall{ grid-template-columns: 1fr; }
+ body.home  #proof .proof-wall{ grid-template-columns: 1fr; }
 }
 
 /* Ensure "card" look wins even if proof-box had earlier overrides */
-#proof .proof-box.card{
+body.home #proof .proof-box.card{
   background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
   border:2px solid rgba(37,42,58,.85);
   box-shadow: var(--shadow);
 }
 
 /* Quotes: no bullets, clean */
-#proof .proof-quotes{
+body.home #proof .proof-quotes{
   list-style:none;
   margin:8px 0 0;
   padding:0;
   display:grid;
   gap:8px;
 }
-#proof .proof-quotes li{
+body.home #proof .proof-quotes li{
   border-left:2px solid rgba(255,255,255,.10);
   padding-left:10px;
 }
