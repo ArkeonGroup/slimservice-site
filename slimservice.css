@@ -1,0 +1,475 @@
+/* Add-ons: align price lines */
+body.home #addons .card.small{display:flex;flex-direction:column}
+body.home #addons .card.small .price-line{margin-top:auto}
+/* v7.6.1 ROI label alignment fix v2 (force override) */
+body.home #roi .form label{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+body.home #roi .form .lbl{
+  line-height:1.2;
+  min-height:0; /* mobile/default */
+}
+
+/* desktop: force equal label height so inputs align */
+@media (min-width: 861px){
+ body.home #roi .form .lbl{ min-height: 2.6em; }}
+
+
+body.home #roi .form{
+  margin:12px 0 6px;
+}
+/* === v7.6.2 TYPO + LAYOUT ALIGN (ROI vs Scenarios) === */
+
+/* 1) Maak typografie gelijk: dezelfde basis, labels iets groter */
+body.home #roi, body.home #scenarios{
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+body.home #roi h2,body.home  #scenarios h2{
+  font-size: 28px;
+  line-height: 1.15;
+}
+
+/* ROI labels + input tekst: omhoog zodat het matcht met rechts */
+body.home #roi .form .lbl{
+  font-size: 14px !important;
+  line-height: 1.2;
+}
+
+body.home #roi input{
+  font-size: 16px;
+}
+
+/* 2) Haal overtollige lucht onderin ROI weg */
+body.home #roi{
+  padding-bottom: 18px;
+}
+
+body.home #roi .note,
+body.home #roi .formula,
+body.home #roi .calc-note{
+  margin-top: 12px !important;
+}
+
+/* 3) Zorg dat beide panelen 'evenredig' vullen (stretch + flex kolom) */
+body.home #roi,body.home  #scenarios{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Als je een container hebt die de knoppen onderin draagt (vaak .cta, .actions, .buttons) */
+body.home #scenarios .cta,
+body.home #scenarios .actions,
+body.home #scenarios .buttons{
+  margin-top: auto;
+}
+
+body.home #roi .results,
+body.home #roi .result,
+body.home #roi .outputs{
+  margin-top: auto;
+}
+/* === v7.6.3 ROI + Scenarios: typography parity (targets BOTH cards inside #roi) === */
+
+body.home #roi .grid-2 > .card{
+  font-size: 16px !important;
+  line-height: 1.45;
+}
+
+body.home #roi .grid-2 > .card h3{
+  font-size: var(--fs-h3) !important;
+  line-height: var(--lh-h3);
+}
+
+body.home #roi .grid-2 > .card .muted{
+  font-size: 16px !important;
+}
+
+body.home #roi .grid-2 > .card .tab{
+  font-size: 15px !important;
+}
+
+/* ROI labels blijven iets kleiner (is goed), maar nu consistent */
+body.home #roi .form .lbl{
+  font-size: 14px !important;
+  line-height: 1.2;
+}
+
+/* Neem net wat lucht weg onderin ROI */
+body.home #roi .roi-out{ margin-top: 14px !important; }
+body.home #roi .note{ margin-top: 12px !important; }
+/* ROI: scenarios is aparte sectie, dus ROI moet full-width */
+body.home #roi .grid-2{
+  grid-template-columns: 1fr;
+}
+/* Scenarios — 3 conversion cards (no tabs, no click friction) */
+body.home #scenarios .scenario-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 2.2vw, 18px);
+  margin-top: 14px;
+}
+
+@media (min-width: 921px) and (max-width: 1180px){
+body.home   #scenarios .scenario-grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }}
+
+@media (max-width: 920px){
+body.home   #scenarios .scenario-grid{
+    grid-template-columns: 1fr;
+  }}
+
+body.home #scenarios .scenario-card{
+  display:flex;
+  flex-direction:column;
+  gap: 10px;
+}
+
+body.home #scenarios .scenario-head{
+  display:flex;
+  flex-direction:column;
+  gap: 4px;
+}
+
+body.home #scenarios .scenario-head h3{
+  margin:0;
+  font-size:16px;
+  letter-spacing:-0.01em;
+}
+
+body.home #scenarios .scenario-sub{
+  font-size:12px;
+  color: var(--muted);
+}
+
+body.home #scenarios .scenario-lead{
+  margin:0;
+  color: var(--muted);
+  font-size:14px;
+  line-height:1.55;
+}
+
+body.home #scenarios .scenario-steps{
+  margin: 10px 0 0;
+  padding: 0;
+  list-style:none;
+  display:grid;
+  gap: 8px;
+  counter-reset: sc;
+}
+
+body.home #scenarios .scenario-steps li{
+  counter-increment: sc;
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  color: var(--muted);
+  font-size:13px;
+  line-height:1.45;
+}
+
+body.home #scenarios .scenario-steps li::before{
+  content: counter(sc);
+  width:20px;
+  height:20px;
+  border-radius:999px;
+  flex:0 0 20px;
+  display:grid;
+  place-items:center;
+  font-weight:900;
+  font-size:11px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color: var(--text);
+  margin-top:1px;
+}
+
+body.home #scenarios .scenario-cta{
+  margin-top:auto;
+}
+/* X2 — Proof visuals (UI2, perf-safe, no CLS) */
+body.home.ui2 #proof .visual-tiles{
+  margin-top: clamp(12px, 2.2vw, 18px);
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 2.2vw, 18px);
+}
+
+@media (max-width: 920px){
+  body.home.ui2 #proof .visual-tiles{ grid-template-columns: 1fr; }}
+
+body.home.ui2 #proof .visual-tile{
+  padding:0;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+
+body.home.ui2 #proof .visual-tile img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+body.home.ui2 #proof .visual-meta{
+  padding: 14px;
+}
+
+/* Proof wall + X1 mini-cases (UI2) */
+body.home.ui2 #proof .proof-wall{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 2.2vw, 18px);
+}
+
+@media (max-width: 920px){
+  body.home.ui2 #proof .proof-wall{ grid-template-columns: 1fr; }}
+
+body.home.ui2 #proof .proof-logos{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 8px;
+}
+
+body.home.ui2 #proof .proof-logo{
+  display:inline-flex;
+  align-items:center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--ui-border);
+  background: transparent;
+  font-size: 13px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+body.home.ui2 #proof .proof-metrics{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+body.home.ui2 #proof .proof-num{
+  font-variant-numeric: tabular-nums;
+}
+
+body.home.ui2 #proof .proof-quotes{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:grid;
+  gap: 10px;
+}
+
+body.home.ui2 #proof .proof-quotes li{
+  padding-left: 14px;
+  position: relative;
+}
+
+body.home.ui2 #proof .proof-quotes li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 99px;
+  background: var(--ui-border);
+}
+
+/* X1 — Mini-case tiles */
+body.home.ui2 #proof .case-tiles{
+  margin-top: clamp(12px, 2.2vw, 18px);
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 2.2vw, 18px);
+}
+
+@media (min-width: 921px) and (max-width: 1180px){
+ body.home.ui2 #proof .case-tiles{ grid-template-columns: repeat(2, minmax(0, 1fr)); }}
+
+@media (max-width: 920px){
+ body.home.ui2 #proof .case-tiles{ grid-template-columns: 1fr; }}
+
+body.home.ui2 #proof .case-tile{
+  text-decoration:none;
+  color:inherit;
+  display:flex;
+  flex-direction:column;
+  min-height: 180px;
+  transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+}
+
+body.home.ui2 #proof .case-tile .case-meta{
+  margin-top:auto;
+  display:flex;
+  flex-wrap:wrap;
+  gap: 8px;
+  padding-top: 10px;
+}
+
+body.home.ui2 #proof .case-tile:hover{
+  transform: translateY(-1px);
+}
+/* =========================================================
+   Step 4 (ROI POP): split input/output + impact panel
+   Scope: ROI only (#roi)
+   ========================================================= */
+
+body.home #roi .roi-grid{
+  align-items: start;
+  gap: 18px;
+  grid-template-columns: 1.15fr 0.85fr;
+}
+
+body.home #roi .roi-input{
+  box-shadow: none;
+}
+
+body.home #roi .roi-impact{
+  background: linear-gradient(180deg, #0b0d12 0%, #0a0c10 100%);
+  color: rgba(238,241,255,0.98);
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: none;
+  padding: 18px;
+}
+
+body.home #roi .roi-impact .muted,
+body.home #roi .roi-impact .kpi-label,
+body.home #roi .roi-sub{
+  color: rgba(238,241,255,0.70);
+}
+
+body.home #roi .roi-kicker{
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(238,241,255,0.70);
+  margin-bottom: 8px;
+}
+
+body.home #roi .roi-big{
+  font-weight: 950;
+  font-size: 48px;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin: 2px 0 6px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+body.home #roi .roi-kpis{
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+body.home #roi .roi-impact .kpi{
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+body.home #roi .roi-impact .kpi-value{
+  color: rgba(238,241,255,0.98);
+}
+
+body.home #roi .roi-actions{
+  margin-top: 14px;
+}
+
+body.home #roi .roi-actions .btn{
+  width: 100%;
+  justify-content: center;
+}
+
+/* Mobile: keep it stacked and readable */
+@media (max-width: 860px){
+body.home   #roi .roi-grid{ grid-template-columns: 1fr; }
+body.home  #roi .roi-big{ font-size: 42px; }}
+/* =========================================================
+   Step 4.1 (ROI polish): CTA punch + KPI calm
+   ========================================================= */
+
+body.home #roi .roi-impact{
+  border-radius: 18px;
+}
+
+body.home #roi .roi-impact .kpi{
+  padding: 14px 14px;
+  border-radius: 14px;
+}
+
+body.home #roi .roi-impact .kpi-label{
+  font-size: 13px;
+}
+
+body.home #roi .roi-impact .kpi-value{
+  font-size: 18px;
+  font-weight: 900;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+/* ROI impact KPI alignment — mobile fix (NO DRIFT) */
+@media (max-width: 420px){
+body.home   #roi .roi-impact .kpi{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+body.home   #roi .roi-impact .kpi-value{
+    white-space: normal;   /* override nowrap on small screens */
+    align-self: flex-end;  /* value stays right */
+    text-align: right;
+  }}
+
+body.home #roi .roi-actions .btn.primary{
+  background: var(--ui-accent);
+  border-color: transparent;
+  color: #061018;
+  box-shadow: none;
+}
+
+body.home #roi .roi-actions .btn.primary:hover{
+  opacity: 0.96;
+}
+
+body.home #roi .roi-actions .btn.primary:focus-visible{
+  outline: 2px solid rgba(255,255,255,0.55);
+  outline-offset: 2px;
+}
+/* Proof wall — desktop tiles enforcement (NO-DRIFT) */
+body.home #proof .proof-wall{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap:14px;
+}
+@media (max-width: 920px){
+ body.home  #proof .proof-wall{ grid-template-columns: 1fr; }}
+
+/* Ensure "card" look wins even if proof-box had earlier overrides */
+body.home #proof .proof-box.card{
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+  border:2px solid rgba(37,42,58,.85);
+  box-shadow: var(--shadow);
+}
+
+/* Quotes: no bullets, clean */
+body.home #proof .proof-quotes{
+  list-style:none;
+  margin:8px 0 0;
+  padding:0;
+  display:grid;
+  gap:8px;
+}
+body.home #proof .proof-quotes li{
+  border-left:2px solid rgba(255,255,255,.10);
+  padding-left:10px;
+}
