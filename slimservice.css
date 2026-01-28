@@ -473,3 +473,47 @@ body.home #proof .proof-quotes li{
   border-left:2px solid rgba(255,255,255,.10);
   padding-left:10px;
 }
+
+/* =========================================================
+   X4.5 — Skin Sprint v1 (SlimService home only)
+   Goal: volwassen/clean (minder “dark box”) zonder layout changes
+   Scope: ONLY body.home.ui2
+   ========================================================= */
+
+body.home.ui2{
+  /* token-first: lift base + calm depth */
+  --bg: #0c0e14;
+  --shadow: 0 14px 44px rgba(0,0,0,.26);
+
+  /* shared contract tokens, overridden only for SlimService */
+  --ui-surface: rgba(255,255,255,.055);
+  --ui-surface-2: rgba(255,255,255,.075);
+  --ui-border: rgba(255,255,255,.10);
+}
+
+/* Header: thinner divider + calmer glass (no layout impact) */
+body.home.ui2 .header{
+  border-bottom: 1px solid rgba(255,255,255,.10);
+  background: rgba(11,12,16,.64);
+}
+
+/* Cards: slightly brighter surface, calmer border/shadow */
+body.home.ui2 .card{
+  background: var(--ui-surface);
+  border-color: var(--ui-border);
+  box-shadow: 0 16px 46px rgba(0,0,0,.28);
+}
+
+/* Proof wall: override the thick-border rule at lines 0457–0462 */
+body.home.ui2 #proof .proof-box.card{
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  box-shadow: 0 16px 46px rgba(0,0,0,.28);
+}
+
+/* Micro surfaces: calmer, less “puffy” */
+body.home.ui2 .steps li,
+body.home.ui2 .bubble{
+  border-width: 1px;
+  background: rgba(255,255,255,.025);
+}
