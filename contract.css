@@ -1382,3 +1382,26 @@ body.ui2 main > section.wrap.is-surface.band{
 }
 @media (max-width: 920px){
 }
+/* =========================================================
+   X4.6 — Border discipline (UI2 contract)
+   Goal: 1px borders op secondary containers (consistent system)
+   No layout changes. No copy changes.
+   ========================================================= */
+
+body.ui2 :is(.logo-img, .tab, .bubble, .steps li){
+  border-width: 1px;
+}
+
+body.ui2 .steps li::before{
+  border-width: 1px;
+}
+
+body.ui2 .proof-quotes li{
+  border-left-width: 1px;
+}
+
+/* Reduced motion guardrail: kill remaining transitions (only when requested) */
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto !important; }
+  body.ui2 :is(.card, .btn, .tab){ transition: none !important; }
+}
