@@ -5,7 +5,7 @@ body.home #addons .card.small .price-line{margin-top:auto}
 body.home #roi .form label{
   display:flex;
   flex-direction:column;
-  gap:8px;
+  gap:6px;
 }
 
 body.home #roi .form .lbl{
@@ -15,7 +15,7 @@ body.home #roi .form .lbl{
 
 /* desktop: force equal label height so inputs align */
 @media (min-width: 861px){
- body.home #roi .form .lbl{ min-height: 2.6em; }}
+ body.home #roi .form .lbl{ min-height: 2.2em; }}
 
 
 body.home #roi .form{
@@ -42,6 +42,8 @@ body.home #roi .form .lbl{
 
 body.home #roi input{
   font-size: 16px;
+  min-height: 44px;
+  padding: 10px 12px;
 }
 
 /* 2) Haal overtollige lucht onderin ROI weg */
@@ -339,6 +341,7 @@ body.home #roi .roi-impact{
   border: 1px solid rgba(255,255,255,0.10);
   box-shadow: none;
   padding: 18px;
+  
 }
 
 body.home #roi .roi-impact .muted,
@@ -402,7 +405,16 @@ body.home  #roi .roi-big{ font-size: 42px; }}
 
 body.home #roi .roi-impact{
   border-radius: 18px;
+  color: rgba(255,255,255,.82);
 }
+body.home #roi .roi-impact :is(p, small, .muted, .note, .fineprint){
+  color: rgba(255,255,255,.78);
+}
+body.home #roi .roi-impact ::selection{
+  background: rgba(106,226,255,.28);
+  color: #fff;
+}
+
 
 body.home #roi .roi-impact .kpi{
   padding: 16px 16px;
