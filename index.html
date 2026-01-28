@@ -121,138 +121,143 @@ SlimService is een WhatsApp intake-systeem voor afspraak-gedreven vakmensen. Het
   
 <section class="wrap is-surface alt band theme-light proof-row" id="proof" aria-label="Proof">
     <h2 class="sr-only">Proof</h2>
-  <div class="grid3 proof-wall">
-    <div class="card proof-box">
-      <div class="kicker">Geschikt voor</div>
-      <div class="proof-logos" aria-label="Sectoren">
-        <span class="proof-logo">Dienstverleners</span>
-        <span class="proof-logo">Klussers</span>
-        <span class="proof-logo">Salons</span>
-        <span class="proof-logo">Barbers</span>
-        <span class="proof-logo">Automotive</span>
-        <span class="proof-logo">Praktijken</span>
+   <div class="proof-grid">
+    <div class="proof-left">
+      <div class="grid3 proof-wall">
+        <div class="card proof-box">
+          <div class="kicker">Geschikt voor</div>
+          <div class="proof-logos" aria-label="Sectoren">
+            <span class="proof-logo">Dienstverleners</span>
+            <span class="proof-logo">Klussers</span>
+            <span class="proof-logo">Salons</span>
+            <span class="proof-logo">Barbers</span>
+            <span class="proof-logo">Automotive</span>
+            <span class="proof-logo">Praktijken</span>
+          </div>
+          <div class="proof-chips" aria-label="Use-cases">
+            <span class="pill">Afspraken</span>
+            <span class="pill">Intake</span>
+            <span class="pill">Opvolging</span>
+            <span class="pill">No-show reductie</span>
+          </div>
+        </div>
+
+        <div class="card proof-box">
+          <div class="kicker">Veel gehoorde wens</div>
+          <ul class="proof-quotes" aria-label="Veelgehoorde wensen">
+            <li>“Meer tijd, Minder appjes. Meer afspraken.”</li>
+            <li>“Gewoon duidelijk: wat heb je nodig en wanneer kan ik?”</li>
+            <li>“Alleen doorzetten naar mij als het écht moet.”</li>
+          </ul>
+        </div>
       </div>
-      <div class="proof-chips" aria-label="Use-cases">
-        <span class="pill">Afspraken</span>
-        <span class="pill">Intake</span>
-        <span class="pill">Opvolging</span>
-        <span class="pill">No-show reductie</span>
+
+      <!-- X1 — Mini-case tiles -->
+      <div class="case-tiles" aria-label="Mini-cases">
+        <a class="card case-tile" href="https://slimservicesalondemo.netlify.app/" target="_blank" rel="noopener" aria-label="Bekijk voorbeeldflow: Salon / Barber">
+          <div class="kicker">Mini-case · Salon / Barber</div>
+          <h3>DM → intake → afspraak (zonder appjes-chaos)</h3>
+          <p class="small muted">Voor: losse DM’s/WhatsApp, veel heen-en-weer. Na: vaste intake, automatische bevestiging, en alleen doorzetten als jij nodig bent.</p>
+          <div class="case-meta">
+            <span class="pill">15 min intake</span>
+            <span class="pill">Live in 7 dagen</span>
+          </div>
+        </a>
+
+        <a class="card case-tile" href="https://slimserviceautodetailer.netlify.app/" target="_blank" rel="noopener" aria-label="Bekijk voorbeeldflow: Automotive">
+          <div class="kicker">Mini-case · Automotive</div>
+          <h3>Vraag → foto’s → prijsindicatie → afspraak</h3>
+          <p class="small muted">Voor: offertevragen trekken je agenda leeg. Na: intake verzamelt context (type/klacht/foto’s) en zet om naar een duidelijke afspraakflow.</p>
+          <div class="case-meta">
+            <span class="pill">Minder heen-en-weer</span>
+            <span class="pill">Heldere intake</span>
+          </div>
+        </a>
+
+        <a class="card case-tile" href="https://slimservicedansschooldemo.netlify.app/" target="_blank" rel="noopener" aria-label="Bekijk voorbeeldflow: Dienstverlener / Praktijk">
+          <div class="kicker">Mini-case · Dienstverlener / Praktijk</div>
+          <h3>Standaardvragen eruit, alleen ‘echt nodig’ naar jou</h3>
+          <p class="small muted">Voor: dezelfde vragen elke dag opnieuw. Na: automatische antwoorden + triage + menselijke handoff wanneer het moet.</p>
+          <div class="case-meta">
+            <span class="pill">Triage + handoff</span>
+            <span class="pill">Rust in je inbox</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- X2 — Show, Don’t Tell Visuals (perf-safe) -->
+      <div class="visual-tiles" aria-label="Previews (voorbeelden)">
+        <article class="card visual-tile">
+          <img
+            src="/assets/visual_whatsapp_flow.webp"
+            width="1200"
+            height="750"
+            loading="lazy"
+            decoding="async"
+            alt="Preview: WhatsApp intake flow (voorbeeld)"
+          />
+          <div class="visual-meta">
+            <div class="kicker">WhatsApp intake (preview)</div>
+            <p class="small muted">Voorbeeld van intake in 3–5 berichten.</p>
+            <a class="inline" href="https://wa.me/31687699731" rel="noopener" target="_blank">Start via WhatsApp</a>
+          </div>
+        </article>
+
+        <article class="card visual-tile">
+          <img
+            src="/assets/visual_handoff.webp"
+            width="1200"
+            height="750"
+            loading="lazy"
+            decoding="async"
+            alt="Preview: human handoff moment (voorbeeld)"
+          />
+          <div class="visual-meta">
+            <div class="kicker">Human handoff (preview)</div>
+            <p class="small muted">Voorbeeld wanneer jij het overneemt.</p>
+            <a class="inline" href="https://wa.me/31687699731" rel="noopener" target="_blank">Start via WhatsApp</a>
+          </div>
+        </article>
+
+        <article class="card visual-tile">
+          <img
+            src="/assets/visual_value_report.webp"
+            width="1200"
+            height="750"
+            loading="lazy"
+            decoding="async"
+            alt="Preview: value report (voorbeeld)"
+          />
+          <div class="visual-meta">
+            <div class="kicker">Value report (preview)</div>
+            <p class="small muted">Preview van jouw waarde-overzicht (week/2-wekelijks).</p>
+            <a class="inline" href="#roi">Check je winst</a>
+          </div>
+        </article>
       </div>
     </div>
 
-   <div class="card proof-box">
-  <div class="kicker">In 5 sec duidelijk</div>
-  <div class="proof-metrics" aria-label="Kern-feiten">
-    <div class="proof-metric">
-      <div class="proof-num">7 dagen</div>
-      <div class="tiny muted">live</div>
-    </div>
-    <div class="proof-metric">
-      <div class="proof-num">15 min</div>
-      <div class="tiny muted">intake</div>
-    </div>
-    <div class="proof-metric">
-      <div class="proof-num">1 werkdag</div>
-      <div class="tiny muted">reactie</div>
-    </div>
-  </div>
-
-  <div class="hero-actions proof-actions">
-    <a class="btn primary" href="https://wa.me/31687699731" rel="noopener" target="_blank">Start via WhatsApp</a>
-  </div>
-</div>
-
-
-    <div class="card proof-box">
-      <div class="kicker">Veel gehoorde wens</div>
-      <ul class="proof-quotes" aria-label="Veelgehoorde wensen">
-        <li>“Meer tijd, Minder appjes. Meer afspraken.”</li>
-        <li>“Gewoon duidelijk: wat heb je nodig en wanneer kan ik?”</li>
-        <li>“Alleen doorzetten naar mij als het écht moet.”</li>
-      </ul>
-    </div>
-  </div>
-    <!-- X1 — Mini-case tiles -->
-  <div class="case-tiles" aria-label="Mini-cases">
-    <a class="card case-tile" href="https://slimservicesalondemo.netlify.app/" target="_blank" rel="noopener" aria-label="Bekijk voorbeeldflow: Salon / Barber">
-      <div class="kicker">Mini-case · Salon / Barber</div>
-      <h3>DM → intake → afspraak (zonder appjes-chaos)</h3>
-      <p class="small muted">Voor: losse DM’s/WhatsApp, veel heen-en-weer. Na: vaste intake, automatische bevestiging, en alleen doorzetten als jij nodig bent.</p>
-      <div class="case-meta">
-        <span class="pill">15 min intake</span>
-        <span class="pill">Live in 7 dagen</span>
+    <aside class="card proof-side" aria-label="Impact + start">
+      <div class="kicker">In 5 sec duidelijk</div>
+      <div class="proof-metrics" aria-label="Kern-feiten">
+        <div class="proof-metric">
+          <div class="proof-num">7 dagen</div>
+          <div class="tiny muted">live</div>
+        </div>
+        <div class="proof-metric">
+          <div class="proof-num">15 min</div>
+          <div class="tiny muted">intake</div>
+        </div>
+        <div class="proof-metric">
+          <div class="proof-num">1 werkdag</div>
+          <div class="tiny muted">reactie</div>
+        </div>
       </div>
-    </a>
 
-    <a class="card case-tile" href="https://slimserviceautodetailer.netlify.app/" target="_blank" rel="noopener" aria-label="Bekijk voorbeeldflow: Automotive">
-      <div class="kicker">Mini-case · Automotive</div>
-      <h3>Vraag → foto’s → prijsindicatie → afspraak</h3>
-      <p class="small muted">Voor: offertevragen trekken je agenda leeg. Na: intake verzamelt context (type/klacht/foto’s) en zet om naar een duidelijke afspraakflow.</p>
-      <div class="case-meta">
-        <span class="pill">Minder heen-en-weer</span>
-        <span class="pill">Heldere intake</span>
+      <div class="hero-actions proof-actions">
+        <a class="btn primary" href="https://wa.me/31687699731" rel="noopener" target="_blank">Start via WhatsApp</a>
       </div>
-    </a>
-
-    <a class="card case-tile" href="https://slimservicedansschooldemo.netlify.app/" target="_blank" rel="noopener" aria-label="Bekijk voorbeeldflow: Dienstverlener / Praktijk">
-      <div class="kicker">Mini-case · Dienstverlener / Praktijk</div>
-      <h3>Standaardvragen eruit, alleen ‘echt nodig’ naar jou</h3>
-      <p class="small muted">Voor: dezelfde vragen elke dag opnieuw. Na: automatische antwoorden + triage + menselijke handoff wanneer het moet.</p>
-      <div class="case-meta">
-        <span class="pill">Triage + handoff</span>
-        <span class="pill">Rust in je inbox</span>
-      </div>
-    </a>
-  </div>
-  <!-- X2 — Show, Don’t Tell Visuals (perf-safe) -->
-  <div class="visual-tiles" aria-label="Previews (voorbeelden)">
-    <article class="card visual-tile">
-      <img
-        src="/assets/visual_whatsapp_flow.webp"
-        width="1200"
-        height="750"
-        loading="lazy"
-        decoding="async"
-        alt="Preview: WhatsApp intake flow (voorbeeld)"
-      />
-      <div class="visual-meta">
-        <div class="kicker">WhatsApp intake (preview)</div>
-        <p class="small muted">Voorbeeld van intake in 3–5 berichten.</p>
-        <a class="inline" href="https://wa.me/31687699731" rel="noopener" target="_blank">Start via WhatsApp</a>
-      </div>
-    </article>
-
-    <article class="card visual-tile">
-      <img
-        src="/assets/visual_handoff.webp"
-        width="1200"
-        height="750"
-        loading="lazy"
-        decoding="async"
-        alt="Preview: human handoff moment (voorbeeld)"
-      />
-      <div class="visual-meta">
-        <div class="kicker">Human handoff (preview)</div>
-        <p class="small muted">Voorbeeld wanneer jij het overneemt.</p>
-        <a class="inline" href="https://wa.me/31687699731" rel="noopener" target="_blank">Start via WhatsApp</a>
-      </div>
-    </article>
-
-    <article class="card visual-tile">
-      <img
-        src="/assets/visual_value_report.webp"
-        width="1200"
-        height="750"
-        loading="lazy"
-        decoding="async"
-        alt="Preview: value report (voorbeeld)"
-      />
-      <div class="visual-meta">
-        <div class="kicker">Value report (preview)</div>
-        <p class="small muted">Preview van jouw waarde-overzicht (week/2-wekelijks).</p>
-        <a class="inline" href="#roi">Check je winst</a>
-      </div>
-    </article>
+    </aside>
   </div>
 
 </section>
