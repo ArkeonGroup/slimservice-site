@@ -538,3 +538,47 @@ body.home.ui2 main > section.wrap:is(#roi, #proof, #pricing, #faq, #contact){
     border-radius: 20px;
   }
 }
+/* =========================================================
+   X4.9 — ROI full-bleed band (100vw) — SlimService home only
+   Goal: ROI als 1 blok laten beleven (band strekt full viewport)
+   Knob: --roi-band-a (Subtle/Medium/Strong)
+   ========================================================= */
+
+body.home.ui2 #roi{
+  --roi-band-a: .018; /* Subtle .012 | Medium .018 | Strong .026 */
+  position: relative;
+  border-radius: 0;     /* band = section, geen "kaart" */
+  box-shadow: none;     /* voorkomt dubbel frame (X4.8 inset) */
+  background: transparent;
+  background-image: none;
+}
+
+body.home.ui2 #roi::before{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+
+  /* full-bleed without transform jitter */
+  left: calc(50% - 50vw);
+  width: 100vw;
+  left: calc(50% - 50dvw);
+  width: 100dvw;
+
+  background: var(--ui-bg);
+  background-image: linear-gradient(180deg, rgba(255,255,255,var(--roi-band-a)), rgba(255,255,255,0));
+  box-shadow: inset 0 1px 0 var(--ui-border), inset 0 -1px 0 var(--ui-border);
+
+  pointer-events:none;
+  z-index:0;
+}
+
+/* ROI is theme-light -> gradient moet donker zijn voor zichtbaar contrast */
+body.home.ui2 #roi.theme-light::before{
+  background-image: linear-gradient(180deg, rgba(0,0,0,var(--roi-band-a)), rgba(0,0,0,0));
+}
+
+body.home.ui2 #roi > *{
+  position: relative;
+  z-index:1;
+}
