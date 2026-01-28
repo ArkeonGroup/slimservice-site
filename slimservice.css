@@ -208,6 +208,32 @@ body.home #scenarios .scenario-cta{
   body.home.ui2 #proof .proof-side{ margin-top: 0; }
 }
 
+/* X4.12 — Proof grid placement: keep side pane top-right, tiles full-width below */
+@media (min-width: 861px){
+  body.home.ui2 #proof .proof-left{ display: contents; }
+
+  body.home.ui2 #proof .proof-wall{
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  body.home.ui2 #proof .proof-side{
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  body.home.ui2 #proof .case-tiles{
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  body.home.ui2 #proof .visual-tiles{
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+}
+
+
 body.home.ui2 #proof .proof-side{
   margin-top: clamp(12px, 2.2vw, 18px);
 }
@@ -234,7 +260,7 @@ body.home.ui2 #proof .proof-actions .btn.primary{
 body.home.ui2 #proof .visual-tiles{
   margin-top: clamp(12px, 2.2vw, 18px);
   display:grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: clamp(12px, 2.2vw, 18px);
 }
 
@@ -333,7 +359,9 @@ body.home.ui2 #proof .case-tiles{
   gap: clamp(12px, 2.2vw, 18px);
 }
 @media (min-width: 861px){
-  body.home.ui2 #proof .case-tiles,
+  body.home.ui2 #proof .case-tiles{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
   body.home.ui2 #proof .visual-tiles{
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
