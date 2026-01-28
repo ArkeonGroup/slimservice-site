@@ -350,7 +350,7 @@ body.home #roi .roi-sub{
 body.home #roi .roi-kicker{
   font-size: 12px;
   font-weight: 900;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(238,241,255,0.70);
   margin-bottom: 8px;
@@ -368,7 +368,7 @@ body.home #roi .roi-big{
 
 body.home #roi .roi-kpis{
   display: grid;
-  gap: 10px;
+  gap: 12px;
   margin-top: 14px;
 }
 
@@ -382,7 +382,9 @@ body.home #roi .roi-impact .kpi-value{
 }
 
 body.home #roi .roi-actions{
-  margin-top: 14px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.10);
 }
 
 body.home #roi .roi-actions .btn{
@@ -403,7 +405,8 @@ body.home #roi .roi-impact{
 }
 
 body.home #roi .roi-impact .kpi{
-  padding: 14px 14px;
+  padding: 16px 16px;
+  min-height: 56px;
   border-radius: 14px;
 }
 
@@ -627,10 +630,11 @@ body.home.ui2 #roi > *{
     flex-direction: column;
   }
 
-body.home.ui2 #roi .roi-impact .btn{
+body.home.ui2 #roi .roi-actions .btn{
   margin-top: auto;
   width: 100%;
-  min-height: 56px;
+  border-radius: 14px;
+  min-height: 60px;
   padding: 16px 18px;
   display: flex;
   align-items: center;
