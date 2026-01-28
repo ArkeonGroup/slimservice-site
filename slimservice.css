@@ -238,9 +238,6 @@ body.home.ui2 #proof .visual-tiles{
   gap: clamp(12px, 2.2vw, 18px);
 }
 
-@media (max-width: 920px){
-  body.home.ui2 #proof .visual-tiles{ grid-template-columns: 1fr; }}
-
 body.home.ui2 #proof .visual-tile{
   padding:0;
   overflow:hidden;
@@ -264,6 +261,12 @@ body.home.ui2 #proof .proof-wall{
   display:grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(12px, 2.2vw, 18px);
+}
+/* X4.12 layout fix: proof-left moet niet 3-up zijn */
+@media (min-width: 861px){
+  body.home.ui2 #proof .proof-left .proof-wall{
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 920px){
@@ -326,15 +329,22 @@ body.home.ui2 #proof .proof-quotes li::before{
 body.home.ui2 #proof .case-tiles{
   margin-top: clamp(12px, 2.2vw, 18px);
   display:grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(12px, 2.2vw, 18px);
 }
+@media (min-width: 861px){
+  body.home.ui2 #proof .case-tiles,
+  body.home.ui2 #proof .visual-tiles{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 
-@media (min-width: 921px) and (max-width: 1180px){
- body.home.ui2 #proof .case-tiles{ grid-template-columns: repeat(2, minmax(0, 1fr)); }}
-
-@media (max-width: 920px){
- body.home.ui2 #proof .case-tiles{ grid-template-columns: 1fr; }}
+@media (max-width: 860px){
+  body.home.ui2 #proof .case-tiles,
+  body.home.ui2 #proof .visual-tiles{
+    grid-template-columns: 1fr;
+  }
+}
 
 body.home.ui2 #proof .case-tile{
   text-decoration:none;
@@ -354,7 +364,7 @@ body.home.ui2 #proof .case-tile .case-meta{
 }
 
 body.home.ui2 #proof .case-tile:hover{
-  transform: translateY(-1px);
+  transform: none;
 }
 /* =========================================================
    Step 4 (ROI POP): split input/output + impact panel
@@ -703,108 +713,6 @@ body.home.ui2 #sprint::before{
 body.home.ui2 #sprint > *{
   position: relative;
   z-index:1;
-}
-
-/* =========================================================
-   X4.12 — Proof full-bleed band (100vw) + 2-column rhythm (desktop)
-   Scope: SlimService home only (#proof). No contract changes.
-   ========================================================= */
-
-body.home.ui2 #proof{
-  --proof-band-a: .018; /* Subtle .012 | Medium .018 | Strong .026 */
-  position: relative;
-  border-radius: 0;     /* band = section */
-  box-shadow: none;     /* override X4.8 card framing */
-  background: transparent;
-  background-image: none;
-}
-
-body.home.ui2 #proof::before{
-  content:"";
-  position:absolute;
-  top:0;
-  bottom:0;
-
-  /* full-bleed without transform jitter */
-  left: calc(50% - 50vw);
-  width: 100vw;
-  left: calc(50% - 50dvw);
-  width: 100dvw;
-
-  background: var(--ui-bg);
-  background-image: linear-gradient(180deg, rgba(255,255,255,var(--proof-band-a)), rgba(255,255,255,0));
-  box-shadow: inset 0 1px 0 var(--ui-border), inset 0 -1px 0 var(--ui-border);
-
-  pointer-events:none;
-  z-index:0;
-}
-
-/* Proof is theme-light -> gradient moet donker zijn voor zichtbaar contrast */
-body.home.ui2 #proof.theme-light::before{
-  background-image: linear-gradient(180deg, rgba(0,0,0,var(--proof-band-a)), rgba(0,0,0,0));
-}
-
-body.home.ui2 #proof > *{
-  position: relative;
-  z-index: 1;
-}
-
-@media (min-width: 921px){
-  body.home.ui2 #proof{
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    column-gap: 18px;
-    row-gap: clamp(12px, 2.2vw, 18px);
-    align-items: start;
-  }
-
-  /* Flatten top proof cards into the section grid (ROI pattern) */
-  body.home.ui2 #proof .proof-wall{ display: contents; }
-
-  /* Left column: chips + quotes + cases + previews */
-  body.home.ui2 #proof .proof-wall > :nth-child(1),
-  body.home.ui2 #proof .proof-wall > :nth-child(3),
-  body.home.ui2 #proof :is(.case-tiles, .visual-tiles){
-    grid-column: 1;
-  }
-
-  /* Right column: metrics + CTA as one consistent pane */
-  body.home.ui2 #proof .proof-wall > :nth-child(2){
-    grid-column: 2;
-    grid-row: 1 / span 3;
-    align-self: start;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  body.home.ui2 #proof .proof-wall > :nth-child(2) .proof-metrics{
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
-  body.home.ui2 #proof .proof-wall > :nth-child(2) .hero-actions{
-    margin-top: auto;
-  }
-
-  /* Avoid doubled spacing: rely on section grid row-gap */
-  body.home.ui2 #proof :is(.case-tiles, .visual-tiles){ margin-top: 0; }
-
-  /* Tile grids fit the narrower left column */
-  body.home.ui2 #proof .case-tiles{
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  body.home.ui2 #proof .visual-tiles{
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-/* =========================================================
-   X4.13 — Sprint top-contrast (separate from Proof light band)
-   Scope: SlimService home only (#sprint)
-   ========================================================= */
-body.home.ui2 #sprint{
-  box-shadow: inset 0 1px 0 rgba(10,12,16,.22);
 }
 
 /* =========================================================
