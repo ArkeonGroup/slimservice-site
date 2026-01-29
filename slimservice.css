@@ -239,7 +239,8 @@ body.home.ui2 #proof .proof-side{
 }
 
 body.home.ui2 #proof .proof-actions{
-  margin-top: 12px;
+  margin-top: 8px;
+  margin-bottom: 0;
 }
 
 body.home.ui2 #proof .proof-actions .btn.primary{
@@ -250,6 +251,10 @@ body.home.ui2 #proof .proof-actions .btn.primary{
   border-color: transparent;
   color: #061018;
   box-shadow: none;
+
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: -0.01em;
 }
 
 /* X4.14 — Spot A: WhatsApp confirmation ticker (CSS-only, CLS=0, no JS) */
@@ -930,5 +935,35 @@ body.home.ui2 #roi .roi-actions .btn{
   justify-content: center;
   font-size: 16px;
   font-weight: 800;
+}
+/* X4.14 — Ticker tuning (A): quieter than CTA */
+body.home.ui2 #proof .wa-ticker{
+  margin-top: 8px;
+}
+
+body.home.ui2 #proof .wa-note{
+  box-shadow: 0 12px 28px rgba(16,24,40,.12);
+}
+
+body.home.ui2 #proof .wa-title{
+  font-size: 15px;
+  font-weight: 800;
+}
+
+body.home.ui2 #proof .wa-text{
+  font-size: clamp(14px, 1.05vw, 17px);
+  font-weight: 750;
+  color: rgba(10,12,16,.82);
+}
+
+body.home.ui2 #proof .wa-time{
+  font-size: 11px;
+  top: 8px;
+  right: 12px;
+}
+
+/* If you added this earlier, normalize it to match */
+body.home.ui2 #proof .wa-ticker + .proof-actions{
+  margin-top: 8px;
 }
 
