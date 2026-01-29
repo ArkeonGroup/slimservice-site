@@ -254,8 +254,8 @@ body.home.ui2 #proof .proof-actions .btn.primary{
 
 /* X4.14 — Spot A: WhatsApp confirmation ticker (CSS-only, CLS=0, no JS) */
 body.home.ui2 #proof .wa-ticker{
-  --waH: 86px;
-  margin-top: 14px;
+  --waH: 78px;
+  margin-top: 10px;
   height: var(--waH);          /* fixed height => CLS=0 */
   overflow: hidden;
   position: relative;
@@ -271,11 +271,11 @@ body.home.ui2 #proof .wa-note{
   height: var(--waH);
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 
-  padding: 12px 14px;
-  padding-right: 64px;         /* ruimte voor 'now' */
-  border-radius: 28px;
+  padding: 10px 12px;
+  padding-right: 56px;         /* ruimte voor 'now' */
+  border-radius: 26px;
 
   background: rgba(247,248,251,.96);
   border: 1px solid rgba(10,12,16,.14);
@@ -286,9 +286,9 @@ body.home.ui2 #proof .wa-note{
 }
 
 body.home.ui2 #proof .wa-app{
-  width: 52px;
-  height: 52px;
-  border-radius: 18px;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
   background: #25D366;         /* herkenning zonder logo */
   display: grid;
   place-items: center;
@@ -304,25 +304,26 @@ body.home.ui2 #proof .wa-body{
 
 body.home.ui2 #proof .wa-title{
   font-weight: 900;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.05;
   letter-spacing: -0.01em;
 }
 
 body.home.ui2 #proof .wa-text{
   font-weight: 800;
-  font-size: clamp(16px, 1.6vw, 22px);
+  font-size: clamp(15px, 1.25vw, 18px);
   line-height: 1.1;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: rgba(10,12,16,.88);
 }
 
 body.home.ui2 #proof .wa-time{
   position: absolute;
-  top: 10px;
-  right: 14px;
-  font-size: 12px;
+  top: 8px;
+  right: 12px;
+  font-size: 11px;
   font-weight: 800;
   color: rgba(10,12,16,.55);
   text-transform: lowercase;
@@ -356,6 +357,8 @@ body.home.ui2 #proof .wa-time{
   96.66%  { transform: translateY(calc(-5 * var(--waH))); }
   100%    { transform: translateY(calc(-6 * var(--waH))); } /* clone */
 }
+body.home.ui2 #proof .wa-ticker + .proof-actions{ margin-top: 10px; }
+
 
 /* Reduced motion: keep first note only (no animation) */
 @media (prefers-reduced-motion: reduce){
