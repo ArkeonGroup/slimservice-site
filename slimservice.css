@@ -418,6 +418,39 @@ body.home.ui2 #proof .visual-meta{
   padding: 14px;
 }
 
+/* X4.14 — Spot B: Relay next-step tile (fills 4th visual slot) */
+body.home.ui2 #proof .visual-tile.relay-tile .relay-art{
+  aspect-ratio: 1200 / 750;   /* same as preview images => no CLS */
+  width: 100%;
+  display: grid;
+  align-content: end;
+  gap: 8px;
+  padding: 16px;
+  background:
+    radial-gradient(900px 520px at 25% 25%, rgba(110,231,255,.22), transparent 55%),
+    radial-gradient(760px 440px at 80% 70%, rgba(183,255,110,.14), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border-bottom: 1px solid rgba(10,12,16,.08);
+}
+
+body.home.ui2 #proof .visual-tile.relay-tile .relay-badge{
+  display: inline-flex;
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  color: #061018;
+  background: var(--ui-accent);
+}
+
+body.home.ui2 #proof .visual-tile.relay-tile .relay-sub{
+  font-size: 13px;
+  font-weight: 800;
+  color: rgba(10,12,16,.68);
+}
+
+
 /* Proof wall + X1 mini-cases (UI2) */
 body.home.ui2 #proof .proof-wall{
   display:grid;
