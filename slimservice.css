@@ -251,6 +251,134 @@ body.home.ui2 #proof .proof-actions .btn.primary{
   color: #061018;
   box-shadow: none;
 }
+
+/* X4.14 — Spot A: WhatsApp confirmation ticker (CSS-only, CLS=0, no JS) */
+body.home.ui2 #proof .wa-ticker{
+  --waH: 86px;
+  margin-top: 14px;
+  height: var(--waH);          /* fixed height => CLS=0 */
+  overflow: hidden;
+  position: relative;
+}
+
+body.home.ui2 #proof .wa-track{
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+}
+
+body.home.ui2 #proof .wa-note{
+  height: var(--waH);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 12px 14px;
+  padding-right: 64px;         /* ruimte voor 'now' */
+  border-radius: 28px;
+
+  background: rgba(247,248,251,.96);
+  border: 1px solid rgba(10,12,16,.14);
+  box-shadow: 0 16px 40px rgba(16,24,40,.14);
+
+  color: #0a0c10;
+  position: relative;
+}
+
+body.home.ui2 #proof .wa-app{
+  width: 52px;
+  height: 52px;
+  border-radius: 18px;
+  background: #25D366;         /* herkenning zonder logo */
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  color: #fff;
+}
+
+body.home.ui2 #proof .wa-body{
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+body.home.ui2 #proof .wa-title{
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+body.home.ui2 #proof .wa-text{
+  font-weight: 800;
+  font-size: clamp(16px, 1.6vw, 22px);
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+body.home.ui2 #proof .wa-time{
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 12px;
+  font-weight: 800;
+  color: rgba(10,12,16,.55);
+  text-transform: lowercase;
+}
+
+/* Motion: only if user allows motion */
+@media (prefers-reduced-motion: no-preference){
+  body.home.ui2 #proof .wa-track{
+    animation: waTicker 24s infinite;
+  }
+}
+
+/* Hold + quick slide per item (6 items + clone) */
+@keyframes waTicker{
+  0%      { transform: translateY(0); }
+  13.33%  { transform: translateY(0); }
+  16.66%  { transform: translateY(calc(-1 * var(--waH))); }
+
+  30%     { transform: translateY(calc(-1 * var(--waH))); }
+  33.33%  { transform: translateY(calc(-2 * var(--waH))); }
+
+  46.66%  { transform: translateY(calc(-2 * var(--waH))); }
+  50%     { transform: translateY(calc(-3 * var(--waH))); }
+
+  63.33%  { transform: translateY(calc(-3 * var(--waH))); }
+  66.66%  { transform: translateY(calc(-4 * var(--waH))); }
+
+  80%     { transform: translateY(calc(-4 * var(--waH))); }
+  83.33%  { transform: translateY(calc(-5 * var(--waH))); }
+
+  96.66%  { transform: translateY(calc(-5 * var(--waH))); }
+  100%    { transform: translateY(calc(-6 * var(--waH))); } /* clone */
+}
+
+/* Reduced motion: keep first note only (no animation) */
+@media (prefers-reduced-motion: reduce){
+  body.home.ui2 #proof .wa-track{ animation: none !important; transform: none !important; }
+}
+
+/* Mobile tightening */
+@media (max-width: 560px){
+  body.home.ui2 #proof .wa-ticker{ --waH: 76px; }
+  body.home.ui2 #proof .wa-note{
+    padding: 10px 12px;
+    padding-right: 58px;
+    border-radius: 24px;
+  }
+  body.home.ui2 #proof .wa-app{
+    width: 44px;
+    height: 44px;
+    border-radius: 16px;
+  }
+  body.home.ui2 #proof .wa-title{ font-size: 17px; }
+}
+
+
 @media (prefers-reduced-motion: no-preference){
   body.home.ui2 #proof :is(.proof-box.card, .case-tile.card, .visual-tile.card, .proof-side.card):hover{
     transform: none;
