@@ -967,3 +967,12 @@ body.home.ui2 #proof .wa-ticker + .proof-actions{
   margin-top: 8px;
 }
 
+/* Ticker descender fix: voorkomt afsnijden van g/p/y */
+body.home.ui2 #proof .wa-title{
+  line-height: 1.15;
+}
+
+body.home.ui2 #proof .wa-text{
+  line-height: 1.25;
+  padding-bottom: 1px; /* 1px extra zodat descenders niet in clip vallen */
+}
