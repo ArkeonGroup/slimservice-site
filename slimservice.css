@@ -1232,16 +1232,17 @@ body.home.ui2 .hero-card.hero-phone .chat-panels{
   padding: 12px 22px 12px;
   flex: 1;
   min-height: 0;
-    padding-inline: 2px; /* safe-area: bubbles niet tegen bezel */
-    padding-bottom: 84px; /* reserveert ruimte voor composer + home indicator */
+  padding-inline: 2px; /* safe-area: bubbles niet tegen bezel */
+  --heroComposerSafe: 84px; /* reserveer ruimte voor footer (composer + indicator) */
 }
 body.home.ui2 .hero-card.hero-phone .chat-panel{
   position: absolute;
-  inset: 0;
+  inset: 0 0 var(--heroComposerSafe) 0;
   display:flex;
   flex-direction:column;
   gap: 10px;
   padding-top: 0;
+  padding-bottom: 12px;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -1317,8 +1318,9 @@ body.home.ui2 .hero-card.hero-phone .composer-pill{
 body.home.ui2 .hero-card.hero-phone .composer-send{
   width: 34px; height: 34px;
   border-radius: 999px;
+  box-sizing: border-box;
+  border: 1px solid rgba(34,197,167,.26);
   background: rgba(34,197,167,.18);
-  border-color: rgba(34,197,167,.22);
   box-shadow: 0 6px 16px rgba(16,24,40,.06);
 }
 body.home.ui2 .hero-card.hero-phone .home-indicator{
@@ -1400,6 +1402,7 @@ body.home.ui2 .hero-card.hero-phone .card-note{
     padding-right: 24px;
     padding-top: 12px;
     padding-bottom: 12px;
+        --heroComposerSafe: 78px;
   }
 
   /* extra marge door iets smallere bubbles */
