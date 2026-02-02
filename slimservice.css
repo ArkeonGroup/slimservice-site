@@ -1257,6 +1257,10 @@ body.home.ui2 .hero-card.hero-phone #heroChatC:checked ~ .phone .panel-c{
   visibility: visible;
   pointer-events: auto;
 }
+/* Offerte panel: needs a bit more bottom-safe (longer bubbles) */
+body.home.ui2 .hero-card.hero-phone #heroChatB:checked ~ .phone .chat-panel{
+  inset: 0 0 88px 0;
+}
 
 body.home.ui2 .hero-card.hero-phone .chat-meta{
   font-size: 11px;
