@@ -99,24 +99,72 @@ SlimService is een WhatsApp intake-systeem voor afspraak-gedreven vakmensen. Het
         </div>
 <div class="micro"><strong>Onboarding plekken:</strong> nog <strong>5</strong> voor deze maand (first come).</div>
 </div>
-<div aria-label="Voorbeeld van een WhatsApp gesprek met SlimService" class="hero-card" role="img">
-<div aria-hidden="true" class="chat-badge">
-<svg aria-hidden="true" fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M20 11.5c0 4.7-3.8 8.5-8.5 8.5-1.5 0-2.9-.4-4.2-1.1L4 20l1.2-3.1C4.4 15.6 4 14.1 4 12.5 4 7.8 7.8 4 12.5 4S20 7.8 20 11.5Z" stroke="white" stroke-linejoin="round" stroke-width="2"></path>
-<path d="M9.3 9.2c.3-.7.6-.8 1.1-.2l.8 1c.3.4.3.8 0 1.2l-.4.5c.6 1.1 1.5 2 2.6 2.6l.5-.4c.4-.3.8-.3 1.2 0l1 .8c.6.5.5.8-.2 1.1-.8.3-1.7.3-2.5 0-2.1-.8-3.8-2.5-4.6-4.6-.3-.8-.3-1.7 0-2.5Z" fill="white"></path>
-</svg>
-<span>WhatsApp</span>
-</div>
-<div class="chat">
-<div class="bubble user">Hoi, kan ik nog terecht deze week?</div>
-<div class="bubble ss">Ja. Waar gaat het om en wat is je voorkeurstijd?</div>
-<div class="bubble user">Nieuwe afspraak. Liefst na 16:00.</div>
-<div class="bubble ss">Top. Donderdag 16:30 of 17:15? Laat ook je naam even achter.</div>
-</div>
-<div class="card-note">
-          Voorbeeldscenario (geen echte klantdata). Werkt o.a. voor salons, praktijken en lokale dienstverlening.
+<div aria-label="Voorbeelden van WhatsApp gesprekken met SlimService" class="hero-card hero-phone" role="group">
+  <!-- tabs (CSS-only) -->
+  <input class="hero-tab" type="radio" name="heroChat" id="heroChatA" aria-label="Scenario: Afspraak" checked>
+  <input class="hero-tab" type="radio" name="heroChat" id="heroChatB" aria-label="Scenario: Offerte">
+  <input class="hero-tab" type="radio" name="heroChat" id="heroChatC" aria-label="Scenario: Wijzigen">
+
+  <div class="phone" aria-hidden="true">
+    <div class="phone-screen">
+      <div class="phone-top">
+        <div aria-hidden="true" class="chat-badge">
+          <svg aria-hidden="true" fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 11.5c0 4.7-3.8 8.5-8.5 8.5-1.5 0-2.9-.4-4.2-1.1L4 20l1.2-3.1C4.4 15.6 4 14.1 4 12.5 4 7.8 7.8 4 12.5 4S20 7.8 20 11.5Z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+            <path d="M9.3 9.2c.3-.7.6-.8 1.1-.2l.8 1c.3.4.3.8 0 1.2l-.4.5c.6 1.1 1.5 2 2.6 2.6l.5-.4c.4-.3.8-.3 1.2 0l1 .8c.6.5.5.8-.2 1.1-.8.3-1.7.3-2.5 0-2.1-.8-3.8-2.5-4.6-4.6-.3-.8-.3-1.7 0-2.5Z" fill="currentColor"></path>
+          </svg>
+          <span>WhatsApp</span>
         </div>
+
+        <div class="chat-tabs" role="tablist" aria-label="Voorbeeldscenario’s">
+          <label class="chat-tab" for="heroChatA">Afspraak</label>
+          <label class="chat-tab" for="heroChatB">Offerte</label>
+          <label class="chat-tab" for="heroChatC">Wijzigen</label>
+        </div>
+      </div>
+
+      <div class="chat-panels">
+        <!-- A: Afspraak + aanbetaling -->
+        <div class="chat chat-panel panel-a" role="tabpanel" aria-label="Afspraak">
+          <div class="chat-meta">Ma 16:12 · Anne (Tilburg)</div>
+          <div class="bubble user">Hoi, kan ik vrijdag nog terecht na 16:00?</div>
+          <div class="bubble ss">Ja. Waarvoor is het en voor wie is de afspraak?</div>
+          <div class="bubble user">Eerste keer, voor mij.</div>
+          <div class="bubble ss">Top. Vrijdag 16:30 of 17:15? Om te reserveren: aanbetaling via link.</div>
+          <div class="bubble user">Betaald ✅</div>
+          <div class="bubble ss">Bevestigd. Reminder volgt. Typ ‘mens’ voor direct contact.</div>
+        </div>
+
+        <!-- B: Offerte / indicatie -->
+        <div class="chat chat-panel panel-b" role="tabpanel" aria-label="Offerte">
+          <div class="chat-meta">Di 09:08 · Octavio (Breda)</div>
+          <div class="bubble user">Kun je een prijsindicatie geven voor een klus?</div>
+          <div class="bubble ss">Ja. Stuur 2 foto’s + locatie + wat je precies wil laten doen.</div>
+          <div class="bubble user">Breda. Foto’s gestuurd.</div>
+          <div class="bubble ss">Ontvangen. Ik stuur zo een korte indicatie en plan desgewenst een moment om het definitief te maken.</div>
+          <div class="bubble user">Plan maar, dinsdag na 17:00.</div>
+          <div class="bubble ss">Dinsdag 17:30 bevestigd. Reminder volgt. Typ ‘mens’.</div>
+        </div>
+
+        <!-- C: Wijzigen + handoff -->
+        <div class="chat chat-panel panel-c" role="tabpanel" aria-label="Wijzigen">
+          <div class="chat-meta">Wo 14:41 · Samir (Eindhoven)</div>
+          <div class="bubble user">Ik moet mijn afspraak verzetten. Kan dat?</div>
+          <div class="bubble ss">Zeker. Welke afspraak (datum/tijd) en je naam?</div>
+          <div class="bubble user">Samir, woensdag 16:30.</div>
+          <div class="bubble ss">Kan vrijdag 15:45 of maandag 10:00. Kies 1.</div>
+          <div class="bubble user">Vrijdag 15:45.</div>
+          <div class="bubble ss">Aangepast en bevestigd. Reminder volgt. Typ ‘mens’.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-note">
+    Voorbeeldscenario’s (geen echte klantdata). Drie situaties: afspraak, offerte, wijzigen — met hand-off als het nodig is.
+  </div>
 </div>
+
 </section>
   
 <section class="wrap is-surface alt band theme-light proof-row" id="proof" aria-label="Proof">
