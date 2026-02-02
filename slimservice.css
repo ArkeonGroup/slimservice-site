@@ -1066,12 +1066,33 @@ body.home.ui2 .hero-card.hero-phone .phone-screen{
   aspect-ratio: 9 / 19.5; /* more phone-like */
   box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
 }
-/* FIX: desktop device less tall so it matches hero text height better */
+/* FIX B: hero merge — center align + height-driven phone (desktop) */
 @media (min-width: 921px){
+  /* hero voelt als 1 compositie i.p.v. 2 losse blokken */
+  body.home.ui2 .hero{ align-items: center; }
+
+  /* hero-card niet meer "top-stuck" */
+  body.home.ui2 .hero-card.hero-phone{
+    align-self: center;
+    justify-self: end;
+  }
+
+  /* hoogte bepaalt nu de phone → geen toren meer */
+  body.home.ui2 .hero-card.hero-phone .phone{
+    display: inline-block;  /* shrink-wrap */
+    width: auto;
+    height: clamp(560px, 66vh, 680px);
+    max-width: 100%;
+  }
+
+  /* screen volgt de hoogte, breedte volgt ratio */
   body.home.ui2 .hero-card.hero-phone .phone-screen{
-    aspect-ratio: 9 / 18.3;
+    height: 100%;
+    width: auto;
+    aspect-ratio: 10 / 19;
   }
 }
+
 
 /* Top area */
 body.home.ui2 .hero-card.hero-phone .phone-top{
@@ -1331,37 +1352,38 @@ body.home.ui2 .hero-card.hero-phone .card-note{
   body.home.ui2 .hero-card.hero-phone .typing i{ animation: none; }
 }
 
-/* FIX: mobile centering + no horizontal overflow + more air */
+/* FIX B: mobile centering + hard kill horizontal scroll + more air */
 @media (max-width: 520px){
-  /* voorkom dat shadow/frames de viewport breken */
-  body.home.ui2 .hero{ overflow-x: clip; }
+  /* bredere compat dan clip: voorkomt rechts-offset / moeten uitzoomen */
+  body.home.ui2 .wrap.hero{ overflow-x: hidden; }
 
   body.home.ui2 .hero-card.hero-phone .phone{
-    /* hard binnen viewport houden */
-    width: calc(100vw - 28px);
+    box-sizing: border-box;
+    width: 100%;
     max-width: 388px;
     margin-left: auto;
     margin-right: auto;
-    padding: 10px; /* iets minder frame-padding = minder breed */
+    padding: 10px; /* iets slanker frame op mobiel */
   }
 
-  /* meer ruimte langs randen zodat bubbles niet plakken */
+  /* meer safe-area zodat bubbles niet tegen randen plakken */
   body.home.ui2 .hero-card.hero-phone .chat-panels{
-    padding-left: 22px;
-    padding-right: 22px;
+    padding-left: 24px;
+    padding-right: 24px;
     padding-top: 12px;
     padding-bottom: 12px;
   }
 
-  /* user-bubbles net iets minder breed op mobiel */
+  /* extra marge door iets smallere bubbles */
   body.home.ui2 .hero-card.hero-phone .bubble{
-    max-width: 84%;
+    max-width: 82%;
   }
 
-  /* note blijft 1 regel, maar niet breder dan device */
+  /* note 1 regel + aligned met device */
   body.home.ui2 .hero-card.hero-phone .card-note{
     max-width: 388px;
     margin-left: auto;
     margin-right: auto;
   }
 }
+
