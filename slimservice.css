@@ -1009,7 +1009,7 @@ body.home.ui2 #proof .wa-text{
   line-height: 1.25;
   padding-bottom: 1px; /* 1px extra zodat descenders niet in clip vallen */
 }
-/* HERO — Phone frame + 3 scenario tabs (CSS-only) */
+/* HERO — Phone frame + tabs — POLISH v2 (Soft Light, premium, motion-safe) */
 body.home.ui2 .hero-card.hero-phone{
   padding: 0;
   border: none;
@@ -1019,7 +1019,7 @@ body.home.ui2 .hero-card.hero-phone{
 }
 body.home.ui2 .hero-card.hero-phone::before{ display:none; }
 
-/* Hide radios but keep them accessible */
+/* Hide radios but keep accessible */
 body.home.ui2 .hero-card.hero-phone .hero-tab{
   position: absolute;
   width: 1px; height: 1px;
@@ -1034,15 +1034,14 @@ body.home.ui2 .hero-card.hero-phone .hero-tab{
 body.home.ui2 .hero-card.hero-phone .phone{
   position: relative;
   width: 100%;
-  max-width: 460px;
+  max-width: 420px; /* smaller = less tablet vibe */
   margin-left: auto;
   border-radius: 44px;
   padding: 12px;
   background: linear-gradient(180deg, rgba(18,20,26,1), rgba(10,12,16,1));
   border: 1px solid rgba(255,255,255,.14);
-  box-shadow: 0 26px 70px rgba(0,0,0,.45);
+  box-shadow: 0 22px 64px rgba(0,0,0,.42);
 }
-
 /* Subtle edge highlight */
 body.home.ui2 .hero-card.hero-phone .phone::before{
   content:"";
@@ -1050,63 +1049,112 @@ body.home.ui2 .hero-card.hero-phone .phone::before{
   inset: 1px;
   border-radius: 44px;
   pointer-events:none;
-  opacity:.35;
-  background: linear-gradient(135deg, rgba(255,255,255,.22), transparent 45%);
+  opacity:.28;
+  background: linear-gradient(135deg, rgba(255,255,255,.20), transparent 46%);
 }
 
-/* Screen (Soft Light) */
+/* Screen (Soft Light, premium) */
 body.home.ui2 .hero-card.hero-phone .phone-screen{
   overflow: hidden;
   border-radius: 34px;
-  background: linear-gradient(180deg, rgba(247,245,241,1), rgba(242,239,233,1));
+  background: linear-gradient(180deg, rgba(248,246,242,1), rgba(241,238,232,1));
   border: 1px solid rgba(10,12,16,.10);
   color: rgba(10,12,16,.92);
   display: flex;
   flex-direction: column;
   height: 100%;
-  aspect-ratio: 10 / 19; /* CLS=0: fixed frame height */
+  aspect-ratio: 9 / 19.5; /* more phone-like */
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
 }
 
-/* Top bar */
+/* Top area */
 body.home.ui2 .hero-card.hero-phone .phone-top{
-  position: relative;
-  padding: 14px 14px 10px;
+  padding: 10px 16px 10px;
   display: grid;
   gap: 10px;
 }
-body.home.ui2 .hero-card.hero-phone .phone-top::before{
-  content:"";
-  position:absolute;
-  top: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 34%;
-  height: 18px;
+
+/* Status bar */
+body.home.ui2 .hero-card.hero-phone .statusbar{
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 800;
+  color: rgba(10,12,16,.62);
+}
+body.home.ui2 .hero-card.hero-phone .sb-left{ justify-self: start; }
+body.home.ui2 .hero-card.hero-phone .sb-notch{
+  width: 120px;
+  height: 16px;
   border-radius: 999px;
   background: rgba(10,12,16,.72);
   border: 1px solid rgba(255,255,255,.10);
 }
-
-/* Badge on light screen */
-body.home.ui2 .hero-card.hero-phone .chat-badge{
-  position: static;
-  padding: 8px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(10,12,16,.10);
+body.home.ui2 .hero-card.hero-phone .sb-right{
+  justify-self: end;
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  opacity: .85;
+}
+body.home.ui2 .hero-card.hero-phone .sb-signal,
+body.home.ui2 .hero-card.hero-phone .sb-wifi{
+  width: 14px; height: 10px;
+  border-radius: 3px;
+  border: 1px solid rgba(10,12,16,.22);
   background: rgba(10,12,16,.06);
+}
+body.home.ui2 .hero-card.hero-phone .sb-batt{
+  width: 18px; height: 10px;
+  border-radius: 3px;
+  border: 1px solid rgba(10,12,16,.22);
+  background: rgba(10,12,16,.06);
+  position: relative;
+}
+body.home.ui2 .hero-card.hero-phone .sb-batt::after{
+  content:"";
+  position:absolute;
+  right:-3px; top:3px;
+  width: 2px; height: 4px;
+  border-radius: 1px;
+  background: rgba(10,12,16,.22);
+}
+
+/* App bar */
+body.home.ui2 .hero-card.hero-phone .appbar{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  padding: 6px 0 2px;
+}
+body.home.ui2 .hero-card.hero-phone .app-left{
+  display:flex;
+  align-items:center;
+  gap: 8px;
+  font-weight: 900;
+  letter-spacing: .1px;
   color: rgba(10,12,16,.86);
 }
-body.home.ui2 .hero-card.hero-phone .chat-badge svg{ opacity:.9; }
+body.home.ui2 .hero-card.hero-phone .wa-ico{
+  width: 18px; height: 18px;
+  opacity: .9;
+}
+body.home.ui2 .hero-card.hero-phone .app-right{
+  font-size: 12px;
+  font-weight: 900;
+  color: rgba(10,12,16,.52);
+}
 
-/* Segmented tabs */
+/* Tabs centered */
 body.home.ui2 .hero-card.hero-phone .chat-tabs{
-  display: inline-flex;
+  display:flex;
+  justify-content:center;
   gap: 6px;
   padding: 6px;
   border-radius: 999px;
   border: 1px solid rgba(10,12,16,.10);
   background: rgba(10,12,16,.05);
-  width: fit-content;
 }
 body.home.ui2 .hero-card.hero-phone .chat-tab{
   cursor: pointer;
@@ -1114,86 +1162,166 @@ body.home.ui2 .hero-card.hero-phone .chat-tab{
   padding: 8px 10px;
   border-radius: 999px;
   font-size: 12px;
-  font-weight: 850;
-  letter-spacing: .15px;
-  color: rgba(10,12,16,.70);
+  font-weight: 900;
+  letter-spacing: .12px;
+  color: rgba(10,12,16,.66);
   border: 1px solid transparent;
   background: transparent;
 }
-
-/* Active tab state (by checked radio) */
-body.home.ui2 .hero-card.hero-phone #heroChatA:checked ~ .phone .chat-tabs .chat-tab[for="heroChatA"],
-body.home.ui2 .hero-card.hero-phone #heroChatB:checked ~ .phone .chat-tabs .chat-tab[for="heroChatB"],
-body.home.ui2 .hero-card.hero-phone #heroChatC:checked ~ .phone .chat-tabs .chat-tab[for="heroChatC"]{
+body.home.ui2 .hero-card.hero-phone #heroChatA:checked ~ .phone .chat-tab[for="heroChatA"],
+body.home.ui2 .hero-card.hero-phone #heroChatB:checked ~ .phone .chat-tab[for="heroChatB"],
+body.home.ui2 .hero-card.hero-phone #heroChatC:checked ~ .phone .chat-tab[for="heroChatC"]{
   background: rgba(255,255,255,.92);
   border-color: rgba(10,12,16,.12);
   color: rgba(10,12,16,.92);
 }
 
-/* Focus ring */
-body.home.ui2 .hero-card.hero-phone #heroChatA:focus-visible ~ .phone .chat-tabs .chat-tab[for="heroChatA"],
-body.home.ui2 .hero-card.hero-phone #heroChatB:focus-visible ~ .phone .chat-tabs .chat-tab[for="heroChatB"],
-body.home.ui2 .hero-card.hero-phone #heroChatC:focus-visible ~ .phone .chat-tabs .chat-tab[for="heroChatC"]{
-  outline: 2px solid rgba(10,12,16,.25);
-  outline-offset: 2px;
+/* Flowline (hero comprehension in 5 sec) */
+body.home.ui2 .hero-card.hero-phone .flowline{
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: .12px;
+  color: rgba(10,12,16,.52);
+  text-align: center;
+  margin-top: -2px;
 }
 
-/* Panels (fixed area so switching doesn't move layout) */
+/* Panels: fixed area + fade switch (no layout jump) */
 body.home.ui2 .hero-card.hero-phone .chat-panels{
   position: relative;
-  padding: 0 14px 14px;
+  padding: 10px 18px 12px;
   flex: 1;
   min-height: 0;
 }
 body.home.ui2 .hero-card.hero-phone .chat-panel{
   position: absolute;
   inset: 0;
-  display: none;
-  gap: 8px;
-  padding-top: 6px;
+  display:flex;
+  flex-direction:column;
+  gap: 10px;
+  padding-top: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 160ms ease;
 }
-body.home.ui2 .hero-card.hero-phone #heroChatA:checked ~ .phone .panel-a{ display:flex; flex-direction:column; }
-body.home.ui2 .hero-card.hero-phone #heroChatB:checked ~ .phone .panel-b{ display:flex; flex-direction:column; }
-body.home.ui2 .hero-card.hero-phone #heroChatC:checked ~ .phone .panel-c{ display:flex; flex-direction:column; }
+body.home.ui2 .hero-card.hero-phone #heroChatA:checked ~ .phone .panel-a,
+body.home.ui2 .hero-card.hero-phone #heroChatB:checked ~ .phone .panel-b,
+body.home.ui2 .hero-card.hero-phone #heroChatC:checked ~ .phone .panel-c{
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
 
-body.home.ui2 .hero-card.hero-phone .chat{ padding-top: 0; }
 body.home.ui2 .hero-card.hero-phone .chat-meta{
   font-size: 11px;
-  font-weight: 800;
-  color: rgba(10,12,16,.60);
-  margin: 2px 2px 6px;
+  font-weight: 900;
+  color: rgba(10,12,16,.56);
+  margin: 0 2px 2px;
 }
 
-/* Bubbles — Soft Light */
+/* Bubbles — premium: hairlines, less shadow, more air */
 body.home.ui2 .hero-card.hero-phone .bubble{
   border-width: 1px;
   border-color: rgba(10,12,16,.10);
-  background: rgba(255,255,255,.78);
+  border-radius: 14px;
+  background: rgba(255,255,255,.82);
   color: rgba(10,12,16,.92);
-  box-shadow: 0 10px 22px rgba(16,24,40,.06);
+  box-shadow: 0 6px 16px rgba(16,24,40,.06);
   font-size: 13px;
-  max-width: 90%;
+  max-width: 86%;
 }
 body.home.ui2 .hero-card.hero-phone .bubble.ss{
-  background: rgba(255,255,255,.86);
+  background: rgba(255,255,255,.88);
 }
 body.home.ui2 .hero-card.hero-phone .bubble.user{
-  border-color: rgba(12,74,58,.16);
-  background: rgba(34,197,167,.14); /* muted mint */
+  border-color: rgba(12,74,58,.14);
+  background: rgba(34,197,167,.12); /* muted mint (less cute) */
 }
 
-/* Note alignment */
+/* Footer: composer + home indicator (complete device) */
+body.home.ui2 .hero-card.hero-phone .phone-footer{
+  padding: 8px 14px 12px;
+  display:grid;
+  gap: 10px;
+  border-top: 1px solid rgba(10,12,16,.08);
+  background: linear-gradient(180deg, rgba(0,0,0,0), rgba(10,12,16,.02));
+}
+body.home.ui2 .hero-card.hero-phone .composer{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+body.home.ui2 .hero-card.hero-phone .composer-pill{
+  flex: 1;
+  height: 34px;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(10,12,16,.10);
+  background: rgba(255,255,255,.86);
+  color: rgba(10,12,16,.46);
+  font-size: 12px;
+  font-weight: 850;
+}
+body.home.ui2 .hero-card.hero-phone .composer-send{
+  width: 34px; height: 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(10,12,16,.10);
+  background: rgba(10,12,16,.06);
+  box-shadow: 0 6px 16px rgba(16,24,40,.06);
+}
+body.home.ui2 .hero-card.hero-phone .home-indicator{
+  height: 5px;
+  width: 34%;
+  margin: 0 auto;
+  border-radius: 999px;
+  background: rgba(10,12,16,.22);
+  opacity: .55;
+}
+
+/* Typing dots (subtle) */
+body.home.ui2 .hero-card.hero-phone .typing{
+  display:inline-flex;
+  gap: 4px;
+  margin-left: 10px;
+}
+body.home.ui2 .hero-card.hero-phone .typing i{
+  width: 4px; height: 4px;
+  border-radius: 999px;
+  background: rgba(10,12,16,.28);
+  opacity: .65;
+  animation: heroDot 1.1s infinite ease-in-out;
+}
+body.home.ui2 .hero-card.hero-phone .typing i:nth-child(2){ animation-delay: .12s; }
+body.home.ui2 .hero-card.hero-phone .typing i:nth-child(3){ animation-delay: .24s; }
+@keyframes heroDot{
+  0%, 100%{ transform: translateY(0); opacity: .55; }
+  50%{ transform: translateY(-2px); opacity: .9; }
+}
+
+/* Note under phone: one line (hero behavior) */
 body.home.ui2 .hero-card.hero-phone .card-note{
-  max-width: 460px;
+  max-width: 420px;
   margin-left: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Mobile: center the device */
+/* Mobile: center device */
 @media (max-width: 920px){
-  body.home.ui2 .hero-card.hero-phone .phone{
-    margin-inline: auto;
-  }
+  body.home.ui2 .hero-card.hero-phone .phone,
   body.home.ui2 .hero-card.hero-phone .card-note{
     margin-inline: auto;
   }
 }
+
+/* Motion safety */
+@media (prefers-reduced-motion: reduce){
+  body.home.ui2 .hero-card.hero-phone .chat-panel{ transition: none; }
+  body.home.ui2 .hero-card.hero-phone .typing i{ animation: none; }
+}
+
