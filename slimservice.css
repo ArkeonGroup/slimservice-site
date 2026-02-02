@@ -1009,3 +1009,191 @@ body.home.ui2 #proof .wa-text{
   line-height: 1.25;
   padding-bottom: 1px; /* 1px extra zodat descenders niet in clip vallen */
 }
+/* HERO — Phone frame + 3 scenario tabs (CSS-only) */
+body.home.ui2 .hero-card.hero-phone{
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+body.home.ui2 .hero-card.hero-phone::before{ display:none; }
+
+/* Hide radios but keep them accessible */
+body.home.ui2 .hero-card.hero-phone .hero-tab{
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Device */
+body.home.ui2 .hero-card.hero-phone .phone{
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  margin-left: auto;
+  border-radius: 44px;
+  padding: 12px;
+  background: linear-gradient(180deg, rgba(18,20,26,1), rgba(10,12,16,1));
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: 0 26px 70px rgba(0,0,0,.45);
+}
+
+/* Subtle edge highlight */
+body.home.ui2 .hero-card.hero-phone .phone::before{
+  content:"";
+  position:absolute;
+  inset: 1px;
+  border-radius: 44px;
+  pointer-events:none;
+  opacity:.35;
+  background: linear-gradient(135deg, rgba(255,255,255,.22), transparent 45%);
+}
+
+/* Screen (Soft Light) */
+body.home.ui2 .hero-card.hero-phone .phone-screen{
+  overflow: hidden;
+  border-radius: 34px;
+  background: linear-gradient(180deg, rgba(247,245,241,1), rgba(242,239,233,1));
+  border: 1px solid rgba(10,12,16,.10);
+  color: rgba(10,12,16,.92);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  aspect-ratio: 10 / 19; /* CLS=0: fixed frame height */
+}
+
+/* Top bar */
+body.home.ui2 .hero-card.hero-phone .phone-top{
+  position: relative;
+  padding: 14px 14px 10px;
+  display: grid;
+  gap: 10px;
+}
+body.home.ui2 .hero-card.hero-phone .phone-top::before{
+  content:"";
+  position:absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 34%;
+  height: 18px;
+  border-radius: 999px;
+  background: rgba(10,12,16,.72);
+  border: 1px solid rgba(255,255,255,.10);
+}
+
+/* Badge on light screen */
+body.home.ui2 .hero-card.hero-phone .chat-badge{
+  position: static;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(10,12,16,.10);
+  background: rgba(10,12,16,.06);
+  color: rgba(10,12,16,.86);
+}
+body.home.ui2 .hero-card.hero-phone .chat-badge svg{ opacity:.9; }
+
+/* Segmented tabs */
+body.home.ui2 .hero-card.hero-phone .chat-tabs{
+  display: inline-flex;
+  gap: 6px;
+  padding: 6px;
+  border-radius: 999px;
+  border: 1px solid rgba(10,12,16,.10);
+  background: rgba(10,12,16,.05);
+  width: fit-content;
+}
+body.home.ui2 .hero-card.hero-phone .chat-tab{
+  cursor: pointer;
+  user-select: none;
+  padding: 8px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: .15px;
+  color: rgba(10,12,16,.70);
+  border: 1px solid transparent;
+  background: transparent;
+}
+
+/* Active tab state (by checked radio) */
+body.home.ui2 .hero-card.hero-phone #heroChatA:checked ~ .phone .chat-tabs .chat-tab[for="heroChatA"],
+body.home.ui2 .hero-card.hero-phone #heroChatB:checked ~ .phone .chat-tabs .chat-tab[for="heroChatB"],
+body.home.ui2 .hero-card.hero-phone #heroChatC:checked ~ .phone .chat-tabs .chat-tab[for="heroChatC"]{
+  background: rgba(255,255,255,.92);
+  border-color: rgba(10,12,16,.12);
+  color: rgba(10,12,16,.92);
+}
+
+/* Focus ring */
+body.home.ui2 .hero-card.hero-phone #heroChatA:focus-visible ~ .phone .chat-tabs .chat-tab[for="heroChatA"],
+body.home.ui2 .hero-card.hero-phone #heroChatB:focus-visible ~ .phone .chat-tabs .chat-tab[for="heroChatB"],
+body.home.ui2 .hero-card.hero-phone #heroChatC:focus-visible ~ .phone .chat-tabs .chat-tab[for="heroChatC"]{
+  outline: 2px solid rgba(10,12,16,.25);
+  outline-offset: 2px;
+}
+
+/* Panels (fixed area so switching doesn't move layout) */
+body.home.ui2 .hero-card.hero-phone .chat-panels{
+  position: relative;
+  padding: 0 14px 14px;
+  flex: 1;
+  min-height: 0;
+}
+body.home.ui2 .hero-card.hero-phone .chat-panel{
+  position: absolute;
+  inset: 0;
+  display: none;
+  gap: 8px;
+  padding-top: 6px;
+}
+body.home.ui2 .hero-card.hero-phone #heroChatA:checked ~ .phone .panel-a{ display:flex; flex-direction:column; }
+body.home.ui2 .hero-card.hero-phone #heroChatB:checked ~ .phone .panel-b{ display:flex; flex-direction:column; }
+body.home.ui2 .hero-card.hero-phone #heroChatC:checked ~ .phone .panel-c{ display:flex; flex-direction:column; }
+
+body.home.ui2 .hero-card.hero-phone .chat{ padding-top: 0; }
+body.home.ui2 .hero-card.hero-phone .chat-meta{
+  font-size: 11px;
+  font-weight: 800;
+  color: rgba(10,12,16,.60);
+  margin: 2px 2px 6px;
+}
+
+/* Bubbles — Soft Light */
+body.home.ui2 .hero-card.hero-phone .bubble{
+  border-width: 1px;
+  border-color: rgba(10,12,16,.10);
+  background: rgba(255,255,255,.78);
+  color: rgba(10,12,16,.92);
+  box-shadow: 0 10px 22px rgba(16,24,40,.06);
+  font-size: 13px;
+  max-width: 90%;
+}
+body.home.ui2 .hero-card.hero-phone .bubble.ss{
+  background: rgba(255,255,255,.86);
+}
+body.home.ui2 .hero-card.hero-phone .bubble.user{
+  border-color: rgba(12,74,58,.16);
+  background: rgba(34,197,167,.14); /* muted mint */
+}
+
+/* Note alignment */
+body.home.ui2 .hero-card.hero-phone .card-note{
+  max-width: 460px;
+  margin-left: auto;
+}
+
+/* Mobile: center the device */
+@media (max-width: 920px){
+  body.home.ui2 .hero-card.hero-phone .phone{
+    margin-inline: auto;
+  }
+  body.home.ui2 .hero-card.hero-phone .card-note{
+    margin-inline: auto;
+  }
+}
