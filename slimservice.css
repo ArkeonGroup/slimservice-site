@@ -1066,6 +1066,12 @@ body.home.ui2 .hero-card.hero-phone .phone-screen{
   aspect-ratio: 9 / 19.5; /* more phone-like */
   box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
 }
+/* FIX: desktop device less tall so it matches hero text height better */
+@media (min-width: 921px){
+  body.home.ui2 .hero-card.hero-phone .phone-screen{
+    aspect-ratio: 9 / 18.3;
+  }
+}
 
 /* Top area */
 body.home.ui2 .hero-card.hero-phone .phone-top{
@@ -1325,3 +1331,37 @@ body.home.ui2 .hero-card.hero-phone .card-note{
   body.home.ui2 .hero-card.hero-phone .typing i{ animation: none; }
 }
 
+/* FIX: mobile centering + no horizontal overflow + more air */
+@media (max-width: 520px){
+  /* voorkom dat shadow/frames de viewport breken */
+  body.home.ui2 .hero{ overflow-x: clip; }
+
+  body.home.ui2 .hero-card.hero-phone .phone{
+    /* hard binnen viewport houden */
+    width: calc(100vw - 28px);
+    max-width: 388px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px; /* iets minder frame-padding = minder breed */
+  }
+
+  /* meer ruimte langs randen zodat bubbles niet plakken */
+  body.home.ui2 .hero-card.hero-phone .chat-panels{
+    padding-left: 22px;
+    padding-right: 22px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  /* user-bubbles net iets minder breed op mobiel */
+  body.home.ui2 .hero-card.hero-phone .bubble{
+    max-width: 84%;
+  }
+
+  /* note blijft 1 regel, maar niet breder dan device */
+  body.home.ui2 .hero-card.hero-phone .card-note{
+    max-width: 388px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
