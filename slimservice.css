@@ -1233,6 +1233,7 @@ body.home.ui2 .hero-card.hero-phone .chat-panels{
   flex: 1;
   min-height: 0;
     padding-inline: 2px; /* safe-area: bubbles niet tegen bezel */
+    padding-bottom: 84px; /* reserveert ruimte voor composer + home indicator */
 }
 body.home.ui2 .hero-card.hero-phone .chat-panel{
   position: absolute;
@@ -1316,8 +1317,8 @@ body.home.ui2 .hero-card.hero-phone .composer-pill{
 body.home.ui2 .hero-card.hero-phone .composer-send{
   width: 34px; height: 34px;
   border-radius: 999px;
-  border: 1px solid rgba(10,12,16,.10);
-  background: rgba(10,12,16,.06);
+  background: rgba(34,197,167,.18);
+  border-color: rgba(34,197,167,.22);
   box-shadow: 0 6px 16px rgba(16,24,40,.06);
 }
 body.home.ui2 .hero-card.hero-phone .home-indicator{
