@@ -1225,6 +1225,8 @@ body.home.ui2 .hero-card.hero-phone .flowline{
   text-align: center;
   margin-top: -2px;
 }
+/* Remove flowline — tabs already explain scenarios, frees vertical space */
+body.home.ui2 .hero-card.hero-phone .flowline{ display:none; }
 
 /* Panels: fixed area + fade switch (no layout jump) */
 body.home.ui2 .hero-card.hero-phone .chat-panels{
@@ -1233,7 +1235,7 @@ body.home.ui2 .hero-card.hero-phone .chat-panels{
   flex: 1;
   min-height: 0;
   overflow: hidden; /* voorkomt “doorlekken” richting composer */
-  --heroComposerSafe: 84px; /* reserveer ruimte voor footer (composer + indicator) */
+  --heroComposerSafe: 72px; /* reserveer ruimte voor footer (composer + indicator) */
 }
 body.home.ui2 .hero-card.hero-phone .chat-panel{
   position: absolute;
