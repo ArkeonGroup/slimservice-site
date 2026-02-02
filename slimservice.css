@@ -1232,7 +1232,7 @@ body.home.ui2 .hero-card.hero-phone .chat-panels{
   padding: 12px 22px 12px;
   flex: 1;
   min-height: 0;
-  padding-inline: 2px; /* safe-area: bubbles niet tegen bezel */
+  overflow: hidden; /* voorkomt “doorlekken” richting composer */
   --heroComposerSafe: 84px; /* reserveer ruimte voor footer (composer + indicator) */
 }
 body.home.ui2 .hero-card.hero-phone .chat-panel{
@@ -1290,11 +1290,13 @@ body.home.ui2 .hero-card.hero-phone .bubble.user{ margin-right: 6px; }
 
 /* Footer: composer + home indicator (complete device) */
 body.home.ui2 .hero-card.hero-phone .phone-footer{
+  position: relative;
+  z-index: 2;
   padding: 8px 14px 12px;
   display:grid;
   gap: 10px;
   border-top: 1px solid rgba(10,12,16,.08);
-  background: linear-gradient(180deg, rgba(0,0,0,0), rgba(10,12,16,.02));
+   background: rgba(248,246,242,.96);
 }
 body.home.ui2 .hero-card.hero-phone .composer{
   display:flex;
@@ -1310,7 +1312,7 @@ body.home.ui2 .hero-card.hero-phone .composer-pill{
   padding: 0 12px;
   border-radius: 999px;
   border: 1px solid rgba(10,12,16,.10);
-  background: rgba(255,255,255,.86);
+   background: rgba(255,255,255,1);
   color: rgba(10,12,16,.46);
   font-size: 12px;
   font-weight: 850;
