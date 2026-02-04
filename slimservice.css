@@ -505,19 +505,19 @@ body.home.ui2 #proof .visual-tiles.is-rows .visual-row[open] .visual-row__chev{
 }
 
 body.home.ui2 #proof .visual-tiles.is-rows .visual-row__panel{
-  margin: 0 14px 14px;
-  padding: 14px;
-  background: rgba(0,0,0,.22);
-  border: 1px solid var(--line);
-  border-radius: 14px;
+  margin: 0;
+  padding: 0 14px 14px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
 }
 body.home.ui2 #proof .visual-tiles.is-rows .visual-row__panel img{
   display:block;
   width:100%;
   height:auto;
   border-radius: 14px;
-  border: 1px solid rgba(10,12,16,.10);
-  background: rgba(255,255,255,.02);
+  border:0;
+  background: transparent;
 }
 body.home.ui2 #proof .visual-tiles.is-rows .visual-row__panel .visual-meta{
   padding: 12px 0 0;           /* reuse existing .visual-meta spacing */
