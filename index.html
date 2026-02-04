@@ -1075,24 +1075,24 @@ Mijn cijfers:
   })();
 </script>
 <script>
-
-  <script>
-  // Proof visual rows: single-open accordion (low JS, scope-safe)
+  // Proof visual rows: single-open accordion (robust)
   (function () {
-    const root = document.querySelector('#proof .visual-tiles.is-rows[data-accordion="proof"]');
+    const root = document.querySelector('#proof .visual-tiles.is-rows');
     if (!root) return;
 
     const items = Array.from(root.querySelectorAll('details.visual-row'));
     if (items.length < 2) return;
 
-    items.forEach((d) => {
-      d.addEventListener('toggle', () => {
-        if (!d.open) return;
-        items.forEach((o) => {
-          if (o !== d) o.removeAttribute('open');
-        });
-      });
-    });
+    root.addEventListener('toggle', (e) => {
+      const d = e.target;
+      if (!(d instanceof HTMLDetailsElement)) return;
+      if (!d.classList.contains('visual-row')) return;
+      if (!d.open) return;
+
+      for (const other of items) {
+        if (other !== d) other.open = false;
+      }
+    }, true);
   })();
 </script>
 
