@@ -418,6 +418,115 @@ body.home.ui2 #proof .visual-meta{
   padding: 14px;
 }
 
+/* X4.15 — Proof visual rows (accordion) — less “tiles”, zero collateral */
+body.home.ui2 #proof .visual-tiles.is-rows{
+  display:block;                /* override tile grid */
+  padding:0;                    /* container is the card */
+  overflow:hidden;              /* keep corners clean */
+}
+
+body.home.ui2 #proof .visual-tiles.is-rows.card{
+  padding:0;
+}
+body.home.ui2 #proof .visual-tiles.is-rows.card:hover{
+  transform:none;               /* avoid card hover drift */
+}
+
+body.home.ui2 #proof .visual-tiles.is-rows .visual-row{
+  border-top: 1px solid var(--line);
+}
+body.home.ui2 #proof .visual-tiles.is-rows .visual-row:first-child{
+  border-top: 0;
+}
+
+body.home.ui2 #proof .visual-tiles.is-rows .visual-row > summary{
+  list-style:none;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  padding: 14px;
+  user-select:none;
+}
+body.home.ui2 #proof .visual-tiles.is-rows .visual-row > summary::-webkit-details-marker{ display:none; }
+body.home.ui2 #proof .visual-tiles.is-rows .visual-row > summary::marker{ content:""; }
+
+body.home.ui2 #proof .visual-tiles.is-rows .visual-row > summary:hover{
+  background: rgba(255,255,255,.025);
+}
+
+body.home.ui2 #proof .visual-tiles.is-rows .visual-row > summary:focus-visible{
+  outline: 2px solid color-mix(in srgb, var(--ui-accent) 65%, transparent);
+  outline-offset: -2px;
+  border-radius: 14px;
+}
+
+body.home.ui2 #proof .visual-tiles.is-rows .visual-row__main{ min-width:0; }
+body.home.ui2 #proof .visual-tiles.is-rows .visual-row__title{
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+body.home.ui2 #proof .visual-tiles.is-rows .visual-row__desc{
+  margin: 4px 0 0;
+  max-width: 68ch;
+}
+
+body.home.ui2 #proof .visual-tiles.is-rows .visual-row__meta{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  flex-shrink:0;
+}
+
+body.home.ui2 #proof .visual-tiles.is-rows .visual-row__cta{
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.04);
+  white-space: nowrap;
+}
+
+body.home.ui2 #proof .visual-tiles.is-rows .visual-row__chev{
+  width: 18px;
+  height: 18px;
+  opacity: .72;
+  transition: transform .18s ease;
+}
+@media (prefers-reduced-motion: reduce){
+  body.home.ui2 #proof .visual-tiles.is-rows .visual-row__chev{ transition:none; }
+}
+
+body.home.ui2 #proof .visual-tiles.is-rows .visual-row[open] > summary{
+  background: rgba(255,255,255,.035);
+}
+body.home.ui2 #proof .visual-tiles.is-rows .visual-row[open] .visual-row__chev{
+  transform: rotate(180deg);
+}
+
+body.home.ui2 #proof .visual-tiles.is-rows .visual-row__panel{
+  padding: 0 14px 14px;
+}
+body.home.ui2 #proof .visual-tiles.is-rows .visual-row__panel img{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius: 14px;
+  border: 1px solid rgba(10,12,16,.10);
+  background: rgba(255,255,255,.02);
+}
+body.home.ui2 #proof .visual-tiles.is-rows .visual-row__panel .visual-meta{
+  padding: 12px 0 0;           /* reuse existing .visual-meta spacing */
+}
+
+@media (min-width: 861px){
+  body.home.ui2 #proof .visual-tiles.is-rows .visual-row > summary{ padding: 16px; }
+  body.home.ui2 #proof .visual-tiles.is-rows .visual-row__panel{ padding: 0 16px 16px; }
+}
+
 /* X4.14 — Spot B: Relay next-step tile (fills 4th visual slot) */
 body.home.ui2 #proof .visual-tile.relay-tile .relay-art{
   aspect-ratio: 1200 / 750;   /* same as preview images => no CLS */
