@@ -470,22 +470,13 @@ body.home.ui2 #proof .visual-tiles.is-rows .visual-row__desc{
 }
 
 body.home.ui2 #proof .visual-tiles.is-rows .visual-row__meta{
+  margin-left: auto;
   display:flex;
   align-items:center;
-  gap: 10px;
+  gap: 0;
   flex-shrink:0;
 }
 
-body.home.ui2 #proof .visual-tiles.is-rows .visual-row__cta{
-  font-size: 13px;
-  font-weight: 900;
-  color: var(--muted);
-  border: 1px solid var(--line);
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.04);
-  white-space: nowrap;
-}
 
 body.home.ui2 #proof .visual-tiles.is-rows .visual-row__chev{
   width: 18px;
@@ -1498,6 +1489,10 @@ body.home.ui2 .hero-card.hero-phone .card-note{
 
 /* FIX B: mobile centering + hard kill horizontal scroll + more air */
 @media (max-width: 520px){
+  body.home.ui2 #proof .visual-tiles.is-rows .visual-row__summary{
+    gap: 12px;
+  }
+}
 
     /* align hero-copy column to phone width (maakt buttons/tekst/phone 1 geheel) */
   body.home.ui2 section.wrap.hero .hero-copy{
