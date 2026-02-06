@@ -1537,4 +1537,158 @@ body.home.ui2 .hero-card.hero-phone .card-note{
     margin-right: auto;
   }
 }
+/* =========================================================
+   X5.0 — Pakketten: AF polish (premium, alignment, contrast)
+   Goals:
+   - CTA’s op gelijke hoogte (pinned bottom)
+   - Header (naam + prijs) overal exact gelijk
+   - “Meest gekozen” zonder layout shift
+   - Minder “kaartjes”-gevoel via typografie/ritme
+   - Details zonder chevrons/pijltjes
+   ========================================================= */
+
+body.home.ui2 #pakketten{
+  position: relative;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+/* Full-bleed light band (subtiel off-white) */
+body.home.ui2 #pakketten::before{
+  content:"";
+  position:absolute;
+  top:0; bottom:0;
+  left: calc(50% - 50vw);
+  width: 100vw;
+  left: calc(50% - 50dvw);
+  width: 100dvw;
+
+  background: #f6f7fb;
+  box-shadow: inset 0 1px 0 rgba(10,12,16,.08), inset 0 -1px 0 rgba(10,12,16,.08);
+  pointer-events:none;
+  z-index:0;
+}
+
+body.home.ui2 #pakketten > *{ position: relative; z-index: 1; }
+
+body.home.ui2 #pakketten .pricing{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  align-items: stretch;
+}
+
+@media (max-width: 980px){
+  body.home.ui2 #pakketten .pricing{ grid-template-columns: 1fr; }
+  body.home.ui2 #pakketten .price.card.highlight{ order: -1; }
+}
+
+body.home.ui2 #pakketten .price.card{
+  display:flex;
+  flex-direction:column;
+
+  background: #ffffff;
+  color: rgba(10,12,16,.92);
+
+  border: 2px solid rgba(10,12,16,.12);
+  border-radius: 22px;
+  box-shadow: 0 18px 48px rgba(10,12,16,.10);
+
+  padding: 18px;
+}
+
+body.home.ui2 #pakketten .price.card .muted{ color: rgba(10,12,16,.62); }
+
+body.home.ui2 #pakketten .price-head{
+  display:flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 14px;
+
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(10,12,16,.10);
+
+  min-height: 56px; /* naam + prijs altijd op exact dezelfde hoogte */
+}
+
+body.home.ui2 #pakketten .price-head h3{
+  font-weight: 850;
+  letter-spacing: -0.02em;
+}
+
+body.home.ui2 #pakketten .amount{
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  font-size: clamp(22px, 2.2vw, 30px);
+  line-height: 1.05;
+}
+
+body.home.ui2 #pakketten .amount span{
+  font-size: 13px;
+  font-weight: 650;
+  opacity: .65;
+}
+
+/* CTA pinned: price-foot duwt naar onder zodat alle buttons gelijk eindigen */
+body.home.ui2 #pakketten .price-foot{
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(10,12,16,.16);
+}
+
+body.home.ui2 #pakketten .btn.full{ width: 100%; }
+
+/* “Meest gekozen” zonder pill die layout shift geeft */
+body.home.ui2 #pakketten .price.card.highlight{
+  position: relative;
+  border-color: rgba(10,12,16,.22);
+  box-shadow: 0 24px 64px rgba(10,12,16,.14), inset 0 4px 0 rgba(10,12,16,.82);
+  transform: translateY(-4px);
+}
+
+body.home.ui2 #pakketten .price.card.highlight::before{
+  content: "MEEST GEKOZEN";
+  position:absolute;
+  top: 14px;
+  right: 16px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(10,12,16,.55);
+}
+
+/* Inklapbare delen: geen chevrons/pijltjes, alleen tekst */
+body.home.ui2 #pakketten .price-more,
+body.home.ui2 #pakketten .pricing-terms{
+  margin-top: 12px;
+}
+
+body.home.ui2 #pakketten .price-more{
+  padding-top: 10px;
+  border-top: 1px solid rgba(10,12,16,.08);
+}
+
+body.home.ui2 #pakketten summary{
+  cursor: pointer;
+  list-style: none;
+  font-weight: 800;
+  color: rgba(10,12,16,.78);
+}
+
+body.home.ui2 #pakketten summary::-webkit-details-marker{ display:none; }
+
+body.home.ui2 #pakketten .pricing-terms{
+  display:grid;
+  gap: 10px;
+}
+
+body.home.ui2 #pakketten .pricing-term{
+  border: 1px solid rgba(10,12,16,.10);
+  border-radius: 16px;
+  padding: 12px 14px;
+  background: rgba(10,12,16,.03);
+}
 
