@@ -1691,4 +1691,120 @@ body.home.ui2 #pakketten .pricing-term{
   padding: 12px 14px;
   background: rgba(10,12,16,.03);
 }
+/* =========================================================
+   X5.1 — Add-ons: premium accordion (minder “kaartjes”, meer control)
+   - 1 tegelijk open (JS in index.html)
+   - Summary = naam + prijs chips (setup/maand)
+   - Body = copy links, prijsbox rechts (desktop)
+   ========================================================= */
+
+body.home.ui2 #addons .addons-accordion{
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+body.home.ui2 #addons details.addon{
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 18px;
+  background: rgba(255,255,255,.04);
+  overflow: hidden;
+}
+
+body.home.ui2 #addons details.addon[open]{
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.18);
+}
+
+body.home.ui2 #addons summary.addon-summary{
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 16px;
+  font-weight: 850;
+}
+
+body.home.ui2 #addons summary.addon-summary::-webkit-details-marker{ display:none; }
+
+body.home.ui2 #addons .addon-title{
+  letter-spacing: -0.01em;
+}
+
+body.home.ui2 #addons .addon-prices{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+body.home.ui2 #addons .addon-chip{
+  display: inline-flex;
+  gap: 6px;
+  align-items: baseline;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(0,0,0,.18);
+  font-size: 12px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+body.home.ui2 #addons .addon-chip strong{
+  font-weight: 900;
+  opacity: .85;
+}
+
+body.home.ui2 #addons .addon-body{
+  padding: 0 16px 16px;
+  display: grid;
+  gap: 12px;
+}
+
+@media (min-width: 860px){
+  body.home.ui2 #addons .addon-body{
+    grid-template-columns: 1.35fr 0.65fr;
+    align-items: start;
+    gap: 14px;
+  }
+}
+
+body.home.ui2 #addons .addon-copy p{ margin-top: 0; }
+body.home.ui2 #addons .addon-copy .ticks{ margin: 0; }
+body.home.ui2 #addons .addon-copy .ticks li{ margin: 6px 0; }
+
+body.home.ui2 #addons .addon-pricebox{
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 16px;
+  background: rgba(0,0,0,.22);
+  padding: 12px 12px;
+  display: grid;
+  gap: 8px;
+}
+
+body.home.ui2 #addons .addon-pricebox > div{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+body.home.ui2 #addons .addon-pricebox > div span{
+  font-size: 13px;
+  opacity: .78;
+}
+
+body.home.ui2 #addons .addon-pricebox > div strong{
+  font-size: 14px;
+  font-weight: 900;
+}
+
+body.home.ui2 #addons .addon-pricebox .tiny{
+  margin-top: 2px;
+  opacity: .78;
+}
 
