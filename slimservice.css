@@ -1492,51 +1492,39 @@ body.home.ui2 .hero-card.hero-phone .card-note{
   body.home.ui2 #proof .visual-tiles.is-rows .visual-row__summary{
     gap: 12px;
   }
-}
 
-    /* align hero-copy column to phone width (maakt buttons/tekst/phone 1 geheel) */
+  /* align hero-copy column to phone width (maakt buttons/tekst/phone 1 geheel) */
   body.home.ui2 section.wrap.hero .hero-copy{
     max-width: 388px;
     margin-inline: auto;
   }
 
-  /* bredere compat dan clip: voorkomt rechts-offset / moeten uitzoomen */
+  /* voorkomt horizontale scroll op mobiel door device overflow */
   body.home.ui2 .wrap.hero{ overflow-x: hidden; }
 
   body.home.ui2 .hero-card.hero-phone .phone{
     box-sizing: border-box;
     width: 100%;
     max-width: 388px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 10px; /* iets slanker frame op mobiel */
+    margin-inline: auto;
+    padding: 10px;
   }
 
-  /* meer safe-area zodat bubbles niet tegen randen plakken */
   body.home.ui2 .hero-card.hero-phone .chat-panels{
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-top: 12px;
-    padding-bottom: 12px;
-        --heroComposerSafe: 78px;
+    padding: 12px 24px;
+    --heroComposerSafe: 78px;
   }
 
-  /* extra marge door iets smallere bubbles */
-  body.home.ui2 .hero-card.hero-phone .bubble{
-    max-width: 80%;
-  }
-
-  /* mobile: extra safe edge breathing */
+  body.home.ui2 .hero-card.hero-phone .bubble{ max-width: 80%; }
   body.home.ui2 .hero-card.hero-phone .bubble.user{ margin-right: 8px; }
   body.home.ui2 .hero-card.hero-phone .bubble.ss{ margin-left: 8px; }
 
-  /* note 1 regel + aligned met device */
   body.home.ui2 .hero-card.hero-phone .card-note{
     max-width: 388px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-inline: auto;
   }
 }
+
 /* =========================================================
    X5.0 — Pakketten: AF polish (premium, alignment, contrast)
    Goals:
