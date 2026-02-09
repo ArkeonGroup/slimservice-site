@@ -193,7 +193,7 @@ SlimService is een WhatsApp intake-systeem voor afspraak-gedreven vakmensen. Het
 
 </section>
   
-<section class="wrap is-surface alt band theme-light proof-row" id="proof" aria-label="Proof">
+<section class="wrap is-surface alt band proof-row" id="proof" aria-label="Proof">
     <h2 class="sr-only">Proof</h2>
    <div class="proof-grid">
     <div class="proof-left">
@@ -509,7 +509,7 @@ SlimService is een WhatsApp intake-systeem voor afspraak-gedreven vakmensen. Het
   </div>
 </section>
 
-<section class="wrap is-surface alt band theme-light" id="sprint">
+<section class="wrap is-surface alt band" id="sprint">
   <div class="card sprint-callout">
     <div class="kicker">Pilot · Quick win</div>
     <h2>Sprint (pilot), vandaag live (&euro;199 / &euro;299)</h2>
@@ -1221,26 +1221,18 @@ Mijn cijfers:
   })();
 </script>
 <script>
-  
-  <script>
-  // Add-ons: single-open accordion (robust)
-  (function () {
-    const root = document.querySelector('#addons .addons-accordion');
-    if (!root) return;
+  // Add-ons: single-open accordion (1 tegelijk open)
+  (function(){
+    const wrap = document.querySelector('#addons .addons-accordion');
+    if(!wrap) return;
 
-    const items = Array.from(root.querySelectorAll('details.addon'));
-    if (items.length < 2) return;
-
-    root.addEventListener('toggle', (e) => {
-      const d = e.target;
-      if (!(d instanceof HTMLDetailsElement)) return;
-      if (!d.classList.contains('addon')) return;
-      if (!d.open) return;
-
-      for (const other of items) {
-        if (other !== d) other.open = false;
-      }
-    }, true);
+    const items = Array.from(wrap.querySelectorAll('details.addon'));
+    items.forEach((d) => {
+      d.addEventListener('toggle', () => {
+        if(!d.open) return;
+        items.forEach((o) => { if(o !== d) o.removeAttribute('open'); });
+      });
+    });
   })();
 </script>
 
