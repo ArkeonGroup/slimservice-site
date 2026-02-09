@@ -1771,16 +1771,18 @@ body.home.ui2 #addons .addons-accordion{
   margin-top: 14px;
 }
 
+/* OPTO_PATCH P0.1 START */
 body.home.ui2 #addons details.addon{
-  border: 1px solid rgba(255,255,255,.12);
+  border: 1px solid var(--ui-border);
   border-radius: 14px;
-  background: rgba(255,255,255,.02);
+  background: var(--ui-surface);
   overflow: hidden;
 }
+/* OPTO_PATCH P0.1 END */
 
 body.home.ui2 #addons details.addon[open]{
-  background: rgba(255,255,255,.04);
-  border-color: rgba(255,255,255,.18);
+  background: var(--ui-surface-2);
+  border-color: var(--ui-border);
 }
 
 body.home.ui2 #addons summary.addon-summary{
@@ -1825,8 +1827,8 @@ body.home.ui2 #addons .addon-chip{
   align-items: baseline;
   padding: 8px 10px;
   border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.16);
-  background: rgba(0,0,0,.18);
+  border: 1px solid var(--ui-border);
+  background: var(--ui-surface-2);
   font-size: 12px;
   font-weight: 750;
   white-space: nowrap;
@@ -1856,9 +1858,9 @@ body.home.ui2 #addons .addon-copy .ticks{ margin: 0; }
 body.home.ui2 #addons .addon-copy .ticks li{ margin: 6px 0; }
 
 body.home.ui2 #addons .addon-pricebox{
-  border: 1px solid rgba(255,255,255,.14);
+  border: 1px solid var(--ui-border);
   border-radius: 16px;
-  background: rgba(0,0,0,.22);
+  background: var(--ui-surface);
   padding: 12px 12px;
   display: grid;
   gap: 8px;
