@@ -1607,89 +1607,159 @@ body.home.ui2 #pakketten .pricing{
   body.home.ui2 #pakketten .price.card.highlight{ order: -1; }
 }
 
+/* PAKKETTEN — premium pricing cards (meer contrast, hiërarchie, depth) */
 body.home.ui2 #pakketten .price.card{
+  position: relative;
   display:flex;
   flex-direction:column;
 
-  background: #ffffff;
+  /* meer ‘premium’ skin */
+  background:
+    radial-gradient(140px 140px at 26px 18px, rgba(10,12,16,.06), rgba(10,12,16,0) 62%),
+    linear-gradient(180deg, #ffffff 0%, #f6f7fb 100%);
   color: rgba(10,12,16,.92);
 
-  border: 2px solid rgba(10,12,16,.12);
-  border-radius: 22px;
-  box-shadow: 0 18px 48px rgba(10,12,16,.10);
+  border: 1.5px solid rgba(10,12,16,.14);
+  border-radius: 24px;
+  box-shadow:
+    0 22px 70px rgba(10,12,16,.12),
+    inset 0 1px 0 rgba(255,255,255,.92);
 
-  padding: 18px;
+  padding: 20px 20px 18px;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
 
-body.home.ui2 #pakketten .price.card .muted{ color: rgba(10,12,16,.62); }
+body.home.ui2 #pakketten .price.card:hover,
+body.home.ui2 #pakketten .price.card:focus-within{
+  transform: translateY(-4px);
+  border-color: rgba(10,12,16,.22);
+  box-shadow:
+    0 34px 110px rgba(10,12,16,.16),
+    inset 0 1px 0 rgba(255,255,255,.92);
+}
 
+body.home.ui2 #pakketten .price.card .muted{ color: rgba(10,12,16,.66); }
+
+/* header = groter/strakker */
 body.home.ui2 #pakketten .price-head{
   display:flex;
   justify-content: space-between;
   align-items: baseline;
   gap: 14px;
 
-  padding-bottom: 12px;
-  margin-bottom: 12px;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
   border-bottom: 1px solid rgba(10,12,16,.10);
 
-  min-height: 56px; /* naam + prijs altijd op exact dezelfde hoogte */
+  min-height: 64px;
 }
 
 body.home.ui2 #pakketten .price-head h3{
-  font-weight: 850;
-  letter-spacing: -0.02em;
-}
-
-body.home.ui2 #pakketten .amount{
   font-weight: 900;
-  letter-spacing: -0.02em;
-  font-size: clamp(22px, 2.2vw, 30px);
+  letter-spacing: -0.03em;
+  font-size: 22px;
   line-height: 1.05;
 }
 
-body.home.ui2 #pakketten .amount span{
-  font-size: 13px;
-  font-weight: 650;
-  opacity: .65;
+/* prijs = meer “anchor” */
+body.home.ui2 #pakketten .amount{
+  font-weight: 950;
+  letter-spacing: -0.03em;
+  font-size: clamp(28px, 2.6vw, 36px);
+  line-height: 1.02;
+  font-variant-numeric: tabular-nums;
 }
 
-/* CTA pinned: price-foot duwt naar onder zodat alle buttons gelijk eindigen */
+body.home.ui2 #pakketten .amount span{
+  font-size: 12px;
+  font-weight: 750;
+  opacity: .62;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+/* body copy in cards = minder flets, meer structuur (zonder copy te wijzigen) */
+body.home.ui2 #pakketten .price.card > .small{
+  margin: 10px 0 0;
+  line-height: 1.48;
+  color: rgba(10,12,16,.78);
+}
+
+body.home.ui2 #pakketten .price.card > .small + .small{
+  padding-top: 10px;
+  border-top: 1px solid rgba(10,12,16,.06);
+}
+
+body.home.ui2 #pakketten .price.card > .small strong{
+  color: rgba(10,12,16,.92);
+  font-weight: 900;
+}
+
+/* CTA pinned */
 body.home.ui2 #pakketten .price-foot{
   margin-top: auto;
-  padding-top: 12px;
-  border-top: 1px dashed rgba(10,12,16,.16);
+  padding-top: 14px;
+  border-top: 1px solid rgba(10,12,16,.10);
+}
+
+/* buttons in pricing cards = meer “pull” */
+body.home.ui2 #pakketten .price-foot .btn{
+  width: 100%;
+  min-height: 56px;
+  border-radius: 16px;
+  padding: 14px 16px;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+
+body.home.ui2 #pakketten .price-foot .btn.primary{
+  box-shadow: 0 18px 46px rgba(10,12,16,.18);
 }
 
 body.home.ui2 #pakketten .btn.full{ width: 100%; }
 
-/* “Meest gekozen” = accent bar + label (geen pill/layout shift) */
+/* Highlight (Meest gekozen) = extra lift + pill boven de kaart */
 body.home.ui2 #pakketten .price.card.highlight{
-  position: relative;
-  border-color: rgba(10,12,16,.22);
-  box-shadow: 0 24px 64px rgba(10,12,16,.14);
-  transform: translateY(-4px);
+  background:
+    radial-gradient(160px 160px at 26px 18px, rgba(10,12,16,.08), rgba(10,12,16,0) 62%),
+    linear-gradient(180deg, #ffffff 0%, #f2f4ff 100%);
+  border-color: rgba(10,12,16,.26);
+  box-shadow:
+    0 42px 140px rgba(10,12,16,.18),
+    inset 0 1px 0 rgba(255,255,255,.92);
+  transform: translateY(-6px);
 }
 
+body.home.ui2 #pakketten .price.card.highlight:hover,
+body.home.ui2 #pakketten .price.card.highlight:focus-within{
+  transform: translateY(-10px);
+}
+
+/* kill grijze top bar */
 body.home.ui2 #pakketten .price.card.highlight::after{
-  content:"";
-  position:absolute;
-  left:0; top:0;
-  width:100%;
-  height: 6px;
-  background: linear-gradient(90deg, rgba(10,12,16,.85), rgba(10,12,16,.55));
+  content: none;
 }
 
+/* pill boven de kaart (zoals ref) */
 body.home.ui2 #pakketten .price.card.highlight::before{
   content: attr(data-badge);
-  position:absolute;
-  top: 14px;
-  left: 18px;
+  position: absolute;
+  top: -12px;
+  right: 18px;
+
+  padding: 7px 12px;
+  border-radius: 999px;
+
+  background: rgba(10,12,16,.92);
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 14px 34px rgba(10,12,16,.18);
+
+  color: rgba(255,255,255,.94);
   font-size: 11px;
-  font-weight: 900;
-  letter-spacing: .12em;
+  font-weight: 950;
+  letter-spacing: .10em;
   text-transform: uppercase;
-  color: rgba(10,12,16,.52);
+  z-index: 2;
 }
 
 /* Inklapbare delen: geen chevrons/pijltjes, alleen tekst */
