@@ -12,7 +12,7 @@
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{
-    font-family: var(--font-sans);
+    font-family: var(--font-sans); font-weight: 450; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
   background:
     radial-gradient(1100px 620px at 50% 42%, rgba(255,255,255,.06), transparent 62%),
     radial-gradient(1200px 600px at 15% 10%, rgba(110,231,255,.12), transparent 55%),
@@ -59,7 +59,7 @@ a:hover{opacity:.92}
   background: linear-gradient(135deg, rgba(110,231,255,.95), rgba(183,255,110,.75));
   color:#071018;font-weight:900;display:grid;place-items:center;
 }
-.brandname{font-weight:800;letter-spacing:.2px;font-size:19px}
+.brandname{font-weight:700;letter-spacing:.1px;font-size:19px}
 .tagline{font-size:12px;color:var(--muted)}
 .nav{display:flex;gap:14px;align-items:center}
 .nav a{font-size:14px;color:var(--muted)}
@@ -69,12 +69,12 @@ a:hover{opacity:.92}
 /* Tabs (scenario selector) */
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 12px}
 .tab{
-  appearance:none;border:2px solid rgba(170,176,197,.26);
+ appearance:none;border:1px solid rgba(170,176,197,.26);
   background: rgba(255,255,255,.05);
   color:var(--text);
   padding:9px 12px;
   border-radius:14px;
-  font-weight:800;
+  font-weight:650;
   font-size:13px;
   cursor:pointer;
   box-shadow: 0 10px 30px rgba(0,0,0,.18);
@@ -90,10 +90,10 @@ a:hover{opacity:.92}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;
   padding:10px 14px;border-radius:14px;
-  border:2px solid rgba(170,176,197,.26);
+border:1px solid rgba(170,176,197,.26);
   background: rgba(255,255,255,.05);
   color:var(--text);
-  font-weight:800;font-size:14px;
+  font-weight:700;font-size:14px;
   box-shadow: 0 10px 30px rgba(0,0,0,.22);
   transition: transform .08s ease, opacity .08s ease;
   min-height:44px;
@@ -116,12 +116,12 @@ a:hover{opacity:.92}
 
 .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;padding-top:22px;padding-bottom:26px}
 .hero h1{font-size:44px;line-height:1.05;margin:0 0 10px}
-.kicker{display:inline-block;font-size:12px;font-weight:900;letter-spacing:.22px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.kicker{display:inline-block;font-size:12px;font-weight:750;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
 .lead{font-size:18px;color:var(--muted);margin:0 0 14px}
 .hero-about{margin:0 0 10px;color:var(--muted);font-size:14px;line-height:1.55}
 .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
 .hero-links{margin-top:-6px;font-size:13px;color:var(--muted)}
-.hero-links a{font-weight:800}
+.hero-links a{font-weight:650}
 .micro{font-size:13px;color:var(--muted);margin-top:10px}
 
 .card{
@@ -144,7 +144,7 @@ a:hover{opacity:.92}
 .hero-card::before{content:"";position:absolute;inset:-80px;pointer-events:none;opacity:.18;background:radial-gradient(600px 240px at 20% 0%, rgba(110,231,255,.35), transparent 60%), radial-gradient(520px 240px at 90% 20%, rgba(183,255,110,.32), transparent 60%);}
 .chat{position:relative;z-index:1;padding-top:44px}
 /* badge must never clash with right-aligned bubbles */
-.chat-badge{position:absolute;top:14px;left:14px;right:auto;z-index:2;display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;border:1px solid rgba(183,255,110,.28);background:rgba(183,255,110,.10);color:var(--text);font-size:12px;font-weight:800;letter-spacing:.2px}
+.chat-badge{position:absolute;top:14px;left:14px;right:auto;z-index:2;display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;border:1px solid rgba(183,255,110,.28);background:rgba(183,255,110,.10);color:var(--text);font-size:12px;font-weight:650;letter-spacing:.08em}
 .chat-badge svg{width:18px;height:18px;display:block}
 
 .chat{display:flex;flex-direction:column;gap:10px}
@@ -270,7 +270,7 @@ a:hover{opacity:.92}
 }
 
 .faq{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-details summary{cursor:pointer;font-weight:900}
+details summary{cursor:pointer;font-weight:750}
 details p{margin:10px 0 0;color:var(--muted)}
 
 .contact{padding-top:8px;padding-bottom:26px}
@@ -317,7 +317,7 @@ input:focus{border-color: rgba(110,231,255,.55);box-shadow: 0 0 0 3px rgba(110,2
 
 /* Add-on price pills */
 .addon-pricing{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
-.pill{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:8px 10px;border-radius:999px;border:1px solid rgba(170,176,197,.22);background: rgba(255,255,255,.04);font-size:12px;font-weight:900;color:var(--text);letter-spacing:.15px}
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:8px 10px;border-radius:999px;border:1px solid rgba(170,176,197,.22);background: rgba(255,255,255,.04);font-size:12px;font-weight:700;color:var(--text);letter-spacing:.08em}
 .pill.ghost{border-color: rgba(110,231,255,.22);background: rgba(110,231,255,.06)}
 .sticky-cta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:50;gap:10px;padding:10px 12px;background: rgba(10,12,18,.88);backdrop-filter: blur(10px);border-top:1px solid rgba(170,176,197,.18)}
 .sticky-cta .btn{flex:1;justify-content:center}
@@ -376,7 +376,7 @@ input:focus{border-color: rgba(110,231,255,.55);box-shadow: 0 0 0 3px rgba(110,2
 
 
 /* Add-ons: compact price line */
-.price-line{margin-top:12px;font-size:13px;color:var(--text);font-weight:800;letter-spacing:.1px}
+.price-line{margin-top:12px;font-size:13px;color:var(--text);font-weight:650;letter-spacing:0}
 
 
 /* v7.6 polish: link color (no cyan), sticky hide on footer, add-ons alignment */
@@ -1292,8 +1292,8 @@ body.ui2 main > section.wrap + section.wrap{
   --ui-accent: var(--accent);
   --ui-focus: rgba(110,231,255,.45); /* safe default */
     /* Type contract (Relay/Group safe) */
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", Arial, "Apple Color Emoji","Segoe UI Emoji";
-  --lh-body: 1.45;
+--font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --lh-body: 1.55;
 
   --fs-h2: clamp(24px, 3.2vw, 34px);
   --lh-h2: 1.12;
