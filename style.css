@@ -954,11 +954,12 @@ section { position: relative; }
   flex-wrap: wrap;
 }
 .footer-pay-runner img {
-  height: 16px; width: auto;
-  opacity: .35; filter: brightness(0) invert(1);
+  height: 20px; width: auto;
+  opacity: .85;
+  filter: none;
   transition: opacity .15s;
 }
-.footer-pay-runner img:hover { opacity: .65; }
+.footer-pay-runner img:hover { opacity: 1; }
 
 /* ── RESPONSIVE FOOTER ────────────────────────────────────── */
 @media (max-width: 1100px) {
@@ -1356,3 +1357,66 @@ body.nav-open .nav a { padding:11px 14px; font-size:12px; text-transform:upperca
 
 /* ── FAVICON SVG fallback kleur ──────────────────────────── */
 /* favicon.svg wordt inline geserverd door server */
+
+/* ==========================================================
+   HOTFIX — Contrast + 4 demo grid + footer pay logos
+   (plak onderaan style.css)
+========================================================== */
+
+/* 1) Globale dark-text contrast omhoog (pakt veel Lighthouse fails in 1x) */
+:root{
+  --muted: #8A879C;                 /* was #6B6880 */
+  --faint: rgba(240,238,248,.62);   /* was .55 */
+}
+
+/* 2) 4 demo-kaarten layout (mobiel blijft via bestaande 980px breakpoint 1 kolom) */
+.sc-grid{
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Nettere tablet/laptop overgang (optioneel maar aan te raden) */
+@media (max-width: 1280px){
+  .sc-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+/* je bestaande @media (max-width:980px){ .sc-grid{ grid-template-columns:1fr; } } blijft gewoon werken */
+
+/* 3) Footer betaal-logo's zichtbaar maken (gekleurde SVG’s niet inverteren) */
+.footer-pay-runner img{
+  opacity: .85;
+  filter: none;
+}
+.footer-pay-runner img:hover{ opacity: 1; }
+
+.pay-logo-footer{
+  opacity: .85;
+  filter: none;
+}
+.pay-logo-footer:hover{ opacity: 1; }
+
+/* 4) Extra contrast-fixes voor hero/footer microcopy (Lighthouse hitlist) */
+.trust-row{ color: var(--faint); } /* was muted */
+.founder-quote{
+  color: var(--faint); /* was muted */
+  border-left-color: rgba(0,255,136,.34);
+}
+.wens-src{ color: var(--faint); } /* was muted */
+
+.footer-tag,
+.footer-meta,
+.fc-title,
+.footer-col a,
+.footer-bottom-left{
+  color: var(--faint);
+}
+
+.footer-arkeon-label{ color: var(--faint); }
+
+/* 5) Phone mockup microcopy (Lighthouse telt dit ook mee als tekst) */
+.p-status{ color: rgba(255,255,255,.78); }   /* was .65 */
+.ptab{ color: rgba(255,255,255,.56); }       /* was .3 */
+.bub-meta{ color: rgba(255,255,255,.58); }   /* was .25 */
+.pi-field{ color: rgba(255,255,255,.62); }   /* was .3 */
+
+/* ticker sublabel was te zwak */
+.t-item .tl{ color: rgba(0,255,136,.52); }   /* was .3 */
+
