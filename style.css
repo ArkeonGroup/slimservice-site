@@ -1484,3 +1484,9 @@ body.nav-open .nav a { padding:11px 14px; font-size:12px; text-transform:upperca
 .cta-section.section-light .muted{
   color: rgba(18,16,28,.78) !important;
 }
+/* Product visuals (3 kaarten) — behoud HTML width/height voor Lighthouse, voorkom vervorming */
+.prod-img img{
+  width: 100%;
+  height: auto !important;
+  display: block;
+}
