@@ -1,0 +1,2427 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SlimService — WhatsApp, maar dan professioneel geregeld</title>
+<meta name="description" content="SlimService regelt je WhatsApp klantenservice: intake, afspraken, no-shows en menselijke hand-off. Binnen 7 dagen live voor kappers, klussers en praktijken.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://slimservice.nl/">
+<meta property="og:title" content="SlimService — WhatsApp, maar dan professioneel geregeld">
+<meta property="og:description" content="Minder gemiste leads. Minder no-shows. Minder ge-app. Binnen 7 dagen live met menselijke hand-off.">
+<meta property="og:image" content="https://slimservice.nl/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SlimService — WhatsApp, maar dan professioneel geregeld">
+<meta name="twitter:description" content="Minder gemiste leads. Minder no-shows. Minder ge-app. Binnen 7 dagen live.">
+<meta name="twitter:image" content="https://slimservice.nl/assets/og-image.jpg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+<style>/* ============================================================
+   SLIMSERVICE — DESIGN SYSTEM
+   Dark base · Wit = actie · Groen = live/systeem
+   Twee lichte doorbraken: ROI + Finale CTA
+   Fonts: Syne (display) · DM Mono (labels/mono)
+============================================================ */
+
+/* ── TOKENS ─────────────────────────────────────────────── */
+:root {
+  /* Backgrounds */
+  --void:      #07060A;
+  --ink:       #0D0C13;
+  --surface:   #111019;
+  --surface2:  #181624;
+  --light-bg:  #F4F3EE;
+  --light-s:   #ECEAE2;
+
+  /* Borders */
+  --line:      rgba(255,255,255,.07);
+  --line2:     rgba(255,255,255,.13);
+  --line-l:    rgba(20,18,30,.10);
+  --line-l2:   rgba(20,18,30,.18);
+
+  /* Text */
+  --text:      #F0EEF8;
+  --muted:     #6B6880;
+  --faint:     rgba(240,238,248,.55);
+  --ink-text:  #1A1828;
+  --ink-muted: #6B6A7A;
+
+  /* Green — systeem / live */
+  --g:         #00FF88;
+  --g-dim:     rgba(0,255,136,.08);
+  --g-ring:    rgba(0,255,136,.22);
+
+  /* White — primaire actie */
+  --w-dim:     rgba(255,255,255,.08);
+  --w-ring:    rgba(255,255,255,.20);
+
+  /* Fonts */
+  --f-d: 'Syne', system-ui, sans-serif;
+  --f-m: 'DM Mono', 'Courier New', monospace;
+
+  /* Radii */
+  --r:    4px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+
+  /* Shadows */
+  --shadow:    0 8px 28px rgba(0,0,0,.28);
+  --shadow-lg: 0 32px 80px rgba(0,0,0,.50);
+}
+
+/* ── RESET ───────────────────────────────────────────────── */
+*,*::before,*::after { box-sizing: border-box; margin:0; padding:0; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 64px; /* compensate sticky header */
+}
+body {
+  font-family: var(--f-d);
+  background: var(--void);
+  color: var(--text);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+ul,ol { list-style: none; }
+
+/* Subtle scan lines */
+body::before {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:999;
+  background: repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.03) 2px,rgba(0,0,0,.03) 4px);
+}
+
+/* ── TYPOGRAPHY ──────────────────────────────────────────── */
+h1 {
+  font-family: var(--f-d); font-weight: 800;
+  font-size: clamp(38px,5.2vw,76px);
+  line-height: .93; letter-spacing: -.03em;
+}
+h1 .accent { color: var(--g); }
+
+h2 {
+  font-family: var(--f-d); font-weight: 800;
+  font-size: clamp(30px,4vw,54px);
+  line-height: .97; letter-spacing: -.025em;
+}
+
+h3 {
+  font-family: var(--f-d); font-weight: 700;
+  font-size: 17px; letter-spacing: -.01em; line-height: 1.25;
+}
+
+p { color: var(--muted); }
+
+.lead {
+  font-size: clamp(16px,1.6vw,19px);
+  color: var(--faint); line-height: 1.6; font-weight: 400;
+}
+
+.kicker {
+  font-family: var(--f-m); font-size: 10px;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--muted); display: block; margin-bottom: 14px;
+}
+.kicker.live { color: var(--g); }
+.kicker.light { color: var(--ink-muted); }
+
+/* Light section text overrides */
+.section-light { background: var(--light-bg); }
+.section-light h2,
+.section-light h3 { color: var(--ink-text); }
+.section-light p,
+.section-light .lead { color: var(--ink-muted); }
+.section-light .kicker { color: var(--ink-muted); }
+
+/* ── LAYOUT ──────────────────────────────────────────────── */
+.wrap { max-width: 1180px; margin:0 auto; padding:0 clamp(20px,4vw,52px); }
+.wrap-full { padding:0 clamp(20px,4vw,52px); }
+section { position: relative; }
+.hline { border:none; border-top:1px solid var(--line); }
+
+/* ── REVEAL ──────────────────────────────────────────────── */
+.reveal {
+  opacity:0; transform:translateY(18px);
+  transition: opacity .55s ease, transform .55s ease;
+}
+.reveal.in { opacity:1; transform:none; }
+.reveal-l {
+  opacity:0; transform:translateX(-18px);
+  transition: opacity .55s ease, transform .55s ease;
+}
+.reveal-l.in { opacity:1; transform:none; }
+
+/* ── BUTTONS ─────────────────────────────────────────────── */
+.btn {
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding:14px 24px; border-radius:var(--r-md);
+  font-family:var(--f-d); font-size:14px; font-weight:700;
+  letter-spacing:-.01em; border:1.5px solid transparent; cursor:pointer;
+  transition: transform .12s, box-shadow .12s, background .12s;
+  text-decoration:none; white-space:nowrap;
+  min-height:44px; /* minimum touch target */
+  -webkit-tap-highlight-color: transparent;
+}
+.btn:hover { transform:translateY(-1px); }
+.btn:active { transform:none; }
+
+.btn-primary {
+  background:#fff; color:var(--void); border-color:#fff;
+}
+.btn-primary:hover { box-shadow:0 8px 28px rgba(255,255,255,.22); }
+
+.btn-primary-dark {
+  background:var(--ink-text); color:#fff; border-color:var(--ink-text);
+}
+.btn-primary-dark:hover { box-shadow:0 8px 28px rgba(0,0,0,.3); }
+
+.btn-green {
+  background:var(--g-dim); color:var(--g); border-color:var(--g-ring);
+}
+.btn-green:hover { background:rgba(0,255,136,.13); box-shadow:0 6px 20px rgba(0,255,136,.18); }
+
+.btn-ghost {
+  background:var(--w-dim); color:var(--faint); border-color:var(--line2);
+}
+.btn-ghost:hover { background:rgba(255,255,255,.10); }
+
+.btn-ghost-dark {
+  background:transparent; color:var(--ink-text); border-color:var(--line-l2);
+}
+.btn-ghost-dark:hover { background:var(--light-s); }
+
+.btn-full { width:100%; }
+
+/* ── HEADER ──────────────────────────────────────────────── */
+.header {
+  position:sticky; top:0; z-index:100;
+  background:rgba(7,6,10,.88);
+  backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner {
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; height:60px;
+}
+.brand { display:flex; align-items:center; gap:10px; flex-shrink:0; }
+.brand-dot {
+  width:26px; height:26px; border-radius:var(--r);
+  background:#fff; display:grid; place-items:center;
+  position:relative; flex-shrink:0;
+}
+.brand-dot::after {
+  content:''; position:absolute; top:-2px; right:-2px;
+  width:7px; height:7px; border-radius:50%;
+  background:var(--g); border:2px solid var(--void);
+  animation:blink 2s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+.brand-dot svg { width:14px; height:14px; }
+.brand-name {
+  font-family:var(--f-d); font-size:17px; font-weight:800; letter-spacing:-.02em;
+}
+.header-phone {
+  font-family:var(--f-m); font-size:12px; color:var(--muted);
+  letter-spacing:.04em; margin-left:4px;
+}
+.nav { display:flex; align-items:center; gap:2px; }
+.nav a {
+  font-family:var(--f-m); font-size:11px; color:var(--muted);
+  padding:6px 11px; border-radius:var(--r-md); border:1px solid transparent;
+  transition:color .12s, background .12s; letter-spacing:.05em; text-transform:uppercase;
+}
+.nav a:hover { color:var(--text); background:var(--w-dim); }
+.nav a.active { color:var(--text); border-color:var(--line2); background:var(--w-dim); }
+.nav a.nav-sprint { color:var(--g); }
+.nav a.nav-sprint:hover { color:var(--g); background:var(--g-dim); }
+.nav a.nav-sprint.active { color:var(--g); border-color:var(--g-ring); background:var(--g-dim); }
+.header-cta { display:flex; gap:8px; align-items:center; }
+.nav-toggle {
+  display:none; background:none; border:1px solid var(--line2);
+  border-radius:var(--r-md); padding:7px 12px;
+  font-family:var(--f-m); font-size:11px; color:var(--text);
+  cursor:pointer; letter-spacing:.08em; text-transform:uppercase;
+}
+
+/* ── TICKER ──────────────────────────────────────────────── */
+.ticker-band {
+  background:var(--void); overflow:hidden;
+  border-top:1px solid var(--g-ring);
+  border-bottom:1px solid var(--line);
+  padding:11px 0;
+}
+.ticker-track {
+  display:flex; width:max-content;
+  animation:tickroll 46s linear infinite;
+}
+.ticker-track:hover { animation-play-state:paused; }
+@keyframes tickroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.t-item {
+  display:inline-flex; align-items:center; gap:9px;
+  padding:0 28px; font-family:var(--f-m); font-size:11px;
+  color:rgba(0,255,136,.55); white-space:nowrap;
+  border-right:1px solid rgba(0,255,136,.08); letter-spacing:.07em;
+}
+.t-item .td {
+  width:5px; height:5px; border-radius:50%;
+  background:var(--g); flex-shrink:0; animation:blink 1.8s infinite;
+}
+.t-item strong { color:var(--g); }
+.t-item .tl { color:rgba(0,255,136,.3); font-size:10px; }
+
+/* ── HERO ────────────────────────────────────────────────── */
+.hero {
+  padding:clamp(56px,8vw,100px) 0 0;
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+}
+.hero-bg {
+  position:absolute; right:-1%; top:52%; transform:translateY(-50%);
+  font-family:var(--f-d); font-weight:800;
+  font-size:clamp(220px,28vw,420px);
+  color:rgba(255,255,255,.022); letter-spacing:-.06em;
+  line-height:1; pointer-events:none; user-select:none;
+}
+.hero-grid {
+  display:grid; grid-template-columns:1fr .72fr;
+  gap:clamp(36px,5vw,72px); align-items:center;
+  position:relative; z-index:2;
+}
+.hero-pill {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:6px 14px; margin-bottom:26px;
+  border:1px solid var(--g-ring); border-radius:var(--r);
+  font-family:var(--f-m); font-size:11px; color:var(--g);
+  background:var(--g-dim); letter-spacing:.08em;
+}
+.hero-pill::before {
+  content:''; width:6px; height:6px; border-radius:50%;
+  background:var(--g); animation:blink 2s infinite;
+}
+.hero h1 { margin-bottom:24px; }
+.hero .lead { max-width:50ch; margin-bottom:32px; }
+.hero-acts { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:28px; }
+.trust-row {
+  display:flex; flex-wrap:wrap; gap:14px;
+  padding-top:20px; border-top:1px solid var(--line);
+  font-family:var(--f-m); font-size:11px; color:var(--muted);
+  letter-spacing:.05em;
+}
+.trust-row span { display:flex; align-items:center; gap:5px; }
+.trust-row span::before { content:'✓'; color:var(--g); }
+.scroll-hint {
+  display:flex; justify-content:center;
+  padding:clamp(20px,2.5vw,32px) 0;
+  color:var(--muted);
+  animation:bounceY 2s ease-in-out infinite;
+  font-size:18px;
+}
+@keyframes bounceY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+/* ── PHONE MOCKUP ────────────────────────────────────────── */
+.phone-col {
+  position:relative;
+  display:flex; flex-direction:column; align-items:center;
+}
+
+/* Groene gloed achter de phone */
+.phone-col::before {
+  content:''; position:absolute;
+  width:340px; height:520px;
+  background:radial-gradient(ellipse at 50% 50%, rgba(0,255,136,.09) 0%, transparent 70%);
+  top:50%; left:50%; transform:translate(-50%,-50%);
+  pointer-events:none; z-index:0; border-radius:50%;
+}
+
+.phone-shell {
+  background:#09080F;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:var(--r-xl);
+  overflow:hidden;
+  box-shadow:var(--shadow-lg), 0 0 0 1px rgba(255,255,255,.04), 0 0 40px rgba(0,255,136,.06);
+  width:308px; margin:0 auto; position:relative; z-index:2;
+  /* vaste breedte desktop — wordt overschreven op mobiel */
+}
+.phone-bar {
+  background:#075E54; padding:12px 14px;
+  display:flex; align-items:center; gap:9px;
+}
+.p-ava {
+  width:34px; height:34px; border-radius:50%;
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  display:grid; place-items:center;
+  font-family:var(--f-d); font-size:13px; font-weight:800;
+  color:#fff; flex-shrink:0;
+}
+.p-name { font-family:var(--f-d); font-size:13px; font-weight:700; color:#fff; }
+.p-status { font-family:var(--f-m); font-size:10px; color:rgba(255,255,255,.65); letter-spacing:.04em; }
+
+.phone-tabs {
+  display:flex; background:#0E0D15;
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+.ptab {
+  flex:1; padding:8px 4px; text-align:center;
+  font-family:var(--f-m); font-size:11px;
+  color:rgba(255,255,255,.3); background:none; border:none;
+  border-bottom:2px solid transparent; cursor:pointer;
+  transition:color .12s, border-color .12s; letter-spacing:.04em;
+}
+.ptab.on { color:#25D366; border-bottom-color:#25D366; }
+
+.chat-area {
+  padding:12px; background:#0B141A;
+  height:360px; display:flex; flex-direction:column; gap:7px;
+  position:relative;
+  overflow-y:auto;
+  scroll-behavior:smooth;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.chat-area::-webkit-scrollbar { display:none; }
+.chat-panel { display:none; flex-direction:column; gap:7px; }
+.chat-panel.on { display:flex; }
+
+/* Animated chat state */
+.chat-panel.animating .bub,
+.chat-panel.animating .bub-typing { opacity:0; }
+.bub {
+  max-width:84%; padding:8px 12px;
+  font-family:var(--f-d); font-size:12px; line-height:1.45;
+  border-radius:10px;
+}
+.bub.u { align-self:flex-end; background:#005C4B; color:#E9F5F0; border-bottom-right-radius:2px; }
+.bub.s { align-self:flex-start; background:#1E2B33; color:#E1E8ED; border:1px solid rgba(0,255,136,.12); border-bottom-left-radius:2px; }
+.bub .ck { font-size:10px; color:#53BDEB; margin-left:3px; }
+.bub-meta { text-align:center; font-family:var(--f-m); font-size:10px; color:rgba(255,255,255,.25); letter-spacing:.04em; }
+
+.bub-typing {
+  align-self:flex-start; background:#1E2B33;
+  border:1px solid rgba(0,255,136,.10);
+  padding:9px 12px; border-radius:10px; border-bottom-left-radius:2px;
+  display:flex; gap:3px; align-items:center;
+}
+.bub-typing span {
+  width:4px; height:4px; border-radius:50%;
+  background:#53BDEB; opacity:.4; animation:tdot 1.2s infinite;
+}
+.bub-typing span:nth-child(2){animation-delay:.2s}
+.bub-typing span:nth-child(3){animation-delay:.4s}
+@keyframes tdot { 0%,100%{opacity:.4;transform:none} 50%{opacity:1;transform:translateY(-3px)} }
+
+.phone-input {
+  background:#0D1117; padding:8px 12px;
+  display:flex; gap:7px; align-items:center;
+  border-top:1px solid rgba(255,255,255,.04);
+}
+.pi-field {
+  flex:1; background:#2A3942; border-radius:18px;
+  padding:7px 12px; font-family:var(--f-m); font-size:11px;
+  color:rgba(255,255,255,.3); letter-spacing:.03em;
+}
+.pi-send {
+  width:28px; height:28px; border-radius:50%;
+  background:#00A884; display:grid; place-items:center;
+  font-size:12px; color:#fff; flex-shrink:0;
+}
+.phone-note {
+  text-align:center; margin-top:9px;
+  font-family:var(--f-m); font-size:10px;
+  color:var(--muted); letter-spacing:.06em; text-transform:uppercase;
+}
+
+/* Floating badges */
+/* fbd badges removed */
+
+/* ── STATS ───────────────────────────────────────────────── */
+.stats-section { border-bottom:1px solid var(--line); }
+.stats-grid { display:grid; grid-template-columns:repeat(3,1fr); }
+.stat-cell {
+  padding:clamp(32px,4vw,56px) clamp(24px,3vw,44px);
+  border-right:1px solid var(--line);
+  transition:background .18s;
+}
+.stat-cell:last-child { border-right:none; }
+.stat-cell:hover { background:var(--surface); }
+.stat-n {
+  display:block; font-family:var(--f-d); font-weight:800;
+  font-size:clamp(60px,7.5vw,100px); line-height:.9;
+  letter-spacing:-.04em; color:var(--text); margin-bottom:10px;
+}
+.stat-n .u { font-size:.35em; color:var(--g); vertical-align:.22em; letter-spacing:0; }
+.stat-l { font-family:var(--f-m); font-size:clamp(10px,1.2vw,11px); color:var(--muted); letter-spacing:.07em; text-transform:uppercase; line-height:1.6; }
+
+/* ── HOE HET WERKT ───────────────────────────────────────── */
+.how-section {
+  padding:clamp(64px,7vw,100px) 0;
+  border-bottom:1px solid var(--line);
+}
+.section-head { margin-bottom:clamp(36px,4.5vw,58px); }
+.section-head h2 { margin-bottom:10px; }
+.section-head .lead { max-width:52ch; }
+
+.steps-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden;
+  background:var(--line);
+  gap:1px;
+}
+.step-card {
+  padding:clamp(24px,3vw,42px);
+  background:var(--surface);
+  display:flex; flex-direction:column; gap:14px;
+  transition:background .18s;
+}
+.step-card:hover { background:var(--surface2); }
+.step-num {
+  font-family:var(--f-d); font-weight:800;
+  font-size:clamp(64px,7vw,96px); line-height:.85;
+  letter-spacing:-.05em; color:rgba(255,255,255,.04);
+}
+.step-card h3 { color:var(--text); border-left:2px solid var(--g); padding-left:11px; }
+.step-card p { font-size:14px; line-height:1.65; }
+
+.deliverables {
+  margin-top:clamp(16px,2vw,24px);
+  border:1px solid var(--line); border-radius:var(--r-lg);
+  overflow:hidden; display:grid; grid-template-columns:1fr auto;
+}
+.del-left {
+  padding:clamp(22px,3vw,36px);
+  border-right:1px solid var(--line);
+  display:grid; grid-template-columns:1fr 1fr; gap:10px;
+}
+.del-right {
+  padding:clamp(22px,3vw,36px);
+  background:var(--surface);
+  display:flex; flex-direction:column;
+  justify-content:center; align-items:center;
+  gap:12px; min-width:210px; text-align:center;
+}
+.tick-row {
+  display:flex; gap:9px; align-items:flex-start;
+  font-size:13px; color:var(--faint); line-height:1.45;
+}
+.tick-i {
+  width:16px; height:16px; border-radius:50%;
+  background:var(--g-dim); border:1px solid var(--g-ring);
+  display:grid; place-items:center; font-size:9px;
+  color:var(--g); flex-shrink:0; margin-top:2px; font-weight:900;
+}
+.live-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:12px 18px; border-radius:var(--r-md);
+  border:1px solid var(--g-ring); background:var(--g-dim);
+  font-family:var(--f-m); font-size:13px; color:var(--g); letter-spacing:.04em;
+}
+.live-badge::before {
+  content:''; width:7px; height:7px; border-radius:50%;
+  background:var(--g); animation:blink 2s infinite;
+}
+
+/* ── PRODUCT IMAGES ──────────────────────────────────────── */
+.product-section {
+  padding:clamp(56px,6vw,88px) 0;
+  border-bottom:1px solid var(--line);
+}
+.product-section.alt { background:var(--surface); }
+.prod-row {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:clamp(40px,5vw,80px); align-items:center;
+}
+.prod-row.flip { direction:rtl; }
+.prod-row.flip > * { direction:ltr; }
+.prod-img img {
+  border-radius:var(--r-lg); border:1px solid var(--line2);
+  box-shadow:var(--shadow-lg); width:100%;
+}
+.prod-img-ph {
+  border-radius:var(--r-lg); border:1px dashed var(--line2);
+  background:var(--surface2); aspect-ratio:16/10;
+  display:grid; place-items:center;
+  font-family:var(--f-m); font-size:11px; color:var(--muted); letter-spacing:.06em;
+}
+.prod-txt { display:flex; flex-direction:column; gap:16px; }
+.prod-txt .btn { align-self:flex-start; }
+
+/* ── SCENARIOS ───────────────────────────────────────────── */
+.scenarios-section {
+  padding:clamp(64px,7vw,100px) 0;
+  border-bottom:1px solid var(--line);
+}
+.sc-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1px; background:var(--line);
+  border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden;
+  margin-top:clamp(28px,3vw,44px);
+}
+.sc-card {
+  padding:clamp(28px,3vw,44px);
+  background:var(--surface);
+  display:flex; flex-direction:column; gap:16px;
+  transition:background .18s;
+}
+.sc-card:hover { background:var(--surface2); }
+.sc-icon {
+  width:42px; height:42px; border-radius:var(--r-md);
+  background:var(--g-dim); border:1px solid var(--g-ring);
+  display:grid; place-items:center; font-size:20px;
+}
+.sc-card h3 { color:var(--text); font-size:19px; border-left:2px solid var(--g); padding-left:11px; }
+.sc-sub {
+  font-family:var(--f-m); font-size:10px; color:var(--muted);
+  letter-spacing:.10em; text-transform:uppercase; margin-top:-4px;
+  margin-bottom:4px;
+}
+.sc-card > p { font-size:13px; line-height:1.65; flex:1; }
+.sc-steps { display:grid; gap:6px; }
+.sc-step {
+  display:flex; gap:8px; align-items:flex-start;
+  font-family:var(--f-m); font-size:11px; color:var(--muted); letter-spacing:.03em;
+}
+.sn {
+  width:17px; height:17px; border-radius:50%;
+  background:rgba(255,255,255,.04); border:1px solid var(--line2);
+  display:grid; place-items:center; font-size:9px; font-weight:700;
+  color:var(--faint); flex-shrink:0; margin-top:1px;
+}
+.sc-acts { display:grid; gap:8px; margin-top:auto; }
+
+/* Demo row */
+.demos-row {
+  margin-top:clamp(20px,2.5vw,32px);
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1px; background:var(--line);
+  border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden;
+}
+.demo-card {
+  padding:20px 22px;
+  background:var(--surface2);
+  display:flex; align-items:center; justify-content:space-between;
+  gap:16px; transition:background .18s;
+}
+.demo-card:hover { background:var(--surface); }
+.demo-card-info { display:flex; flex-direction:column; gap:3px; }
+.demo-card-title { font-size:13px; font-weight:700; color:var(--text); }
+.demo-card-sub { font-family:var(--f-m); font-size:10px; color:var(--muted); letter-spacing:.06em; }
+
+/* ── BEZWAARBLOK ─────────────────────────────────────────── */
+.bezwaar-section {
+  padding:clamp(64px,7vw,100px) 0;
+  border-bottom:1px solid var(--line);
+  background:var(--surface);
+}
+.bezwaar-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1px; background:var(--line);
+  border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden;
+  margin-top:clamp(28px,3vw,44px);
+}
+.bz-card {
+  padding:clamp(22px,2.8vw,36px);
+  background:var(--surface2);
+  display:flex; flex-direction:column; gap:12px;
+  transition:background .18s;
+}
+.bz-card:hover { background:var(--ink); }
+.bz-q {
+  font-size:15px; font-weight:700; color:var(--text); line-height:1.3;
+  padding-left:14px; border-left:2px solid var(--g);
+}
+.bz-a { font-size:13px; line-height:1.7; color:var(--muted); }
+.bz-a strong { color:var(--faint); }
+
+/* ── ROI — LICHTE SECTIE ─────────────────────────────────── */
+.roi-section {
+  padding:clamp(64px,7vw,100px) 0;
+  background:var(--light-bg);
+  border-top:3px solid var(--ink-text);
+  border-bottom:3px solid var(--ink-text);
+}
+.roi-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:clamp(18px,2.5vw,32px); margin-top:clamp(32px,4vw,52px);
+  align-items:start;
+}
+.roi-input-card {
+  background:#fff;
+  border:1px solid var(--line-l2);
+  border-radius:var(--r-lg);
+  padding:clamp(22px,3vw,36px);
+  box-shadow:0 4px 20px rgba(0,0,0,.06);
+}
+.roi-input-card h3 { color:var(--ink-text); margin-bottom:6px; }
+.roi-input-card > p { font-size:13px; margin-bottom:22px; color:var(--ink-muted); }
+.roi-form { display:grid; gap:14px; }
+.roi-lbl {
+  font-family:var(--f-m); font-size:10px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--ink-muted); display:block; margin-bottom:6px;
+}
+.roi-inp {
+  width:100%; background:var(--light-s);
+  border:1px solid var(--line-l2); border-radius:var(--r-md);
+  padding:11px 14px; color:var(--ink-text);
+  font-family:var(--f-d); font-size:16px; font-weight:600;
+  outline:none; transition:border-color .15s, box-shadow .15s;
+}
+.roi-inp:focus {
+  border-color:rgba(20,18,30,.4);
+  box-shadow:0 0 0 3px rgba(20,18,30,.07);
+  background:#fff;
+}
+
+.roi-result-card {
+  background:#fff; border:1px solid var(--line-l2);
+  border-radius:var(--r-lg); padding:clamp(22px,3vw,36px);
+  box-shadow:0 4px 20px rgba(0,0,0,.06);
+  position:sticky; top:76px;
+  display:flex; flex-direction:column; gap:16px;
+}
+.roi-out-block { display:flex; flex-direction:column; gap:4px; padding-bottom:14px; border-bottom:1px solid var(--line-l); }
+.roi-out-block:last-of-type { border-bottom:none; padding-bottom:0; }
+.roi-out-lbl { font-family:var(--f-m); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-muted); }
+.roi-out-n {
+  font-family:var(--f-d); font-weight:800;
+  font-size:clamp(36px,4vw,52px);
+  line-height:.95; letter-spacing:-.03em; color:var(--ink-text);
+}
+.roi-out-n.total { font-size:clamp(44px,5vw,66px); color:var(--ink-text); }
+.roi-out-sub { font-size:12px; color:var(--ink-muted); font-family:var(--f-m); letter-spacing:.04em; }
+.roi-formula-note { font-family:var(--f-m); font-size:10px; color:var(--ink-muted); letter-spacing:.04em; line-height:1.6; }
+
+/* ── PRICING ─────────────────────────────────────────────── */
+.pricing-section {
+  padding:clamp(64px,7vw,100px) 0;
+  border-bottom:1px solid var(--line);
+}
+.urgency-pill {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:6px 12px; border-radius:var(--r);
+  border:1px solid var(--g-ring); background:var(--g-dim);
+  font-family:var(--f-m); font-size:10px; color:var(--g);
+  letter-spacing:.08em; text-transform:uppercase; margin-top:12px;
+}
+.urgency-pill::before {
+  content:''; width:5px; height:5px; border-radius:50%;
+  background:var(--g); animation:blink 2s infinite;
+}
+.pricing-grid {
+  display:grid; grid-template-columns:1fr 1.06fr 1fr;
+  gap:1px; background:var(--line);
+  border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden;
+  margin-top:clamp(24px,3vw,40px);
+}
+.pc {
+  padding:clamp(22px,2.8vw,38px);
+  background:var(--surface);
+  display:flex; flex-direction:column; gap:14px;
+  transition:background .18s;
+}
+.pc:hover { background:var(--surface2); }
+.pc.featured {
+  background:var(--void);
+  border:none;
+}
+.pc.dim { opacity:.62; }
+.pc.dim:hover { opacity:1; }
+.pc-badge {
+  display:block;
+  /* negative margins to bleed to card edges */
+  margin: calc(-1 * clamp(22px,2.8vw,36px))
+          calc(-1 * clamp(22px,2.8vw,36px))
+          clamp(16px,2vw,22px);
+  padding: 9px clamp(22px,2.8vw,36px);
+  background:var(--g); color:var(--void);
+  font-family:var(--f-m); font-size:10px;
+  letter-spacing:.12em; text-transform:uppercase;
+  font-weight:500; text-align:center;
+}
+.pc.featured { position:relative; }
+.pc-name { font-size:17px; font-weight:800; color:var(--text); }
+.pc-price {
+  font-family:var(--f-d); font-weight:800;
+  font-size:clamp(30px,3.2vw,42px); line-height:1;
+  letter-spacing:-.025em; color:var(--text);
+}
+.pc-price span { font-size:13px; font-weight:400; color:var(--muted); font-family:var(--f-d); }
+.pc-monthly { font-family:var(--f-m); font-size:11px; color:var(--muted); margin-top:-8px; letter-spacing:.04em; }
+.pc-credits-note { font-size:12px; color:var(--muted); font-family:var(--f-m); letter-spacing:.03em; }
+.pc-credits-note strong { color:var(--faint); }
+.pc-desc { font-size:13px; line-height:1.6; color:var(--muted); }
+.pc-rule { border:none; border-top:1px solid var(--line); }
+.pc-feats { display:grid; gap:9px; flex:1; }
+.fi.n { color:var(--muted); }
+.pc-cta { margin-top:auto; }
+
+/* Add-ons */
+.addons-section {
+  margin-top:clamp(20px,2.5vw,32px);
+}
+.addons-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1px; background:var(--line);
+  border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden;
+}
+.ao-card {
+  padding:clamp(18px,2vw,28px);
+  background:var(--surface);
+  display:flex; flex-direction:column; gap:8px;
+  transition:background .18s;
+}
+.ao-card:hover { background:var(--surface2); }
+.ao-name { font-size:14px; font-weight:700; color:var(--text); }
+.ao-desc { font-size:12px; line-height:1.55; flex:1; }
+.ao-price { font-family:var(--f-m); font-size:12px; color:var(--g); letter-spacing:.04em; margin-top:auto; }
+
+/* Sprint banner */
+.sprint-banner {
+  margin-top:clamp(16px,2vw,24px);
+  border:1px solid var(--line2); border-left:3px solid #fff;
+  border-radius:var(--r-lg);
+  padding:clamp(18px,2vw,28px) clamp(20px,2.5vw,36px);
+  display:flex; align-items:center; justify-content:space-between;
+  gap:20px; flex-wrap:wrap; background:var(--surface);
+}
+.sprint-copy h3 { font-size:15px; color:var(--text); margin-bottom:4px; }
+.sprint-copy p { font-size:13px; }
+.sprint-acts { display:flex; gap:8px; flex-wrap:wrap; flex-shrink:0; }
+.pricing-foot {
+  margin-top:14px; padding:13px 18px;
+  border:1px solid var(--line); border-radius:var(--r-md);
+  font-family:var(--f-m); font-size:11px; color:var(--muted);
+  text-align:center; background:var(--surface); letter-spacing:.04em;
+}
+
+/* ── SOCIAL PROOF ────────────────────────────────────────── */
+.proof-section {
+  padding:clamp(64px,7vw,100px) 0;
+  border-bottom:1px solid var(--line);
+}
+.proof-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1px; background:var(--line);
+  border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden;
+  margin-top:clamp(24px,3vw,40px);
+}
+.ph-card {
+  padding:clamp(20px,2.5vw,30px);
+  background:var(--surface);
+  display:flex; flex-direction:column; gap:12px;
+}
+.ph-ava {
+  width:40px; height:40px; border-radius:50%;
+  background:rgba(255,255,255,.04); border:1px dashed var(--line2);
+}
+.ph-line { height:8px; border-radius:var(--r); background:rgba(255,255,255,.05); }
+.ph-line.s { width:55%; } .ph-line.m { width:75%; }
+.ph-tag {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:5px 10px; border-radius:var(--r);
+  background:var(--w-dim); border:1px solid var(--line2);
+  font-family:var(--f-m); font-size:10px; color:var(--muted);
+  letter-spacing:.08em; align-self:flex-start; text-transform:uppercase;
+}
+.proof-cta-note {
+  text-align:center; margin-top:18px;
+  font-family:var(--f-m); font-size:12px; color:var(--muted); letter-spacing:.04em;
+}
+.proof-cta-note a { color:#fff; text-decoration:underline; text-underline-offset:3px; }
+
+/* ── ABOUT ───────────────────────────────────────────────── */
+.about-section {
+  padding:clamp(64px,8vw,110px) 0;
+  border-bottom:1px solid var(--line);
+  background:var(--void); overflow:hidden;
+}
+.about-bg {
+  position:absolute; pointer-events:none; user-select:none;
+  font-family:var(--f-d); font-weight:800;
+  font-size:clamp(120px,18vw,260px);
+  color:rgba(255,255,255,.025);
+  letter-spacing:-.05em; line-height:1;
+  right:-1%; top:50%; transform:translateY(-50%);
+}
+.about-inner { max-width:800px; position:relative; z-index:2; }
+.about-quote {
+  font-family:var(--f-d); font-size:clamp(20px,2.5vw,32px);
+  font-weight:700; line-height:1.3; letter-spacing:-.015em;
+  color:var(--text); margin-bottom:20px;
+}
+.about-quote strong { color:var(--g); font-weight:700; }
+.about-body { font-size:15px; color:var(--muted); line-height:1.75; max-width:60ch; margin-bottom:20px; }
+.about-sig { font-family:var(--f-m); font-size:13px; color:var(--muted); letter-spacing:.06em; }
+
+/* ── FAQ ─────────────────────────────────────────────────── */
+.faq-section {
+  padding:clamp(64px,7vw,100px) 0;
+  border-bottom:1px solid var(--line);
+}
+.faq-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:8px; margin-top:clamp(28px,3vw,44px);
+}
+.faq-item {
+  border:1px solid var(--line); border-radius:var(--r-md);
+  overflow:hidden; background:var(--surface);
+}
+.faq-item summary {
+  padding:15px 18px; font-weight:700; font-size:14px;
+  cursor:pointer; display:flex; justify-content:space-between;
+  align-items:center; gap:12px; list-style:none;
+  transition:background .12s; letter-spacing:-.01em;
+  word-break:break-word;
+}
+.faq-item summary::-webkit-details-marker { display:none; }
+.faq-item summary:hover { background:var(--surface2); }
+.faq-item summary::after {
+  content:'+'; font-size:18px; color:var(--g);
+  flex-shrink:0; transition:transform .2s;
+}
+.faq-item[open] summary::after { transform:rotate(45deg); }
+.faq-item p {
+  padding:0 18px 15px; padding-top:12px; font-size:13px;
+  line-height:1.65; border-top:1px solid var(--line); color:var(--muted);
+}
+
+/* ── FINALE CTA — LICHTE SECTIE ──────────────────────────── */
+.cta-section {
+  padding:clamp(72px,9vw,120px) 0;
+  background:var(--light-bg);
+  border-top:3px solid var(--ink-text);
+  text-align:center; overflow:hidden;
+}
+.cta-bg {
+  position:absolute; pointer-events:none; user-select:none;
+  font-family:var(--f-d); font-weight:800;
+  font-size:clamp(80px,14vw,200px);
+  color:rgba(20,18,30,.04);
+  letter-spacing:-.04em; line-height:1; white-space:nowrap;
+  top:50%; left:50%; transform:translate(-50%,-50%);
+}
+.cta-inner { position:relative; z-index:2; }
+.cta-section h2 { color:var(--ink-text); margin-bottom:14px; }
+.cta-section p { color:var(--ink-muted); font-size:17px; margin-bottom:10px; max-width:52ch; margin-left:auto; margin-right:auto; }
+.cta-section .kicker { color:var(--ink-muted); }
+.cta-urgency {
+  display:inline-flex; align-items:center; gap:7px;
+  padding:6px 14px; margin-bottom:28px; border-radius:var(--r);
+  background:var(--light-s); border:1px solid var(--line-l2);
+  font-family:var(--f-m); font-size:11px; color:var(--ink-muted);
+  letter-spacing:.07em; text-transform:uppercase;
+}
+.cta-urgency::before {
+  content:''; width:6px; height:6px; border-radius:50%;
+  background:var(--ink-text); animation:blink 2s infinite;
+}
+.cta-acts { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:24px; }
+
+/* Payment logos in CTA */
+.pay-cta { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:10px; }
+.pay-cta-lbl { font-family:var(--f-m); font-size:10px; color:var(--ink-muted); letter-spacing:.08em; text-transform:uppercase; margin-right:4px; }
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+.footer {
+  border-top:1px solid var(--line);
+  padding: clamp(44px,5vw,64px) 0 0;
+  background:var(--void);
+}
+
+/* ── FOOTER TOP: brand (2fr) + 4 kolommen (1fr each) ──────── */
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+.footer-brand-col { padding-right: 16px; }
+.footer-brand { font-family:var(--f-d); font-size:20px; font-weight:800; letter-spacing:-.02em; margin-bottom:10px; color:var(--text); }
+.footer-tag { font-size:13px; color:var(--muted); line-height:1.65; margin-bottom:14px; max-width:30ch; }
+.footer-meta { font-family:var(--f-m); font-size:10.5px; color:var(--muted); line-height:1.9; letter-spacing:.03em; margin-top:10px; }
+
+/* ── FOOTER COLUMNS ───────────────────────────────────────── */
+.fc-title { font-family:var(--f-m); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:14px; display:block; }
+.footer-col a { display:block; font-size:13px; color:var(--muted); margin-bottom:8px; transition:color .12s; text-decoration:none; }
+.footer-col a:hover { color:var(--text); }
+
+/* ── FOOTER DIVIDER ───────────────────────────────────────── */
+.footer-divider {
+  height: 1px;
+  background: var(--line);
+  margin-top: clamp(32px,4vw,48px);
+}
+
+/* ── FOOTER BOTTOM BAR ────────────────────────────────────── */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0 18px;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-bottom-left {
+  font-family: var(--f-m); font-size: 11px;
+  color: var(--muted); letter-spacing: .04em;
+}
+
+/* ── PAYMENT RUNNER in footer-bottom ─────────────────────── */
+.footer-pay-runner {
+  display: flex; align-items: center; gap: 12px;
+  flex-wrap: wrap;
+}
+.footer-pay-runner img {
+  height: 16px; width: auto;
+  opacity: .35; filter: brightness(0) invert(1);
+  transition: opacity .15s;
+}
+.footer-pay-runner img:hover { opacity: .65; }
+
+/* ── RESPONSIVE FOOTER ────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .footer-top { grid-template-columns: 2fr 1fr 1fr 1fr; }
+  /* Arkeon col drops to second row */
+}
+@media (max-width: 860px) {
+  .footer-top { grid-template-columns: 1fr 1fr 1fr; }
+  .footer-brand-col { grid-column: 1 / -1; padding-right: 0; }
+  .footer-tag { max-width: 100%; }
+}
+@media (max-width: 580px) {
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 380px) {
+  .footer-top { grid-template-columns: 1fr; }
+}
+
+/* ── PAYMENT LOGOS ───────────────────────────────────────── */
+.pay-logos { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+.pay-logo svg { display:block; }
+.pay-logo { opacity:.55; transition:opacity .15s; }
+.pay-logo:hover { opacity:1; }
+/* Dark section logos = white */
+.pay-logos.on-dark .pay-logo path,
+.pay-logos.on-dark .pay-logo rect,
+.pay-logos.on-dark .pay-logo circle { fill:#fff !important; }
+/* Light section logos = dark */
+.pay-logos.on-light .pay-logo path,
+.pay-logos.on-light .pay-logo rect,
+.pay-logos.on-light .pay-logo circle { fill:var(--ink-text) !important; }
+
+/* ── STICKY WHATSAPP + MOBILE BAR ────────────────────────── */
+.wa-float {
+  position:fixed; bottom:80px; right:20px; z-index:95;
+  width:52px; height:52px; border-radius:50%;
+  background:#25D366;
+  display:none; align-items:center; justify-content:center;
+  box-shadow:0 6px 24px rgba(37,211,102,.40);
+  transition:transform .15s, box-shadow .15s;
+}
+.wa-float:hover { transform:scale(1.08); box-shadow:0 10px 32px rgba(37,211,102,.5); }
+.wa-float svg { width:26px; height:26px; }
+
+.sticky-bar {
+  display:none; position:fixed; bottom:0; left:0; right:0; z-index:90;
+  padding:10px 16px; background:rgba(7,6,10,.94);
+  backdrop-filter:blur(20px); border-top:1px solid var(--line);
+  gap:10px; transform:translateY(100%); transition:transform .3s ease;
+}
+.sticky-bar.on { transform:translateY(0); }
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width:980px) {
+  .hero-grid { grid-template-columns:1fr; }
+  .phone-col { margin-top: 32px; }
+  .fbd { display:none; }
+  .stats-grid { grid-template-columns:1fr; }
+  .stat-cell { border-right:none; border-bottom:1px solid var(--line); }
+  .stat-cell:last-child { border-bottom:none; }
+  .steps-grid { grid-template-columns:1fr; }
+  .deliverables { grid-template-columns:1fr; }
+  .del-left { grid-template-columns:1fr; border-right:none; border-bottom:1px solid var(--line); }
+  .del-right { min-width:auto; }
+  .prod-row { grid-template-columns:1fr; }
+  .prod-row.flip { direction:ltr; }
+  .sc-grid { grid-template-columns:1fr; }
+  .demos-row { grid-template-columns:1fr; }
+  .bezwaar-grid { grid-template-columns:1fr; }
+  .roi-grid { grid-template-columns:1fr; }
+  .roi-result-card { position:static; }
+  .pricing-grid { grid-template-columns:1fr; }
+  .pc.dim { opacity:1; }
+  .addons-grid { grid-template-columns:1fr 1fr; }
+  .proof-grid { grid-template-columns:1fr; }
+  .faq-grid { grid-template-columns:1fr; }
+  .nav { display:none; }
+  .header-phone { display:none; }
+  .nav-toggle { display:block; }
+  .sticky-bar { display:flex; }
+  .wa-float { display:flex; }
+  .header-cta .btn-ghost { display:none; }
+  /* Body padding so content clears sticky bar */
+  body { padding-bottom:68px; }
+  /* Phone max-width on tablet */
+  /* Phone: centreer en begrens breedte zodat ratio klopt */
+  .phone-shell { width: min(280px, 82vw); }
+  .phone-col::before { width:260px; height:360px; }
+}
+@media (max-width:580px) {
+  .cta-acts { flex-direction:column; align-items:stretch; }
+  .hero-acts .btn-ghost { display:none; }
+  .addons-grid { grid-template-columns:1fr; }
+  /* Phone fills available width on small screens, max narrow for tall phone ratio */
+  .phone-shell { width: min(260px, 78vw); }
+  /* Trust row wraps cleanly */
+  .trust-row { gap:10px; }
+  /* Pay logos wrap without overflow */
+  .pay-cta { gap:6px; }
+  .pay-logos { gap:5px; }
+  /* Stats smaller on very small screens */
+  .stat-n { font-size:clamp(52px,14vw,80px); }
+  /* Section padding tighter on mobile */
+  .how-section,
+  .product-section,
+  .scenarios-section,
+  .bezwaar-section,
+  .roi-section,
+  .pricing-section,
+  .proof-section,
+  .about-section,
+  .faq-section,
+  .cta-section { padding:clamp(44px,6vw,80px) 0; }
+  /* Demos row full width */
+  .demos-row { border-radius:var(--r-md); }
+  /* Sprint banner stacks */
+  .sprint-banner { flex-direction:column; }
+  .sprint-acts { width:100%; }
+  .sprint-acts .btn { flex:1; text-align:center; }
+  /* Hero h1 breathing room */
+  .hero { padding-top:clamp(40px,7vw,80px); }
+}
+
+body.nav-open .nav {
+  display:flex; flex-direction:column;
+  position:fixed; top:60px; left:0; right:0;
+  background:rgba(7,6,10,.97);
+  backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--line);
+  padding:10px 20px 18px; gap:3px; z-index:99;
+}
+body.nav-open .nav a { padding:11px 14px; font-size:12px; text-transform:uppercase; }
+
+/* ── ENTERPRISE BAR ──────────────────────────────────────── */
+.enterprise-bar {
+  margin-top:clamp(16px,2vw,22px);
+  border:1px solid var(--line2);
+  border-left:3px solid var(--g);
+  border-radius:var(--r-lg);
+  padding:clamp(18px,2vw,26px) clamp(20px,2.5vw,36px);
+  display:flex; align-items:center; justify-content:space-between;
+  gap:20px; flex-wrap:wrap;
+  background:var(--surface);
+}
+.enterprise-copy h3 { font-size:15px; color:var(--text); margin-bottom:4px; }
+.enterprise-copy p { font-size:13px; }
+
+/* ── EERSTE MAAND TOTAAL ─────────────────────────────────── */
+.pc-monthly-total {
+  font-family:var(--f-m); font-size:11px; color:var(--muted);
+  letter-spacing:.04em; margin-top:-4px;
+}
+.pc-monthly-total strong { color:var(--faint); }
+
+/* ── SVG fi icons ─────────────────────────────────────────── */
+.fi { width:12px; height:12px; flex-shrink:0; margin-top:3px; color:var(--g); display:block; }
+.fi.n { color:var(--muted); }
+.pc.featured .fi { color:rgba(255,255,255,.9); }
+
+/* ── VERTROUWEN & PRIVACY ────────────────────────────────── */
+.trust-section {
+  padding:clamp(64px,7vw,100px) 0;
+  border-bottom:1px solid var(--line);
+}
+.trust-cards {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1px; background:var(--line);
+  border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden;
+  margin-top:clamp(28px,3vw,44px);
+}
+.trust-card {
+  padding:clamp(22px,2.8vw,36px);
+  background:var(--surface);
+  display:flex; flex-direction:column; gap:12px;
+  transition:background .18s;
+}
+.trust-card:hover { background:var(--surface2); }
+.trust-card-icon {
+  width:42px; height:42px; border-radius:var(--r-md);
+  background:var(--g-dim); border:1px solid var(--g-ring);
+  display:grid; place-items:center; flex-shrink:0;
+  color:var(--g);
+}
+.trust-card-icon svg { width:20px; height:20px; }
+.trust-card h3 { color:var(--text); border-left:2px solid var(--g); padding-left:11px; }
+.trust-card p { font-size:13px; line-height:1.65; }
+
+/* ── ADDONS ICON SIZE FIX ─────────────────────────────────── */
+.ao-icon { width:42px; height:42px; border-radius:var(--r-md);
+  background:var(--g-dim); border:1px solid var(--g-ring);
+  display:grid; place-items:center; flex-shrink:0; color:var(--g); }
+.ao-icon svg { width:20px; height:20px; }
+
+/* ── SC ICON SIZE ─────────────────────────────────────────── */
+.sc-icon svg { width:20px; height:20px; }
+
+/* ── PAYMENT LOGOS ────────────────────────────────────────── */
+.pay-logo img { display:block; height:20px; width:auto; opacity:.55; transition:opacity .15s; filter:brightness(0); }
+.pay-logo img:hover { opacity:1; }
+.pay-cta .pay-logo img { filter:brightness(0); opacity:.6; }
+.pay-row { display:flex; flex-wrap:wrap; gap:6px; margin-top:14px; align-items:center; }
+.pay-row .pay-logo img { filter:brightness(0) invert(1); height:18px; }
+
+/* ── EXTRA RESPONSIVE ─────────────────────────────────────── */
+@media (max-width:980px) {
+  .trust-cards { grid-template-columns:1fr; }
+  .enterprise-bar { flex-direction:column; align-items:flex-start; }
+}
+
+/* ── MONO TAG (vervangt AI emoji icons) ───────────────────── */
+.mono-tag {
+  font-family: var(--f-m);
+  font-size: 11px; font-weight: 500;
+  letter-spacing: .06em; color: var(--g);
+  line-height: 1;
+}
+
+/* ── WAT SECTIE ───────────────────────────────────────────── */
+.wat-section {
+  padding: clamp(64px,7vw,100px) 0;
+  border-bottom: 1px solid var(--line);
+}
+.wat-grid {
+  display: grid; grid-template-columns: repeat(2,1fr);
+  gap: 1px; background: var(--line);
+  border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden;
+  margin-top: clamp(28px,3vw,44px);
+}
+.wat-card {
+  padding: clamp(22px,2.8vw,36px);
+  background: var(--surface);
+  display: flex; flex-direction: column; gap: 12px;
+  transition: background .18s;
+}
+.wat-card:hover { background: var(--surface2); }
+.wat-card .mono-tag {
+  font-size: 12px; color: var(--muted);
+}
+.wat-card h3 { color: var(--text); }
+.wat-card p { font-size: 13px; line-height: 1.65; }
+
+/* ── GESCHIKT VOOR ────────────────────────────────────────── */
+.geschikt-voor {
+  margin-top: clamp(20px,2.5vw,32px);
+}
+.tag-row {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;
+}
+.tag {
+  padding: 6px 13px; border-radius: var(--r-md);
+  border: 1px solid var(--line2); background: var(--surface);
+  font-family: var(--f-m); font-size: 11px; color: var(--faint);
+  letter-spacing: .05em;
+}
+.tag.tag-dim {
+  color: var(--muted); background: transparent;
+  border-color: var(--line);
+}
+
+/* ── VEEL GEHOORDE WENS ───────────────────────────────────── */
+.wensen-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: var(--line);
+  border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden;
+  margin-top: clamp(20px,2.5vw,30px);
+}
+.wens-card {
+  padding: clamp(20px,2.5vw,30px);
+  background: var(--surface2);
+  transition: background .18s;
+}
+.wens-card:hover { background: var(--surface); }
+.wens-q {
+  font-size: clamp(14px,1.4vw,17px);
+  color: var(--faint); line-height: 1.45;
+  font-weight: 600; letter-spacing: -.01em;
+  position:relative; padding-left:20px;
+}
+.wens-q::before {
+  content:'"'; position:absolute; left:0; top:-2px;
+  font-family:var(--f-d); font-size:22px; font-weight:800;
+  color:var(--g); line-height:1;
+}
+
+/* ── CHECK ICON (pricing feats) ───────────────────────────── */
+.fi-check {
+  font-family: var(--f-m); font-size: 11px;
+  color: var(--g); flex-shrink: 0; margin-top: 2px;
+  font-weight: 500;
+}
+.fi-check.n { color: var(--muted); }
+.pc.featured .fi-check { color: rgba(255,255,255,.9); }
+.pc-feat { display: flex; gap: 9px; align-items: flex-start; font-size: 13px; color: var(--faint); }
+.pc.featured .pc-feat { color: rgba(255,255,255,.85); }
+.pc-feat-no { opacity: .5; }
+
+/* ── TRUST CARD ICON overwrite ────────────────────────────── */
+.trust-card-icon .mono-tag { font-size: 13px; }
+.ao-icon .mono-tag { font-size: 13px; }
+.sc-icon .mono-tag { font-size: 13px; }
+
+/* ── PAYMENT LOGOS footer ─────────────────────────────────── */
+.pay-logo-footer {
+  opacity: .4; filter: brightness(0) invert(1);
+  transition: opacity .15s; display: block; height: 18px; width: auto;
+}
+.pay-logo-footer:hover { opacity: .8; }
+
+/* ── EXTRA RESPONSIVE WAT/WENSEN ─────────────────────────── */
+@media (max-width:980px) {
+  .wat-grid { grid-template-columns: 1fr 1fr; }
+  .wensen-grid { grid-template-columns: 1fr; }
+}
+@media (max-width:580px) {
+  .wat-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ── ICON CONTAINERS DISABLED ────────────────────────────── */
+.trust-card-icon,
+.ao-icon,
+.sc-icon {
+  display: none;
+}
+
+/* ── AO-CARD: remove gap that icon used to fill ──────────── */
+.ao-card {
+  gap: 10px;
+}
+
+/* ── TRUST-CARD: tighter without icon ────────────────────── */
+.trust-card {
+  gap: 10px;
+}
+
+/* ── RELAY BANNER COMPACT ────────────────────────────────── */
+.relay-banner-section {
+  padding: clamp(24px,3vw,40px) 0;
+  border-bottom: 1px solid var(--line);
+}
+.relay-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px; flex-wrap: wrap;
+  padding: clamp(20px,2.5vw,32px) clamp(22px,3vw,40px);
+  border: 1px solid var(--line2);
+  border-left: 3px solid rgba(255,255,255,.15);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+}
+.relay-bar-copy h3 { font-size: 16px; color: var(--text); margin-bottom: 5px; }
+.relay-bar-copy p { font-size: 13px; max-width: 56ch; }
+@media (max-width: 680px) {
+  .relay-bar { flex-direction: column; align-items: flex-start; }
+  .relay-bar .btn { width: 100%; text-align: center; }
+}
+
+/* ── FOUNDER QUOTE IN HERO ───────────────────────────────── */
+.founder-quote {
+  margin-top: 18px; margin-bottom: 4px;
+  font-size: clamp(12px,1.1vw,13px);
+  font-style: italic;
+  color: var(--muted);
+  max-width: 42ch;
+  line-height: 1.55;
+  padding-left: 11px;
+  border-left: 2px solid var(--g-ring);
+}
+
+/* ── WENS-SRC bronvermelding ─────────────────────────────── */
+.wens-src {
+  margin-top: 9px;
+  font-family: var(--f-m);
+  font-size: 10px; letter-spacing: .07em;
+  color: var(--muted); text-transform: uppercase;
+}
+
+/* ── FOOTER ARKEON ───────────────────────────────────────── */
+.footer-arkeon {
+  display: flex; align-items: center; gap: 7px;
+  margin-top: 10px; margin-bottom: 4px;
+}
+.footer-arkeon-label {
+  font-family: var(--f-m); font-size: 10px;
+  color: var(--muted); letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.footer-arkeon-name {
+  font-family: var(--f-m); font-size: 11px;
+  color: var(--faint); letter-spacing: .04em;
+  text-decoration: none; border-bottom: 1px solid var(--line2);
+  padding-bottom: 1px; transition: color .15s, border-color .15s;
+}
+.footer-arkeon-name:hover { color: var(--text); border-color: var(--faint); }
+
+/* ── FAVICON SVG fallback kleur ──────────────────────────── */
+/* favicon.svg wordt inline geserverd door server */
+
+/* ── COOKIE BANNER ───────────────────────────────────────── */
+.cookie-banner {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(13,12,19,.97);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255,255,255,.10);
+  padding: clamp(14px,2vw,20px) clamp(16px,3vw,40px);
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  transform: translateY(0); transition: transform .3s ease;
+  font-family: var(--f-m);
+}
+.cookie-banner.hidden { transform: translateY(120%); pointer-events: none; }
+.cookie-banner p {
+  flex: 1; min-width: 220px;
+  font-size: 12px; color: rgba(240,238,248,.6);
+  line-height: 1.6; letter-spacing: .03em; margin: 0;
+}
+.cookie-banner p a {
+  color: rgba(240,238,248,.85); text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.cookie-acts {
+  display: flex; gap: 8px; flex-shrink: 0; flex-wrap: wrap;
+}
+.cookie-btn {
+  padding: 9px 18px; border-radius: 8px;
+  font-family: var(--f-m); font-size: 11px; font-weight: 500;
+  letter-spacing: .07em; text-transform: uppercase;
+  cursor: pointer; border: 1.5px solid transparent;
+  transition: background .12s, box-shadow .12s;
+  min-height: 38px;
+}
+.cookie-btn-accept {
+  background: #fff; color: #07060A; border-color: #fff;
+}
+.cookie-btn-accept:hover { box-shadow: 0 4px 16px rgba(255,255,255,.2); }
+.cookie-btn-decline {
+  background: transparent; color: rgba(240,238,248,.5);
+  border-color: rgba(255,255,255,.12);
+}
+.cookie-btn-decline:hover { color: rgba(240,238,248,.8); border-color: rgba(255,255,255,.22); }
+@media (max-width: 580px) {
+  .cookie-banner { flex-direction: column; align-items: stretch; padding-bottom: 80px; }
+  .cookie-acts { flex-direction: column; }
+  .cookie-btn { text-align: center; }
+}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"SlimService","description":"WhatsApp intake automatisering voor vakmensen.","url":"https://slimservice.nl","telephone":"+31687699731","email":"hello@slimservice.nl","address":{"@type":"PostalAddress","addressCountry":"NL"}}
+</script>
+</head>
+<body>
+
+<header class="header">
+  <div class="wrap">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <div class="brand-dot">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M7 1C3.686 1 1 3.686 1 7c0 1.05.27 2.036.744 2.892L1 13l3.198-.73A5.972 5.972 0 007 13c3.314 0 6-2.686 6-6S10.314 1 7 1z" fill="#0D0C13"/></svg>
+        </div>
+        <span class="brand-name">SlimService</span>
+        <span class="header-phone">06 8769 9731</span>
+      </a>
+      <nav class="nav" id="mnav" aria-label="Hoofdnavigatie">
+        <a href="/sprint/" class="nav-sprint">SPRINT</a>
+        <a href="#sectoren">VOOR WIE</a>
+        <a href="#hoe" class="active">HOE</a>
+        <a href="#pakketten">PAKKETTEN</a>
+        <a href="#roi">ROI</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="header-cta">
+        <button class="nav-toggle" id="ntog" aria-expanded="false" aria-controls="mnav">MENU</button>
+        <a class="btn btn-ghost" href="https://calendly.com/hello-slimservice/15min" target="_blank" rel="noopener">Plan 15 min</a>
+        <a class="btn btn-primary" href="https://wa.me/31687699731?text=Hoi%20SlimService%2C%20snelle%20check.%0A%0ABedrijfsnaam%3A%20___%0ABranche%3A%20___%0AHoeveel%20afspraken%20per%20week%3A%20___%0AVeelvoorkomende%20vraag%3A%20___%0A%0AIk%20wil%3A%20(1)%20Sprint%20of%20(2)%20Doorlopend%20SlimService" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">WA</div>
+  <div class="wrap">
+    <div class="hero-grid">
+
+      <div class="reveal">
+        <div class="hero-pill">Binnen 7 dagen live · Founder pricing actief</div>
+        <h1>WhatsApp,<br>maar dan<br><span class="accent">professioneel</span><br>geregeld.</h1>
+        <p class="lead" style="margin-top:22px">Minder gemiste leads. Minder no-shows. Minder ge-app. Binnen 7 dagen live met menselijke hand-off wanneer het moet.</p>
+        <div class="hero-acts" style="margin-top:28px">
+          <a class="btn btn-primary" href="https://wa.me/31687699731?text=Hoi%20SlimService%2C%20snelle%20check.%0A%0ABedrijfsnaam%3A%20___%0ABranche%3A%20___%0AHoeveel%20afspraken%20per%20week%3A%20___%0AVeelvoorkomende%20vraag%3A%20___%0A%0AIk%20wil%3A%20(1)%20Sprint%20of%20(2)%20Doorlopend%20SlimService" target="_blank" rel="noopener">Start via WhatsApp</a>
+          <a class="btn btn-green" href="#roi">Check je winst</a>
+          <a class="btn btn-ghost" href="https://calendly.com/hello-slimservice/15min" target="_blank" rel="noopener">Plan 15 min intake</a>
+        </div>
+        <div class="founder-quote">"Ik bouw dit systeem voor je en blijf het verbeteren zolang jij klant bent."</div>
+        <div class="trust-row">
+          <span>KvK 93320132</span>
+          <span>Mollie betalingen</span>
+          <span>Hand-off altijd mogelijk</span>
+          <span>7 dagen live</span>
+        </div>
+      </div>
+
+      <div class="phone-col reveal" style="transition-delay:.14s">
+        <div class="phone-shell">
+          <div class="phone-bar">
+            <div class="p-ava">SS</div>
+            <div>
+              <div class="p-name">SlimService</div>
+              <div class="p-status">ONLINE</div>
+            </div>
+          </div>
+          <div class="phone-tabs">
+            <button class="ptab on" data-p="a">Afspraak</button>
+            <button class="ptab" data-p="o">Offerte</button>
+            <button class="ptab" data-p="w">Wijzigen</button>
+          </div>
+          <div class="chat-area" id="chat-area"></div>
+          <div class="phone-input">
+            <div class="pi-field">Bericht…</div>
+            <div class="pi-send">↑</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="scroll-hint" aria-hidden="true">↓</div>
+  </div>
+</section>
+
+<div class="ticker-band" aria-hidden="true">
+  <div class="ticker-track">
+    <div class="t-item"><span class="td"></span><span class="tl">SS /</span><strong>AANBETALING ONTVANGEN</strong></div>
+    <div class="t-item"><span class="td"></span><span class="tl">SS /</span><strong>AFSPRAAK BEVESTIGD: MORGEN 10:00</strong></div>
+    <div class="t-item"><span class="td"></span><span class="tl">SS /</span><strong>NIEUWE AANVRAAG: INTAKE INGEVULD</strong></div>
+    <div class="t-item"><span class="td"></span><span class="tl">SS /</span><strong>REMINDER VERSTUURD: 2 UUR VOORAF</strong></div>
+    <div class="t-item"><span class="td"></span><span class="tl">SS /</span><strong>LOCATIE GEDEELD + ROUTE GESTUURD</strong></div>
+    <div class="t-item"><span class="td"></span><span class="tl">SS /</span><strong>HANDOFF: KLANT STAAT INGEPLAND</strong></div>
+    <div class="t-item"><span class="td"></span><span class="tl">SS /</span><strong>OFFERTE AANVRAAG VERWERKT</strong></div>
+    <div class="t-item"><span class="td"></span><span class="tl">SS /</span><strong>NO-SHOW POLICY VERSTUURD</strong></div>
+    <div class="t-item"><span class="td"></span><span class="tl">SS /</span><strong>AANBETALING ONTVANGEN</strong></div>
+    <div class="t-item"><span class="td"></span><span class="tl">SS /</span><strong>AFSPRAAK BEVESTIGD: MORGEN 10:00</strong></div>
+    <div class="t-item"><span class="td"></span><span class="tl">SS /</span><strong>NIEUWE AANVRAAG: INTAKE INGEVULD</strong></div>
+    <div class="t-item"><span class="td"></span><span class="tl">SS /</span><strong>REMINDER VERSTUURD: 2 UUR VOORAF</strong></div>
+    <div class="t-item"><span class="td"></span><span class="tl">SS /</span><strong>LOCATIE GEDEELD + ROUTE GESTUURD</strong></div>
+    <div class="t-item"><span class="td"></span><span class="tl">SS /</span><strong>HANDOFF: KLANT STAAT INGEPLAND</strong></div>
+    <div class="t-item"><span class="td"></span><span class="tl">SS /</span><strong>OFFERTE AANVRAAG VERWERKT</strong></div>
+    <div class="t-item"><span class="td"></span><span class="tl">SS /</span><strong>NO-SHOW POLICY VERSTUURD</strong></div>
+  </div>
+</div>
+
+<section class="stats-section reveal">
+  <div class="wrap-full">
+    <div class="stats-grid">
+      <div class="stat-cell">
+        <span class="stat-n" data-target="7">0<span class="u"> dgn</span></span>
+        <div class="stat-l">Gemiddeld live na intake</div>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-n" data-target="15">0<span class="u"> min</span></span>
+        <div class="stat-l">Intake gesprek, geen verkooppraat</div>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-n" data-target="1">0<span class="u"> werkdag</span></span>
+        <div class="stat-l">Reactietijd op jouw berichten</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wat-section" id="wat">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker live">Wat je krijgt</span>
+      <h2>Wat SlimService voor je doet.</h2>
+    </div>
+    <div class="wat-grid reveal" style="transition-delay:.08s">
+      <div class="wat-card">
+        <h3>Direct antwoord</h3>
+        <p>Standaardvragen direct afgehandeld, ook buiten openingstijden. Klanten hoeven niet te wachten.</p>
+      </div>
+      <div class="wat-card">
+        <h3>Intake en afspraken</h3>
+        <p>Intake die klopt, afspraak die past, en pas doorzetten naar jou waar het nodig is.</p>
+      </div>
+      <div class="wat-card">
+        <h3>Menselijke hand-off</h3>
+        <p>Als het nodig is gaat het direct door naar jou. Jij blijft altijd in control.</p>
+      </div>
+      <div class="wat-card">
+        <h3>No-shows omlaag</h3>
+        <p>Bevestiging of betaalverzoek voor extra agenda-zekerheid. Afspraken die écht doorgaan.</p>
+      </div>
+    </div>
+
+    <div class="geschikt-voor reveal" style="transition-delay:.1s">
+      <span class="kicker" style="margin-bottom:12px">Geschikt voor</span>
+      <div class="tag-row">
+        <span class="tag">Dienstverleners</span>
+        <span class="tag">Klussers</span>
+        <span class="tag">Salons</span>
+        <span class="tag">Barbers</span>
+        <span class="tag">Automotive</span>
+        <span class="tag">Praktijken</span>
+        <span class="tag tag-dim">Afspraken</span>
+        <span class="tag tag-dim">Intake</span>
+        <span class="tag tag-dim">Opvolging</span>
+        <span class="tag tag-dim">No-show reductie</span>
+      </div>
+    </div>
+
+    <span class="kicker" style="display:block;margin-bottom:14px;margin-top:clamp(32px,4vw,52px)">Veel gehoorde wens</span>
+    <div class="wensen-grid reveal" style="transition-delay:.12s">
+      <div class="wens-card">
+        <div class="wens-q">"Meer tijd. Minder appjes. Meer afspraken."</div>
+        <div class="wens-src">Kapper · Rotterdam</div>
+      </div>
+      <div class="wens-card">
+        <div class="wens-q">"Gewoon duidelijk: wat heb je nodig en wanneer kan ik?"</div>
+        <div class="wens-src">Klusbedrijf · Utrecht</div>
+      </div>
+      <div class="wens-card">
+        <div class="wens-q">"Alleen doorzetten naar mij als het écht moet."</div>
+        <div class="wens-src">Praktijk · Amsterdam</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how-section" id="hoe">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker live">Hoe het werkt</span>
+      <h2>Drie stappen.<br>Dan staat het.</h2>
+      <p class="lead" style="margin-top:10px;max-width:50ch">Je hoeft niks voor te bereiden. Geen technische kennis nodig. Jij vertelt, wij bouwen, jij geeft akkoord.</p>
+    </div>
+    <div class="steps-grid reveal" style="transition-delay:.08s">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <span class="kicker">Intake · 15 tot 30 min</span>
+        <h3>Jij vertelt, wij luisteren</h3>
+        <p>Topvragen, dienstenmenu, openingstijden en wanneer je wilt doorzetten naar een mens. Niks voorbereiden.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <span class="kicker">Setup · Wij bouwen</span>
+        <h3>Antwoorden, routing, afspraken</h3>
+        <p>Optioneel no-show beleid met boekingsfee. Jij geeft akkoord op het eindresultaat. Wij zetten live.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <span class="kicker">Live + verbeteren</span>
+        <h3>Live en daarna beter</h3>
+        <p>Testen, live. Daarna verbeteren we op basis van echte vragen uit jouw gesprekken.</p>
+      </div>
+    </div>
+    <div class="deliverables reveal" style="transition-delay:.12s">
+      <div class="del-left">
+        <div class="tick-row"><span class="tick-i">✓</span>WhatsApp receptionist — vragen, intake, afspraken</div>
+        <div class="tick-row"><span class="tick-i">✓</span>FAQ en kennisbank op maat</div>
+        <div class="tick-row"><span class="tick-i">✓</span>Altijd menselijke hand-off mogelijk</div>
+        <div class="tick-row"><span class="tick-i">✓</span>Optioneel: boekingsfee en no-show beleid</div>
+        <div class="tick-row"><span class="tick-i">✓</span>Maandelijkse samenvatting: volume en topvragen</div>
+        <div class="tick-row"><span class="tick-i">✓</span>Koppeling WhatsApp Business — optioneel agenda of CRM</div>
+      </div>
+      <div class="del-right">
+        <div class="live-badge">Binnen 7 dagen live</div>
+        <p style="font-size:12px;text-align:center;max-width:22ch;font-family:var(--f-m);letter-spacing:.04em;color:var(--muted)">We koppelen met je agenda of CRM als dat waarde toevoegt</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="product-section" id="product-1">
+  <div class="wrap">
+    <div class="prod-row reveal">
+      <div class="prod-img">
+        <img src="assets/visual_whatsapp_flow.webp" alt="WhatsApp intake flow in werking" loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+        <div class="prod-img-ph" style="display:none">visual_whatsapp_flow.webp</div>
+      </div>
+      <div class="prod-txt">
+        <span class="kicker live">WhatsApp intake</span>
+        <h2>Intake in 3 tot 5 berichten.</h2>
+        <p class="lead">Jij hoeft niet alles zelf te typen. SlimService stelt de juiste vragen, verzamelt de info en zet de afspraak klaar.</p>
+        <p>Klant typt, systeem vraagt, jij ontvangt een compleet dossier. Geen heen-en-weer meer.</p>
+        <a class="btn btn-green" href="https://wa.me/31687699731" target="_blank" rel="noopener">Bekijk live via WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="product-section alt" id="product-2">
+  <div class="wrap">
+    <div class="prod-row flip reveal">
+      <div class="prod-img">
+        <img src="assets/visual_handoff.webp" alt="Menselijke hand-off moment" loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+        <div class="prod-img-ph" style="display:none">visual_handoff.webp</div>
+      </div>
+      <div class="prod-txt">
+        <span class="kicker">Menselijke hand-off</span>
+        <h2>Jij neemt het over als het nodig is.</h2>
+        <p class="lead">SlimService herkent wanneer een klant jou echt nodig heeft. Dan krijg jij een seintje.</p>
+        <p>Geen robots die doorslaan. Jij blijft altijd in control over uitzonderingen en toon.</p>
+        <a class="btn btn-ghost" href="https://calendly.com/hello-slimservice/15min" target="_blank" rel="noopener">Plan een intake</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="product-section" id="product-3">
+  <div class="wrap">
+    <div class="prod-row reveal">
+      <div class="prod-img">
+        <img src="assets/visual_value_report.webp" alt="Value report overzicht" loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+        <div class="prod-img-ph" style="display:none">visual_value_report.webp</div>
+      </div>
+      <div class="prod-txt">
+        <span class="kicker live">Value report</span>
+        <h2>Elke week zien wat het oplevert.</h2>
+        <p class="lead">Tijdwinst, topvragen, hoeveel gemiste leads je voorkwam. Helder overzicht direct in je inbox.</p>
+        <p>Geen dashboard om in te loggen. Gewoon bruikbare info zonder gedoe.</p>
+        <a class="btn btn-primary" href="#roi">Bereken jouw winst</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="scenarios-section" id="sectoren">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker live">Sectoren</span>
+      <h2>Herken jij jezelf hierin?</h2>
+      <p class="lead" style="margin-top:10px;max-width:52ch">SlimService werkt hetzelfde onder de motorkap. De flow past zich aan op jouw branche en werkwijze.</p>
+    </div>
+    <div class="sc-grid">
+      <div class="sc-card reveal">
+        <div>
+          <h3>Salons &amp; Barbers</h3>
+          <div class="sc-sub">Afspraken · no-shows · behandelingen</div>
+        </div>
+        <p>Minder no-shows zonder gedoe. Afspraak pas definitief na bevestiging of betaallink.</p>
+        <div class="sc-steps">
+          <div class="sc-step"><span class="sn">1</span>Klant kiest behandeling via WhatsApp</div>
+          <div class="sc-step"><span class="sn">2</span>SlimService stelt tijden voor en verzamelt basisinfo</div>
+          <div class="sc-step"><span class="sn">3</span>Betaallink of bevestiging maakt afspraak definitief</div>
+        </div>
+        <div class="sc-acts">
+          <a class="btn btn-green btn-full" href="https://calendly.com/hello-slimservice/15min" target="_blank" rel="noopener">Plan intake</a>
+          <a class="btn btn-ghost btn-full" href="https://slimservicesalondemo.netlify.app/" target="_blank" rel="noopener">Zie live demo</a>
+        </div>
+      </div>
+      <div class="sc-card reveal" style="transition-delay:.08s">
+        <div>
+          <h3>Klussers &amp; Automotive</h3>
+          <div class="sc-sub">Offertes · planning · opvolging</div>
+        </div>
+        <p>Meer klussen, minder ping-pong. SlimService pakt offertevragen over en zet ze om naar een duidelijke afspraakflow.</p>
+        <div class="sc-steps">
+          <div class="sc-step"><span class="sn">1</span>Klant vult aanvraag in — locatie, klus, foto's</div>
+          <div class="sc-step"><span class="sn">2</span>SlimService plant moment of zet opties klaar</div>
+          <div class="sc-step"><span class="sn">3</span>Automatische opvolging tot akkoord</div>
+        </div>
+        <div class="sc-acts">
+          <a class="btn btn-green btn-full" href="https://calendly.com/hello-slimservice/15min" target="_blank" rel="noopener">Plan intake</a>
+          <a class="btn btn-ghost btn-full" href="https://slimserviceautodetailer.netlify.app/" target="_blank" rel="noopener">Zie live demo</a>
+        </div>
+      </div>
+      <div class="sc-card reveal" style="transition-delay:.16s">
+        <div>
+          <h3>Praktijken &amp; Dienstverleners</h3>
+          <div class="sc-sub">Intake · triage · terugbelverzoeken</div>
+        </div>
+        <p>Rust in je communicatie. Eerst intake en ordening, daarna pas jij waar het echt nodig is.</p>
+        <div class="sc-steps">
+          <div class="sc-step"><span class="sn">1</span>Cliënt meldt zich en kiest onderwerp</div>
+          <div class="sc-step"><span class="sn">2</span>Gerichte vragen, alles overzichtelijk klaargezet</div>
+          <div class="sc-step"><span class="sn">3</span>Alleen hand-off cases komen bij jou terecht</div>
+        </div>
+        <div class="sc-acts">
+          <a class="btn btn-green btn-full" href="https://calendly.com/hello-slimservice/15min" target="_blank" rel="noopener">Plan intake</a>
+          <a class="btn btn-ghost btn-full" href="https://slimservicedansschooldemo.netlify.app/" target="_blank" rel="noopener">Zie live demo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- RELAY BANNER -->
+<section class="relay-banner-section">
+  <div class="wrap">
+    <div class="relay-bar reveal">
+      <div class="relay-bar-copy">
+        <span class="kicker" style="margin-bottom:5px">Volgende stap · Relay (early access)</span>
+        <h3>Als SlimService te klein wordt.</h3>
+        <p>Voor teams, meerdere locaties of hogere SLA. Orchestration en governance bovenop SlimService. Op aanvraag.</p>
+      </div>
+      <a class="btn btn-ghost" href="https://wa.me/31687699731?text=Ik%20wil%20Relay%20demo%20(teams%2Fmulti-location).%20Kun%20je%20me%20de%20volgende%20stap%20sturen%3F" target="_blank" rel="noopener">Vraag Relay demo</a>
+    </div>
+  </div>
+</section>
+<section class="bezwaar-section" id="bezwaren">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Eerlijke antwoorden</span>
+      <h2>Wat je misschien denkt.</h2>
+      <p class="lead" style="margin-top:10px;max-width:50ch">Drie twijfels die we regelmatig horen en wat we daar eerlijk op antwoorden.</p>
+    </div>
+    <div class="bezwaar-grid">
+      <div class="bz-card reveal">
+        <div class="bz-q">"Mijn klanten willen een mens, geen bot."</div>
+        <p class="bz-a">Begrijpelijk. SlimService antwoordt in <strong>jouw toon</strong>, met jouw informatie. Klanten merken het verschil niet. En als iemand toch een mens wil, kan dat altijd. Dat is precies waar de hand-off voor is. Jij bepaalt wanneer je instapt.</p>
+      </div>
+      <div class="bz-card reveal" style="transition-delay:.08s">
+        <div class="bz-q">"Ik weet niet of dit werkt voor mijn situatie."</div>
+        <p class="bz-a">Daarom bestaat de <strong>Sprint</strong>: één flow, live binnen een dag, zonder grote investering. Werkt het niet zoals verwacht? Dan stop je. Werkt het wel? Dan heb je het bewijs dat je nodig had. <strong>Nul risico.</strong></p>
+      </div>
+      <div class="bz-card reveal" style="transition-delay:.16s">
+        <div class="bz-q">"Ik heb geen tijd om dit op te zetten."</div>
+        <p class="bz-a">Dat is precies het punt. Jij hoeft <strong>niks voor te bereiden</strong>. Een kwartier intake, wij bouwen de rest. Jij geeft akkoord op het eindresultaat. De enige investering is het eerste gesprek.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="roi-section section-light" id="roi">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker light">ROI check</span>
+      <h2>Wat kost niets doen jou per maand?</h2>
+      <p class="lead" style="margin-top:10px;max-width:52ch">Geen loze beloftes. Vul je eigen cijfers in. Dit is een rekentool, geen claim.</p>
+    </div>
+    <div class="roi-grid reveal" style="transition-delay:.1s">
+      <div class="roi-input-card">
+        <h3>Jouw situatie</h3>
+        <p>Tel alle kanalen mee: WhatsApp, telefoon, Instagram DM.</p>
+        <div class="roi-form">
+          <div>
+            <label class="roi-lbl" for="rq">Aanvragen per week</label>
+            <input class="roi-inp" type="number" id="rq" value="35" min="0">
+          </div>
+          <div>
+            <label class="roi-lbl" for="rv">Gemiddelde orderwaarde (€)</label>
+            <input class="roi-inp" type="number" id="rv" value="120" min="0">
+          </div>
+          <div>
+            <label class="roi-lbl" for="rl">Gemiste leads (%)</label>
+            <input class="roi-inp" type="number" id="rl" value="20" min="0" max="100">
+          </div>
+          <div>
+            <label class="roi-lbl" for="rm">Minuten per aanvraag heen-en-weer</label>
+            <input class="roi-inp" type="number" id="rm" value="6" min="0">
+          </div>
+          <div>
+            <label class="roi-lbl" for="rr">Uurtarief (€)</label>
+            <input class="roi-inp" type="number" id="rr" value="65" min="0">
+          </div>
+        </div>
+      </div>
+      <div class="roi-result-card">
+        <div class="roi-out-block">
+          <div class="roi-out-lbl">Gemiste omzet (op basis van gemiste leads)</div>
+          <div class="roi-out-n" id="r-omzet">€ 3.612</div>
+          <div class="roi-out-sub">per maand · indicatief</div>
+        </div>
+        <div class="roi-out-block">
+          <div class="roi-out-lbl">Kosten van heen-en-weer tijd (eigen uurtarief)</div>
+          <div class="roi-out-n" id="r-tijd">€ 978</div>
+          <div class="roi-out-sub">per maand · indicatief</div>
+        </div>
+        <div class="roi-out-block">
+          <div class="roi-out-lbl">Totaal indicatief (omzet + tijd)</div>
+          <div class="roi-out-n total" id="r-totaal">€ 4.590</div>
+          <div class="roi-out-sub">per maand · indicatief</div>
+        </div>
+        <div class="roi-formula-note">Berekening: (aanvragen/week × 4.3 × gemiste leads% × orderwaarde) + (aanvragen/week × 4.3 × min ÷ 60 × uurtarief)</div>
+        <a class="btn btn-primary-dark btn-full" id="rwa" href="#" target="_blank" rel="noopener">Stuur mij dit resultaat via WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing-section" id="pakketten">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Pakketten</span>
+      <h2>Kies je startpunt.</h2>
+      <p class="lead" style="margin-top:10px;max-width:52ch">Setup is <strong style="color:var(--text)">50% bij start, 50% bij live</strong>. Maandelijkse kosten via Change Credits — voorspelbaar, geen verrassingen. Excl. btw.</p>
+      <div class="urgency-pill">Nog 5 onboarding plekken deze maand</div>
+    </div>
+    <div class="pricing-grid">
+      <div class="pc dim reveal">
+        <div class="pc-name">Kickstart</div>
+        <div class="pc-price">€1.495 <span>/ setup</span></div>
+        <div class="pc-monthly">€199/m · 3 Change Credits · Founder pricing</div>
+        <div class="pc-desc">Intake en opvolging live, zodat aanvragen niet meer weglekken.</div>
+        <hr class="pc-rule">
+        <div class="pc-feats">
+          <div class="pc-feat"><span class="fi-check">✓</span>Intake flow + basis opvolging</div>
+          <div class="pc-feat"><span class="fi-check">✓</span>Conversie-copy voor afspraak en aanvraag</div>
+          <div class="pc-feat"><span class="fi-check">✓</span>3 Change Credits per maand</div>
+          <div class="pc-feat"><span class="fi-check">✓</span>Reactie binnen 2 werkdagen</div>
+          <div class="pc-feat pc-feat-no"><span class="fi-check n">–</span>Complexe integraties</div>
+        </div>
+        <div class="pc-monthly-total">Eerste maand totaal: <strong>€1.694</strong></div>
+        <div class="pc-cta">
+          <a class="btn btn-ghost btn-full" href="https://calendly.com/hello-slimservice/15min" target="_blank" rel="noopener">Plan intake</a>
+        </div>
+      </div>
+      <div class="pc featured reveal" style="transition-delay:.08s">
+        <div class="pc-badge">Meest gekozen</div>
+        <div class="pc-name">Scale</div>
+        <div class="pc-price">€2.999 <span>/ setup</span></div>
+        <div class="pc-monthly">€349/m · 6 Change Credits · Founder pricing</div>
+        <div class="pc-desc">Van eerste bericht tot geboekte afspraak, inclusief opvolging als een klant niet reageert.</div>
+        <hr class="pc-rule">
+        <div class="pc-feats">
+          <div class="pc-feat"><span class="fi-check">✓</span>Intake + opvolging + scenario's</div>
+          <div class="pc-feat"><span class="fi-check">✓</span>Bezwaren en geen-reactie flows</div>
+          <div class="pc-feat"><span class="fi-check">✓</span>Copy-optimalisatie</div>
+          <div class="pc-feat"><span class="fi-check">✓</span>6 Change Credits per maand</div>
+          <div class="pc-feat"><span class="fi-check">✓</span>Reactie binnen 1 werkdag</div>
+        </div>
+        <div class="pc-monthly-total" style="color:rgba(255,255,255,.6)">Eerste maand totaal: <strong style="color:#fff">€3.348</strong></div>
+        <div class="pc-cta">
+          <a class="btn btn-primary btn-full" href="https://calendly.com/hello-slimservice/15min" target="_blank" rel="noopener">Plan intake</a>
+        </div>
+      </div>
+      <div class="pc dim reveal" style="transition-delay:.16s">
+        <div class="pc-name">Full Service</div>
+        <div class="pc-price">€4.500 <span>/ setup</span></div>
+        <div class="pc-monthly">€599/m · 12 Change Credits · Founder pricing</div>
+        <div class="pc-desc">Structureel onderhoud met vaste cadence en snelle aanpassingen op basis van echte data.</div>
+        <hr class="pc-rule">
+        <div class="pc-feats">
+          <div class="pc-feat"><span class="fi-check">✓</span>Alles uit Scale</div>
+          <div class="pc-feat"><span class="fi-check">✓</span>Bredere flows + structurele verbetering</div>
+          <div class="pc-feat"><span class="fi-check">✓</span>12 Change Credits per maand</div>
+          <div class="pc-feat"><span class="fi-check">✓</span>Maandelijkse check-in</div>
+          <div class="pc-feat"><span class="fi-check">✓</span>Reactie binnen 24 uur</div>
+        </div>
+        <div class="pc-monthly-total">Eerste maand totaal: <strong>€5.099</strong></div>
+        <div class="pc-cta">
+          <a class="btn btn-ghost btn-full" href="https://calendly.com/hello-slimservice/15min" target="_blank" rel="noopener">Plan intake</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="enterprise-bar reveal">
+      <div class="enterprise-copy">
+        <span class="kicker" style="margin-bottom:6px">Enterprise / Command</span>
+        <h3>Meerdere locaties, bredere integraties of hogere SLA?</h3>
+        <p>Setup vanaf €7.500 · €999/m · maatwerk governance en orchestration</p>
+      </div>
+      <a class="btn btn-ghost" href="https://calendly.com/hello-slimservice/15min" target="_blank" rel="noopener">Plan intake</a>
+    </div>
+
+    <p class="pc-credits-note reveal" style="margin-top:14px;text-align:center">
+      <strong>Wat is een Change Credit?</strong> Eén Credit = één wijziging of verbetering aan je flow, uitgevoerd door ons. Credits resetten maandelijks en zijn niet overdraagbaar. Extra credits: €55 per stuk. Bundels: 10 = €520 · 20 = €990.
+    </p>
+    <p class="pc-credits-note reveal" style="margin-top:8px;text-align:center;opacity:.6">
+      Founder pricing is beperkt beschikbaar. Daarna Standard: Kickstart €249/m (4 credits) · Scale €399/m (8 credits) · Full €699/m (16 credits). Bestaande klanten houden hun prijs zolang ze actief blijven.
+    </p>
+
+    <div class="addons-section reveal" style="transition-delay:.1s">
+      <span class="kicker" style="margin-bottom:12px">Add-ons</span>
+      <div class="addons-grid">
+        <div class="ao-card">
+          <div class="ao-name">No-show Shield</div>
+          <p class="ao-desc">Boekingsfee via betaallink, no-show policy en twee WhatsApp templates. Afspraken worden definitief.</p>
+          <div class="ao-price">Inbegrepen bij setup</div>
+        </div>
+        <div class="ao-card">
+          <div class="ao-name">Social Intake</div>
+          <p class="ao-desc">Instagram en TikTok DMs en link-in-bio verkeer doorsturen naar WhatsApp. Minder chaos, alles centraal.</p>
+          <div class="ao-price">Setup €250 · €49/m</div>
+        </div>
+        <div class="ao-card">
+          <div class="ao-name">Missed Call Rescue</div>
+          <p class="ao-desc">Gemiste oproep? Automatisch een WhatsApp-bericht om terug te bellen. Leads worden direct opgevangen.</p>
+          <div class="ao-price">Setup €250 · €39/m</div>
+        </div>
+        <div class="ao-card">
+          <div class="ao-name">Notificatiebundels</div>
+          <p class="ao-desc">Meer bevestigingen en reminders nodig? Schaal op zonder je hele pakket te upgraden. Maandelijks aanpasbaar.</p>
+          <div class="ao-price">Setup €250 · €19 tot €79/m</div>
+        </div>
+        <div class="ao-card">
+          <div class="ao-name">Upsell &amp; Prepay</div>
+          <p class="ao-desc">Upsell prompts op het juiste moment en betaallink voor aanbetaling via WhatsApp. Meer omzet per afspraak.</p>
+          <div class="ao-price">Setup €350 · €79/m</div>
+        </div>
+        <div class="ao-card">
+          <div class="ao-name">Value Report</div>
+          <p class="ao-desc">Wekelijks of tweewekelijks overzicht: tijdwinst, topvragen, gemiste leads voorkomen. Direct in je inbox.</p>
+          <div class="ao-price">Inbegrepen bij Scale en Full</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sprint-banner reveal">
+      <div class="sprint-copy">
+        <span class="kicker" style="margin-bottom:6px">Pilot · Quick win</span>
+        <h3>Liever eerst een pilot? <strong style="color:#fff">Sprint</strong></h3>
+        <p>Eén WhatsApp intake-flow + bevestiging, vandaag live voor €199 of €299. Stap je binnen 14 dagen over naar SlimService? Dan krijg je tot €300 Sprint-tegoed op je setup.</p>
+      </div>
+      <div class="sprint-acts">
+        <a class="btn btn-primary" href="/sprint/">Bekijk Sprint</a>
+        <a class="btn btn-ghost" href="https://wa.me/31687699731?text=Hoi%20SlimService%2C%20ik%20wil%20de%20Sprint%20starten.%0ABedrijfsnaam%3A%20___%0ABranche%3A%20___%0AVoordeur%20(IG%2FMaps)%3A%20___" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="pricing-foot reveal">
+      Grandfather rule: bestaande klanten houden hun prijs zolang ze actief blijven &nbsp;·&nbsp; Setup: 50% bij start, 50% bij live
+    </div>
+  </div>
+</section>
+
+<section class="trust-section" id="vertrouwen">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker live">Vertrouwen &amp; privacy</span>
+      <h2>Snelheid is niks waard zonder controle.</h2>
+      <p class="lead" style="margin-top:10px;max-width:52ch">Daarom houden we het simpel en transparant.</p>
+    </div>
+    <div class="trust-cards reveal" style="transition-delay:.08s">
+      <div class="trust-card">
+        <h3>Jij blijft eigenaar</h3>
+        <p>Jouw klantcontact, jouw afspraken, jouw regels. Wij automatiseren alleen wat jij goedkeurt. Jij bepaalt altijd wat er wel en niet automatisch gaat.</p>
+      </div>
+      <div class="trust-card">
+        <h3>Altijd menselijk</h3>
+        <p>Bij uitzondering of "liever bellen" krijg jij een seintje. SlimService zet door naar een mens waar nodig. Jij houdt de regie over uitzonderingen en toon.</p>
+      </div>
+      <div class="trust-card">
+        <h3>Geen medisch advies</h3>
+        <p>Geen diagnose of behandeladvies. Alleen info, triage-vragen en planning. Medische inhoud blijft bij jou.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="about-section" id="over">
+  <div class="about-bg" aria-hidden="true">SS</div>
+  <div class="wrap">
+    <div class="about-inner reveal">
+      <span class="kicker" style="color:rgba(240,238,248,.3)">Over SlimService</span>
+      <p class="about-quote">Vakmensen verliezen elke dag tijd aan berichten die <strong>automatisch afgehandeld</strong> kunnen worden. Ik bouw dat systeem voor je en blijf het verbeteren zolang jij klant bent.</p>
+      <p class="about-body">Geen ticket-systeem. Geen callcenter. Geen maanden implementatie. Gewoon een intake van een kwartier, een setup die binnen een week staat, en daarna maandelijkse verbetering op basis van wat jouw klanten je sturen.</p>
+      <p class="about-body">SlimService is opgericht vanuit de overtuiging dat automatisering niet koud hoeft te voelen. Het systeem antwoordt, maar jij blijft altijd in beeld als het telt.</p>
+      <div class="about-sig">SLIMSERVICE · KVK 93320132</div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">FAQ</span>
+      <h2>Veelgestelde vragen.</h2>
+    </div>
+    <div class="faq-grid reveal" style="transition-delay:.08s">
+      <details class="faq-item">
+        <summary>Heb ik WhatsApp Business nodig?</summary>
+        <p>Ja. Minimaal WhatsApp Business. Voor automatisering zetten we een professionele koppeling op zodat SlimService kan antwoorden en doorzetten zonder dat jij iets hoeft te doen.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Wat kost het en wat levert het op?</summary>
+        <p>De prijzen staan bij Pakketten. Wat het oplevert verschilt per bedrijf, maar het komt meestal neer op minder no-shows, minder tijd kwijt aan heen-en-weer berichten, en meer afspraken die echt doorgaan. Gebruik ook de ROI calculator om jouw situatie door te rekenen.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Wat is het verschil tussen Sprint en SlimService?</summary>
+        <p><strong>Sprint</strong> is een pilot: één vaste flow om vandaag live te gaan en conversie te bewijzen. Bewust niet bedoeld als doorlopende optimalisatie of meerdere flows. <strong>SlimService</strong> is structureel: maandelijkse verbetering met Change Credits en SLA, zodat je voorspelbaar kunt plannen.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Zit ik vast aan een lang contract?</summary>
+        <p>De setup is eenmalig. Onderhoud loopt via duidelijke afspraken. Tijdens de intake leggen we vast wat inbegrepen is, wat niet, en de looptijd. Geen verrassingen achteraf.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Zijn WhatsApp berichten inbegrepen?</summary>
+        <p>Ja. WhatsApp gesprekken en basis notificaties zijn inbegrepen. Als je veel bevestigingen of reminders verstuurt, kun je opschalen met notificatiebundels zodat de kosten voorspelbaar blijven.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Kunnen jullie no-shows verminderen?</summary>
+        <p>Ja. Met duidelijke voorwaarden en optioneel een boekingsfee via betaallink kun je afspraken definitief maken. Bijzonder effectief voor salons, kapsalons en praktijken.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Wat als een klant liever belt?</summary>
+        <p>Dan blijft dat mogelijk. SlimService geeft jou een seintje wanneer een klant om telefonisch contact vraagt, zodat jij gericht kunt terugbellen op een moment dat het jou uitkomt.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Hoe snel kunnen we starten?</summary>
+        <p>Plan vandaag een intake en we kunnen meestal binnen een paar dagen bouwen en binnen 7 dagen live. De Sprint-versie kan zelfs dezelfde dag live.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section section-light" id="contact">
+  <div class="cta-bg" aria-hidden="true">Deal.</div>
+  <div class="wrap">
+    <div class="cta-inner reveal">
+      <span class="kicker light">Klaar om te starten?</span>
+      <h2>Binnen 15 minuten weet je of dit rendabel is.</h2>
+      <p>Geen verkooppraat. Ik check je situatie en geef je een ja of nee, plus de snelste volgende stap.</p>
+      <div class="cta-acts">
+        <a class="btn btn-primary-dark" href="https://calendly.com/hello-slimservice/15min" target="_blank" rel="noopener">Plan 15 min intake</a>
+        <a class="btn btn-ghost-dark" href="https://wa.me/31687699731?text=Hoi%20SlimService%2C%20ik%20wil%20checken%20of%20dit%20rendabel%20is.%0ABedrijfsnaam%3A%20___%0ABranche%3A%20___" target="_blank" rel="noopener">Start via WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+
+    <!-- Boven: brand + 4 kolommen naast elkaar -->
+    <div class="footer-top">
+
+      <!-- Brand blok — 2 eenheden breed -->
+      <div class="footer-brand-col">
+        <div class="footer-brand">SlimService</div>
+        <p class="footer-tag">Een digitale medewerker voor vakmensen: intake, afspraken en opvolging zonder gedoe.</p>
+        <div class="footer-arkeon">
+          <span class="footer-arkeon-label">Onderdeel van</span>
+          <a href="https://arkeongroup.nl" target="_blank" rel="noopener" class="footer-arkeon-name">Arkeon Group</a>
+        </div>
+        <div class="footer-meta">
+          &copy; <span id="yr"></span> SlimService &nbsp;·&nbsp; KvK 93320132<br>
+          btw-id: NL005015462B59 &nbsp;·&nbsp; Nederland
+        </div>
+      </div>
+
+      <!-- 4 link-kolommen -->
+      <nav class="footer-col" aria-label="Navigatie">
+        <span class="fc-title">Navigatie</span>
+        <a href="/sprint/">Sprint</a>
+        <a href="#sectoren">Voor wie</a>
+        <a href="#hoe">Hoe het werkt</a>
+        <a href="#pakketten">Pakketten</a>
+        <a href="#roi">ROI calculator</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <nav class="footer-col" aria-label="Arkeon Group">
+        <span class="fc-title">Arkeon Group</span>
+        <a href="https://arkeongroup.nl" target="_blank" rel="noopener">arkeongroup.nl</a>
+        <a href="https://arkeonrelay.nl" target="_blank" rel="noopener">arkeonrelay.nl</a>
+        <a href="/sprint/">slimservice.nl/sprint</a>
+      </nav>
+
+      <nav class="footer-col" aria-label="Juridisch">
+        <span class="fc-title">Juridisch</span>
+        <a href="/privacy">Privacy</a>
+        <a href="/voorwaarden">Voorwaarden</a>
+        <a href="/cookies">Cookies</a>
+        <a href="/dpa">DPA</a>
+      </nav>
+
+      <div class="footer-col">
+        <span class="fc-title">Contact</span>
+        <a href="mailto:hello@slimservice.nl">hello@slimservice.nl</a>
+        <a href="https://wa.me/31687699731" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="tel:+31687699731">06 8769 9731</a>
+        <a href="https://www.instagram.com/slimservicenederland/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+
+    </div>
+
+    <!-- Midden: dunne scheidingslijn -->
+    <div class="footer-divider"></div>
+
+    <!-- Onder: bottom bar met pay-runner -->
+    <div class="footer-bottom">
+      <span class="footer-bottom-left">Hand-off als het moet &nbsp;·&nbsp; Altijd menselijk &nbsp;·&nbsp; Betalen via Mollie</span>
+      <div class="footer-pay-runner" aria-label="Betaalmethoden">
+        <img src="/pay/ideal.svg" alt="iDEAL" height="16" loading="lazy">
+        <img src="/pay/applepay.svg" alt="Apple Pay" height="16" loading="lazy">
+        <img src="/pay/paypal.svg" alt="PayPal" height="16" loading="lazy">
+        <img src="/pay/bancontact.svg" alt="Bancontact" height="16" loading="lazy">
+        <img src="/pay/banktransfer.svg" alt="Overboeking" height="16" loading="lazy">
+        <img src="/pay/directdebit.svg" alt="SEPA" height="16" loading="lazy">
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/31687699731" target="_blank" rel="noopener" aria-label="WhatsApp SlimService">
+  <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.418A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm4.93 13.57c-.207.578-1.196 1.106-1.644 1.144-.42.036-.812.19-2.737-.57-2.32-.91-3.793-3.27-3.907-3.42-.115-.153-.94-1.25-.94-2.383 0-1.133.594-1.69.805-1.92.21-.23.458-.288.61-.288.154 0 .306.001.44.007.14.007.33-.053.517.394.19.454.647 1.573.704 1.687.057.114.096.248.019.4-.077.154-.115.25-.23.384-.115.135-.241.302-.345.406-.114.114-.234.237-.1.465.133.228.59.973 1.267 1.576.87.775 1.603 1.015 1.832 1.129.228.114.36.096.494-.057.133-.154.57-.665.722-.894.152-.229.305-.191.514-.115.21.077 1.334.63 1.562.745.228.114.38.172.437.267.057.095.057.546-.15 1.124z"/></svg>
+</a>
+
+<div class="sticky-bar" id="sbar">
+  <a class="btn btn-green" style="flex:1" href="https://wa.me/31687699731" target="_blank" rel="noopener">WhatsApp</a>
+  <a class="btn btn-primary" style="flex:1" href="https://calendly.com/hello-slimservice/15min" target="_blank" rel="noopener">Plan 15 min</a>
+</div>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+const ro = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
+}), { threshold: 0.06 });
+document.querySelectorAll('.reveal, .reveal-l').forEach(el => ro.observe(el));
+
+function countUp(el, target) {
+  const unitEl = el.querySelector('.u');
+  const suffix = unitEl ? unitEl.outerHTML : '';
+  let v = 0; const steps = 36; const dur = 900;
+  const t = setInterval(() => {
+    v = Math.min(v + target / steps, target);
+    el.innerHTML = Math.round(v) + suffix;
+    if (v >= target) clearInterval(t);
+  }, dur / steps);
+}
+const statsObs = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  countUp(e.target, +e.target.dataset.target);
+  statsObs.unobserve(e.target);
+}), { threshold: 0.5 });
+document.querySelectorAll('.stat-n[data-target]').forEach(el => statsObs.observe(el));
+
+const chatData = {
+  a: [
+    { side:'meta', text:'MA 16:12 · ANNE' },
+    { side:'u', text:'Hoi, kan ik vrijdag nog terecht na 16:00?' },
+    { side:'s', text:'Ja. Waarvoor is het en voor wie is de afspraak?' },
+    { side:'u', text:'Eerste keer, voor mij.' },
+    { side:'s', text:'Top. Vrijdag 16:30 of 17:15? Om te reserveren: aanbetaling via link.' },
+    { side:'u', text:'Betaald ✅' },
+    { side:'s', text:"Bevestigd. Reminder volgt. Typ 'mens' voor direct contact." }
+  ],
+  o: [
+    { side:'meta', text:'DI 09:08 · OCTAVIO' },
+    { side:'u', text:'Kun je een prijsindicatie geven voor een klus?' },
+    { side:'s', text:"Ja. Stuur 2 foto's + locatie + wat je precies wil laten doen." },
+    { side:'u', text:"Foto's gestuurd." },
+    { side:'s', text:'Ontvangen. Ik stuur zo een indicatie en plan daarna een moment.' },
+    { side:'u', text:'Plan maar, dinsdag na 17:00.' },
+    { side:'s', text:"Dinsdag 17:30 bevestigd. Reminder volgt. Typ 'mens'." }
+  ],
+  w: [
+    { side:'meta', text:'WO 14:41 · SAMIR' },
+    { side:'u', text:'Ik moet mijn afspraak verzetten. Kan dat?' },
+    { side:'s', text:'Zeker. Welke afspraak (datum/tijd) en je naam?' },
+    { side:'u', text:'Samir, woensdag 16:30.' },
+    { side:'s', text:'Kan vrijdag 15:45 of maandag 10:00. Kies 1.' },
+    { side:'u', text:'Vrijdag 15:45.' },
+    { side:'s', text:"Aangepast en bevestigd. Reminder volgt. Typ 'mens'." }
+  ]
+};
+
+let activeTab = 'a', animTimer = null;
+
+function animateChat(tabId) {
+  clearTimeout(animTimer);
+  const area = document.getElementById('chat-area');
+  area.innerHTML = '';
+  const msgs = chatData[tabId];
+  let i = 0;
+  function next() {
+    if (i >= msgs.length) return;
+    const m = msgs[i];
+    if (m.side === 'meta') {
+      const el = document.createElement('div');
+      el.className = 'bub-meta'; el.textContent = m.text;
+      el.style.opacity = '0'; area.appendChild(el);
+      requestAnimationFrame(() => { el.style.transition = 'opacity .3s'; el.style.opacity = '1'; });
+      i++; animTimer = setTimeout(next, 300);
+    } else if (m.side === 'u') {
+      const el = document.createElement('div');
+      el.className = 'bub u'; el.textContent = m.text;
+      el.style.opacity = '0'; area.appendChild(el);
+      requestAnimationFrame(() => { el.style.transition = 'opacity .25s'; el.style.opacity = '1'; });
+      area.scrollTop = area.scrollHeight;
+      i++; animTimer = setTimeout(next, 600 + m.text.length * 16);
+    } else {
+      const typing = document.createElement('div');
+      typing.className = 'bub-typing';
+      typing.innerHTML = '<span></span><span></span><span></span>';
+      area.appendChild(typing);
+      area.scrollTop = area.scrollHeight;
+      animTimer = setTimeout(() => {
+        typing.remove();
+        const el = document.createElement('div');
+        el.className = 'bub s'; el.textContent = m.text;
+        el.style.opacity = '0'; area.appendChild(el);
+        requestAnimationFrame(() => { el.style.transition = 'opacity .25s'; el.style.opacity = '1'; });
+        area.scrollTop = area.scrollHeight;
+        i++; animTimer = setTimeout(next, 700 + m.text.length * 12);
+      }, 800 + Math.random() * 400);
+    }
+  }
+  animTimer = setTimeout(next, 200);
+}
+
+const heroObs = new IntersectionObserver(([e]) => {
+  if (e.isIntersecting) animateChat(activeTab);
+}, { threshold: 0.3 });
+heroObs.observe(document.querySelector('.hero'));
+
+document.querySelectorAll('.ptab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.ptab').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    activeTab = btn.dataset.p;
+    animateChat(activeTab);
+  });
+});
+
+function calcROI() {
+  const q = +document.getElementById('rq').value || 0;
+  const v = +document.getElementById('rv').value || 0;
+  const l = +document.getElementById('rl').value / 100 || 0;
+  const m = +document.getElementById('rm').value || 0;
+  const r = +document.getElementById('rr').value || 0;
+  const omzet = Math.round(q * 4.3 * l * v);
+  const tijd  = Math.round(q * 4.3 * (m / 60) * r);
+  const tot   = omzet + tijd;
+  const fmt = n => '\u20AC\u00a0' + n.toLocaleString('nl');
+  document.getElementById('r-omzet').textContent  = fmt(omzet);
+  document.getElementById('r-tijd').textContent   = fmt(tijd);
+  document.getElementById('r-totaal').textContent = fmt(tot);
+  const msg = `SlimService ROI check\n\nGemiste omzet: € ${omzet.toLocaleString('nl')} / maand\nKosten heen-en-weer: € ${tijd.toLocaleString('nl')} / maand\nTotaal indicatief: € ${tot.toLocaleString('nl')} / maand\n\nCijfers:\n- Aanvragen/week: ${q}\n- Orderwaarde: €${v}\n- Gemiste leads: ${Math.round(l*100)}%\n- Min/aanvraag: ${m}\n- Uurtarief: €${r}\n\nKun je dit checken en de snelste next step sturen?`;
+  document.getElementById('rwa').href = 'https://wa.me/31687699731?text=' + encodeURIComponent(msg);
+}
+['rq','rv','rl','rm','rr'].forEach(id => document.getElementById(id).addEventListener('input', calcROI));
+calcROI();
+
+const ntog = document.getElementById('ntog');
+const mnav = document.getElementById('mnav');
+ntog.addEventListener('click', () => {
+  const open = document.body.classList.toggle('nav-open');
+  ntog.setAttribute('aria-expanded', open);
+  ntog.textContent = open ? 'SLUITEN' : 'MENU';
+  if (open) mnav.addEventListener('click', e => {
+    if (e.target.tagName === 'A') { document.body.classList.remove('nav-open'); ntog.textContent = 'MENU'; }
+  }, { once: true });
+});
+
+document.querySelectorAll('section[id]').forEach(s => {
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) {
+      document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
+      const l = document.querySelector(`.nav a[href="#${s.id}"]`);
+      if (l) l.classList.add('active');
+    }
+  }, { threshold: 0.35 }).observe(s);
+});
+
+const heroEl = document.querySelector('.hero');
+const sbar   = document.getElementById('sbar');
+const footEl = document.querySelector('.footer');
+let ah = false, nf = false;
+new IntersectionObserver(([e]) => { ah = !e.isIntersecting; upd(); }, { threshold: 0.01 }).observe(heroEl);
+new IntersectionObserver(([e]) => { nf = e.isIntersecting;  upd(); }, { threshold: 0.1  }).observe(footEl);
+function upd() { sbar.classList.toggle('on', ah && !nf); }
+</script>
+<!-- COOKIE BANNER -->
+<div class="cookie-banner hidden" id="cookie-banner" role="dialog" aria-label="Cookie-instellingen">
+  <p>
+    SlimService gebruikt analytische cookies (Google Analytics) om te begrijpen hoe bezoekers de site gebruiken.
+    Geen advertentiecookies, geen tracking van persoonsgegevens. Lees de <a href="/privacy">privacyverklaring</a>.
+  </p>
+  <div class="cookie-acts">
+    <button class="cookie-btn cookie-btn-accept" id="cookie-accept">Akkoord</button>
+    <button class="cookie-btn cookie-btn-decline" id="cookie-decline">Nee bedankt</button>
+  </div>
+</div>
+
+<script>/**
+ * SlimService — Cookie consent + Google Analytics
+ * GA-ID: vervang G-XXXXXXXXXX door jouw echte Measurement ID
+ */
+
+(function() {
+  var GA_ID = 'G-XXXXXXXXXX'; // <-- verander dit naar jouw GA4 Measurement ID
+  var CONSENT_KEY = 'ss_cookie_consent';
+
+  function loadGA() {
+    if (typeof window.gtag !== 'undefined') return;
+    var s = document.createElement('script');
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    s.async = true;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID, {
+      anonymize_ip: true,
+      cookie_flags: 'SameSite=None;Secure'
+    });
+  }
+
+  function getConsent() {
+    try { return localStorage.getItem(CONSENT_KEY); } catch(e) { return null; }
+  }
+
+  function setConsent(val) {
+    try { localStorage.setItem(CONSENT_KEY, val); } catch(e) {}
+  }
+
+  function hideBanner() {
+    var b = document.getElementById('cookie-banner');
+    if (b) b.classList.add('hidden');
+  }
+
+  function onAccept() {
+    setConsent('accepted');
+    hideBanner();
+    loadGA();
+  }
+
+  function onDecline() {
+    setConsent('declined');
+    hideBanner();
+  }
+
+  // If already consented, act immediately
+  var existing = getConsent();
+  if (existing === 'accepted') {
+    loadGA();
+    return;
+  }
+  if (existing === 'declined') return;
+
+  // Show banner after DOM ready
+  document.addEventListener('DOMContentLoaded', function() {
+    var banner = document.getElementById('cookie-banner');
+    if (!banner) return;
+    // Small delay so it doesn't clash with page load
+    setTimeout(function() {
+      banner.classList.remove('hidden');
+    }, 800);
+    document.getElementById('cookie-accept').addEventListener('click', onAccept);
+    document.getElementById('cookie-decline').addEventListener('click', onDecline);
+  });
+})();
+</script>
+</body>
+</html>
