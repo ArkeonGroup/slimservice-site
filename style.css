@@ -1358,65 +1358,116 @@ body.nav-open .nav a { padding:11px 14px; font-size:12px; text-transform:upperca
 /* ── FAVICON SVG fallback kleur ──────────────────────────── */
 /* favicon.svg wordt inline geserverd door server */
 
+
+
 /* ==========================================================
-   HOTFIX — Contrast + 4 demo grid + footer pay logos
-   (plak onderaan style.css)
+   HOTFIX (single block) — contrast + 4 demo grid + footer logos
+   Tijdelijke consolidatiepatch voor Lighthouse + UX
 ========================================================== */
 
-/* 1) Globale dark-text contrast omhoog (pakt veel Lighthouse fails in 1x) */
+/* 1) Globale dark-text contrast tokens */
 :root{
-  --muted: #8A879C;                 /* was #6B6880 */
-  --faint: rgba(240,238,248,.62);   /* was .55 */
+  --muted: #8A879C;
+  --faint: rgba(240,238,248,.62);
 }
 
-/* 2) 4 demo-kaarten layout (mobiel blijft via bestaande 980px breakpoint 1 kolom) */
+/* 2) 4 demo-kaarten layout */
 .sc-grid{
   grid-template-columns: repeat(4, 1fr);
 }
 
-/* Nettere tablet/laptop overgang (optioneel maar aan te raden) */
+/* Nettere overgang op tablet/laptop */
 @media (max-width: 1280px){
   .sc-grid{ grid-template-columns: repeat(2, 1fr); }
 }
-/* je bestaande @media (max-width:980px){ .sc-grid{ grid-template-columns:1fr; } } blijft gewoon werken */
+/* Bestaande mobiele breakpoint (bijv. max-width:980px -> 1fr) blijft staan */
 
-/* 3) Footer betaal-logo's zichtbaar maken (gekleurde SVG’s niet inverteren) */
-.footer-pay-runner img{
-  opacity: .85;
-  filter: none;
-}
-.footer-pay-runner img:hover{ opacity: 1; }
-
+/* 3) Footer betaal-logo's zichtbaar maken */
+.footer-pay-runner img,
 .pay-logo-footer{
-  opacity: .85;
+  opacity: .9;
   filter: none;
 }
-.pay-logo-footer:hover{ opacity: 1; }
-
-/* 4) Extra contrast-fixes voor hero/footer microcopy (Lighthouse hitlist) */
-.trust-row{ color: var(--faint); } /* was muted */
-.founder-quote{
-  color: var(--faint); /* was muted */
-  border-left-color: rgba(0,255,136,.34);
+.footer-pay-runner img:hover,
+.pay-logo-footer:hover{
+  opacity: 1;
 }
-.wens-src{ color: var(--faint); } /* was muted */
 
+/* 4) Grootste contrast-boosdoener: dim-cards dimmen alle tekst mee */
+.pc.dim{
+  opacity: 1;                 /* was .62 */
+  background: var(--surface); /* visueel nog steeds rustig */
+}
+
+/* Niet-beschikbare features minder agressief dimmen */
+.pc-feat-no{
+  opacity: .82; /* was .5 */
+}
+
+/* 5) Dark theme microcopy / small text contrast omhoog */
+.kicker:not(.light),
+.header-phone,
+.nav a,
+.trust-row,
+.scroll-hint,
+.phone-note,
+.stat-l,
+.prod-img-ph,
+.sc-sub,
+.sc-step,
+.demo-card-sub,
+.bz-a,
+.pricing-foot,
+.proof-cta-note,
+.about-body,
+.about-sig,
+.faq-item p,
 .footer-tag,
 .footer-meta,
 .fc-title,
 .footer-col a,
-.footer-bottom-left{
+.footer-bottom-left,
+.footer-arkeon-label,
+.footer-arkeon-name,
+.pc-price span,
+.pc-monthly,
+.pc-monthly-total,
+.pc-credits-note,
+.pc-desc,
+.fi.n,
+.fi-check.n,
+.wens-src,
+.wat-card .mono-tag,
+.tag.tag-dim{
   color: var(--faint);
 }
 
-.footer-arkeon-label{ color: var(--faint); }
+/* 6) Tiny labels / phone UI / ticker (Lighthouse pakt deze mee) */
+.t-item{ color: rgba(0,255,136,.72); }
+.t-item .tl{ color: rgba(0,255,136,.60); }
 
-/* 5) Phone mockup microcopy (Lighthouse telt dit ook mee als tekst) */
-.p-status{ color: rgba(255,255,255,.78); }   /* was .65 */
-.ptab{ color: rgba(255,255,255,.56); }       /* was .3 */
-.bub-meta{ color: rgba(255,255,255,.58); }   /* was .25 */
-.pi-field{ color: rgba(255,255,255,.62); }   /* was .3 */
+.p-status{ color: rgba(255,255,255,.82); }
+.ptab{ color: rgba(255,255,255,.68); }
+.bub-meta{ color: rgba(255,255,255,.70); }
+.pi-field{ color: rgba(255,255,255,.72); }
 
-/* ticker sublabel was te zwak */
-.t-item .tl{ color: rgba(0,255,136,.52); }   /* was .3 */
+/* 7) Hero / founder quote contrast */
+.founder-quote{
+  color: rgba(240,238,248,.78);
+  border-left-color: rgba(0,255,136,.40);
+}
+.wens-q{
+  color: rgba(240,238,248,.82);
+}
 
+/* 8) Pricing / tags / emphasis op donker vlak */
+.pc-credits-note strong,
+.pc-monthly-total strong,
+.bz-a strong{
+  color: rgba(240,238,248,.88);
+}
+
+.pc-feat,
+.tag{
+  color: rgba(240,238,248,.82);
+}
