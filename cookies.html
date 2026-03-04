@@ -1,166 +1,259 @@
-<!-- File: cookies.html -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>SlimService | Cookies</title>
-  <meta name="description" content="Cookiebeleid van SlimService.">
-  <link rel="canonical" href="https://slimservice.nl/cookies.html">
-
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="SlimService">
-  <meta property="og:title" content="SlimService | Cookies">
-  <meta property="og:description" content="Cookiebeleid van SlimService.">
-  <meta property="og:url" content="https://slimservice.nl/cookies.html">
-  <meta property="og:image" content="https://slimservice.nl/og-slimservice.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SlimService | Cookies">
-  <meta name="twitter:description" content="Cookiebeleid van SlimService.">
-  <meta name="twitter:image" content="https://slimservice.nl/og-slimservice.jpg">
-
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="alternate icon" href="/favicon.ico" sizes="any">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <meta name="theme-color" content="#0b0c10">
-  <meta name="color-scheme" content="dark">
-
-  <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cookiebeleid | SlimService</title>
+<meta name="description" content="Cookiebeleid van SlimService. Informatie over cookies, analytics en je voorkeuren.">
+<link rel="canonical" href="https://slimservice.nl/cookies.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SlimService">
+<meta property="og:title" content="Cookiebeleid | SlimService">
+<meta property="og:url" content="https://slimservice.nl/cookies.html">
+<meta property="og:image" content="https://slimservice.nl/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/logos/apple-touch-icon.png">
+<meta name="theme-color" content="#07060A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--void:#07060A;--surface:#111019;--surface2:#181624;--line:rgba(255,255,255,.07);--line2:rgba(255,255,255,.13);--text:#F0EEF8;--muted:#6B6880;--faint:rgba(240,238,248,.55);--g:#00FF88;--g-dim:rgba(0,255,136,.08);--g-ring:rgba(0,255,136,.22);--f-d:'Syne',system-ui,sans-serif;--f-m:'DM Mono','Courier New',monospace;--r:4px;--r-md:12px;--r-lg:18px;--ease:cubic-bezier(.4,0,.2,1)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--f-d);background:var(--void);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased;min-height:100vh}
+a{color:var(--g);text-decoration:none;border-bottom:1px solid var(--g-ring);transition:color .15s var(--ease)}
+a:hover,a:focus{color:var(--text);outline:none}
+a:focus-visible{outline:2px solid var(--g);outline-offset:2px;border-radius:2px}
+.wrap{max-width:800px;margin:0 auto;padding:0 20px}
+@media(min-width:600px){.wrap{padding:0 clamp(20px,4vw,40px)}}
+.header{padding:16px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--f-d);font-weight:700;font-size:18px;color:var(--text);border:none}
+.brand:focus-visible{outline:2px solid var(--g);outline-offset:4px;border-radius:4px}
+.brand-icon{width:32px;height:32px;background:var(--g);border-radius:var(--r);display:grid;place-items:center;font-size:14px;font-weight:800;color:var(--void);flex-shrink:0}
+.btn-back{font-family:var(--f-m);font-size:11px;letter-spacing:.04em;color:var(--muted);border:1px solid var(--line2);padding:8px 14px;border-radius:var(--r-md);transition:all .15s var(--ease);white-space:nowrap}
+.btn-back:hover,.btn-back:focus{background:var(--surface);color:var(--text)}
+.legal{padding:40px 0}
+@media(min-width:600px){.legal{padding:clamp(40px,6vw,80px) 0}}
+.legal-header{margin-bottom:32px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.legal-title{font-size:clamp(26px,5vw,40px);font-weight:800;letter-spacing:-.03em;margin-bottom:8px;line-height:1.1}
+.legal-meta{font-family:var(--f-m);font-size:11px;color:var(--muted);letter-spacing:.04em}
+.legal-intro{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--g);border-radius:var(--r-md);padding:16px 20px;margin-bottom:24px;font-size:14px;color:var(--faint);line-height:1.7}
+.legal-intro strong{color:var(--text)}
+.toc{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);margin-bottom:32px;overflow:hidden}
+.toc-toggle{width:100%;display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:none;border:none;cursor:pointer;font-family:var(--f-m);font-size:10px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;text-align:left}
+.toc-toggle:hover,.toc-toggle:focus{color:var(--text)}
+.toc-toggle:focus-visible{outline:2px solid var(--g);outline-offset:-2px}
+.toc-toggle svg{width:16px;height:16px;transition:transform .2s var(--ease);flex-shrink:0}
+.toc.open .toc-toggle svg{transform:rotate(180deg)}
+.toc-content{max-height:0;overflow:hidden;transition:max-height .3s var(--ease)}
+.toc.open .toc-content{max-height:350px}
+.toc-list{padding:0 20px 20px;display:grid;grid-template-columns:1fr;gap:6px}
+@media(min-width:500px){.toc-list{grid-template-columns:repeat(2,1fr);gap:8px 20px}}
+.toc-item{font-size:13px;color:var(--faint);border:none;display:flex;gap:8px;padding:4px 0}
+.toc-item:hover,.toc-item:focus{color:var(--g)}
+.toc-item span{font-family:var(--f-m);font-size:10px;color:var(--muted);min-width:20px}
+.article{margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.article:last-of-type{border-bottom:none}
+.article-num{font-family:var(--f-m);font-size:10px;letter-spacing:.12em;color:var(--g);margin-bottom:6px;display:block}
+.article-title{font-size:17px;font-weight:700;letter-spacing:-.01em;margin-bottom:12px;line-height:1.3}
+.article p,.article li{font-size:14px;color:var(--faint);margin-bottom:10px;line-height:1.7}
+.article ul{margin-left:0;padding-left:0;list-style:none}
+.article li{position:relative;padding-left:18px;margin-bottom:8px}
+.article li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;background:var(--g);border-radius:50%}
+.highlight-box{background:var(--g-dim);border:1px solid var(--g-ring);border-radius:var(--r-md);padding:14px 16px;margin:16px 0;font-size:13px;color:var(--faint)}
+.highlight-box strong{color:var(--g)}
+.data-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:12px}
+@media(min-width:500px){.data-table{font-size:13px}}
+.data-table th,.data-table td{padding:8px 10px;text-align:left;border:1px solid var(--line)}
+.data-table th{background:var(--surface);font-family:var(--f-m);font-size:9px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.data-table td{color:var(--faint);background:var(--surface2)}
+.data-table td strong{color:var(--text)}
+.data-table code{font-family:var(--f-m);font-size:11px;color:var(--g);background:var(--surface);padding:2px 5px;border-radius:3px}
+.cookie-badge{display:inline-block;font-family:var(--f-m);font-size:9px;letter-spacing:.04em;padding:3px 7px;border-radius:3px;text-transform:uppercase}
+.cookie-badge.essential{background:var(--g-dim);color:var(--g)}
+.cookie-badge.analytics{background:rgba(59,130,246,.15);color:#60a5fa}
+.btn-settings{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;background:var(--surface);border:1px solid var(--line2);border-radius:var(--r-md);font-family:var(--f-d);font-size:14px;font-weight:600;color:var(--text);cursor:pointer;transition:all .15s var(--ease);margin:16px 0}
+.btn-settings:hover,.btn-settings:focus{background:var(--surface2);border-color:var(--g-ring)}
+.btn-settings:focus-visible{outline:2px solid var(--g);outline-offset:2px}
+.legal-entity{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:16px 20px;margin-top:32px}
+.legal-entity-title{font-family:var(--f-m);font-size:10px;letter-spacing:.12em;color:var(--muted);margin-bottom:12px;text-transform:uppercase}
+.legal-entity p{font-size:13px;color:var(--faint);margin-bottom:4px;line-height:1.6}
+.legal-entity strong{color:var(--text)}
+.footer{border-top:1px solid var(--line);padding:20px 0;text-align:center}
+.footer-text{font-family:var(--f-m);font-size:11px;color:var(--muted);letter-spacing:.04em}
+.footer-text a{color:var(--g);margin:0 4px}
+@media print{body{background:#fff;color:#000}.header,.toc,.footer{display:none}}
+</style>
 </head>
+<body>
 
-<body class="ui2">
-  <header class="wrap header">
-    <div class="brand">
-      <img class="logo-img" src="slimservice_whatsapp_logo.png" alt="SlimService" />
-      <div>
-        <div class="brandname">SlimService</div>
-        <div class="tagline">Duidelijk. Snel live. Geen gedoe.</div>
-      </div>
-    </div>
-    <div class="cta">
-      <a class="btn tertiary" href="index.html">Terug naar home</a>
-    </div>
+<div class="wrap">
+  <header class="header">
+    <a href="/" class="brand" aria-label="SlimService homepage">
+      <span class="brand-icon" aria-hidden="true">SS</span>
+      <span>SlimService</span>
+    </a>
+    <a href="/" class="btn-back">← Terug</a>
   </header>
+</div>
 
-  <main>
-    <section class="wrap">
-      <div class="card">
-        <h1>Cookies</h1>
-        <p class="muted">Laatst bijgewerkt: 2026-02-04</p>
+<main class="wrap legal">
+  <div class="legal-header">
+    <h1 class="legal-title">Cookiebeleid</h1>
+    <p class="legal-meta">Laatst bijgewerkt: 1 maart 2026 · Versie 2.0</p>
+  </div>
 
-        <p class="small">
-          SlimService gebruikt geen marketing pixels en plaatst geen tracking cookies. SlimService gebruikt cookieless analytics (Plausible Analytics) voor algemene website-statistieken.
-          Dit helpt ons om de website te verbeteren zonder individuele bezoekers te volgen.
-        </p>
+  <div class="legal-intro">
+    <strong>SlimService</strong> gebruikt cookies om de website te laten werken en te verbeteren. Hier leggen we uit welke cookies we gebruiken.
+  </div>
 
-        <h2>1. Wat zijn cookies?</h2>
-        <p class="small">
-          Cookies zijn kleine tekstbestanden die door een website op jouw apparaat kunnen worden geplaatst om bijvoorbeeld voorkeuren te onthouden of het gebruik van de website te analyseren.
-          Sommige cookies zijn strikt noodzakelijk voor basisfunctionaliteit, terwijl andere cookies worden gebruikt voor statistiek of marketing.
-        </p>
-
-        <h2>2. Welke cookies gebruikt SlimService?</h2>
-        <p class="small">
-          SlimService streeft naar minimale en privacyvriendelijke inzet. Concreet betekent dit:
-        </p>
-        <ul class="ticks">
-          <li>Geen tracking cookies voor marketing, profilering of retargeting.</li>
-          <li>Geen marketing pixels (zoals Meta Pixel) en geen Google Analytics 4 / Google Tag Manager voor trackingdoeleinden.</li>
-          <li>Cookieless analytics via Plausible Analytics, zonder tracking cookies.</li>
-        </ul>
-
-        <h2>3. Plausible Analytics (cookieless)</h2>
-        <p class="small">
-          SlimService gebruikt Plausible Analytics in cookieless modus. Dit betekent dat de analytics zijn ontworpen om inzicht te geven in algemene statistieken, zoals paginaweergaven en herkomstkanalen,
-          zonder bezoekers te identificeren of te volgen via tracking cookies.
-        </p>
-
-        <h2>4. Third-party embeds</h2>
-        <p class="small">
-          SlimService vermijdt het standaard insluiten van third-party embeds die cookies kunnen plaatsen, zoals interactieve kaarten of embedded video’s. Indien SlimService dergelijke embeds toevoegt,
-          zal SlimService dit zodanig inrichten dat cookies niet zonder jouw keuze worden geplaatst, bijvoorbeeld via een “click-to-load” of een vergelijkbare privacyvriendelijke oplossing.
-        </p>
-
-        <h2>5. Cookies beheren via jouw browser</h2>
-        <p class="small">
-          Je kunt cookies beheren via de instellingen van jouw browser. Je kunt cookies verwijderen, blokkeren of instellen dat je wordt gewaarschuwd wanneer cookies worden geplaatst.
-          Houd er rekening mee dat het blokkeren van noodzakelijke cookies de werking van bepaalde websites kan beïnvloeden.
-        </p>
-
-        <h2>6. Contact</h2>
-        <p class="small">
-          Voor vragen over cookies kun je contact opnemen via <a class="inline" href="mailto:hello@slimservice.nl">hello@slimservice.nl</a>.
-          Voor meer informatie over persoonsgegevens verwijzen wij naar de <a class="inline" href="/privacy.html">privacyverklaring</a>.
-        </p>
-      </div>
-    </section>
-  </main>
-
-  <footer class="wrap footer footer--v2">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="footer-logo">SlimService</div>
-        <p class="footer-tagline">
-          Een digitale medewerker voor vakmensen: intake, afspraken en opvolging zonder gedoe.
-        </p>
-
-        <div class="footer-meta">
-          <span>&copy; <span id="year"></span> SlimService</span>
-          <span class="dot">•</span>
-          <span>Vestigingsland: Nederland</span>
-          <span class="dot">•</span>
-          <span>KvK: 93320132</span>
-          <span class="dot">•</span>
-          <span>btw-id: NL005015462B59</span>
-        </div>
-
-        <div class="footer-pay">
-          <div class="footer-pay-label">Betalen via Mollie</div>
-          <div class="pay-strip" aria-label="Beschikbare betaalmethodes">
-            <img class="pay-icon" src="/pay/ideal.svg" alt="iDEAL" loading="lazy" />
-            <img class="pay-icon" src="/pay/applepay.svg" alt="Apple Pay" loading="lazy" />
-            <img class="pay-icon" src="/pay/paypal.svg" alt="PayPal" loading="lazy" />
-            <img class="pay-icon" src="/pay/bancontact.svg" alt="Bancontact" loading="lazy" />
-            <img class="pay-icon" src="/pay/banktransfer.svg" alt="Overboeking" loading="lazy" />
-            <img class="pay-icon" src="/pay/directdebit.svg" alt="SEPA-incasso" loading="lazy" />
-          </div>
-        </div>
-      </div>
-
-      <nav class="footer-col" aria-label="Navigatie">
-        <div class="footer-title">Navigatie</div>
-        <a href="/#pakketten">Prijzen</a>
-        <a href="/#roi">ROI calculator</a>
-        <a href="/#roi">Scenario’s</a>
-      </nav>
-
-      <nav class="footer-col" aria-label="Links">
-        <div class="footer-title">Links</div>
-        <a href="/sprint/">Sprint</a>
-        <a href="/privacy.html">Privacy</a>
-        <a href="/voorwaarden.html">Voorwaarden</a>
-        <a href="/cookies.html">Cookies</a>
-        <a href="/dpa.html">Verwerkersovereenkomst (DPA)</a>
-        <a href="https://www.instagram.com/slimservicenederland/" rel="noopener noreferrer" target="_blank">Instagram</a>
-      </nav>
-
-      <div class="footer-col">
-        <div class="footer-title">Contact</div>
-        <div class="footer-contacts">
-          <a class="inline" href="mailto:hello@slimservice.nl">hello@slimservice.nl</a>
-          <a class="inline" href="https://wa.me/31687699731" rel="noopener noreferrer" target="_blank">WhatsApp</a>
-          <a class="inline" href="tel:+31687699731">Bel: 06 8769 9731</a>
-        </div>
+  <nav class="toc" id="toc" aria-label="Inhoudsopgave">
+    <button class="toc-toggle" aria-expanded="false" aria-controls="toc-content" onclick="this.closest('.toc').classList.toggle('open');this.setAttribute('aria-expanded',this.closest('.toc').classList.contains('open'))">
+      <span>Inhoudsopgave (10 artikelen)</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="toc-content" id="toc-content">
+      <div class="toc-list">
+        <a href="#art-1" class="toc-item"><span>1</span> Wat zijn cookies?</a>
+        <a href="#art-2" class="toc-item"><span>2</span> Soorten cookies</a>
+        <a href="#art-3" class="toc-item"><span>3</span> Essentiële cookies</a>
+        <a href="#art-4" class="toc-item"><span>4</span> Analytics cookies</a>
+        <a href="#art-5" class="toc-item"><span>5</span> Third-party cookies</a>
+        <a href="#art-6" class="toc-item"><span>6</span> Cookie consent</a>
+        <a href="#art-7" class="toc-item"><span>7</span> Voorkeuren wijzigen</a>
+        <a href="#art-8" class="toc-item"><span>8</span> Browserinstellingen</a>
+        <a href="#art-9" class="toc-item"><span>9</span> Wijzigingen</a>
+        <a href="#art-10" class="toc-item"><span>10</span> Contact</a>
       </div>
     </div>
-  </footer>
+  </nav>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <article class="article" id="art-1">
+    <span class="article-num">ARTIKEL 1</span>
+    <h2 class="article-title">Wat zijn cookies?</h2>
+    <p>Cookies zijn kleine tekstbestanden die door een website op je apparaat worden geplaatst om:</p>
+    <ul>
+      <li>De website goed te laten functioneren.</li>
+      <li>Voorkeuren te onthouden (zoals cookiekeuze).</li>
+      <li>Inzicht te krijgen in hoe bezoekers de website gebruiken.</li>
+    </ul>
+  </article>
+
+  <article class="article" id="art-2">
+    <span class="article-num">ARTIKEL 2</span>
+    <h2 class="article-title">Soorten cookies</h2>
+    <table class="data-table">
+      <thead><tr><th>Categorie</th><th>Beschrijving</th><th>Toestemming?</th></tr></thead>
+      <tbody>
+        <tr><td><span class="cookie-badge essential">Essentieel</span></td><td>Noodzakelijk voor basisfunctionaliteit</td><td><strong>Nee</strong></td></tr>
+        <tr><td><span class="cookie-badge analytics">Analytics</span></td><td>Statistieken over websitegebruik</td><td><strong>Ja</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="highlight-box">
+      <strong>SlimService gebruikt geen marketing cookies.</strong> We plaatsen geen tracking pixels voor advertenties.
+    </div>
+  </article>
+
+  <article class="article" id="art-3">
+    <span class="article-num">ARTIKEL 3</span>
+    <h2 class="article-title">Essentiële cookies</h2>
+    <table class="data-table">
+      <thead><tr><th>Cookie</th><th>Doel</th><th>Duur</th></tr></thead>
+      <tbody>
+        <tr><td><code>cookie_consent</code></td><td>Onthoudt je cookievoorkeuren</td><td>1 jaar</td></tr>
+        <tr><td><code>__cf_bm</code></td><td>Cloudflare beveiliging</td><td>30 min</td></tr>
+      </tbody>
+    </table>
+  </article>
+
+  <article class="article" id="art-4">
+    <span class="article-num">ARTIKEL 4</span>
+    <h2 class="article-title">Analytics cookies</h2>
+    <p><strong>Plausible Analytics (cookieless)</strong> — geen cookies, volledig AVG-compliant.</p>
+    <p><strong>Google Analytics 4 (optioneel)</strong> — alleen na toestemming:</p>
+    <table class="data-table">
+      <thead><tr><th>Cookie</th><th>Doel</th><th>Duur</th></tr></thead>
+      <tbody>
+        <tr><td><code>_ga</code></td><td>Onderscheidt unieke gebruikers</td><td>2 jaar</td></tr>
+        <tr><td><code>_ga_*</code></td><td>Sessiegegevens GA4</td><td>2 jaar</td></tr>
+        <tr><td><code>_gid</code></td><td>Onderscheidt gebruikers per sessie</td><td>24 uur</td></tr>
+      </tbody>
+    </table>
+  </article>
+
+  <article class="article" id="art-5">
+    <span class="article-num">ARTIKEL 5</span>
+    <h2 class="article-title">Third-party cookies</h2>
+    <p><strong>Google Fonts:</strong> De website laadt lettertypen van Google. Google ontvangt beperkte technische gegevens maar plaatst geen tracking cookies.</p>
+  </article>
+
+  <article class="article" id="art-6">
+    <span class="article-num">ARTIKEL 6</span>
+    <h2 class="article-title">Cookie consent</h2>
+    <ul>
+      <li>Bij je eerste bezoek tonen we een cookiebanner.</li>
+      <li>Je kiest welke categorieën cookies je accepteert.</li>
+      <li>Essentiële cookies zijn altijd actief.</li>
+      <li>Zonder keuze worden alleen essentiële cookies geplaatst.</li>
+    </ul>
+  </article>
+
+  <article class="article" id="art-7">
+    <span class="article-num">ARTIKEL 7</span>
+    <h2 class="article-title">Voorkeuren wijzigen</h2>
+    <p>Je kunt je cookievoorkeuren op elk moment wijzigen:</p>
+    <button type="button" class="btn-settings" onclick="alert('Cookie-instellingen. In productie wordt hier de cookiebanner getoond.')">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Cookie-instellingen
+    </button>
+  </article>
+
+  <article class="article" id="art-8">
+    <span class="article-num">ARTIKEL 8</span>
+    <h2 class="article-title">Cookies beheren via je browser</h2>
+    <ul>
+      <li><strong>Chrome:</strong> Instellingen → Privacy en beveiliging → Cookies</li>
+      <li><strong>Firefox:</strong> Instellingen → Privacy & Beveiliging → Cookies</li>
+      <li><strong>Safari:</strong> Voorkeuren → Privacy → Cookies</li>
+      <li><strong>Edge:</strong> Instellingen → Cookies en sitemachtigingen</li>
+    </ul>
+  </article>
+
+  <article class="article" id="art-9">
+    <span class="article-num">ARTIKEL 9</span>
+    <h2 class="article-title">Wijzigingen</h2>
+    <ul>
+      <li>SlimService kan dit cookiebeleid wijzigen.</li>
+      <li>Bij substantiële wijzigingen tonen we opnieuw de cookiebanner.</li>
+    </ul>
+  </article>
+
+  <article class="article" id="art-10">
+    <span class="article-num">ARTIKEL 10</span>
+    <h2 class="article-title">Contact</h2>
+    <p>Vragen over cookies?</p>
+    <ul>
+      <li><strong>E-mail:</strong> <a href="mailto:hello@slimservice.nl">hello@slimservice.nl</a></li>
+      <li><strong>Telefoon:</strong> <a href="tel:+31687699713">06 87 699 713</a></li>
+    </ul>
+    <p>Meer over persoonsgegevens: <a href="/privacy.html">privacyverklaring</a>.</p>
+  </article>
+
+  <div class="legal-entity">
+    <div class="legal-entity-title">Juridische gegevens</div>
+    <p><strong>SlimService</strong> is een handelsnaam van Z. Fernandes (eenmanszaak)</p>
+    <p>Fazantstraat 101 C, 3083ZG Rotterdam, Nederland</p>
+    <p>KvK: 93320132 · BTW-id: NL005015462B59</p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p class="footer-text">© 2026 SlimService<a href="/voorwaarden.html">Voorwaarden</a><a href="/privacy.html">Privacy</a><a href="/dpa.html">DPA</a></p>
+  </div>
+</footer>
+
 </body>
 </html>

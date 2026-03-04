@@ -1,482 +1,688 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>SlimService | Sprint Funnel, vandaag live</title>
-  <meta name="description" content="Sprint WhatsApp Intake Funnel. Meer afspraken, minder heen-en-weer. Vandaag live voor salons, barbers en auto detailing.">
-
-  <link rel="canonical" href="https://slimservice.nl/sprint/">
-
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="SlimService">
-  <meta property="og:title" content="SlimService | Sprint Funnel, vandaag live">
-  <meta property="og:description" content="Meer afspraken. Minder heen-en-weer. Premium intakepagina + WhatsApp flow, vandaag live.">
-  <meta property="og:url" content="https://slimservice.nl/sprint/">
-  <meta property="og:image" content="https://slimservice.nl/og-slimservice.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SlimService | Sprint Funnel, vandaag live">
-  <meta name="twitter:description" content="Meer afspraken. Minder heen-en-weer. Premium intakepagina + WhatsApp flow, vandaag live.">
-  <meta name="twitter:image" content="https://slimservice.nl/og-slimservice.jpg">
-
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="alternate icon" href="/favicon.ico" sizes="any">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <meta name="theme-color" content="#0b0c10">
-  <meta name="color-scheme" content="dark">
-
-  <link rel="stylesheet" href="../styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sprint — WhatsApp intake funnel, vandaag live | SlimService</title>
+<meta name="description" content="Sprint WhatsApp Intake Funnel. Meer afspraken, minder heen-en-weer. Vandaag live voor salons, barbers en auto detailing.">
+<link rel="canonical" href="https://slimservice.nl/sprint/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://slimservice.nl/sprint/">
+<meta property="og:title" content="Sprint — WhatsApp intake funnel, vandaag live | SlimService">
+<meta property="og:description" content="Meer afspraken. Minder heen-en-weer. Premium intakepagina + WhatsApp flow, vandaag live.">
+<meta property="og:image" content="https://slimservice.nl/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sprint — WhatsApp intake funnel, vandaag live | SlimService">
+<meta name="twitter:description" content="Meer afspraken. Minder heen-en-weer. Premium intakepagina + WhatsApp flow, vandaag live.">
+<meta name="twitter:image" content="https://slimservice.nl/assets/og-image.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Product","name":"SlimService Sprint","description":"WhatsApp intake funnel voor vakmensen. Vandaag live.","brand":{"@type":"Organization","name":"SlimService"},"offers":{"@type":"AggregateOffer","lowPrice":"199","highPrice":"299","priceCurrency":"EUR"}}
+</script>
 </head>
+<body>
 
-
-<a class="sticky-cta" href="/" aria-label="Terug naar home">
-  Terug naar home
-</a>
-
-
-<body class="ui2">
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <a class="brand" href="../index.html">
-        <img class="brand-logo" src="../slimservice_whatsapp_logo.png" alt="SlimService" />
+<header class="header">
+  <div class="wrap">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <div class="brand-dot">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M7 1C3.686 1 1 3.686 1 7c0 1.05.27 2.036.744 2.892L1 13l3.198-.73A5.972 5.972 0 007 13c3.314 0 6-2.686 6-6S10.314 1 7 1z" fill="#0D0C13"/></svg>
+        </div>
         <span class="brand-name">SlimService</span>
+        <span class="header-phone">06 8769 9731</span>
       </a>
-
-      <nav class="nav">
-        <a href="#prijzen">Pakketten</a>
-        <a href="#shield">Shield</a>
-        <a href="#demos">Demo’s</a>
-        <a class="nav-cta" href="#start">Starten</a>
+      <nav class="nav" id="mnav" aria-label="Hoofdnavigatie">
+        <a href="/sprint/" class="nav-sprint active">SPRINT</a>
+        <a href="/#sectoren">VOOR WIE</a>
+        <a href="/#hoe">HOE</a>
+        <a href="/#pakketten">PAKKETTEN</a>
+        <a href="/#roi">ROI</a>
+        <a href="/#faq">FAQ</a>
       </nav>
+      <div class="header-cta">
+        <button class="nav-toggle" id="ntog" aria-expanded="false" aria-controls="mnav">MENU</button>
+        <a class="btn btn-ghost" href="https://calendly.com/hello-slimservice/15min" target="_blank" rel="noopener">Plan 15 min</a>
+        <a class="btn btn-primary" href="https://wa.me/31687699731?text=Hoi%20SlimService%2C%20ik%20wil%20starten%20met%20Sprint.%0ABranche%3A%20___%0APakket%3A%20Core%20of%20Shield" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main>
-    <section class="wrap hero">
-      <div class="hero-grid">
-        <div>
-          <div class="kicker">Sprint Funnel — vandaag live</div>
-          <h1>Meer afspraken. Minder heen-en-weer.</h1>
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">SP</div>
+  <div class="wrap">
+    <div class="hero-grid">
 
-          <p class="lead">
-            Een premium intakepagina + WhatsApp flow die DM’s omzet in afspraken, zonder gedoe en zonder heen-en-weer.
-            Dit is geen “website”, dit is een Sprint Funnel om vandaag live te gaan.
-            Startmoment = betaling; daarna zet ik jouw naam erin en maak ik 2 screenshots (DM-ready).
-          </p>
+      <div class="reveal">
+        <div class="hero-pill">Sprint Funnel · Vandaag live · Pilot pricing</div>
+        <h1>Meer afspraken.<br>Minder<br><span class="accent">heen-en-weer.</span></h1>
+        <p class="lead" style="margin-top:22px">Een premium intakepagina + WhatsApp flow die DM's omzet in afspraken. Geen website. Dit is een Sprint Funnel om vandaag live te gaan.</p>
+        <div class="hero-acts" style="margin-top:28px">
+          <a class="btn btn-primary" href="https://wa.me/31687699731?text=Hoi%20SlimService%2C%20ik%20wil%20starten%20met%20Sprint.%0ABranche%3A%20___%0APakket%3A%20Core%20of%20Shield" target="_blank" rel="noopener">Start via WhatsApp</a>
+          <a class="btn btn-green" href="#pakketten">Bekijk pakketten</a>
+          <a class="btn btn-ghost" href="#demos">Bekijk demo's</a>
+        </div>
+        <div class="founder-quote">"Startmoment = betaling. Daarna zet ik jouw naam erin en maak ik 2 screenshots (DM-ready)."</div>
+        <div class="trust-row">
+          <span>Vandaag live</span>
+          <span>2 DM-ready screenshots</span>
+          <span>Tot €300 tegoed bij upgrade</span>
+        </div>
+      </div>
 
-          <div class="hero-actions">
-            <a class="btn primary" href="#prijzen">Bekijk pakketten</a>
-            <a class="btn secondary" href="#demos">Bekijk demo’s</a>
+      <div class="phone-col reveal" style="transition-delay:.14s">
+        <div class="phone-shell">
+          <div class="phone-bar">
+            <div class="p-ava">SS</div>
+            <div>
+              <div class="p-name">Sprint Funnel</div>
+              <div class="p-status">LIVE IN 24 UUR</div>
+            </div>
           </div>
-
-          <div class="micro-row">
-            <div class="micro"><strong>Oplevering:</strong> meestal dezelfde dag, uiterlijk binnen 24 uur na betaling + jouw input.</div>
-            <div class="micro"><strong>Input (3 dingen):</strong> naam/zaak + openingstijden + 6 diensten/prijzen.</div>
+          <div class="phone-tabs">
+            <button class="ptab on" data-p="s">Salon</button>
+            <button class="ptab" data-p="d">Detailing</button>
+            <button class="ptab" data-p="a">Algemeen</button>
+          </div>
+          <div class="chat-area" id="chat-area"></div>
+          <div class="phone-input">
+            <div class="pi-field">Bericht…</div>
+            <div class="pi-send">↑</div>
           </div>
         </div>
-
-        <div class="card">
-          <h3>In 24 uur live</h3>
-          <ul class="ticks">
-            <li>Jouw intakepagina (premium structuur + duidelijke CTA)</li>
-            <li>WhatsApp flow (minder heen-en-weer, sneller naar afspraak)</li>
-            <li>2 DM-ready screenshots (hero + pakketten/shield)</li>
-            <li>Shield optie + onderhoud (optioneel)</li>
-          </ul>
-          <div class="badge">Geen gedoe. Wel omzet.</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="wrap section" id="wat">
-      <div class="section-head">
-        <h2>Wat je krijgt (Sprint)</h2>
-        <p class="small">
-          Kort, duidelijk en verkoopbaar via DM/WhatsApp. Je krijgt genoeg structuur om direct afspraken te pakken,
-          zonder dat het een groot project wordt.
-        </p>
       </div>
 
-      <div class="grid-2">
-        <div class="card">
-          <h3>Voor wie</h3>
-          <p class="small">
-            Salons & barbers, auto detailing/car care studios en andere ondernemers die hun afspraken nu vooral via DM/WhatsApp regelen.
-          </p>
-          <ul class="ticks">
-            <li>Veel DM’s, weinig structuur</li>
-            <li>Veel reviews maar funnel lekt</li>
-            <li>No-shows of last-minute afzeggingen</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>Wanneer dit niet past</h3>
-          <p class="small">
-            Als je al een perfecte funnel hebt, je agenda altijd vol zit en je nauwelijks no-shows hebt. Dan win je hier minder.
-          </p>
-          <ul class="ticks">
-            <li>Je funnel is al strak én meetbaar</li>
-            <li>Je hebt al aanbetalingen + policies staan</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="grid-2" style="margin-top:14px">
-        <div class="card">
-          <h3>Funnel structuur</h3>
-          <p class="small">Opgebouwd als een intake-flow: snel vertrouwen, duidelijke keuzes, en CTA’s op elke tier.</p>
-          <ul class="ticks">
-            <li>Hero + “wat je vandaag krijgt”</li>
-            <li>WhatsApp flow voorbeeld</li>
-            <li>3 prijskaarten naast elkaar (midden = “Meest gekozen”)</li>
-            <li>Shield sectie full-width</li>
-            <li>FAQ full-width + footer (SlimService.nl)</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>DM-ready assets</h3>
-          <p class="small">Je krijgt meteen materiaal om te sturen: 2 screenshots + een korte DM/WhatsApp tekst die converteert.</p>
-          <ul class="ticks">
-            <li>2 screenshots (hero + pakketten/shield)</li>
-            <li>Naam/branding erin (na betaling)</li>
-            <li>Korte “start” template voor DM/WhatsApp</li>
-            <li>Mini QA-check (links/CTA’s) vóór live</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="wrap section" id="hoe">
-      <div class="section-head">
-        <h2>Hoe werkt het (3 stappen)</h2>
-        <p class="small">Snel. Zonder heen-en-weer. Jij blijft in control.</p>
-      </div>
-
-      <ol class="steps">
-        <li>
-          <div>
-            <strong>Betaling</strong>
-            <div class="small">Na betaling ga ik direct aan de slag. Zo hou ik tempo en lever ik vandaag nog de funnel.</div>
-          </div>
-        </li>
-        <li>
-          <div>
-            <strong>Input</strong>
-            <div class="small">Naam/zaak + openingstijden + 6 diensten/prijzen (meer mag, maar dit is genoeg).</div>
-          </div>
-        </li>
-        <li>
-          <div>
-            <strong>Live + screenshots</strong>
-            <div class="small">Ik zet het live, test , en lever 2 DM-ready screenshots op.</div>
-          </div>
-        </li>
-      </ol>
-    </section>
-
-    <section class="wrap section" id="prijzen">
-      <div class="section-head">
-        <h2>Pakketten</h2>
-        <p class="small"> Kies wat past bij je snelheid en polish. Startmoment = betaling.</p>
-      </div>
-
-      <div class="pricing">
-        <div class="price-card">
-          <div class="price-head">
-            <h3>Pilot</h3>
-            <div class="price">€149</div>
-            <div class="small">Max 3 slots • volledig verrekenbaar bij upgrade</div>
-          </div>
-          <ul class="ticks">
-            <li>Basis funnel (zelfde structuur)</li>
-            <li>Snelle branche-copy</li>
-            <li>1 korte fix-ronde</li>
-          </ul>
-          <a class="btn primary" href="https://wa.me/31XXXXXXXXX?text=Ik%20wil%20Pilot%20(%E2%82%AC149)%20starten.%20Branche%3A%20...%20Pakket%3A%20Pilot.">Start Pilot</a>
-        </div>
-
-        <div class="price-card featured">
-          <div class="tag">Meest gekozen</div>
-          <div class="price-head">
-            <h3>Sprint Pro</h3>
-            <div class="price">€299</div>
-            <div class="small">Premium polish • 60/40 of 100% vooraf</div>
-          </div>
-          <ul class="ticks">
-            <li>Strakkere copy + afwerking</li>
-            <li>Extra aandacht op trust/CTA’s</li>
-            <li>2 DM-ready screenshots</li>
-          </ul>
-          <a class="btn primary" href="https://wa.me/31XXXXXXXXX?text=Ik%20wil%20Sprint%20Pro%20(%E2%82%AC299)%20starten.%20Kies%3A%2060%2F40%20of%20100%25%20vooraf.%20Branche%3A%20...">Start Sprint Pro</a>
-        </div>
-
-        <div class="price-card">
-          <div class="price-head">
-            <h3>Sprint</h3>
-            <div class="price">€199</div>
-            <div class="small">Sneller • minder polish</div>
-          </div>
-          <ul class="ticks">
-            <li>Core funnel + duidelijke CTA</li>
-            <li>Snelle oplevering</li>
-            <li>1 korte fix-ronde</li>
-          </ul>
-          <a class="btn primary" href="https://wa.me/31XXXXXXXXX?text=Ik%20wil%20Sprint%20(%E2%82%AC199)%20starten.%20Branche%3A%20...%20Pakket%3A%20Sprint.">Start Sprint</a>
-        </div>
-      </div>
-    </section>
-
-<section class="wrap section" id="shield">
-  <div class="full-width card highlight">
-    <div class="section-head">
-      <h2>Slot &amp; Payment Shield (no-shows omlaag &amp; tijdslots beschermd)</h2>
-
-      <p class="lead">
-        No-shows en last-minute afzeggingen zijn geen pech, het is een gebrek aan commitment.
-        Shield zet afspraken “op slot” met een aanbetaling of betaalverzoek, plus duidelijke regels die de klant vooraf ziet.
-        Resultaat: minder lege plekken én bescherming van dure/waardevolle tijdslots (salon, barber, detailing, treatments, coaching en andere afspraak based bedrijven).
-      </p>
-
-      <div class="grid-2" style="margin-top:14px">
-        <div class="card">
-          <h3 style="margin:0 0 10px">Waarom dit werkt</h3>
-          <ul class="ticks">
-            <li>De klant commit met geld of bevestiging, dus “ik kijk nog even” valt weg</li>
-            <li>Je policy is vooraf glashelder, dus minder discussie achteraf</li>
-            <li>Je funnel draagt het proces, jij hoeft niet te “handhaven” in DM’s</li>
-            <li>Je beschermt je agenda: minder no-shows én minder verlies op lange/high-ticket blokken</li>
-          </ul>
-          <p class="small" style="margin:12px 0 0">
-            Werkt voor afspraak-gedreven ondernemers: salon/barber, auto detailing, behandelingen, lessen en lokale dienstverlening met tijdslots.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3 style="margin:0 0 10px">Hoe het eruitziet voor jouw klant</h3>
-          <ul class="ticks">
-            <li>Ze kiezen een dienst of tijdslot</li>
-            <li>Ze zien direct jouw regels (annuleren/no-show)</li>
-            <li>Ze betalen aan of bevestigen via betaalverzoek</li>
-            <li>Pas daarna is de afspraak definitief</li>
-          </ul>
-          <p class="small" style="margin:12px 0 0">
-            Netjes, professioneel, en zonder eindeloos heen-en-weer.
-          </p>
-        </div>
-      </div>
-
-      <div class="card" style="margin-top:14px">
-        <h3 style="margin:0 0 10px">Wat je precies krijgt</h3>
-        <ul class="ticks">
-          <li>Keuze: <strong>aanbetaling</strong> of <strong>betaalverzoek</strong> (met tekst + instructie)</li>
-          <li><strong>Policy</strong> tekst die je direct kunt gebruiken (annuleren / no-show / voorwaarden)</li>
-          <li><strong>2 WhatsApp templates</strong> (bevestiging + betaalverzoek/reminder)</li>
-          <li><strong>Actieblok op je pagina</strong> zodat het zichtbaar en afdwingbaar is</li>
-        </ul>
-        <p class="small" style="margin:12px 0 0">
-          Klaar om direct te gebruiken. Geen rapport, geen gedoe, gewoon implementatie.
-        </p>
-      </div>
-
-      <div class="grid-2" style="margin-top:14px">
-        <div class="card">
-          <h3 style="margin:0 0 6px">Wanneer je dit wilt</h3>
-          <p class="small" style="margin:0">
-            Als je no-shows/afzeggingen hebt of je tijdslots kostbaar zijn (lange behandelingen, volle agenda, high-ticket diensten).
-            Dit betaalt zichzelf vaak al terug met één gered slot.
-          </p>
-        </div>
-        <div class="card">
-          <h3 style="margin:0 0 6px">Prijs</h3>
-          <p class="small" style="margin:0">
-            <strong>€399</strong> · los, of als add-on bij je Sprint Funnel.
-          </p>
-          <p class="tiny" style="margin:10px 0 0">
-            Wil je ‘m direct samen met Sprint? Zet “Sprint + Shield” in je WhatsApp bericht, dan bouwen we het in één run.
-          </p>
-        </div>
-      </div>
-
-      <p class="small" style="margin:14px 0 0">
-        <strong>Meest gekozen bij salons &amp; detailing:</strong> afspraak pas definitief na aanbetaling/betaalverzoek.
-      </p>
     </div>
+    <div class="scroll-hint" aria-hidden="true">↓</div>
+  </div>
+</section>
 
-    <div class="hero-actions">
-      <a class="btn primary" href="https://wa.me/31XXXXXXXXX?text=Ik%20wil%20Slot%20%26%20Payment%20Shield%20(%E2%82%AC399).%0ABranche%3A%20___%0AProbleem%3A%20no-shows%20%2F%20last-minute%20afzeggingen%20%2F%20dure%20tijdslots%0AVoorkeur%3A%20aanbetaling%20of%20betaalverzoek%3A%20___">
-        Activeer Shield (€399)
-      </a>
-      <a class="btn secondary" href="#prijzen">
-        Eerst Sprint kiezen
-      </a>
+<div class="ticker-band" aria-hidden="true">
+  <div class="ticker-track">
+    <div class="t-item"><span class="td"></span><span class="tl">SPRINT /</span><strong>FUNNEL LIVE: SALON ROTTERDAM</strong></div>
+    <div class="t-item"><span class="td"></span><span class="tl">SPRINT /</span><strong>SCREENSHOTS VERZONDEN</strong></div>
+    <div class="t-item"><span class="td"></span><span class="tl">SPRINT /</span><strong>BETALING ONTVANGEN: DETAILING</strong></div>
+    <div class="t-item"><span class="td"></span><span class="tl">SPRINT /</span><strong>INPUT BINNEN: 6 DIENSTEN</strong></div>
+    <div class="t-item"><span class="td"></span><span class="tl">SPRINT /</span><strong>SHIELD ACTIEF: BARBER AMSTERDAM</strong></div>
+    <div class="t-item"><span class="td"></span><span class="tl">SPRINT /</span><strong>FUNNEL LIVE: SALON ROTTERDAM</strong></div>
+    <div class="t-item"><span class="td"></span><span class="tl">SPRINT /</span><strong>SCREENSHOTS VERZONDEN</strong></div>
+    <div class="t-item"><span class="td"></span><span class="tl">SPRINT /</span><strong>BETALING ONTVANGEN: DETAILING</strong></div>
+    <div class="t-item"><span class="td"></span><span class="tl">SPRINT /</span><strong>INPUT BINNEN: 6 DIENSTEN</strong></div>
+    <div class="t-item"><span class="td"></span><span class="tl">SPRINT /</span><strong>SHIELD ACTIEF: BARBER AMSTERDAM</strong></div>
+  </div>
+</div>
+
+<section class="stats-section reveal">
+  <div class="wrap-full">
+    <div class="stats-grid">
+      <div class="stat-cell">
+        <span class="stat-n" data-target="24">0<span class="u"> uur</span></span>
+        <div class="stat-l">Maximaal tot live na betaling + input</div>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-n" data-target="3">0<span class="u"> dingen</span></span>
+        <div class="stat-l">Input nodig: naam + tijden + 6 diensten</div>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-n" data-target="2">0<span class="u"> screenshots</span></span>
+        <div class="stat-l">DM-ready voor Instagram of WhatsApp</div>
+      </div>
     </div>
   </div>
 </section>
 
-
-    <section class="wrap section" id="care">
-      <div class="section-head">
-        <h2>Funnel Care (maandelijks)</h2>
-        <p class="small">Onderhoud &amp; updates. Niet verplicht, wel handig als je elke maand kleine tweaks en verbeteringen wilt.</p>
+<section class="wat-section" id="wat">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker live">Wat je krijgt</span>
+      <h2>Sprint Funnel: alles in één run.</h2>
+    </div>
+    <div class="wat-grid reveal" style="transition-delay:.08s">
+      <div class="wat-card">
+        <h3>Premium intakepagina</h3>
+        <p>Duidelijke structuur, sterke CTA's, en een layout die converteert. Geen template, maar een funnel die werkt.</p>
       </div>
-
-      <div class="grid-2">
-        <div class="card">
-          <h3>Care</h3>
-          <p class="small">Kleine updates, tekst/aanpassingen, kleine verbeteringen of als je maandelijks acties hebt.</p>
-          <div class="price-inline">€39/m</div>
-        </div>
-        <div class="card">
-          <h3>Care+</h3>
-          <p class="small">Sneller opgepakt + iets meer ruimte voor tweaks en uitbreidingen en toevoegen van acties .</p>
-          <div class="price-inline">€79/m</div>
-        </div>
+      <div class="wat-card">
+        <h3>WhatsApp flow</h3>
+        <p>Minder heen-en-weer, sneller naar afspraak. Je klanten weten direct wat ze moeten doen.</p>
       </div>
-    </section>
-
-    <section class="wrap section" id="demos">
-      <div class="section-head">
-        <h2>Demo's</h2>
-        <p class="small">Voorbeeld is fictief. Bij betaling zet ik jouw naam erin en maak ik 2 screenshots (DM-ready).</p>
+      <div class="wat-card">
+        <h3>2 DM-ready screenshots</h3>
+        <p>Hero + pakketten/shield. Meteen delen via Instagram DM of WhatsApp naar je vaste klanten.</p>
       </div>
-
-      <div class="grid-2">
-        <div class="card">
-          <h3>Salon demo</h3>
-          <p class="small">Premium structuur + 3 prijskaarten + Shield + FAQ.</p>
-          <div class="hero-actions" style="margin-top:12px">
-            <a class="btn secondary" href="https://slimservicesalondemo.netlify.app/" target="_blank" rel="noopener">Open demo</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>Auto Detailing demo</h3>
-          <p class="small">Zelfde premium structuur, andere branche-copy (car care / detailing).</p>
-          <div class="hero-actions" style="margin-top:12px">
-            <a class="btn secondary" href="https://slimserviceautodetailer.netlify.app/" target="_blank" rel="noopener">Open demo</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="margin-top:14px">
-        <h3>Extra voorbeeld (optioneel)</h3>
-        <p class="small">Wil je zien dat dit ook buiten deze twee branches werkt? Check voorbeeld dansschool demo.</p>
-        <div class="hero-actions" style="margin-top:12px">
-          <a class="btn secondary" href="https://slimservicedansschooldemo.netlify.app/" target="_blank" rel="noopener">Open dansschool demo</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="wrap section" id="faq">
-      <div class="section-head">
-        <h2>FAQ</h2>
-        <p class="small">Kort. Geen ruis.</p>
-      </div>
-
-      <div class="faq">
-        <details>
-          <summary>Hoe snel is het live?</summary>
-          <div class="small">Meestal dezelfde dag, uiterlijk binnen 24 uur na betaling + input.</div>
-        </details>
-
-        <details>
-          <summary>Is dit een website?</summary>
-          <div class="small">Nee. Dit is een Sprint Funnel: intakepagina + WhatsApp flow om sneller afspraken te krijgen.</div>
-        </details>
-
-        <details>
-          <summary>Kan ik later upgraden?</summary>
-          <div class="small">Ja. Pilot is volledig verrekenbaar bij upgrade.</div>
-        </details>
-
-        <details>
-          <summary>Doen jullie ook onderhoud?</summary>
-          <div class="small">Ja: Funnel Care €39/m of €79/m, optioneel vanaf maand 2.</div>
-        </details>
-      </div>
-    </section>
-
-    <section class="wrap section" id="start">
-      <div class="card">
-        <div class="section-head">
-          <h2>Deal. Starten?</h2>
-          <p class="lead">Stuur: branche + gekozen pakket. Daarna krijg je betaalinstructie en pak ik ’m direct op. Input daarna: naam/zaak, openingstijden, 6 diensten/prijzen.</p>
-        </div>
-        <div class="hero-actions">
-          <a class="btn primary" href="https://wa.me/31XXXXXXXXX?text=Ik%20wil%20starten%20met%20de%20Sprint%20Funnel.%20Branche%3A%20...%20Pakket%3A%20...">WhatsApp</a>
-          <a class="btn secondary" href="../index.html">Terug naar home</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-<footer class="wrap footer footer--v2">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="footer-logo">SlimService</div>
-      <p class="footer-tagline">
-        Een digitale medewerker voor vakmensen: intake, afspraken en opvolging zonder gedoe.
-      </p>
-
-      <div class="footer-meta">
-        <span>&copy; <span id="year"></span> SlimService</span>
-        <span class="dot">•</span>
-        <span>Vestigingsland: Nederland</span>
-        <span class="dot">•</span>
-        <span>KvK: 93320132</span>
-        <span class="dot">•</span>
-        <span>btw-id: NL005015462B59</span>
-      </div>
-
-      <div class="footer-pay">
-        <div class="footer-pay-label">Betalen via Mollie</div>
-        <div class="pay-strip" aria-label="Beschikbare betaalmethodes">
-          <img class="pay-icon" src="/pay/ideal.svg" alt="iDEAL" loading="lazy" />
-          <img class="pay-icon" src="/pay/applepay.svg" alt="Apple Pay" loading="lazy" />
-          <img class="pay-icon" src="/pay/paypal.svg" alt="PayPal" loading="lazy" />
-          <img class="pay-icon" src="/pay/bancontact.svg" alt="Bancontact" loading="lazy" />
-          <img class="pay-icon" src="/pay/banktransfer.svg" alt="Overboeking" loading="lazy" />
-          <img class="pay-icon" src="/pay/directdebit.svg" alt="SEPA-incasso" loading="lazy" />
-        </div>
+      <div class="wat-card">
+        <h3>Shield optie</h3>
+        <p>Aanbetaling of betaalverzoek + no-show beleid. Afspraken die écht doorgaan.</p>
       </div>
     </div>
 
-    <nav class="footer-col" aria-label="Navigatie">
-      <div class="footer-title">Navigatie</div>
-      <a href="/#pakketten">Prijzen</a>
-      <a href="/#roi">ROI calculator</a>
-      <a href="/#roi">Scenario’s</a>
-    </nav>
+    <div class="geschikt-voor reveal" style="transition-delay:.1s">
+      <span class="kicker" style="margin-bottom:12px">Perfect voor</span>
+      <div class="tag-row">
+        <span class="tag">Salons</span>
+        <span class="tag">Barbers</span>
+        <span class="tag">Auto Detailing</span>
+        <span class="tag">Car Care</span>
+        <span class="tag tag-dim">DM-based businesses</span>
+        <span class="tag tag-dim">WhatsApp afspraken</span>
+      </div>
+    </div>
 
-    <nav class="footer-col" aria-label="Links">
-      <div class="footer-title">Links</div>
-      <a href="/sprint/">Sprint</a>
-      <a href="/privacy.html">Privacy</a>
-      <a href="/voorwaarden.html">Voorwaarden</a>
-      <a href="https://www.instagram.com/slimservicenederland/" rel="noopener noreferrer" target="_blank">Instagram</a>
-    </nav>
-
-    <div class="footer-col">
-      <div class="footer-title">Contact</div>
-      <div class="footer-contacts">
-        <a class="inline" href="mailto:hello@slimservice.nl">hello@slimservice.nl</a>
-        <a class="inline" href="https://wa.me/31687699731" rel="noopener noreferrer" target="_blank">WhatsApp</a>
-        <a class="inline" href="tel:+31687699731">Bel: 06 8769 9731</a>
+    <span class="kicker" style="display:block;margin-bottom:14px;margin-top:clamp(32px,4vw,52px)">Herkenbaar?</span>
+    <div class="wensen-grid reveal" style="transition-delay:.12s">
+      <div class="wens-card">
+        <div class="wens-q">"Veel DM's, weinig structuur."</div>
+        <div class="wens-src">Salon · Rotterdam</div>
+      </div>
+      <div class="wens-card">
+        <div class="wens-q">"Veel reviews maar funnel lekt."</div>
+        <div class="wens-src">Detailing · Amsterdam</div>
+      </div>
+      <div class="wens-card">
+        <div class="wens-q">"No-shows of last-minute afzeggingen."</div>
+        <div class="wens-src">Barber · Utrecht</div>
       </div>
     </div>
   </div>
+</section>
+
+<section class="how-section" id="hoe">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker live">Hoe het werkt</span>
+      <h2>Drie stappen.<br>Vandaag live.</h2>
+      <p class="lead" style="margin-top:10px;max-width:50ch">Snel. Zonder heen-en-weer. Jij blijft in control.</p>
+    </div>
+    <div class="steps-grid reveal" style="transition-delay:.08s">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <span class="kicker">Betaling</span>
+        <h3>Je betaalt, ik start direct</h3>
+        <p>Na betaling ga ik direct aan de slag. Zo hou ik tempo en lever ik vandaag nog de funnel.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <span class="kicker">Input · 3 dingen</span>
+        <h3>Naam + tijden + 6 diensten</h3>
+        <p>Stuur je bedrijfsnaam, openingstijden en 6 diensten met prijzen. Meer mag, maar dit is genoeg.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <span class="kicker">Live + screenshots</span>
+        <h3>Funnel live, screenshots klaar</h3>
+        <p>Ik zet het live, test alles, en lever 2 DM-ready screenshots. Klaar om te delen.</p>
+      </div>
+    </div>
+    <div class="deliverables reveal" style="transition-delay:.12s">
+      <div class="del-left">
+        <div class="tick-row"><span class="tick-i">✓</span>Premium intakepagina (hero + pakketten + CTA's)</div>
+        <div class="tick-row"><span class="tick-i">✓</span>WhatsApp flow integratie</div>
+        <div class="tick-row"><span class="tick-i">✓</span>2 DM-ready screenshots</div>
+        <div class="tick-row"><span class="tick-i">✓</span>Mini QA-check vóór live</div>
+        <div class="tick-row"><span class="tick-i">✓</span>Korte start-template voor DM/WhatsApp</div>
+        <div class="tick-row"><span class="tick-i">✓</span>Shield optie (aanbetaling + no-show policy)</div>
+      </div>
+      <div class="del-right">
+        <div class="live-badge">Meestal dezelfde dag</div>
+        <p style="font-size:12px;text-align:center;max-width:22ch;font-family:var(--f-m);letter-spacing:.04em;color:var(--muted)">Uiterlijk binnen 24 uur na betaling + input</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing-section" id="pakketten">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker live">Pakketten</span>
+      <h2>Kies je Sprint.</h2>
+      <p class="lead" style="margin-top:10px;max-width:52ch">Startmoment = betaling. Upgrade naar SlimService binnen 14 dagen? Tot <strong style="color:var(--text)">€300 Sprint-tegoed</strong> op je setup.</p>
+      <div class="urgency-pill">Pilot pricing actief</div>
+    </div>
+    <div class="pricing-grid">
+      <div class="pc reveal">
+        <div class="pc-name">Sprint Core</div>
+        <div class="pc-price">€199 <span>/ eenmalig</span></div>
+        <div class="pc-monthly">Geen maandelijkse kosten · Pilot pricing</div>
+        <div class="pc-desc">Intakepagina + WhatsApp flow. Alles wat je nodig hebt om vandaag live te gaan.</div>
+        <hr class="pc-rule">
+        <div class="pc-feats">
+          <div class="pc-feat"><span class="fi-check">✓</span>Premium intakepagina</div>
+          <div class="pc-feat"><span class="fi-check">✓</span>WhatsApp flow</div>
+          <div class="pc-feat"><span class="fi-check">✓</span>3 prijskaarten</div>
+          <div class="pc-feat"><span class="fi-check">✓</span>2 DM-ready screenshots</div>
+          <div class="pc-feat"><span class="fi-check">✓</span>Mini QA-check</div>
+          <div class="pc-feat pc-feat-no"><span class="fi-check n">–</span>Shield (aanbetaling/no-show)</div>
+        </div>
+        <div class="pc-monthly-total">Volledig verrekenbaar bij upgrade naar SlimService</div>
+        <div class="pc-cta">
+          <a class="btn btn-ghost btn-full" href="https://wa.me/31687699731?text=Hoi%20SlimService%2C%20ik%20wil%20Sprint%20Core%20(€199).%0ABranche%3A%20___" target="_blank" rel="noopener">Start Core</a>
+        </div>
+      </div>
+      <div class="pc featured reveal" style="transition-delay:.08s">
+        <div class="pc-badge">Meest gekozen</div>
+        <div class="pc-name">Sprint Shield</div>
+        <div class="pc-price">€299 <span>/ eenmalig</span></div>
+        <div class="pc-monthly">Geen maandelijkse kosten · Pilot pricing</div>
+        <div class="pc-desc">Core + Shield: aanbetaling of betaalverzoek. Minder no-shows, meer zekerheid.</div>
+        <hr class="pc-rule">
+        <div class="pc-feats">
+          <div class="pc-feat"><span class="fi-check">✓</span>Alles uit Core</div>
+          <div class="pc-feat"><span class="fi-check">✓</span>No-show policy opgesteld</div>
+          <div class="pc-feat"><span class="fi-check">✓</span>Aanbetaling/betaalverzoek flow</div>
+          <div class="pc-feat"><span class="fi-check">✓</span>2 WhatsApp templates</div>
+          <div class="pc-feat"><span class="fi-check">✓</span>Shield actieblok op pagina</div>
+        </div>
+        <div class="pc-monthly-total" style="color:rgba(255,255,255,.6)">Volledig verrekenbaar bij upgrade: <strong style="color:#fff">€299 tegoed</strong></div>
+        <div class="pc-cta">
+          <a class="btn btn-primary btn-full" href="https://wa.me/31687699731?text=Hoi%20SlimService%2C%20ik%20wil%20Sprint%20Shield%20(€299).%0ABranche%3A%20___" target="_blank" rel="noopener">Start Shield</a>
+        </div>
+      </div>
+      <div class="pc dim reveal" style="transition-delay:.16s">
+        <div class="pc-name">Funnel Care</div>
+        <div class="pc-price">€39-79 <span>/ maand</span></div>
+        <div class="pc-monthly">Optioneel onderhoud · Niet verplicht</div>
+        <div class="pc-desc">Kleine updates, tekstaanpassingen en verbeteringen. Handig als je maandelijks acties hebt.</div>
+        <hr class="pc-rule">
+        <div class="pc-feats">
+          <div class="pc-feat"><span class="fi-check">✓</span>Care €39/m — kleine updates</div>
+          <div class="pc-feat"><span class="fi-check">✓</span>Care+ €79/m — sneller + meer ruimte</div>
+          <div class="pc-feat"><span class="fi-check">✓</span>Tekst/aanpassingen</div>
+          <div class="pc-feat"><span class="fi-check">✓</span>Seizoensacties toevoegen</div>
+        </div>
+        <div class="pc-monthly-total">Optioneel vanaf maand 2</div>
+        <div class="pc-cta">
+          <a class="btn btn-ghost btn-full" href="https://wa.me/31687699731?text=Hoi%20SlimService%2C%20ik%20wil%20info%20over%20Funnel%20Care." target="_blank" rel="noopener">Vraag info</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="sprint-banner reveal">
+      <div class="sprint-copy">
+        <span class="kicker" style="margin-bottom:6px">Volgende stap · SlimService</span>
+        <h3>Klaar voor structurele automatisering?</h3>
+        <p>Upgrade binnen 14 dagen naar SlimService en krijg tot €300 Sprint-tegoed op je setup. Maandelijkse verbetering, Change Credits, en SLA.</p>
+      </div>
+      <div class="sprint-acts">
+        <a class="btn btn-green" href="/">Bekijk SlimService</a>
+        <a class="btn btn-ghost" href="https://wa.me/31687699731?text=Hoi%20SlimService%2C%20ik%20heb%20Sprint%20en%20wil%20upgraden%20naar%20SlimService." target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="pricing-foot reveal">
+      Pilot pricing: bestaande klanten houden hun prijs &nbsp;·&nbsp; Tot €300 tegoed bij upgrade naar SlimService binnen 14 dagen
+    </div>
+  </div>
+</section>
+
+<section class="bezwaar-section" id="shield">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker live">Shield</span>
+      <h2>No-shows aanpakken?</h2>
+      <p class="lead" style="margin-top:10px;max-width:50ch">Shield = aanbetaling of betaalverzoek + no-show beleid. Afspraken pas definitief na bevestiging of betaling.</p>
+    </div>
+    <div class="bezwaar-grid">
+      <div class="bz-card reveal">
+        <div class="bz-q">No-show policy</div>
+        <p class="bz-a">Duidelijke voorwaarden, afgestemd op jouw branche. <strong>Kopieerbaar en direct bruikbaar</strong>. Geen juridische rompslomp.</p>
+      </div>
+      <div class="bz-card reveal" style="transition-delay:.08s">
+        <div class="bz-q">2 WhatsApp templates</div>
+        <p class="bz-a">Bevestiging + betaalverzoek/reminder. <strong>Klaar om te gebruiken</strong>. Je hoeft alleen nog te versturen.</p>
+      </div>
+      <div class="bz-card reveal" style="transition-delay:.16s">
+        <div class="bz-q">Actieblok op je pagina</div>
+        <p class="bz-a">Shield zichtbaar en afdwingbaar. Klanten weten <strong>vóór de afspraak</strong> wat de regels zijn.</p>
+      </div>
+    </div>
+    <p class="pc-credits-note reveal" style="margin-top:20px;text-align:center">
+      <strong>Meest gekozen bij salons &amp; detailing:</strong> afspraak pas definitief na aanbetaling/betaalverzoek. Betaalt zichzelf terug met één gered slot.
+    </p>
+  </div>
+</section>
+
+<section class="scenarios-section" id="demos">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker live">Demo's</span>
+      <h2>Bekijk live voorbeelden.</h2>
+      <p class="lead" style="margin-top:10px;max-width:52ch">Fictieve voorbeelden. Bij betaling zet ik jouw naam erin en maak ik 2 DM-ready screenshots.</p>
+    </div>
+    <div class="sc-grid">
+      <div class="sc-card reveal">
+        <div>
+          <h3>Salon demo</h3>
+          <div class="sc-sub">Premium structuur · 3 prijskaarten · Shield</div>
+        </div>
+        <p>Dezelfde opbouw als jij krijgt: hero, pakketten, Shield, FAQ. Bekijk hoe het eruitziet.</p>
+        <div class="sc-steps">
+          <div class="sc-step"><span class="sn">✓</span>Hero met directe CTA</div>
+          <div class="sc-step"><span class="sn">✓</span>3 prijskaarten naast elkaar</div>
+          <div class="sc-step"><span class="sn">✓</span>Shield sectie full-width</div>
+        </div>
+        <div class="sc-acts">
+          <a class="btn btn-green btn-full" href="https://slimservicesalondemo.netlify.app/" target="_blank" rel="noopener">Open salon demo</a>
+        </div>
+      </div>
+      <div class="sc-card reveal" style="transition-delay:.08s">
+        <div>
+          <h3>Auto Detailing demo</h3>
+          <div class="sc-sub">Car care · Coating · Ceramic</div>
+        </div>
+        <p>Zelfde premium structuur, andere branche-copy. Perfect voor detailing en car care studios.</p>
+        <div class="sc-steps">
+          <div class="sc-step"><span class="sn">✓</span>Detailing diensten</div>
+          <div class="sc-step"><span class="sn">✓</span>Coating pakketten</div>
+          <div class="sc-step"><span class="sn">✓</span>Shield voor dure slots</div>
+        </div>
+        <div class="sc-acts">
+          <a class="btn btn-green btn-full" href="https://slimserviceautodetailer.netlify.app/" target="_blank" rel="noopener">Open detailing demo</a>
+        </div>
+      </div>
+      <div class="sc-card reveal" style="transition-delay:.16s">
+        <div>
+          <h3>Dansschool demo</h3>
+          <div class="sc-sub">Lessen · Pakketten · Inschrijvingen</div>
+        </div>
+        <p>Bewijs dat Sprint werkt buiten de standaard branches. Check hoe flexibel de structuur is.</p>
+        <div class="sc-steps">
+          <div class="sc-step"><span class="sn">✓</span>Lesaanbod</div>
+          <div class="sc-step"><span class="sn">✓</span>Tarieven</div>
+          <div class="sc-step"><span class="sn">✓</span>Inschrijf-flow</div>
+        </div>
+        <div class="sc-acts">
+          <a class="btn btn-green btn-full" href="https://slimservicedansschooldemo.netlify.app/" target="_blank" rel="noopener">Open dansschool demo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">FAQ</span>
+      <h2>Veelgestelde vragen.</h2>
+    </div>
+    <div class="faq-grid reveal" style="transition-delay:.08s">
+      <details class="faq-item">
+        <summary>Hoe snel is het live?</summary>
+        <p>Meestal dezelfde dag, uiterlijk binnen 24 uur na betaling + input. Je stuurt je info, ik bouw en lever.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is dit een website?</summary>
+        <p>Nee. Dit is een Sprint Funnel: intakepagina + WhatsApp flow om sneller afspraken te krijgen. Geen CMS, geen gedoe.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Kan ik later upgraden naar SlimService?</summary>
+        <p>Ja. Upgrade binnen 14 dagen en krijg tot €300 Sprint-tegoed op je SlimService setup. Structurele automatisering met Change Credits.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Wat is het verschil tussen Core en Shield?</summary>
+        <p>Core = intakepagina + WhatsApp flow. Shield = Core + aanbetaling/betaalverzoek + no-show policy. Shield is voor wie no-shows wil aanpakken.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Doen jullie ook onderhoud?</summary>
+        <p>Ja: Funnel Care €39/m of €79/m. Optioneel vanaf maand 2. Handig voor seizoensacties of regelmatige updates.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Welke input heb je nodig?</summary>
+        <p>Drie dingen: bedrijfsnaam/zaak, openingstijden, en 6 diensten met prijzen. Meer mag, maar dit is genoeg om live te gaan.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Wat krijg ik precies?</summary>
+        <p>Premium intakepagina, WhatsApp flow, 2 DM-ready screenshots, mini QA-check. Bij Shield ook: no-show policy, 2 WhatsApp templates, actieblok.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Voor welke branches werkt dit?</summary>
+        <p>Salons, barbers, detailing, car care, en alle ondernemers die afspraken regelen via DM of WhatsApp. Zie de demo's voor voorbeelden.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section section-light" id="start">
+  <div class="cta-bg" aria-hidden="true">Deal.</div>
+  <div class="wrap">
+    <div class="cta-inner reveal">
+      <span class="kicker light">Starten?</span>
+      <h2>Vandaag live. Geen gedoe.</h2>
+      <p>Stuur: branche + gekozen pakket. Daarna krijg je betaalinstructie en pak ik 'm direct op.</p>
+      <div class="cta-acts">
+        <a class="btn btn-primary-dark" href="https://wa.me/31687699731?text=Hoi%20SlimService%2C%20ik%20wil%20starten%20met%20Sprint.%0ABranche%3A%20___%0APakket%3A%20Core%20of%20Shield" target="_blank" rel="noopener">Start via WhatsApp</a>
+        <a class="btn btn-ghost-dark" href="/">Terug naar SlimService</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+
+    <div class="footer-top">
+
+      <div class="footer-brand-col">
+        <div class="footer-brand">SlimService</div>
+        <p class="footer-tag">Een digitale medewerker voor vakmensen: intake, afspraken en opvolging zonder gedoe.</p>
+        <div class="footer-arkeon">
+          <span class="footer-arkeon-label">Onderdeel van</span>
+          <a href="https://arkeongroup.nl" target="_blank" rel="noopener" class="footer-arkeon-name">Arkeon Group</a>
+        </div>
+        <div class="footer-meta">
+          &copy; <span id="yr"></span> SlimService &nbsp;·&nbsp; KvK 93320132<br>
+          btw-id: NL005015462B59 &nbsp;·&nbsp; Nederland
+        </div>
+      </div>
+
+      <nav class="footer-col" aria-label="Navigatie">
+        <span class="fc-title">Navigatie</span>
+        <a href="/sprint/">Sprint</a>
+        <a href="/#sectoren">Voor wie</a>
+        <a href="/#hoe">Hoe het werkt</a>
+        <a href="/#pakketten">Pakketten</a>
+        <a href="/#roi">ROI calculator</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
+
+      <nav class="footer-col" aria-label="Arkeon Group">
+        <span class="fc-title">Arkeon Group</span>
+        <a href="https://arkeongroup.nl" target="_blank" rel="noopener">arkeongroup.nl</a>
+        <a href="https://arkeonrelay.nl" target="_blank" rel="noopener">arkeonrelay.nl</a>
+        <a href="/sprint/">slimservice.nl/sprint</a>
+      </nav>
+
+      <nav class="footer-col" aria-label="Juridisch">
+        <span class="fc-title">Juridisch</span>
+        <a href="/privacy">Privacy</a>
+        <a href="/voorwaarden">Voorwaarden</a>
+        <a href="/cookies">Cookies</a>
+        <a href="/dpa">DPA</a>
+      </nav>
+
+      <div class="footer-col">
+        <span class="fc-title">Contact</span>
+        <a href="mailto:hello@slimservice.nl">hello@slimservice.nl</a>
+        <a href="https://wa.me/31687699731" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="tel:+31687699731">06 8769 9731</a>
+        <a href="https://www.instagram.com/slimservicenederland/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <div class="footer-bottom">
+      <span class="footer-bottom-left">Hand-off als het moet &nbsp;·&nbsp; Altijd menselijk &nbsp;·&nbsp; Betalen via Mollie</span>
+      <div class="footer-pay-runner" aria-label="Betaalmethoden">
+        <img src="/pay/ideal.svg" alt="iDEAL" height="16" loading="lazy">
+        <img src="/pay/applepay.svg" alt="Apple Pay" height="16" loading="lazy">
+        <img src="/pay/paypal.svg" alt="PayPal" height="16" loading="lazy">
+        <img src="/pay/bancontact.svg" alt="Bancontact" height="16" loading="lazy">
+        <img src="/pay/banktransfer.svg" alt="Overboeking" height="16" loading="lazy">
+        <img src="/pay/directdebit.svg" alt="SEPA" height="16" loading="lazy">
+      </div>
+    </div>
+
+  </div>
 </footer>
 
+<a class="wa-float" href="https://wa.me/31687699731" target="_blank" rel="noopener" aria-label="WhatsApp SlimService">
+  <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.418A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm4.93 13.57c-.207.578-1.196 1.106-1.644 1.144-.42.036-.812.19-2.737-.57-2.32-.91-3.793-3.27-3.907-3.42-.115-.153-.94-1.25-.94-2.383 0-1.133.594-1.69.805-1.92.21-.23.458-.288.61-.288.154 0 .306.001.44.007.14.007.33-.053.517.394.19.454.647 1.573.704 1.687.057.114.096.248.019.4-.077.154-.115.25-.23.384-.115.135-.241.302-.345.406-.114.114-.234.237-.1.465.133.228.59.973 1.267 1.576.87.775 1.603 1.015 1.832 1.129.228.114.36.096.494-.057.133-.154.57-.665.722-.894.152-.229.305-.191.514-.115.21.077 1.334.63 1.562.745.228.114.38.172.437.267.057.095.057.546-.15 1.124z"/></svg>
+</a>
+
+<div class="sticky-bar" id="sbar">
+  <a class="btn btn-green" style="flex:1" href="https://wa.me/31687699731" target="_blank" rel="noopener">WhatsApp</a>
+  <a class="btn btn-primary" style="flex:1" href="#pakketten">Bekijk pakketten</a>
+</div>
+
 <script>
-  document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+const ro = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
+}), { threshold: 0.06 });
+document.querySelectorAll('.reveal, .reveal-l').forEach(el => ro.observe(el));
+
+function countUp(el, target) {
+  const unitEl = el.querySelector('.u');
+  const suffix = unitEl ? unitEl.outerHTML : '';
+  let v = 0; const steps = 36; const dur = 900;
+  const t = setInterval(() => {
+    v = Math.min(v + target / steps, target);
+    el.innerHTML = Math.round(v) + suffix;
+    if (v >= target) clearInterval(t);
+  }, dur / steps);
+}
+const statsObs = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  countUp(e.target, +e.target.dataset.target);
+  statsObs.unobserve(e.target);
+}), { threshold: 0.5 });
+document.querySelectorAll('.stat-n[data-target]').forEach(el => statsObs.observe(el));
+
+const chatData = {
+  s: [
+    { side:'meta', text:'MA 14:22 · ANNA' },
+    { side:'u', text:'Hoi, ik wil een afspraak maken voor knippen + kleuren.' },
+    { side:'s', text:'Welkom! Wanneer wil je langskomen? Ik check even de beschikbaarheid.' },
+    { side:'u', text:'Zaterdag ochtend als het kan.' },
+    { side:'s', text:'Zaterdag 10:00 of 11:30 beschikbaar. Welke past beter?' },
+    { side:'u', text:'10:00 graag!' },
+    { side:'s', text:'Top! Afspraak bevestigd. Je ontvangt zo een herinnering. Tot zaterdag!' }
+  ],
+  d: [
+    { side:'meta', text:'DI 09:45 · MARCO' },
+    { side:'u', text:'Wat kost een full detailing voor een BMW 3?' },
+    { side:'s', text:'Full detailing vanaf €299. Hoe ziet de auto er nu uit? Foto helpt!' },
+    { side:'u', text:'Redelijk schoon, maar wel wat swirls.' },
+    { side:'s', text:'Dan raad ik het Ceramic pakket aan. Wil je een afspraak plannen?' },
+    { side:'u', text:'Ja, volgende week vrijdag.' },
+    { side:'s', text:'Vrijdag 09:00 gereserveerd. Betaallink volgt voor de aanbetaling.' }
+  ],
+  a: [
+    { side:'meta', text:'WO 16:08 · LISA' },
+    { side:'u', text:'Hoi, ik zag jullie op Instagram. Nemen jullie nog nieuwe klanten aan?' },
+    { side:'s', text:'Ja! Wat voor dienst zoek je?' },
+    { side:'u', text:'Ik wil een consult voor een behandelplan.' },
+    { side:'s', text:'Perfect. Stuur even je naam en voorkeursdatum, dan plan ik het in.' },
+    { side:'u', text:'Lisa, volgende week dinsdag of woensdag.' },
+    { side:'s', text:'Dinsdag 14:00 is vrij. Bevestigd! Je krijgt een reminder.' }
+  ]
+};
+
+let activeTab = 's', animTimer = null;
+
+function animateChat(tabId) {
+  clearTimeout(animTimer);
+  const area = document.getElementById('chat-area');
+  area.innerHTML = '';
+  const msgs = chatData[tabId];
+  let i = 0;
+  function next() {
+    if (i >= msgs.length) return;
+    const m = msgs[i];
+    if (m.side === 'meta') {
+      const el = document.createElement('div');
+      el.className = 'bub-meta'; el.textContent = m.text;
+      el.style.opacity = '0'; area.appendChild(el);
+      requestAnimationFrame(() => { el.style.transition = 'opacity .3s'; el.style.opacity = '1'; });
+      i++; animTimer = setTimeout(next, 300);
+    } else if (m.side === 'u') {
+      const el = document.createElement('div');
+      el.className = 'bub u'; el.textContent = m.text;
+      el.style.opacity = '0'; area.appendChild(el);
+      requestAnimationFrame(() => { el.style.transition = 'opacity .25s'; el.style.opacity = '1'; });
+      area.scrollTop = area.scrollHeight;
+      i++; animTimer = setTimeout(next, 600 + m.text.length * 16);
+    } else {
+      const typing = document.createElement('div');
+      typing.className = 'bub-typing';
+      typing.innerHTML = '<span></span><span></span><span></span>';
+      area.appendChild(typing);
+      area.scrollTop = area.scrollHeight;
+      animTimer = setTimeout(() => {
+        typing.remove();
+        const el = document.createElement('div');
+        el.className = 'bub s'; el.textContent = m.text;
+        el.style.opacity = '0'; area.appendChild(el);
+        requestAnimationFrame(() => { el.style.transition = 'opacity .25s'; el.style.opacity = '1'; });
+        area.scrollTop = area.scrollHeight;
+        i++; animTimer = setTimeout(next, 700 + m.text.length * 12);
+      }, 800 + Math.random() * 400);
+    }
+  }
+  animTimer = setTimeout(next, 200);
+}
+
+const heroObs = new IntersectionObserver(([e]) => {
+  if (e.isIntersecting) animateChat(activeTab);
+}, { threshold: 0.3 });
+heroObs.observe(document.querySelector('.hero'));
+
+document.querySelectorAll('.ptab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.ptab').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    activeTab = btn.dataset.p;
+    animateChat(activeTab);
+  });
+});
+
+const ntog = document.getElementById('ntog');
+const mnav = document.getElementById('mnav');
+ntog.addEventListener('click', () => {
+  const open = document.body.classList.toggle('nav-open');
+  ntog.setAttribute('aria-expanded', open);
+  ntog.textContent = open ? 'SLUITEN' : 'MENU';
+  if (open) mnav.addEventListener('click', e => {
+    if (e.target.tagName === 'A') { document.body.classList.remove('nav-open'); ntog.textContent = 'MENU'; }
+  }, { once: true });
+});
+
+document.querySelectorAll('section[id]').forEach(s => {
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) {
+      document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
+      const l = document.querySelector(`.nav a[href="#${s.id}"]`);
+      if (l) l.classList.add('active');
+    }
+  }, { threshold: 0.35 }).observe(s);
+});
+
+const heroEl = document.querySelector('.hero');
+const sbar   = document.getElementById('sbar');
+const footEl = document.querySelector('.footer');
+let ah = false, nf = false;
+new IntersectionObserver(([e]) => { ah = !e.isIntersecting; upd(); }, { threshold: 0.01 }).observe(heroEl);
+new IntersectionObserver(([e]) => { nf = e.isIntersecting;  upd(); }, { threshold: 0.1  }).observe(footEl);
+function upd() { sbar.classList.toggle('on', ah && !nf); }
 </script>
-
-
 </body>
 </html>
