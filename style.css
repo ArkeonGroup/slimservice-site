@@ -1471,3 +1471,16 @@ body.nav-open .nav a { padding:11px 14px; font-size:12px; text-transform:upperca
 .tag{
   color: rgba(240,238,248,.82);
 }
+/* Extra contrast patch (remaining Lighthouse hits) */
+.pc-credits-note[style*="opacity"]{
+  opacity: .9 !important;
+}
+
+/* CTA light section text contrast */
+.cta-section.section-light .cta-eyebrow,
+.cta-section.section-light .lead,
+.cta-section.section-light p,
+.cta-section.section-light .cta-note,
+.cta-section.section-light .muted{
+  color: rgba(18,16,28,.78) !important;
+}
