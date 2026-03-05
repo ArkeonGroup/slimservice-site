@@ -1490,3 +1490,440 @@ body.nav-open .nav a { padding:11px 14px; font-size:12px; text-transform:upperca
   height: auto !important;
   display: block;
 }
+
+/* ==========================================================
+   MOBILE STABILIZATION + PREP FOR SCENARIO ACCORDION
+   (append-only patch)
+========================================================== */
+
+@media (max-width: 480px) {
+  /* =========================
+     HEADER (menu houden, CTA's weg)
+     ========================= */
+  .header-inner {
+    min-width: 0;
+    gap: 10px;
+  }
+
+  .header-inner > * {
+    min-width: 0;
+  }
+
+  /* Alleen header CTA buttons uit; menu-toggle blijft zichtbaar */
+  .header-cta > .btn,
+  .header-cta .btn-primary,
+  .header-cta .btn-ghost {
+    display: none !important;
+  }
+
+  .brand {
+    min-width: 0;
+    gap: 8px;
+  }
+
+  .brand-name {
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .nav-toggle {
+    flex-shrink: 0;
+  }
+
+  /* =========================
+     WA FLOAT binnen viewport
+     ========================= */
+  .wa-float {
+    left: auto !important;
+    right: 12px !important;
+    bottom: 84px !important;
+    transform: none !important;
+    max-width: calc(100vw - 24px) !important;
+  }
+
+  /* =========================
+     HERO layout + announcement
+     ========================= */
+  .hero .wrap {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .hero {
+    padding-top: clamp(34px, 6vw, 56px);
+  }
+
+  .hero-pill {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    white-space: normal;
+    line-height: 1.22;
+    font-size: 12px;
+    letter-spacing: .05em;
+    padding: 8px 12px;
+    margin-bottom: 20px;
+    overflow-wrap: anywhere;
+  }
+
+  /* =========================
+     HERO H1 (zonder content rewrite)
+     - "professioneel" (accent) blijft groen
+     ========================= */
+  .hero h1 {
+    font-size: clamp(23px, 7.85vw, 37px) !important;
+    line-height: 0.97 !important;
+    letter-spacing: -0.004em !important;
+    margin-bottom: 18px !important;
+    max-width: 100% !important;
+
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+    hyphens: none !important;
+  }
+
+  /* Groene woord (accent = "professioneel") subtiel compacter op mobiel */
+  .hero h1 .accent {
+    color: var(--g) !important;
+    display: inline-block;
+    white-space: nowrap;
+    line-height: inherit;
+    vertical-align: baseline;
+
+    font-size: 0.88em;
+    letter-spacing: -0.002em;
+    transform: scaleX(0.93);
+    transform-origin: left center;
+  }
+
+  .hero .lead {
+    max-width: 100%;
+    margin-bottom: 22px;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .hero-acts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .hero-acts .btn {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    justify-content: center;
+  }
+
+  /* Phone mockup centreren */
+  .phone-col {
+    align-items: center;
+    justify-content: center;
+    margin-top: 18px;
+  }
+
+  .phone-shell {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* =========================
+     SCENARIO'S (fallback nu: 1 kolom i.p.v. rare 2-col breuken)
+     ========================= */
+  .sc-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1px;
+  }
+
+  .sc-card,
+  .sc-card > * {
+    min-width: 0;
+  }
+
+  .sc-card h3 {
+    font-size: 18px;
+    line-height: 1.12;
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: normal;
+    hyphens: none;
+    overflow: visible;
+  }
+
+  .sc-sub,
+  .sc-card > p,
+  .sc-step {
+    min-width: 0;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .sc-acts {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .sc-acts .btn {
+    font-size: 12px;
+    min-height: 44px;
+    padding: 8px 10px;
+    white-space: normal;
+    line-height: 1.15;
+  }
+
+  /* =========================
+     ROI (safeguards)
+     ========================= */
+  .roi-form .roi-inp {
+    font-size: 16px;
+    padding: 10px 12px;
+    min-width: 0;
+  }
+
+  .roi-result-card {
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .roi-out-n {
+    font-size: clamp(30px, 8vw, 44px);
+    line-height: 1.02;
+  }
+
+  .roi-out-n.total {
+    font-size: clamp(34px, 9vw, 52px);
+  }
+
+  /* =========================
+     FOOTER (minder lege lucht)
+     ========================= */
+  .footer {
+    padding-top: 34px;
+  }
+
+  .footer-top {
+    gap: 22px;
+  }
+
+  .footer-tag {
+    margin-bottom: 10px;
+  }
+
+  .footer-meta {
+    line-height: 1.7;
+  }
+
+  .footer-divider {
+    margin-top: 24px;
+  }
+
+  .footer-bottom {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    gap: 10px;
+  }
+
+  /* =========================
+     PREP: mobile scenario accordion styles (nog geen gedrag)
+     - Wordt actief zodra jij .sc-accordion markup toevoegt in index
+     ========================= */
+  .sc-accordion {
+    display: block;
+    margin-top: 0;
+  }
+
+  .sc-acc-item {
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+    overflow: clip;
+    margin-bottom: 10px;
+  }
+
+  .sc-acc-head {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 4px 1fr auto;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 14px;
+    background: transparent;
+    border: 0;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .sc-acc-head:focus-visible {
+    outline: 2px solid rgba(30,255,139,.45);
+    outline-offset: 2px;
+  }
+
+  .sc-acc-accent {
+    width: 4px;
+    height: 42px;
+    border-radius: 99px;
+    background: var(--g);
+    box-shadow: 0 0 16px rgba(30,255,139,.25);
+  }
+
+  .sc-acc-titlewrap {
+    min-width: 0;
+  }
+
+  .sc-acc-title {
+    display: block;
+    font-size: 18px;
+    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+
+  .sc-acc-sub {
+    display: block;
+    margin-top: 4px;
+    font-size: 11px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: normal;
+  }
+
+  .sc-acc-chevron {
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    color: var(--muted);
+    transition: transform .18s ease, color .18s ease, border-color .18s ease;
+    flex-shrink: 0;
+  }
+
+  .sc-acc-chevron::before {
+    content: "⌄";
+    font-size: 16px;
+    line-height: 1;
+    transform: translateY(-1px);
+  }
+
+  .sc-acc-panel {
+    display: none;
+    padding: 0 14px 14px 14px;
+    border-top: 1px solid rgba(255,255,255,.04);
+  }
+
+  .sc-acc-item.is-open .sc-acc-panel {
+    display: block;
+  }
+
+  .sc-acc-item.is-open .sc-acc-chevron {
+    transform: rotate(180deg);
+    color: var(--text);
+    border-color: rgba(30,255,139,.25);
+  }
+
+  .sc-acc-panel p {
+    margin: 10px 0 0;
+  }
+
+  .sc-acc-steps {
+    margin: 10px 0 0;
+    display: grid;
+    gap: 8px;
+  }
+
+  .sc-acc-step {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 8px;
+    align-items: start;
+    color: var(--muted);
+  }
+
+  .sc-acc-step > b {
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.12);
+    display: grid;
+    place-items: center;
+    font-size: 11px;
+    color: var(--text);
+  }
+
+  .sc-acc-acts {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .sc-acc-acts .btn {
+    min-height: 44px;
+    padding: 8px 10px;
+    font-size: 12px;
+    white-space: normal;
+    line-height: 1.15;
+    justify-content: center;
+  }
+}
+
+/* <=380px */
+@media (max-width: 380px) {
+  .hero .wrap {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  .hero h1 {
+    font-size: clamp(22px, 7.45vw, 34px) !important;
+    letter-spacing: -0.003em !important;
+    line-height: 0.98 !important;
+  }
+
+  .hero h1 .accent {
+    font-size: 0.86em;
+    transform: scaleX(0.91);
+    letter-spacing: -0.001em;
+  }
+
+  .hero-pill {
+    font-size: 11px;
+    letter-spacing: .04em;
+  }
+
+  /* Footer 2x2 op mobiel behouden */
+  .footer-top {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .footer-brand-col {
+    grid-column: 1 / -1;
+    padding-right: 0;
+  }
+
+  /* Accordion CTA's onder elkaar op small screens */
+  .sc-acc-acts {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Alleen op echt mini scherm terug naar 1 kolom footer */
+@media (max-width: 320px) {
+  .footer-top {
+    grid-template-columns: 1fr !important;
+  }
+}
