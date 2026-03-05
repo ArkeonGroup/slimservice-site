@@ -1948,3 +1948,58 @@ body.nav-open .nav a { padding:11px 14px; font-size:12px; text-transform:upperca
     display: block !important;
   }
 }
+
+/* === HERO H1 final sizing (fills width better on mobile) === */
+@media (max-width: 480px) {
+  .hero .wrap {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .hero h1 {
+    /* groter dan nu, maar nog veilig voor "professioneel" */
+    font-size: clamp(28px, 9.4vw, 44px) !important;
+    line-height: 0.91 !important;
+    letter-spacing: -0.010em !important;
+    margin-bottom: 14px !important;
+
+    max-width: 100% !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+    hyphens: none !important;
+  }
+
+  /* groene woord blijft groen + net iets compacter zodat het past */
+  .hero h1 .accent {
+    color: var(--g) !important;
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 0.93em !important;
+    letter-spacing: -0.006em !important;
+    transform: scaleX(0.95);
+    transform-origin: left center;
+    line-height: inherit;
+  }
+
+  /* lead iets compacter zodat hero visueel sterker blijft */
+  .hero .lead {
+    font-size: 14px !important;
+    line-height: 1.45 !important;
+    margin-bottom: 18px !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero h1 {
+    font-size: clamp(26px, 8.9vw, 40px) !important;
+    line-height: 0.92 !important;
+    letter-spacing: -0.008em !important;
+  }
+
+  .hero h1 .accent {
+    font-size: 0.91em !important;
+    transform: scaleX(0.93);
+    letter-spacing: -0.004em !important;
+  }
+}
