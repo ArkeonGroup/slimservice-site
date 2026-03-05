@@ -1927,3 +1927,24 @@ body.nav-open .nav a { padding:11px 14px; font-size:12px; text-transform:upperca
     grid-template-columns: 1fr !important;
   }
 }
+
+/* === hidden attribute hard-fix (must win) === */
+#sectoren .sc-grid[hidden],
+#sectoren #sc-accordion-mobile[hidden],
+#sectoren .sc-acc-panel[hidden] {
+  display: none !important;
+}
+
+/* Desktop/tablet: accordion altijd uit */
+@media (min-width: 481px) {
+  #sectoren #sc-accordion-mobile {
+    display: none !important;
+  }
+}
+
+/* Mobiel: accordion zichtbaar als JS hidden=false zet */
+@media (max-width: 480px) {
+  #sectoren #sc-accordion-mobile:not([hidden]) {
+    display: block !important;
+  }
+}
