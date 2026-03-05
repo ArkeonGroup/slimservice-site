@@ -388,6 +388,100 @@
       </div>
     </div>
   </div>
+      <!-- Mobile accordion (zelfde content als sc-grid, wordt via JS alleen op mobiel getoond) -->
+    <div class="sc-accordion" id="sc-accordion-mobile" hidden aria-label="Sectoren mobiel">
+      <div class="sc-acc-item is-open">
+        <button class="sc-acc-head" type="button" id="sc-acc-head-1" aria-expanded="true" aria-controls="sc-acc-panel-1">
+          <span class="sc-acc-accent" aria-hidden="true"></span>
+          <span class="sc-acc-titlewrap">
+            <span class="sc-acc-title">Salons &amp; Barbers</span>
+            <span class="sc-acc-sub">Afspraken · no-shows · behandelingen</span>
+          </span>
+          <span class="sc-acc-chevron" aria-hidden="true"></span>
+        </button>
+        <div class="sc-acc-panel" id="sc-acc-panel-1" role="region" aria-labelledby="sc-acc-head-1">
+          <p>Minder no-shows zonder gedoe. Afspraak pas definitief na bevestiging of betaallink.</p>
+          <div class="sc-acc-steps">
+            <div class="sc-acc-step"><b>1</b><span>Klant kiest behandeling via WhatsApp</span></div>
+            <div class="sc-acc-step"><b>2</b><span>SlimService stelt tijden voor en verzamelt basisinfo</span></div>
+            <div class="sc-acc-step"><b>3</b><span>Betaallink of bevestiging maakt afspraak definitief</span></div>
+          </div>
+          <div class="sc-acc-acts">
+            <a class="btn btn-green" href="https://calendly.com/hello-slimservice/15min" target="_blank" rel="noopener">Plan intake</a>
+            <a class="btn btn-ghost" href="/demos/salon.html">Zie live demo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="sc-acc-item">
+        <button class="sc-acc-head" type="button" id="sc-acc-head-2" aria-expanded="false" aria-controls="sc-acc-panel-2">
+          <span class="sc-acc-accent" aria-hidden="true"></span>
+          <span class="sc-acc-titlewrap">
+            <span class="sc-acc-title">Klussers</span>
+            <span class="sc-acc-sub">Aanvragen · intake · planning</span>
+          </span>
+          <span class="sc-acc-chevron" aria-hidden="true"></span>
+        </button>
+        <div class="sc-acc-panel" id="sc-acc-panel-2" role="region" aria-labelledby="sc-acc-head-2" hidden>
+          <p>Minder heen-en-weer over klusdetails. SlimService verzamelt direct wat jij nodig hebt om sneller te plannen of terug te bellen.</p>
+          <div class="sc-acc-steps">
+            <div class="sc-acc-step"><b>1</b><span>Klant stuurt aanvraag met locatie en klusdetails</span></div>
+            <div class="sc-acc-step"><b>2</b><span>SlimService vraagt door en zet info overzichtelijk klaar</span></div>
+            <div class="sc-acc-step"><b>3</b><span>Jij pakt alleen complete aanvragen op</span></div>
+          </div>
+          <div class="sc-acc-acts">
+            <a class="btn btn-green" href="https://calendly.com/hello-slimservice/15min" target="_blank" rel="noopener">Plan intake</a>
+            <a class="btn btn-ghost" href="/demos/klussers.html">Zie live demo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="sc-acc-item">
+        <button class="sc-acc-head" type="button" id="sc-acc-head-3" aria-expanded="false" aria-controls="sc-acc-panel-3">
+          <span class="sc-acc-accent" aria-hidden="true"></span>
+          <span class="sc-acc-titlewrap">
+            <span class="sc-acc-title">Automotive</span>
+            <span class="sc-acc-sub">Offertes · planning · opvolging</span>
+          </span>
+          <span class="sc-acc-chevron" aria-hidden="true"></span>
+        </button>
+        <div class="sc-acc-panel" id="sc-acc-panel-3" role="region" aria-labelledby="sc-acc-head-3" hidden>
+          <p>Meer overzicht in offertevragen en afspraken. SlimService helpt bij intake, beschikbaarheid en opvolging tot bevestiging.</p>
+          <div class="sc-acc-steps">
+            <div class="sc-acc-step"><b>1</b><span>Klant dient aanvraag in met voertuig- en service-info</span></div>
+            <div class="sc-acc-step"><b>2</b><span>SlimService stelt vragen en zet opties klaar</span></div>
+            <div class="sc-acc-step"><b>3</b><span>Automatische opvolging tot afspraak of akkoord</span></div>
+          </div>
+          <div class="sc-acc-acts">
+            <a class="btn btn-green" href="https://calendly.com/hello-slimservice/15min" target="_blank" rel="noopener">Plan intake</a>
+            <a class="btn btn-ghost" href="/demos/automotive.html">Zie live demo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="sc-acc-item">
+        <button class="sc-acc-head" type="button" id="sc-acc-head-4" aria-expanded="false" aria-controls="sc-acc-panel-4">
+          <span class="sc-acc-accent" aria-hidden="true"></span>
+          <span class="sc-acc-titlewrap">
+            <span class="sc-acc-title">Praktijken &amp; Dienstverleners</span>
+            <span class="sc-acc-sub">Intake · triage · terugbelverzoeken</span>
+          </span>
+          <span class="sc-acc-chevron" aria-hidden="true"></span>
+        </button>
+        <div class="sc-acc-panel" id="sc-acc-panel-4" role="region" aria-labelledby="sc-acc-head-4" hidden>
+          <p>Rust in je communicatie. Eerst intake en ordening, daarna pas jij waar het echt nodig is.</p>
+          <div class="sc-acc-steps">
+            <div class="sc-acc-step"><b>1</b><span>Cliënt meldt zich en kiest onderwerp</span></div>
+            <div class="sc-acc-step"><b>2</b><span>Gerichte vragen, alles overzichtelijk klaargezet</span></div>
+            <div class="sc-acc-step"><b>3</b><span>Alleen hand-off cases komen bij jou terecht</span></div>
+          </div>
+          <div class="sc-acc-acts">
+            <a class="btn btn-green" href="https://calendly.com/hello-slimservice/15min" target="_blank" rel="noopener">Plan intake</a>
+            <a class="btn btn-ghost" href="/demos/praktijk.html">Zie live demo</a>
+          </div>
+        </div>
+      </div>
+    </div>
 </section>
 
 
@@ -961,6 +1055,88 @@ let ah = false, nf = false;
 new IntersectionObserver(([e]) => { ah = !e.isIntersecting; upd(); }, { threshold: 0.01 }).observe(heroEl);
 new IntersectionObserver(([e]) => { nf = e.isIntersecting;  upd(); }, { threshold: 0.1  }).observe(footEl);
 function upd() { sbar.classList.toggle('on', ah && !nf); }
+
+/* --- Scenario accordion: mobile-only + single-open --- */
+(function () {
+  const scSection = document.getElementById('sectoren');
+  if (!scSection) return;
+
+  const scGrid = scSection.querySelector('.sc-grid');
+  const scAcc = document.getElementById('sc-accordion-mobile');
+  if (!scGrid || !scAcc) return;
+
+  const mq = window.matchMedia('(max-width: 480px)');
+
+  function setAccItemState(item, open) {
+    if (!item) return;
+    item.classList.toggle('is-open', open);
+
+    const btn = item.querySelector('.sc-acc-head');
+    const panel = item.querySelector('.sc-acc-panel');
+
+    if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (panel) panel.hidden = !open;
+  }
+
+  function closeAllExcept(keepItem) {
+    scAcc.querySelectorAll('.sc-acc-item').forEach(item => {
+      setAccItemState(item, item === keepItem);
+    });
+  }
+
+  function ensureOneOpen() {
+    const openItem = scAcc.querySelector('.sc-acc-item.is-open');
+    if (openItem) {
+      closeAllExcept(openItem);
+      return;
+    }
+    const first = scAcc.querySelector('.sc-acc-item');
+    if (first) setAccItemState(first, true);
+  }
+
+  function syncScenarioView() {
+    const isMobile = mq.matches;
+
+    if (isMobile) {
+      scGrid.hidden = true;
+      scAcc.hidden = false;
+      ensureOneOpen();
+    } else {
+      scAcc.hidden = true;
+      scGrid.hidden = false;
+    }
+  }
+
+  scAcc.querySelectorAll('.sc-acc-head').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.sc-acc-item');
+      if (!item) return;
+
+      const isOpen = item.classList.contains('is-open');
+
+      if (isOpen) {
+        // Single-open regel: sluit niet alles; laat minimaal 1 open
+        return;
+      }
+
+      closeAllExcept(item);
+    });
+  });
+
+  // Init states uit markup normaliseren
+  scAcc.querySelectorAll('.sc-acc-item').forEach(item => {
+    const shouldOpen = item.classList.contains('is-open');
+    setAccItemState(item, shouldOpen);
+  });
+
+  syncScenarioView();
+
+  if (typeof mq.addEventListener === 'function') {
+    mq.addEventListener('change', syncScenarioView);
+  } else if (typeof mq.addListener === 'function') {
+    mq.addListener(syncScenarioView); // oudere browsers fallback
+  }
+})();
 </script>
 <!-- COOKIE BANNER -->
 <div class="cookie-banner hidden" id="cookie-banner" role="dialog" aria-label="Cookie-instellingen">
