@@ -3,10 +3,11 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="SlimService verbindt strategie, webdesign, content en slimme systemen. Van jouw ambitie naar een samenhangende digitale oplossing.">
-<meta name="theme-color" content="#f4f2ec"><title>SlimService — Sterk zichtbaar. Slim verbonden.</title>
-<link rel="icon" href="data:,"><link rel="preload" href="assets/fonts/SourceSansPro-Black.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="scene.css">
-<script src="content.js" defer></script><script src="scene.js" defer></script><script src="app.js" defer></script>
+<meta name="theme-color" content="#16211d"><title>SlimService | Sterk zichtbaar. Slim verbonden.</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/SourceSansPro-Black.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="scene.css"><link rel="stylesheet" href="showcase.css"><link rel="stylesheet" href="refinement.css">
+<script src="content.js" defer></script><script src="scene.js" defer></script><script src="showcase.js" defer></script><script src="app.js" defer></script>
 </head>
 <body>
 <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
@@ -22,11 +23,36 @@
 <symbol id="full" viewBox="0 0 24 24"><path d="M9 4H4v5m11-5h5v5M4 15v5h5m6 0h5v-5"/></symbol>
 <symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
 <symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+<symbol id="icon-strategy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 20V4h16M4 14h6V9h6V4M4 20l7-7"/>
+    <path d="M7 13h4v4"/>
+  </symbol>
+<symbol id="icon-web" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="4" width="18" height="16" rx="2"/>
+    <path d="M3 9h18M7 6.5h.01M10 6.5h.01M7 13h4M7 16h7M16 13h1"/>
+  </symbol>
+<symbol id="icon-content" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="6" y="3" width="13" height="17" rx="2"/>
+    <path d="M3 7v12a3 3 0 0 0 3 3M10 8l5 3-5 3V8Z"/>
+    <path d="M10 17h5"/>
+  </symbol>
+<symbol id="icon-system" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="9" y="2" width="6" height="6" rx="1"/>
+    <rect x="2" y="16" width="6" height="6" rx="1"/>
+    <rect x="16" y="16" width="6" height="6" rx="1"/>
+    <path d="M12 8v4M5 16v-4h14v4"/>
+  </symbol>
+<symbol id="icon-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m10 14 4-4M9 16l-2 2a4 4 0 0 1-6-6l4-4a4 4 0 0 1 6 0M15 8l2-2a4 4 0 0 1 6 6l-4 4a4 4 0 0 1-6 0" transform="translate(1 0) scale(.92 1)"/>
+  </symbol>
+<symbol id="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 3H3v5m13-5h5v5M3 16v5h5m8 0h5v-5M3 3l6 6m12-6-6 6M3 21l6-6m12 6-6-6"/>
+  </symbol>
 </defs></svg>
 <a class="skip" href="#werk" data-i18n="skip">Ga naar het werk</a>
 <header class="site-header" id="site-header">
 <a class="wordmark" href="#top" aria-label="SlimService home">Slim<span>Service</span><i></i></a>
-<nav aria-label="Hoofdnavigatie" data-i18n-label="navigation"><a href="#werk" data-i18n="work">Werk</a><a href="#expertise" data-i18n="servicesNav">Expertise</a><a class="nav-contact" href="#project"><span data-i18n="contact">Bespreek je project</span><svg><use href="#diagonal"/></svg></a></nav>
+<nav aria-label="Hoofdnavigatie" data-i18n-label="navigation"><a href="#werk" class="nav-work" data-i18n-label="work"><span class="nav-full" data-i18n="work">Mogelijkheden</span><span class="nav-short" data-i18n="workShort">Ontdek</span></a><a href="#expertise" data-i18n="servicesNav">Expertise</a><a class="nav-contact" href="#project"><span data-i18n="contact">Bespreek je project</span><svg><use href="#diagonal"/></svg></a></nav>
 <div class="languages" aria-label="Taal" data-i18n-label="language"><button type="button" data-locale="nl" aria-pressed="true" aria-label="Nederlands">NL</button><span>/</span><button type="button" data-locale="en" aria-pressed="false" aria-label="English">EN</button></div>
 </header>
 <main id="main-content">
@@ -52,25 +78,80 @@
 </div>
 </section>
 <section class="ambition-section section-pad" id="ambitie" aria-labelledby="ambition-title">
-<div class="section-top"><span class="eyebrow" data-copy="ambitionLabel">Jouw bedrijf, jouw vertrekpunt</span><span class="section-number">01 — 04</span></div>
+<div class="section-top"><span class="eyebrow" data-copy="ambitionLabel">Jouw bedrijf, jouw vertrekpunt</span><span class="section-number">01 / 04</span></div>
 <div class="ambition-layout"><h2 id="ambition-title" data-copy="ambitionTitle">Waar wil jij<br><em>naartoe?</em></h2><div class="ambition-choices"><div class="goal-tabs" role="tablist" aria-label="Kies je ambitie"></div><div class="goal-panel" id="goal-panel" role="tabpanel" aria-live="polite"><h3 id="goal-title"></h3><p id="goal-description"></p><a class="text-cta goal-link" href="#project"><span data-copy="goalAction">Dit is mijn vertrekpunt</span><svg><use href="#diagonal"/></svg></a></div></div></div>
 </section>
-<section class="work-section" id="werk" aria-labelledby="work-title">
-<div class="work-intro section-pad"><div class="section-top"><span class="eyebrow" data-i18n="selectedWork">Werk in beeld</span><span class="section-number">02 — 04</span></div><div class="work-title-row"><h2 id="work-title">Bateman<br><em>Construction.</em></h2><div><p data-i18n="caseProjectSummary"></p><div class="case-disciplines"><span data-i18n="caseWebsiteType">Webdesign</span><span data-i18n="caseReelType">Branded content</span></div></div></div></div>
-<div class="case-switch" role="tablist" aria-label="Bateman-case"><button type="button" id="case-web-tab" data-case="web" role="tab" aria-selected="true" aria-controls="case-web"><span>01</span> <span data-copy="webCaseTab">De website</span></button><button type="button" id="case-content-tab" data-case="content" role="tab" aria-selected="false" aria-controls="case-content" tabindex="-1"><span>02</span> <span data-copy="contentCaseTab">Het verhaal</span></button></div>
-<div class="case-media" id="case-web" role="tabpanel" aria-labelledby="case-web-tab"><button class="website-preview" type="button" data-open-website aria-label="Vergroot de Bateman-website" data-i18n-label="openWebsite"><img src="assets/bateman-website.png" width="1440" height="900" loading="lazy" decoding="async" alt="Lokale weergave van de Bateman Construction-website" data-i18n-alt="websiteAlt"><span class="image-action"><svg><use href="#full"/></svg></span></button><div class="media-caption"><span data-i18n="caseWebsiteCaption"></span><span>Bateman Construction</span></div></div>
-<div class="content-case section-pad" id="case-content" role="tabpanel" aria-labelledby="case-content-tab" hidden>
-<div class="content-case-copy"><h3 data-copy="contentCaseHeading">Hetzelfde merk.<br><em>Een ander podium.</em></h3><p data-i18n="caseIntro"></p><div class="source-pair"><a href="assets/kitchen-01.webp" target="_blank" rel="noopener" data-i18n-label="sourceOneLabel"><img src="assets/kitchen-01.webp" width="720" height="960" loading="lazy" data-i18n-alt="sourceOneAlt" alt="Aangeleverde keukenfoto"></a><a href="assets/kitchen-02.webp" target="_blank" rel="noopener" data-i18n-label="sourceTwoLabel"><img src="assets/kitchen-02.webp" width="960" height="720" loading="lazy" data-i18n-alt="sourceTwoAlt" alt="Tweede aangeleverde keukenfoto"></a></div><p class="small" data-i18n="casePhotosCaption"></p></div>
-<div class="reel-column"><div class="channels" role="tablist" aria-label="Kanaalvoorbeeld" data-i18n-label="channels"><button role="tab" type="button" id="channel-instagram" data-channel="instagram" aria-selected="true" aria-controls="social-preview">Instagram</button><button role="tab" type="button" id="channel-tiktok" data-channel="tiktok" aria-selected="false" aria-controls="social-preview" tabindex="-1">TikTok</button><button role="tab" type="button" id="channel-facebook" data-channel="facebook" aria-selected="false" aria-controls="social-preview" tabindex="-1">Facebook</button></div>
-<div class="social-frame" id="social-preview" role="tabpanel" aria-labelledby="channel-instagram" data-channel="instagram"><div class="profile"><img src="assets/trevor-badge.webp" width="40" height="40" alt="Trevor, Bateman Construction" loading="lazy"><div><strong>Bateman Construction</strong><span class="profile-context">Reelvoorbeeld</span></div><span class="platform-name">IG</span></div>
-<div class="video-window"><video id="case-video" width="792" height="1408" preload="none" playsinline muted poster="assets/reel-poster.webp" data-i18n-label="videoLabel"></video><button class="poster-play" data-action="play" type="button" aria-label="Reel afspelen"><svg><use href="#play"/></svg></button><p class="media-error" role="status" hidden></p></div>
-<div class="video-tools"><button data-action="play" type="button"><svg><use href="#play"/></svg><span data-i18n="play">Afspelen</span></button><button data-action="sound" type="button" aria-pressed="false"><svg><use href="#mute"/></svg><span data-i18n="sound">Geluid</span></button><button data-action="replay" type="button"><svg><use href="#replay"/></svg><span data-i18n="replay">Opnieuw</span></button><button data-action="full" type="button"><svg><use href="#full"/></svg><span data-i18n="full">Volledig</span></button></div><div class="timeline"><label class="sr-only" for="video-progress" data-i18n="position">Afspeelpositie</label><input id="video-progress" type="range" min="0" max="17.417" step="0.1" value="0"><output id="video-time">0:00 / 0:17</output></div></div><p class="sample-note" data-i18n="sampleDisclosure"></p></div></div>
-<div class="case-foot section-pad"><span class="case-note" data-copy="caseRole">Een lokale website-uitwerking en een branded contentsample.</span><details><summary><span data-i18n="caseEvidenceTitle">Over deze case</span><svg><use href="#plus"/></svg></summary><p data-i18n="caseEvidenceBody"></p></details></div>
+<section class="work-section showcase" id="werk" aria-labelledby="work-title" data-mode="web" data-exploded="false">
+  <div class="showcase-heading">
+    <div class="showcase-kicker"><span><svg aria-hidden="true"><use href="#icon-link"/></svg><span data-showcase-copy="kicker">De mogelijkheden, verbonden</span></span><span>02 / 04</span></div>
+    <div class="showcase-heading-row">
+      <h2 id="work-title" data-showcase-copy="title">Zie wat er <br><em>mogelijk is.</em></h2>
+      <p data-showcase-copy="intro">Eén herkenbaar merk. Van eerste indruk tot de volgende stap.</p>
+    </div>
+  </div>
+  <div class="showcase-toolbar">
+    <div class="showcase-tabs" role="tablist" aria-label="Verken de mogelijkheden" data-showcase-label="tabs">
+      <button type="button" id="showcase-web-tab" role="tab" data-showcase-mode="web" aria-selected="true" aria-controls="showcase-description"><svg aria-hidden="true"><use href="#icon-web"/></svg><span data-showcase-copy="web">Website</span><small>01</small></button>
+      <button type="button" id="showcase-content-tab" role="tab" data-showcase-mode="content" aria-selected="false" aria-controls="showcase-description" tabindex="-1"><svg aria-hidden="true"><use href="#icon-content"/></svg><span data-showcase-copy="content">Content</span><small>02</small></button>
+      <button type="button" id="showcase-systems-tab" role="tab" data-showcase-mode="systems" aria-selected="false" aria-controls="showcase-description" tabindex="-1"><svg aria-hidden="true"><use href="#icon-system"/></svg><span data-showcase-copy="systems">Werkproces</span><small>03</small></button>
+    </div>
+    <button type="button" class="showcase-explode" aria-pressed="false"><svg aria-hidden="true"><use href="#icon-expand"/></svg><span data-showcase-copy="explode">Haal uit elkaar</span></button>
+  </div>
+  <div class="showcase-stage" role="group" aria-label="Ruimtelijke presentatie van website, content en werkproces" data-showcase-label="stage">
+    <div class="showcase-floor" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+    <div class="showcase-axis" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="showcase-camera">
+      <div class="sc-web sc-surface">
+        <div class="sc-web-layer sc-web-layer-back" aria-hidden="true"><span>SLIM / SERVICE</span><svg><use href="#icon-web"/></svg></div>
+        <div class="sc-web-layer sc-web-layer-middle" aria-hidden="true"><span data-showcase-copy="webLayer">Verhaal. Structuur. Ontwerp.</span><div></div><div></div><div></div></div>
+        <div class="sc-web-front">
+          <div class="sc-browser-bar"><span class="sc-browser-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>batemanconstruction.co.uk</span><svg aria-hidden="true"><use href="#icon-web"/></svg></div>
+          <button class="website-preview" type="button" data-open-website aria-label="Vergroot het Bateman websitevoorbeeld" data-i18n-label="openWebsite"><img src="assets/bateman-website.png" width="1440" height="900" loading="lazy" decoding="async" alt="Lokale weergave van de ontworpen Bateman Construction website" data-i18n-alt="websiteAlt"><span class="image-action"><svg aria-hidden="true"><use href="#full"/></svg></span><span class="sc-open-label" data-showcase-copy="openWebsite">Bekijk het ontwerp</span></button>
+          <div class="sc-web-signature"><span>Bateman Construction</span><span data-showcase-copy="webBadge">Webdesign</span></div>
+        </div>
+      </div>
+      <div class="sc-sources sc-surface">
+        <div class="sc-source-pair"><a href="assets/kitchen-01.webp" target="_blank" rel="noopener" data-i18n-label="sourceOneLabel"><img src="assets/kitchen-01.webp" width="720" height="960" loading="lazy" data-i18n-alt="sourceOneAlt" alt="Aangeleverde keukenfoto"></a><a href="assets/kitchen-02.webp" target="_blank" rel="noopener" data-i18n-label="sourceTwoLabel"><img src="assets/kitchen-02.webp" width="960" height="720" loading="lazy" data-i18n-alt="sourceTwoAlt" alt="Tweede aangeleverde keukenfoto"></a></div>
+        <span data-showcase-copy="sourceLabel">Aangeleverde projectbeelden</span>
+      </div>
+      <div class="sc-reel sc-surface">
+        <button type="button" class="sc-open-reel" data-showcase-mode="content" aria-label="Verken het contentvoorbeeld" data-showcase-label="openContent"><svg aria-hidden="true"><use href="#play"/></svg><span data-showcase-copy="content">Content</span></button>
+        <div class="reel-column">
+          <div class="channels" role="tablist" aria-label="Kanaalvoorbeeld" data-i18n-label="channels"><button role="tab" type="button" id="channel-instagram" data-channel="instagram" aria-selected="true" aria-controls="social-preview">Instagram</button><button role="tab" type="button" id="channel-tiktok" data-channel="tiktok" aria-selected="false" aria-controls="social-preview" tabindex="-1">TikTok</button><button role="tab" type="button" id="channel-facebook" data-channel="facebook" aria-selected="false" aria-controls="social-preview" tabindex="-1">Facebook</button></div>
+          <div class="social-frame" id="social-preview" role="tabpanel" aria-labelledby="channel-instagram" data-channel="instagram"><div class="profile"><img src="assets/trevor-badge.webp" width="40" height="40" alt="Trevor, Bateman Construction" loading="lazy"><div><strong>Bateman Construction</strong><span class="profile-context">Reelvoorbeeld</span></div><span class="platform-name">IG</span></div>
+            <div class="video-window"><video id="case-video" width="792" height="1408" preload="none" playsinline muted poster="assets/reel-poster.webp" data-i18n-label="videoLabel"></video><button class="poster-play" data-action="play" type="button" aria-label="Reel afspelen"><svg aria-hidden="true"><use href="#play"/></svg></button><p class="media-error" role="status" hidden></p></div>
+            <div class="video-tools"><button data-action="play" type="button"><svg aria-hidden="true"><use href="#play"/></svg><span data-i18n="play">Afspelen</span></button><button data-action="sound" type="button" aria-pressed="false"><svg aria-hidden="true"><use href="#mute"/></svg><span data-i18n="sound">Geluid</span></button><button data-action="replay" type="button"><svg aria-hidden="true"><use href="#replay"/></svg><span data-i18n="replay">Opnieuw</span></button><button data-action="full" type="button"><svg aria-hidden="true"><use href="#full"/></svg><span data-i18n="full">Volledig</span></button></div><div class="timeline"><label class="sr-only" for="video-progress" data-i18n="position">Afspeelpositie</label><input id="video-progress" type="range" min="0" max="17.417" step="0.1" value="0"><output id="video-time">0:00 / 0:17</output></div>
+          </div><p class="sample-note" data-i18n="sampleDisclosure">AI-gegenereerd, branded voorbeeld · Niet geplaatst</p>
+        </div>
+      </div>
+      <div class="sc-workflow sc-surface" data-phase="ready">
+        <button type="button" class="sc-open-workflow" data-showcase-mode="systems" aria-label="Verken het werkproces" data-showcase-label="openWorkflow"><svg aria-hidden="true"><use href="#icon-system"/></svg><span data-showcase-copy="systems">Werkproces</span><svg aria-hidden="true"><use href="#diagonal"/></svg></button>
+        <div class="sc-workflow-inner">
+          <div class="sc-flow-heading"><span class="sc-flow-brand">Slim<span>Service</span><i></i></span><span class="sc-demo-badge" data-showcase-copy="demo">Interactieve demo</span></div>
+          <h3 data-showcase-copy="flowTitle">Van aanvraag <br>naar <em>actie.</em></h3>
+          <div class="sc-flow-track">
+            <div class="sc-flow-node" data-node="request"><span class="sc-node-number">01</span><svg aria-hidden="true"><use href="#icon-web"/></svg><strong data-showcase-copy="flowRequest">Een aanvraag</strong><span data-showcase-copy="flowRequestDetail">De juiste informatie</span></div>
+            <div class="sc-flow-node" data-node="review"><span class="sc-node-number">02</span><svg aria-hidden="true"><use href="#icon-strategy"/></svg><strong data-showcase-copy="flowReview">Jouw controle</strong><span data-showcase-copy="flowReviewDetail">Bekijken en beslissen</span></div>
+            <div class="sc-flow-node" data-node="next"><span class="sc-node-number">03</span><svg aria-hidden="true"><use href="#icon-link"/></svg><strong data-showcase-copy="flowNext">De volgende stap</strong><span data-showcase-copy="flowNextDetail">Met jouw akkoord</span></div>
+          </div>
+          <div class="sc-flow-interaction"><p class="sc-flow-message" role="status"></p><div class="sc-flow-actions"><button type="button" data-flow-action="start"><span data-showcase-copy="flowStart">Probeer een aanvraag</span><svg aria-hidden="true"><use href="#arrow"/></svg></button><button type="button" data-flow-action="approve" hidden><span data-showcase-copy="flowApprove">Geef akkoord</span><svg aria-hidden="true"><use href="#check"/></svg></button><button type="button" data-flow-action="revise" hidden data-showcase-copy="flowRevise">Stuur bij</button><button type="button" data-flow-action="reset" hidden data-showcase-copy="flowReset">Opnieuw</button></div></div>
+          <p class="sc-flow-disclosure" data-showcase-copy="flowDisclosure">Een demonstratie. Er wordt niets verzonden of gekoppeld.</p>
+        </div>
+      </div>
+    </div>
+    <div class="showcase-stage-caption"><span><i aria-hidden="true"></i><span data-showcase-copy="stageCaption">Eén verhaal. Verschillende vormen.</span></span><span class="showcase-drag-hint" data-showcase-copy="depthHint">Beweeg om de diepte te verkennen</span></div>
+  </div>
+  <div class="showcase-bottom">
+    <div id="showcase-description" role="tabpanel" aria-labelledby="showcase-web-tab" tabindex="0"><span class="showcase-detail-label" data-showcase-copy="detailLabel">01 / WEBSITE</span><h3 data-showcase-copy="detailTitle">Een sterke eerste indruk.</h3><p data-showcase-copy="detailBody">Een website die je verhaal helder maakt, je werk laat spreken en bezoekers een logische volgende stap geeft.</p></div>
+    <a class="showcase-cta" href="#project" data-service-select="web"><span data-showcase-copy="detailCta">Bespreek mijn website</span><svg aria-hidden="true"><use href="#diagonal"/></svg></a>
+  </div>
+  <div class="showcase-evidence"><span data-showcase-copy="evidenceLabel">Bateman: website & branded content. SlimService: werkprocesdemo.</span><details><summary><span data-showcase-copy="evidenceTitle">Over de voorbeelden</span><svg aria-hidden="true"><use href="#plus"/></svg></summary><p data-showcase-copy="evidenceBody">De Bateman-website is een lokale opname van 21 oktober 2026. De projectfoto’s zijn echt aangeleverd; de precieze inputselectie voor de bestaande AI-Reel is niet bevestigd. De Reel is een branded voorbeeld en niet geplaatst. Het werkproces is een interactieve SlimService-demonstratie zonder live koppelingen.</p></details></div>
 </section>
-<section class="connection-section section-pad" aria-labelledby="connection-title"><span class="eyebrow" data-i18n="philosophyEyebrow"></span><h2 id="connection-title" data-copy="connectionTitle">Goed ontwerp<br>stopt niet bij<br><em>de buitenkant.</em></h2><div class="connection-bottom"><span class="connection-mark" aria-hidden="true">S<span>↗</span></span><p data-i18n="philosophyBody"></p><a class="text-cta" href="#expertise"><span data-copy="connectionAction">Ontdek onze expertise</span><svg><use href="#down"/></svg></a></div></section>
-<section class="services-section section-pad" id="expertise" aria-labelledby="services-title"><div class="section-top"><span class="eyebrow" data-i18n="servicesEyebrow">Wat we doen</span><span class="section-number">03 — 04</span></div><div class="services-layout"><div class="services-intro"><h2 id="services-title" data-copy="servicesTitle">Alles wat je<br>nodig hebt.<br><em>Goed verbonden.</em></h2><p data-i18n="servicesIntro"></p></div><div id="service-list"></div></div></section>
+
+<section class="connection-section section-pad" aria-labelledby="connection-title"><span class="eyebrow" data-i18n="philosophyEyebrow"></span><h2 id="connection-title" data-copy="connectionTitle">Ook achter<br><em>de schermen.</em></h2><div class="connection-bottom"><span class="connection-mark" aria-hidden="true">S<span>↗</span></span><p data-i18n="philosophyBody"></p><a class="text-cta" href="#expertise"><span data-copy="connectionAction">Ontdek onze expertise</span><svg><use href="#down"/></svg></a></div></section>
+<section class="services-section section-pad" id="expertise" aria-labelledby="services-title"><div class="section-top"><span class="eyebrow" data-i18n="servicesEyebrow">Wat we doen</span><span class="section-number">03 / 04</span></div><div class="services-layout"><div class="services-intro"><h2 id="services-title" data-copy="servicesTitle">Alles wat je<br>nodig hebt.<br><em>Goed verbonden.</em></h2><p data-i18n="servicesIntro"></p></div><div id="service-list"></div></div></section>
 <section class="engagement-section section-pad" id="samenwerken" aria-labelledby="engagement-title"><div class="engagement-head"><span class="eyebrow" data-i18n="engagementEyebrow"></span><h2 id="engagement-title" data-i18n="engagementHeading"></h2><p data-i18n="engagementIntro"></p></div><div class="engagement-list"></div></section>
-<section class="project-section section-pad" id="project" aria-labelledby="project-title"><div class="section-top"><span class="eyebrow" data-copy="projectEyebrow">Een goed begin</span><span class="section-number">04 — 04</span></div><div class="project-layout"><div class="project-intro"><h2 id="project-title" data-copy="projectTitle">Wat wil jij<br>in beweging<br><em>zetten?</em></h2><p data-i18n="briefIntro"></p><div class="direct-contact"><a href="mailto:hello@slimservice.nl">hello@slimservice.nl<svg><use href="#diagonal"/></svg></a><a href="https://wa.me/31687699731" target="_blank" rel="noopener" data-whatsapp><span data-i18n="contactWhatsappLabel">Liever via WhatsApp</span><svg><use href="#diagonal"/></svg></a></div></div>
+<section class="project-section section-pad" id="project" aria-labelledby="project-title"><div class="section-top"><span class="eyebrow" data-copy="projectEyebrow">Een goed begin</span><span class="section-number">04 / 04</span></div><div class="project-layout"><div class="project-intro"><h2 id="project-title" data-copy="projectTitle">Wat wil jij<br>in beweging<br><em>zetten?</em></h2><p data-i18n="briefIntro"></p><div class="direct-contact"><a href="mailto:hello@slimservice.nl">hello@slimservice.nl<svg><use href="#diagonal"/></svg></a><a href="https://wa.me/31687699731" target="_blank" rel="noopener" data-whatsapp><span data-i18n="contactWhatsappLabel">Liever via WhatsApp</span><svg><use href="#diagonal"/></svg></a></div></div>
 <div class="project-flow"><form id="brief-form"><fieldset><legend data-brief="goalLabel">Waar wil je aan werken?</legend><div class="brief-goals"></div></fieldset><label class="field"><span data-brief="businessLabel">Je bedrijf</span><input name="business" id="business" type="text" autocomplete="organization" maxlength="160" required data-placeholder="businessPlaceholder"></label><label class="field"><span data-brief="needLabel">Je vraag of ambitie</span><textarea name="need" id="need" rows="3" maxlength="1500" required data-placeholder="needPlaceholder"></textarea></label><label class="field"><span data-brief="whenLabel">Wanneer wil je beginnen?</span><select name="when" id="when"></select></label><p class="selection-context" hidden></p><button type="submit" class="solid-cta"><span data-brief="prepare">Maak mijn projectbrief</span><svg><use href="#diagonal"/></svg></button><p class="form-note" data-brief="localNote"></p></form>
 <div class="brief-result" hidden><div class="brief-result-top"><h3 data-brief="summaryTitle"></h3><button type="button" class="edit-brief" data-brief="edit"></button></div><p data-brief="summaryIntro"></p><pre id="brief-text" tabindex="0"></pre><div class="brief-send"><a class="solid-cta" id="email-brief" href="mailto:hello@slimservice.nl"><span data-brief="email">Open je e-mail</span><svg><use href="#diagonal"/></svg></a><a id="whatsapp-brief" href="https://wa.me/31687699731" target="_blank" rel="noopener" class="text-cta"><span data-copy="whatsappBrief">Open in WhatsApp</span><svg><use href="#diagonal"/></svg></a></div><div class="brief-utilities"><button type="button" class="copy-brief" data-brief="copy"></button><button type="button" class="download-brief" data-brief="download"></button></div><p class="form-note" data-brief="emailNote"></p><p class="brief-status" role="status"></p></div></div></div></section>
 </main>

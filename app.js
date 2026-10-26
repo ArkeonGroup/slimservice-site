@@ -2,11 +2,11 @@
 (() => {
   const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
   const reduced=matchMedia('(prefers-reduced-motion: reduce)'), compact=matchMedia('(max-height: 600px), (max-width: 760px) and (max-height: 760px)');
-  const state={locale:'nl',goal:'visibility',step:0,case:'web',channel:'instagram',service:null,engagement:null,decision:null};
+  const state={locale:'nl',goal:'visibility',step:0,channel:'instagram',service:null,engagement:null,decision:null};
   const copy=window.STUDIO_COPY, hero=$('.experience'), sticky=$('.experience-sticky'), video=$('#case-video');
   const extra={
-    nl:{sceneLabel:'Interactieve werkwijze · Geen live koppelingen',scrollLabel:'Scroll. Zie het samenkomen.',skipExperience:'Direct naar het werk',ambitionLabel:'Jouw bedrijf, jouw vertrekpunt',ambitionTitle:'Waar wil jij<br><em>naartoe?</em>',goalAction:'Dit is mijn vertrekpunt',webCaseTab:'De website',contentCaseTab:'Het verhaal',contentCaseHeading:'Hetzelfde merk.<br><em>Een ander podium.</em>',caseRole:'Eén case. Webdesign en branded content, met echte Bateman-assets.',connectionTitle:'Goed ontwerp<br>stopt niet bij<br><em>de buitenkant.</em>',connectionAction:'Ontdek onze expertise',servicesTitle:'Verschillende<br>disciplines.<br><em>Eén richting.</em>',projectEyebrow:'Een goed begin',projectTitle:'Wat wil jij<br>in beweging<br><em>zetten?</em>',whatsappBrief:'Open in WhatsApp',footerLine:'Strategie. Creatie. Technologie.',serviceAction:'Dit past bij mijn project',engagementAction:'Dit past bij mijn vraag',selected:'Geselecteerd',chosenService:'Gekozen expertise',chosenEngagement:'Samenwerking',goalGroup:'Kies je ambitie',stepGroup:'Verken de werkwijze',caseGroup:'Verken de Bateman-case',decisionNote:'Je hebt de controle in het voorbeeld verkend. Voor een echt project spreken we de controlepunten samen af.',briefSubject:'Een project voor SlimService',briefOpening:'Hoi SlimService, ik wil graag mijn project bespreken.',briefClosing:'Laten we bespreken wat een passende eerste stap is.'},
-    en:{sceneLabel:'Interactive process · No live connections',scrollLabel:'Scroll. See it come together.',skipExperience:'Go straight to the work',ambitionLabel:'Your business, your starting point',ambitionTitle:'Where do you<br><em>want to go?</em>',goalAction:'This is my starting point',webCaseTab:'The website',contentCaseTab:'The story',contentCaseHeading:'The same identity.<br><em>A different stage.</em>',caseRole:'One case. Web design and branded content, using real Bateman assets.',connectionTitle:'Good design<br>goes beyond<br><em>the surface.</em>',connectionAction:'Explore our expertise',servicesTitle:'Different<br>disciplines.<br><em>One direction.</em>',projectEyebrow:'A good beginning',projectTitle:'What would you<br>like to set<br><em>in motion?</em>',whatsappBrief:'Open in WhatsApp',footerLine:'Strategy. Creativity. Technology.',serviceAction:'This fits my project',engagementAction:'This fits my brief',selected:'Selected',chosenService:'Selected expertise',chosenEngagement:'Working together',goalGroup:'Choose your ambition',stepGroup:'Explore the process',caseGroup:'Explore the Bateman case',decisionNote:'You have explored the review controls in the example. We agree the actual checkpoints together for a real project.',briefSubject:'A project for SlimService',briefOpening:'Hello SlimService, I would like to discuss my project.',briefClosing:'Let’s discuss a suitable first step.'}
+    nl:{sceneLabel:'Interactieve werkwijze · Geen live koppelingen',scrollLabel:'Scroll. Zie het samenkomen.',skipExperience:'Bekijk de mogelijkheden',ambitionLabel:'Jouw bedrijf, jouw vertrekpunt',ambitionTitle:'Waar wil jij<br><em>naartoe?</em>',goalAction:'Dit is mijn vertrekpunt',webCaseTab:'De website',contentCaseTab:'Het verhaal',contentCaseHeading:'Hetzelfde merk.<br><em>Een ander podium.</em>',caseRole:'Eén case. Webdesign en branded content, met echte Bateman-assets.',connectionTitle:'Ook achter<br><em>de schermen.</em>',connectionAction:'Ontdek onze expertise',servicesTitle:'Verschillende<br>disciplines.<br><em>Eén richting.</em>',projectEyebrow:'Een goed begin',projectTitle:'Wat wil jij<br>in beweging<br><em>zetten?</em>',whatsappBrief:'Open in WhatsApp',footerLine:'Strategie. Creatie. Technologie.',serviceAction:'Dit past bij mijn project',engagementAction:'Dit past bij mijn vraag',selected:'Geselecteerd',chosenService:'Gekozen expertise',chosenEngagement:'Samenwerking',goalGroup:'Kies je ambitie',stepGroup:'Verken de werkwijze',caseGroup:'Verken de Bateman-case',decisionNote:'Je hebt de controle in het voorbeeld verkend. Voor een echt project spreken we de controlepunten samen af.',briefSubject:'Een project voor SlimService',briefOpening:'Hoi SlimService, ik wil graag mijn project bespreken.',briefClosing:'Laten we bespreken wat een passende eerste stap is.'},
+    en:{sceneLabel:'Interactive process · No live connections',scrollLabel:'Scroll. See it come together.',skipExperience:'Explore the possibilities',ambitionLabel:'Your business, your starting point',ambitionTitle:'Where do you<br><em>want to go?</em>',goalAction:'This is my starting point',webCaseTab:'The website',contentCaseTab:'The story',contentCaseHeading:'The same identity.<br><em>A different stage.</em>',caseRole:'One case. Web design and branded content, using real Bateman assets.',connectionTitle:'Behind the<br><em>scenes, too.</em>',connectionAction:'Explore our expertise',servicesTitle:'Different<br>disciplines.<br><em>One direction.</em>',projectEyebrow:'A good beginning',projectTitle:'What would you<br>like to set<br><em>in motion?</em>',whatsappBrief:'Open in WhatsApp',footerLine:'Strategy. Creativity. Technology.',serviceAction:'This fits my project',engagementAction:'This fits my brief',selected:'Selected',chosenService:'Selected expertise',chosenEngagement:'Working together',goalGroup:'Choose your ambition',stepGroup:'Explore the process',caseGroup:'Explore the Bateman case',decisionNote:'You have explored the review controls in the example. We agree the actual checkpoints together for a real project.',briefSubject:'A project for SlimService',briefOpening:'Hello SlimService, I would like to discuss my project.',briefClosing:'Let’s discuss a suitable first step.'}
   };
   const t=k=>copy[state.locale][k], e=k=>extra[state.locale][k];
   let scrollFrame=0,pendingFocusStep=null,modalOpener=null,lastStep=-1,pendingSeek=null;
@@ -52,7 +52,7 @@
     $('.goal-tabs').innerHTML=Object.entries(t('goals')).map(([id,g])=>`<button type="button" id="goal-${id}" role="tab" data-goal="${id}" aria-controls="goal-panel" aria-selected="${id===state.goal}" tabindex="${id===state.goal?0:-1}">${g.label}</button>`).join('');
     $('.goal-tabs').setAttribute('aria-label',e('goalGroup'));
     $('.brief-goals').innerHTML=Object.entries(t('goals')).map(([id,g])=>`<button type="button" data-goal="${id}" aria-pressed="${id===state.goal}">${g.label}</button>`).join('');
-    $('#service-list').innerHTML=t('services').map((s,i)=>`<article class="service-row"><button type="button" id="service-button-${s.id}" data-service-toggle="${s.id}" aria-expanded="${s.id==='web'}" aria-controls="service-${s.id}"><span class="service-number">0${i+1}</span><span class="service-name">${s.name}</span>${icon('plus')}</button><div class="service-detail" id="service-${s.id}" ${s.id==='web'?'':'hidden'}><p>${s.description}</p><ul>${s.deliverables.map(x=>`<li>${x}</li>`).join('')}</ul><a class="text-cta" href="#project" data-service-select="${s.id}"><span>${e('serviceAction')}</span>${icon('diagonal')}</a></div></article>`).join('');
+    $('#service-list').innerHTML=t('services').map(s=>`<article class="service-row"><button type="button" id="service-button-${s.id}" data-service-toggle="${s.id}" aria-expanded="${s.id==='web'}" aria-controls="service-${s.id}"><span class="service-icon">${icon({strategy:'icon-strategy',web:'icon-web',content:'icon-content',systems:'icon-system'}[s.id])}</span><span class="service-name">${s.name}</span>${icon('plus')}</button><div class="service-detail" id="service-${s.id}" ${s.id==='web'?'':'hidden'}><p>${s.description}</p><ul>${s.deliverables.map(x=>`<li>${x}</li>`).join('')}</ul><a class="text-cta" href="#project" data-service-select="${s.id}"><span>${e('serviceAction')}</span>${icon('diagonal')}</a></div></article>`).join('');
     $('.engagement-list').innerHTML=t('engagements').map((s,i)=>`<article class="engagement-item" data-engagement-item="${s.id}" data-selected="${state.engagement===s.id}"><div class="number">0${i+1}</div><h3>${s.name}</h3><p>${s.description}</p><button type="button" data-engagement="${s.id}" aria-pressed="${state.engagement===s.id}"><span>${state.engagement===s.id?e('selected'):e('engagementAction')}</span>${icon('diagonal')}</button></article>`).join('');
     const when=$('#when').value||'exploring';$('#when').innerHTML=t('brief').whenOptions.map(o=>`<option value="${o.value}">${o.label}</option>`).join('');$('#when').value=when;
     renderGoal();renderSelectionContext();renderStep();
@@ -77,7 +77,7 @@
   function setLocale(locale,remember=false){
     state.locale=['nl','en'].includes(locale)?locale:'nl';document.documentElement.lang=state.locale;
     $('.brief-status').textContent='';
-    document.title=state.locale==='nl'?'SlimService — Sterk zichtbaar. Slim verbonden.':'SlimService — Built to stand out. Made to connect.';
+    document.title=state.locale==='nl'?'SlimService | Sterk zichtbaar. Slim verbonden.':'SlimService | Built to stand out. Made to connect.';
     $('meta[name="description"]').content=t('heroIntro');
     $$('[data-i18n]').forEach(el=>{if(t(el.dataset.i18n)!==undefined)el.textContent=t(el.dataset.i18n);});
     $$('[data-copy]').forEach(el=>el.innerHTML=e(el.dataset.copy));
@@ -86,8 +86,8 @@
     $$('[data-brief]').forEach(el=>el.textContent=t('brief')[el.dataset.brief]||'');
     $$('[data-placeholder]').forEach(el=>el.placeholder=t('brief')[el.dataset.placeholder]);
     $$('[data-locale]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.locale===state.locale)));
-    $('.case-switch').setAttribute('aria-label',e('caseGroup'));
     renderCollections();selectChannel(state.channel);renderPlayer();
+    window.SlimShowcase?.setLocale(state.locale);
     if(!$('.brief-result').hidden)renderBrief();
     if(remember){try{localStorage.setItem('slimservice-studio-locale',state.locale);}catch{}const url=new URL(location.href);url.searchParams.set('lang',state.locale);history.replaceState(null,'',url);announce(t('localeAnnouncement'));}
     updateScroll();
@@ -106,7 +106,6 @@
     if(b.dataset.serviceToggle){const panel=$(`#service-${b.dataset.serviceToggle}`),open=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!open));panel.hidden=open;}
     if(b.dataset.serviceSelect){state.service=b.dataset.serviceSelect;renderSelectionContext();if(!$('.brief-result').hidden)renderBrief();}
     if(b.dataset.engagement){state.engagement=b.dataset.engagement;renderCollections();goTo('#project');}
-    if(b.dataset.case)selectCase(b.dataset.case);
     if(b.dataset.channel)selectChannel(b.dataset.channel);
     if(b.matches('a[href^="#"]')){event.preventDefault();goTo(b.getAttribute('href'));}
   });
@@ -114,7 +113,6 @@
     keyboardTabs(event,'.step-rail button',b=>chooseStep(Number(b.dataset.process),true));
     keyboardTabs(event,'.goal-tabs button',b=>chooseGoal(b.dataset.goal));
     keyboardTabs(event,'.channels button',b=>selectChannel(b.dataset.channel));
-    keyboardTabs(event,'.case-switch button',b=>selectCase(b.dataset.case));
     if(event.key==='Escape'&&document.fullscreenElement===video)document.exitFullscreen().catch(()=>{});
   });
   $('.explore-process').addEventListener('click',()=>{pendingFocusStep=1;chooseStep(1);});
@@ -122,11 +120,6 @@
   window.addEventListener('resize',updateScroll,{passive:true});reduced.addEventListener('change',()=>{video.pause();updateScroll();});compact.addEventListener('change',updateScroll);
   window.addEventListener('studio:decision',event=>{if(event.detail.goal!==state.goal)return;const changed=state.decision!==event.detail.decision;state.decision=event.detail.decision;if(changed)announce(e('decisionNote'));});
   window.addEventListener('studio:inquiry',()=>announce(state.locale==='nl'?'Voorbeeldaanvraag voorbereid. Je kunt nu het controlepunt verkennen.':'Example enquiry prepared. You can now explore the review checkpoint.'));
-  function selectCase(which){
-    state.case=which;$('#case-web').hidden=which!=='web';$('#case-content').hidden=which!=='content';
-    $$('.case-switch button').forEach(b=>{const active=b.dataset.case===which;b.setAttribute('aria-selected',String(active));b.tabIndex=active?0:-1;});
-    if(which!=='content')video.pause();
-  }
   function selectChannel(channel){
     if(!['instagram','tiktok','facebook'].includes(channel))return;state.channel=channel;
     $$('.channels button').forEach(b=>{const active=b.dataset.channel===channel;b.setAttribute('aria-selected',String(active));b.tabIndex=active?0:-1;});
@@ -166,5 +159,5 @@
   $('.edit-brief').addEventListener('click',()=>{$('.brief-status').textContent='';$('.brief-result').hidden=true;$('#brief-form').hidden=false;$('#business').focus({preventScroll:true});});
   $('.copy-brief').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(briefText());$('.brief-status').textContent=t('brief').copied;}catch{$('.brief-status').textContent=t('brief').copyFailed;}});
   $('.download-brief').addEventListener('click',()=>{const url=URL.createObjectURL(new Blob([briefText()],{type:'text/plain;charset=utf-8'})),a=document.createElement('a');a.href=url;a.download=t('brief').downloadFilename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);$('.brief-status').textContent=t('brief').downloaded;});
-  let locale=new URLSearchParams(location.search).get('lang');if(!['nl','en'].includes(locale)){try{locale=localStorage.getItem('slimservice-studio-locale');}catch{}}setLocale(locale||'nl');selectCase('web');
+  let locale=new URLSearchParams(location.search).get('lang');if(!['nl','en'].includes(locale)){try{locale=localStorage.getItem('slimservice-studio-locale');}catch{}}setLocale(locale||'nl');
 })();
