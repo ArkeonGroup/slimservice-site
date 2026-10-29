@@ -10,14 +10,14 @@
       label: 'Van expertise naar iets tastbaars',
       strategy: {name: 'Een merk met richting.', output: 'Een helder verhaal en een herkenbare visuele basis.', note: 'SlimService / merkstudie', word: 'Maak het\nherkenbaar.', a: 'Verhaal', b: 'Vorm', c: 'Richting'},
       web: {name: 'Een website die verder helpt.', output: 'Van de eerste indruk naar een duidelijke volgende stap.', note: 'Bateman / websiteontwerp', a: 'Ontdek', b: 'Vertrouw', c: 'Neem contact op'},
-      content: {name: 'Een merk is een samenspel.', output: 'Logo, badge, karakter, kleur en content. Verschillende herkenningspunten die samen één merk laten spreken.', note: 'Bateman / bestaande merkassets', a: 'Logo', b: 'Badge', c: 'Karakter', d: 'In toepassing'},
+      content: {name: 'Een merk is een samenspel.', output: 'Logo, badge, karakter, typografie, kleur en iconen. Samen herkenbaar, van website tot content.', note: 'Bateman / bestaande merkassets', a: 'Logo', b: 'Badge', c: 'Karakter', d: 'In toepassing', type: 'Typografie', icons: 'Iconen', colours: 'Kleuren', headings: 'Koppen · 500 / 600', accent: 'Accent · regular / italic', body: 'Lopende tekst: Arial / Helvetica', carpentry: 'Timmerwerk', fitting: 'Montage', garden: 'Tuinruimtes'},
       systems: {name: 'Ruimte om verder te werken.', output: 'Informatie, opvolging en controle in één logisch proces.', note: 'SlimService / procesvoorbeeld', a: 'Aanvraag', b: 'Controle', c: 'Volgende stap'}
     },
     en: {
       label: 'From expertise to something tangible',
       strategy: {name: 'An identity with direction.', output: 'A clear story and a recognisable visual foundation.', note: 'SlimService / identity study', word: 'Make it\nrecognisable.', a: 'Story', b: 'Form', c: 'Direction'},
       web: {name: 'A website that moves you forward.', output: 'From a first impression to a clear next step.', note: 'Bateman / website design', a: 'Discover', b: 'Trust', c: 'Get in touch'},
-      content: {name: 'One identity. Many expressions.', output: 'Logo, badge, character, colour and content. Distinctive elements that come together as one recognisable brand.', note: 'Bateman / existing brand assets', a: 'Logo', b: 'Badge', c: 'Character', d: 'In context'},
+      content: {name: 'One identity. Many expressions.', output: 'Logo, badge, character, typography, colour and icons. Recognisable together, from website to content.', note: 'Bateman / existing brand assets', a: 'Logo', b: 'Badge', c: 'Character', d: 'In context', type: 'Typography', icons: 'Icons', colours: 'Colours', headings: 'Headings · 500 / 600', accent: 'Accent · regular / italic', body: 'Body text: Arial / Helvetica', carpentry: 'Carpentry', fitting: 'Fitting', garden: 'Garden rooms'},
       systems: {name: 'Room to keep moving.', output: 'Information, follow-up and review in one clear process.', note: 'SlimService / process example', a: 'Enquiry', b: 'Review', c: 'Next step'}
     }
   };
@@ -31,12 +31,12 @@
       <div class="ev-art ev-strategy"><div class="ev-brand-back"></div><div class="ev-brand-sheet"><span class="ev-sheet-label">SLIM / SERVICE</span><strong class="ev-brand-word"></strong><div class="ev-swatches"><i></i><i></i><i></i></div><div class="ev-identity-lines"><span></span><span></span><span></span></div></div></div>
       <div class="ev-art ev-web"><div class="ev-web-browser"><div class="ev-browser-bar"><span><i></i><i></i><i></i></span><span>batemanconstruction.co.uk</span></div><img src="assets/bateman-website.png" loading="lazy" decoding="async" width="1440" height="900" alt=""></div><div class="ev-web-action"><span data-ev="c"></span><svg><use href="#diagonal"/></svg></div></div>
       <div class="ev-art ev-content">
-        <div class="ev-brand-links"></div>
-        <div class="ev-logo-piece"><span data-ev="a"></span><img src="assets/bateman-logo.webp" loading="lazy" decoding="async" width="960" height="320" alt=""></div>
-        <div class="ev-badge-piece"><img src="assets/trevor-badge.webp" loading="lazy" decoding="async" width="320" height="320" alt=""><span data-ev="b"></span></div>
-        <div class="ev-application-piece"><img src="assets/bateman-hero-poster.webp" loading="lazy" decoding="async" width="816" height="1440" alt=""><div class="ev-application-brand"><img src="assets/bateman-logo.webp" loading="lazy" decoding="async" width="960" height="320" alt=""></div><span data-ev="d"></span></div>
-        <div class="ev-colour-piece"><i></i><i></i><i></i></div>
-        <div class="ev-character-piece"><img src="assets/bateman-duck-hardhat.webp" loading="lazy" decoding="async" width="480" height="480" alt=""><span data-ev="c"></span></div>
+        <div class="ev-brand-cell ev-logo-piece"><span class="ev-cell-label" data-ev="a"></span><img src="assets/bateman-logo.webp" loading="lazy" decoding="async" width="960" height="320" alt="Bateman Construction"></div>
+        <div class="ev-brand-cell ev-badge-piece"><span class="ev-cell-label" data-ev="b"></span><img src="assets/trevor-badge.webp" loading="lazy" decoding="async" width="320" height="320" alt="Trevor Approved"></div>
+        <div class="ev-brand-cell ev-character-piece"><span class="ev-cell-label" data-ev="c"></span><img src="assets/bateman-duck-hardhat.webp" loading="lazy" decoding="async" width="480" height="480" alt=""></div>
+        <div class="ev-brand-cell ev-type-piece"><span class="ev-cell-label" data-ev="type"></span><div class="ev-type-samples"><div><strong class="ev-barlow-sample">Aa</strong><span class="ev-type-name">Barlow Condensed</span><small data-ev="headings"></small></div><div><strong class="ev-instrument-sample">A<em>a</em></strong><span class="ev-type-name">Instrument Serif</span><small data-ev="accent"></small></div></div><p class="ev-body-sample" data-ev="body"></p></div>
+        <div class="ev-brand-cell ev-icon-piece"><span class="ev-cell-label" data-ev="icons"></span><div class="ev-icon-grid"><span><i class="ev-icon-carpentry" aria-hidden="true"></i><small data-ev="carpentry"></small></span><span><i class="ev-icon-fitting" aria-hidden="true"></i><small data-ev="fitting"></small></span><span><i class="ev-icon-garden" aria-hidden="true"></i><small data-ev="garden"></small></span></div></div>
+        <div class="ev-brand-cell ev-colour-piece"><span class="ev-cell-label" data-ev="colours"></span><div class="ev-palette"><span><i></i><small>#09A801</small></span><span><i></i><small>#E8E6DD</small></span><span><i></i><small>#191D1A</small></span></div></div>
       </div>
       <div class="ev-art ev-systems"><div class="ev-flow-line"></div><div class="ev-flow-node"><svg><use href="#icon-web"/></svg><span data-ev="a"></span><small>01</small></div><div class="ev-flow-node"><svg><use href="#check"/></svg><span data-ev="b"></span><small>02</small></div><div class="ev-flow-node"><svg><use href="#diagonal"/></svg><span data-ev="c"></span><small>03</small></div></div>
       <span class="ev-note"></span>
@@ -54,6 +54,8 @@
       if (panel) panel.hidden = !active;
     });
     figure.dataset.expertise = selected;
+    figure.querySelector('.ev-stage').setAttribute('aria-hidden', String(selected !== 'content'));
+    figure.querySelectorAll('.ev-art').forEach(art => art.setAttribute('aria-hidden',String(!art.classList.contains('ev-'+selected))));
     figure.querySelector('.ev-index').textContent = `0${['strategy','web','content','systems'].indexOf(selected)+1} / 04`;
     figure.querySelector('.ev-label').textContent = copy[locale].label;
     figure.querySelector('.ev-title').textContent = c.name;
