@@ -11,14 +11,11 @@
 <meta property="og:title" content="Algemene Voorwaarden | SlimService">
 <meta property="og:description" content="Algemene voorwaarden van SlimService.">
 <meta property="og:url" content="https://slimservice.nl/voorwaarden.html">
-<meta property="og:image" content="https://slimservice.nl/assets/og-image.png">
+<meta property="og:image" content="https://slimservice.nl/assets/social-preview.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/assets/logos/apple-touch-icon.png">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
 <meta name="theme-color" content="#07060A">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{--void:#07060A;--surface:#111019;--surface2:#181624;--line:rgba(255,255,255,.07);--line2:rgba(255,255,255,.13);--text:#F0EEF8;--muted:#6B6880;--faint:rgba(240,238,248,.55);--g:#00FF88;--g-dim:rgba(0,255,136,.08);--g-ring:rgba(0,255,136,.22);--f-d:'Syne',system-ui,sans-serif;--f-m:'DM Mono','Courier New',monospace;--r:4px;--r-md:12px;--r-lg:18px;--ease:cubic-bezier(.4,0,.2,1)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -87,7 +84,12 @@ a:focus-visible{outline:2px solid var(--g);outline-offset:2px;border-radius:2px}
 .footer-text a{color:var(--g);margin:0 4px}
 @media print{body{background:#fff;color:#000}.header,.toc,.footer{display:none}.article{page-break-inside:avoid}}
 </style>
-</head>
+<style>
+@font-face{font-family:Source;src:url('assets/fonts/SourceSansPro-Regular.ttf') format('truetype');font-display:swap} @font-face{font-family:Instrument;src:url('assets/fonts/instrument-regular.woff2') format('woff2');font-display:swap}
+:root{--void:#f4f2ec;--surface:#ece9e1;--surface2:#e6e3da;--line:#20251f26;--line2:#20251f45;--text:#20251f;--muted:#50594c;--faint:#40483c;--g:#a43824;--g-dim:#a438240b;--g-ring:#a4382440;--f-d:Source,Arial,sans-serif;--f-m:Source,Arial,sans-serif;--r:0;--r-md:0;--r-lg:0}
+.legal-title{font-family:Instrument,Georgia,serif;font-weight:400;font-size:clamp(40px,6vw,64px)}.article-title{font-size:22px}.article p,.article li{font-size:16px;line-height:1.75}.legal-meta,.legal-intro{font-size:14px}.brand-icon{color:#fff}.btn-back{font-size:13px;min-height:44px;display:flex;align-items:center}.legal-entity p{font-size:14px}.footer-text{font-size:13px}.footer-text a{display:inline-block;min-height:44px;padding:10px 5px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style></head>
 <body>
 
 <div class="wrap">
@@ -107,15 +109,15 @@ a:focus-visible{outline:2px solid var(--g);outline-offset:2px;border-radius:2px}
   </div>
 
   <div class="legal-intro">
-    <strong>SlimService</strong> · <a href="mailto:hello@slimservice.nl">hello@slimservice.nl</a> · <a href="tel:+31687699713">06 87 699 713</a>
+    <strong>SlimService</strong> · <a href="mailto:hello@slimservice.nl">hello@slimservice.nl</a> · <a href="tel:+31687699731">06 87 699 731</a>
   </div>
 
   <nav class="toc" id="toc" aria-label="Inhoudsopgave">
-    <button class="toc-toggle" aria-expanded="false" aria-controls="toc-content" onclick="this.closest('.toc').classList.toggle('open');this.setAttribute('aria-expanded',this.closest('.toc').classList.contains('open'))">
+    <button class="toc-toggle" type="button" aria-expanded="false" aria-controls="toc-content" onclick="const open = this.closest('.toc').classList.toggle('open'); this.setAttribute('aria-expanded', open); const content = document.getElementById('toc-content'); content.hidden = !open; content.inert = !open;">
       <span>Inhoudsopgave (20 artikelen)</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
     </button>
-    <div class="toc-content" id="toc-content">
+    <div class="toc-content" id="toc-content" hidden inert>
       <div class="toc-list">
         <a href="#art-1" class="toc-item"><span>1</span> Definities</a>
         <a href="#art-2" class="toc-item"><span>2</span> Toepasselijkheid</a>
@@ -299,7 +301,7 @@ a:focus-visible{outline:2px solid var(--g);outline-offset:2px;border-radius:2px}
     <h2 class="article-title">Privacy, AVG en verwerkersovereenkomst</h2>
     <ul>
       <li>Voor persoonsgegevens als verwerkingsverantwoordelijke: zie <a href="/privacy.html">privacyverklaring</a>.</li>
-      <li>Voor persoonsgegevens namens de Klant: zie <a href="/dpa.html">verwerkersovereenkomst (DPA)</a>.</li>
+      <li>Voor persoonsgegevens namens de Klant: zie <a href="https://slimservice.nl/dpa.html">verwerkersovereenkomst (DPA)</a>.</li>
       <li>Klant is verwerkingsverantwoordelijke voor gegevens van Eindklanten.</li>
       <li>Klant vrijwaart SlimService voor claims uit onrechtmatige verwerking door Klant.</li>
     </ul>
@@ -386,7 +388,7 @@ a:focus-visible{outline:2px solid var(--g);outline-offset:2px;border-radius:2px}
 
 <footer class="footer">
   <div class="wrap">
-    <p class="footer-text">© 2026 SlimService<a href="/privacy.html">Privacy</a><a href="/dpa.html">DPA</a><a href="/cookies.html">Cookies</a></p>
+    <p class="footer-text">© 2026 SlimService<a href="/privacy.html">Privacy</a><a href="https://slimservice.nl/dpa.html">DPA</a></p>
   </div>
 </footer>
 

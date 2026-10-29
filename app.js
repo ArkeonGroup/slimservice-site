@@ -9,6 +9,7 @@
     en:{sceneLabel:'Interactive process · No live connections',scrollLabel:'Scroll. See it come together.',skipExperience:'Explore the possibilities',ambitionLabel:'Your business, your starting point',ambitionTitle:'Where do you<br><em>want to go?</em>',goalAction:'This is my starting point',webCaseTab:'The website',contentCaseTab:'The story',contentCaseHeading:'The same identity.<br><em>A different stage.</em>',caseRole:'One case. Web design and branded content, using real Bateman assets.',connectionTitle:'Behind the<br><em>scenes, too.</em>',connectionAction:'Explore our expertise',servicesTitle:'Different<br>disciplines.<br><em>One direction.</em>',projectEyebrow:'A good beginning',projectTitle:'What would you<br>like to set<br><em>in motion?</em>',whatsappBrief:'Open in WhatsApp',footerLine:'Strategy. Creativity. Technology.',serviceAction:'This fits my project',engagementAction:'This fits my brief',selected:'Selected',chosenService:'Selected expertise',chosenEngagement:'Working together',goalGroup:'Choose your ambition',stepGroup:'Explore the process',caseGroup:'Explore the Bateman case',decisionNote:'You have explored the review controls in the example. We agree the actual checkpoints together for a real project.',briefSubject:'A project for SlimService',briefOpening:'Hello SlimService, I would like to discuss my project.',briefClosing:'Let’s discuss a suitable first step.'}
   };
   const t=k=>copy[state.locale][k], e=k=>extra[state.locale][k];
+  let manualProcess=false;
   let scrollFrame=0,pendingFocusStep=null,modalOpener=null,lastStep=-1,pendingSeek=null;
   const staticMode=()=>reduced.matches||compact.matches;
   const icon=id=>`<svg aria-hidden="true"><use href="#${id}"/></svg>`;
@@ -27,8 +28,8 @@
   function updateScroll(){
     scrollFrame=0;const rect=hero.getBoundingClientRect();
     const p=staticMode()?0:clamp(-rect.top/Math.max(1,hero.offsetHeight-innerHeight));
-    const intro=staticMode()?(state.step===0?1:0):1-smooth(.05,.16,p);
-    const story=staticMode()?(state.step===0?0:1):smooth(.11,.22,p);
+    const intro=staticMode()?(manualProcess?0:1):1-smooth(.05,.16,p);
+    const story=staticMode()?(manualProcess?1:0):smooth(.11,.22,p);
     sticky.style.setProperty('--intro',intro.toFixed(3));sticky.style.setProperty('--story',story.toFixed(3));
     sticky.dataset.tone=story>.4?'dark':'light';sticky.dataset.static=String(staticMode());
     const cue=staticMode()?(state.locale==='nl'?'Kies een stap. Verken de werkwijze.':'Choose a step. Explore the process.'):e('scrollLabel');
@@ -40,6 +41,7 @@
     if(pendingFocusStep!==null && (staticMode()||(state.step===pendingFocusStep&&Math.abs(p-(pendingFocusStep+.45)/5)<.025))){const target=pendingFocusStep;pendingFocusStep=null;$(`#process-tab-${target}`).focus({preventScroll:true});}
   }
   function chooseStep(i,keyboard=false){
+    manualProcess=true;
     state.step=clamp(i,0,4);lastStep=state.step;renderStep();
     if(staticMode()){updateScroll();if(keyboard)$(`#process-tab-${state.step}`).focus({preventScroll:true});return;}
     const top=scrollY+hero.getBoundingClientRect().top;
@@ -130,12 +132,12 @@
   function renderPlayer(){
     const playing=!video.paused&&!video.ended;$('.video-window').classList.toggle('playing',playing);
     $$('[data-action="play"]').forEach(b=>{b.setAttribute('aria-label',t(playing?'pauseLabel':'playLabel'));b.querySelector('use').setAttribute('href',playing?'#pause':'#play');const label=b.querySelector('span');if(label)label.textContent=t(playing?'pause':'play');});
-    const sound=$('[data-action="sound"]');sound.setAttribute('aria-pressed',String(!video.muted));sound.setAttribute('aria-label',t(video.muted?'unmuteLabel':'muteLabel'));sound.querySelector('use').setAttribute('href',video.muted?'#mute':'#sound');sound.querySelector('span').textContent=t(video.muted?'sound':'soundOn');
+    // The selected hero film has no audio track; no sound control is presented.
     $('[data-action="replay"]').setAttribute('aria-label',t('replayLabel'));$('[data-action="full"]').setAttribute('aria-label',t('fullLabel'));renderTime();
   }
-  function renderTime(){const duration=Number.isFinite(video.duration)?video.duration:17.417;$('#video-progress').max=duration;$('#video-progress').value=video.currentTime;$('#video-progress').setAttribute('aria-valuetext',`${time(video.currentTime)} ${t('of')} ${time(duration)}`);$('#video-time').textContent=`${time(video.currentTime)} / ${time(duration)}`;}
-  function loadVideo(){if(!video.getAttribute('src'))video.src='assets/bateman-reel.mp4';}
-  function mediaError(key){const p=$('.media-error');p.replaceChildren(document.createTextNode(t(key)));const a=document.createElement('a');a.href='assets/bateman-reel.mp4';a.textContent=t('openOriginal');p.append(a);p.hidden=false;}
+  function renderTime(){const duration=Number.isFinite(video.duration)?video.duration:15.25;$('#video-progress').max=duration;$('#video-progress').value=video.currentTime;$('#video-progress').setAttribute('aria-valuetext',`${time(video.currentTime)} ${t('of')} ${time(duration)}`);$('#video-time').textContent=`${time(video.currentTime)} / ${time(duration)}`;}
+  function loadVideo(){if(!video.getAttribute('src'))video.src='assets/bateman-hero-mobile.mp4';}
+  function mediaError(key){const p=$('.media-error');p.replaceChildren(document.createTextNode(t(key)));const a=document.createElement('a');a.href='assets/bateman-hero-mobile.mp4';a.textContent=t('openOriginal');p.append(a);p.hidden=false;}
   async function play(replay=false){loadVideo();if(video.error)video.load();$('.media-error').hidden=true;if(replay||video.ended)video.currentTime=0;try{await video.play();}catch(err){if(err.name!=='AbortError')mediaError('playError');}renderPlayer();}
   $$('[data-action]').forEach(b=>b.addEventListener('click',async()=>{
     const a=b.dataset.action;if(a==='play'){if(video.paused)await play();else video.pause();}
@@ -153,6 +155,7 @@
     const lines=[e('briefOpening'),'',`${b.summaryGoal}: ${t('goals')[state.goal].label}`,`${b.summaryBusiness}: ${$('#business').value.trim()||b.summaryMissing}`,`${b.summaryNeed}: ${$('#need').value.trim()||b.summaryMissing}`,`${b.summaryWhen}: ${when||b.summaryMissing}`];
     if(service)lines.push(`${e('chosenService')}: ${service.name}`);if(eng)lines.push(`${e('chosenEngagement')}: ${eng.name}`);lines.push('',e('briefClosing'));return lines.join('\n');
   }
+  window.addEventListener('studio:open-website',event=>{modalOpener=event.detail.opener;video.pause();dialog.showModal();$('.dialog-close').focus({preventScroll:true});});
   function renderBrief(){const text=briefText();$('.brief-status').textContent='';$('#brief-text').textContent=text;$('#email-brief').href=`mailto:hello@slimservice.nl?subject=${encodeURIComponent(e('briefSubject'))}&body=${encodeURIComponent(text)}`;$('#whatsapp-brief').href=`https://wa.me/31687699731?text=${encodeURIComponent(text)}`;}
   $('#brief-form').addEventListener('submit',event=>{event.preventDefault();['business','need'].forEach(id=>{const field=$('#'+id);field.setCustomValidity(field.value.trim()?'':t('brief')[id==='business'?'validationBusiness':'validationNeed']);});if(!event.currentTarget.reportValidity())return;renderBrief();$('#brief-form').hidden=true;$('.brief-result').hidden=false;$('#brief-text').focus({preventScroll:true});$('.brief-result').scrollIntoView({behavior:reduced.matches?'instant':'smooth',block:'center'});});
   ['business','need'].forEach(id=>{$('#'+id).addEventListener('invalid',()=>$('#'+id).setCustomValidity(t('brief')[id==='business'?'validationBusiness':'validationNeed']));$('#'+id).addEventListener('input',()=>$('#'+id).setCustomValidity(''));});
