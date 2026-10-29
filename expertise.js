@@ -10,14 +10,14 @@
       label: 'Van expertise naar iets tastbaars',
       strategy: {name: 'Een merk met richting.', output: 'Een helder verhaal en een herkenbare visuele basis.', note: 'SlimService / merkstudie', word: 'Maak het\nherkenbaar.', a: 'Verhaal', b: 'Vorm', c: 'Richting'},
       web: {name: 'Een website die verder helpt.', output: 'Van de eerste indruk naar een duidelijke volgende stap.', note: 'Bateman / websiteontwerp', a: 'Ontdek', b: 'Vertrouw', c: 'Neem contact op'},
-      content: {name: 'Een verhaal dat blijft hangen.', output: 'Hetzelfde merk, zorgvuldig vertaald naar een ander formaat.', note: 'Bateman / bestaande hero-video', a: 'Merk', b: 'Beeld', c: 'Verhaal'},
+      content: {name: 'Een merk is een samenspel.', output: 'Logo, badge, karakter, kleur en content. Verschillende herkenningspunten die samen één merk laten spreken.', note: 'Bateman / bestaande merkassets', a: 'Logo', b: 'Badge', c: 'Karakter', d: 'In toepassing'},
       systems: {name: 'Ruimte om verder te werken.', output: 'Informatie, opvolging en controle in één logisch proces.', note: 'SlimService / procesvoorbeeld', a: 'Aanvraag', b: 'Controle', c: 'Volgende stap'}
     },
     en: {
       label: 'From expertise to something tangible',
       strategy: {name: 'An identity with direction.', output: 'A clear story and a recognisable visual foundation.', note: 'SlimService / identity study', word: 'Make it\nrecognisable.', a: 'Story', b: 'Form', c: 'Direction'},
       web: {name: 'A website that moves you forward.', output: 'From a first impression to a clear next step.', note: 'Bateman / website design', a: 'Discover', b: 'Trust', c: 'Get in touch'},
-      content: {name: 'A story that stays with you.', output: 'The same identity, carefully adapted to another format.', note: 'Bateman / existing hero video', a: 'Identity', b: 'Image', c: 'Story'},
+      content: {name: 'One identity. Many expressions.', output: 'Logo, badge, character, colour and content. Distinctive elements that come together as one recognisable brand.', note: 'Bateman / existing brand assets', a: 'Logo', b: 'Badge', c: 'Character', d: 'In context'},
       systems: {name: 'Room to keep moving.', output: 'Information, follow-up and review in one clear process.', note: 'SlimService / process example', a: 'Enquiry', b: 'Review', c: 'Next step'}
     }
   };
@@ -30,7 +30,14 @@
       <span class="ev-index"></span>
       <div class="ev-art ev-strategy"><div class="ev-brand-back"></div><div class="ev-brand-sheet"><span class="ev-sheet-label">SLIM / SERVICE</span><strong class="ev-brand-word"></strong><div class="ev-swatches"><i></i><i></i><i></i></div><div class="ev-identity-lines"><span></span><span></span><span></span></div></div></div>
       <div class="ev-art ev-web"><div class="ev-web-browser"><div class="ev-browser-bar"><span><i></i><i></i><i></i></span><span>batemanconstruction.co.uk</span></div><img src="assets/bateman-website.png" loading="lazy" decoding="async" width="1440" height="900" alt=""></div><div class="ev-web-action"><span data-ev="c"></span><svg><use href="#diagonal"/></svg></div></div>
-      <div class="ev-art ev-content"><div class="ev-content-outline"></div><div class="ev-content-image"><img src="assets/bateman-hero-poster.webp" loading="lazy" decoding="async" width="816" height="1440" alt=""></div><div class="ev-content-type"><span>Bateman</span><em>Construction.</em><svg><use href="#icon-content"/></svg></div></div>
+      <div class="ev-art ev-content">
+        <div class="ev-brand-links"></div>
+        <div class="ev-logo-piece"><span data-ev="a"></span><img src="assets/bateman-logo.webp" loading="lazy" decoding="async" width="960" height="320" alt=""></div>
+        <div class="ev-badge-piece"><img src="assets/trevor-badge.webp" loading="lazy" decoding="async" width="320" height="320" alt=""><span data-ev="b"></span></div>
+        <div class="ev-application-piece"><img src="assets/bateman-hero-poster.webp" loading="lazy" decoding="async" width="816" height="1440" alt=""><div class="ev-application-brand"><img src="assets/bateman-logo.webp" loading="lazy" decoding="async" width="960" height="320" alt=""></div><span data-ev="d"></span></div>
+        <div class="ev-colour-piece"><i></i><i></i><i></i></div>
+        <div class="ev-character-piece"><img src="assets/bateman-duck-hardhat.webp" loading="lazy" decoding="async" width="480" height="480" alt=""><span data-ev="c"></span></div>
+      </div>
       <div class="ev-art ev-systems"><div class="ev-flow-line"></div><div class="ev-flow-node"><svg><use href="#icon-web"/></svg><span data-ev="a"></span><small>01</small></div><div class="ev-flow-node"><svg><use href="#check"/></svg><span data-ev="b"></span><small>02</small></div><div class="ev-flow-node"><svg><use href="#diagonal"/></svg><span data-ev="c"></span><small>03</small></div></div>
       <span class="ev-note"></span>
     </div>
@@ -53,7 +60,7 @@
     figure.querySelector('.ev-output').textContent = c.output;
     figure.querySelector('.ev-note').textContent = c.note;
     figure.querySelector('.ev-brand-word').textContent = copy[locale].strategy.word;
-    figure.querySelectorAll('[data-ev]').forEach(element => element.textContent = c[element.dataset.ev]);
+    figure.querySelectorAll('[data-ev]').forEach(element => element.textContent = c[element.dataset.ev] || '');
     const destination = small.matches ? document.getElementById(`service-${selected}`) : intro;
     if (destination && figure.parentElement !== destination) {
       if (small.matches) destination.prepend(figure);

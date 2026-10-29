@@ -122,6 +122,10 @@
   window.addEventListener('resize',updateScroll,{passive:true});reduced.addEventListener('change',()=>{video.pause();updateScroll();});compact.addEventListener('change',updateScroll);
   window.addEventListener('studio:decision',event=>{if(event.detail.goal!==state.goal)return;const changed=state.decision!==event.detail.decision;state.decision=event.detail.decision;if(changed)announce(e('decisionNote'));});
   window.addEventListener('studio:inquiry',()=>announce(state.locale==='nl'?'Voorbeeldaanvraag voorbereid. Je kunt nu het controlepunt verkennen.':'Example enquiry prepared. You can now explore the review checkpoint.'));
+  window.addEventListener('studio:calculator',event=>{
+    if(event.detail?.selected===true){state.service='systems';chooseGoal('operations');renderSelectionContext();}
+    else if(event.detail?.selected===false&&!$('.brief-result').hidden)renderBrief();
+  });
   function selectChannel(channel){
     if(!['instagram','tiktok','facebook'].includes(channel))return;state.channel=channel;
     $$('.channels button').forEach(b=>{const active=b.dataset.channel===channel;b.setAttribute('aria-selected',String(active));b.tabIndex=active?0:-1;});
@@ -153,7 +157,10 @@
   function briefText(){
     const b=t('brief'),service=t('services').find(s=>s.id===state.service),eng=t('engagements').find(s=>s.id===state.engagement),when=b.whenOptions.find(o=>o.value===$('#when').value)?.label;
     const lines=[e('briefOpening'),'',`${b.summaryGoal}: ${t('goals')[state.goal].label}`,`${b.summaryBusiness}: ${$('#business').value.trim()||b.summaryMissing}`,`${b.summaryNeed}: ${$('#need').value.trim()||b.summaryMissing}`,`${b.summaryWhen}: ${when||b.summaryMissing}`];
-    if(service)lines.push(`${e('chosenService')}: ${service.name}`);if(eng)lines.push(`${e('chosenEngagement')}: ${eng.name}`);lines.push('',e('briefClosing'));return lines.join('\n');
+    if(service)lines.push(`${e('chosenService')}: ${service.name}`);if(eng)lines.push(`${e('chosenEngagement')}: ${eng.name}`);
+    const calculation=window.SlimCalculator?.getBrief?.(state.locale);
+    if(calculation)lines.push('',calculation);
+    lines.push('',e('briefClosing'));return lines.join('\n');
   }
   window.addEventListener('studio:open-website',event=>{modalOpener=event.detail.opener;video.pause();dialog.showModal();$('.dialog-close').focus({preventScroll:true});});
   function renderBrief(){const text=briefText();$('.brief-status').textContent='';$('#brief-text').textContent=text;$('#email-brief').href=`mailto:hello@slimservice.nl?subject=${encodeURIComponent(e('briefSubject'))}&body=${encodeURIComponent(text)}`;$('#whatsapp-brief').href=`https://wa.me/31687699731?text=${encodeURIComponent(text)}`;}

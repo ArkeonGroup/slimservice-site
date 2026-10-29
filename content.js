@@ -206,11 +206,11 @@ window.STUDIO_COPY = {
       {
         "id": "content",
         "name": "Content & marketing",
-        "description": "Maak je kennis, aanbod en werk zichtbaar op een manier die bij je merk past.",
+        "description": "Een merk leeft in meer dan een logo. We verbinden je visuele identiteit, herkenbare merkdetails en content tot een verhaal dat op ieder kanaal klopt.",
         "deliverables": [
-          "Contentformats en campagneconcepten",
-          "Branded posts, Reels en webcontent",
-          "Contentplanning en een duidelijke reviewwerkwijze"
+          "Logo, badges, karakters en visuele merktaal",
+          "Branded posts, Reels, webcontent en campagneconcepten",
+          "Samenhangende formats, contentplanning en review"
         ]
       },
       {
@@ -519,11 +519,11 @@ window.STUDIO_COPY = {
       {
         "id": "content",
         "name": "Content & marketing",
-        "description": "Make your knowledge, offer and work visible in a way that fits your brand.",
+        "description": "An identity lives beyond its logo. We connect your visual identity, distinctive brand details and content into a coherent story across channels.",
         "deliverables": [
-          "Content formats and campaign concepts",
-          "Branded posts, Reels and web content",
-          "Content planning and a clear review process"
+          "Logo, badges, characters and a visual brand language",
+          "Branded posts, Reels, web content and campaign concepts",
+          "Consistent formats, content planning and review"
         ]
       },
       {
