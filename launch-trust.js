@@ -5,7 +5,7 @@
     nl: {
       eyebrow: 'Achter SlimService', title: 'Goed werk begint<br>met <em>goed contact.</em>',
       intro: 'Een sterke digitale ervaring begint met begrijpen wat jouw bedrijf nodig heeft. We maken de vraag concreet, kiezen een passende aanpak en spreken af wat je ontvangt.',
-      founder: 'Je aanspreekpunt', location: 'Rotterdam, Nederland', identity: 'Strategie, creatie en technologie komen hier samen rond jouw vraag.',
+      founder: 'Direct contact', location: 'Rotterdam, Nederland', identity: 'Strategie, creatie en technologie komen hier samen rond jouw vraag.',
       contact: 'Laten we kennismaken', business: 'Geregistreerd bij de KvK', practical: 'Voor we beginnen',
       faqs: [
         ['Kan ik met één onderdeel beginnen?', 'Ja. Een website, een merkuitwerking, content of een afgebakend systeem kan een zelfstandig project zijn. We kijken ook naar wat er al is, zodat nieuw werk daarop aansluit.'],
@@ -21,7 +21,7 @@
     en: {
       eyebrow: 'Behind SlimService', title: 'Good work starts<br>with <em>a conversation.</em>',
       intro: 'A strong digital experience starts with understanding your business. We make the brief clear, choose a suitable approach and agree what you will receive.',
-      founder: 'Your point of contact', location: 'Rotterdam, the Netherlands', identity: 'Strategy, creativity and technology come together around your business needs.',
+      founder: 'Direct contact', location: 'Rotterdam, the Netherlands', identity: 'Strategy, creativity and technology come together around your business needs.',
       contact: 'Let’s talk', business: 'Registered with the Dutch Chamber of Commerce', practical: 'Before we begin',
       faqs: [
         ['Can I start with one part?', 'Yes. A website, brand identity, content or a defined system can be a standalone project. We also look at what you already have, so the new work fits.'],
@@ -54,7 +54,7 @@
     const c = copy[lang];
     const open = section.querySelector('details[open]')?.dataset.faq;
     section.innerHTML = `<div class="trust-heading"><span class="eyebrow">${c.eyebrow}</span><h2 id="trust-title">${c.title}</h2><p>${c.intro}</p></div>
-      <div class="trust-layout"><div class="trust-person"><div class="trust-signature" aria-hidden="true"><span>S</span><svg viewBox="0 0 100 100"><path d="M18 78 78 18M18 18h60v60"/></svg></div><div class="trust-person-label"><span>${c.founder}</span><span>${c.location}</span></div><h3>Z. Fernandes</h3><p>${c.identity}</p><a class="text-cta" href="mailto:hello@slimservice.nl"><span>${c.contact}</span>${icon('diagonal')}</a><div class="trust-registration">${icon('check')}<span>${c.business}<strong>KvK 93320132</strong></span></div></div>
+      <div class="trust-layout"><div class="trust-person"><div class="trust-signature" aria-hidden="true"><span>S</span><svg viewBox="0 0 100 100"><path d="M18 78 78 18M18 18h60v60"/></svg></div><div class="trust-person-label"><span>${c.founder}</span><span>${c.location}</span></div><h3>SlimService</h3><p>${c.identity}</p><a class="text-cta" href="mailto:hello@slimservice.nl"><span>${c.contact}</span>${icon('diagonal')}</a><div class="trust-registration">${icon('check')}<span>${c.business}<strong>KvK 93320132</strong></span></div></div>
       <div class="trust-practical"><span class="eyebrow">${c.practical}</span><div class="trust-faq">${c.faqs.map(([q,a],i)=>`<details name="slimservice-practical" data-faq="${i}" ${open===String(i)?'open':''}><summary><span class="trust-question-number">0${i+1}</span><span>${q}</span>${icon('plus')}</summary><p>${a}</p></details>`).join('')}</div></div></div>`;
     next.textContent = c.next;
     footer.classList.add('launch-footer');
