@@ -1,0 +1,102 @@
+/* Contrast, identity and quieter transitions around the spatial showcase. */
+:root{
+  --paper:#f7f5ef;
+  --ink:#16211d;
+  --muted:#4f5c55;
+  --line:#16211d38;
+}
+
+/* A light inner edge and dark outer edge remain identifiable on both themes. */
+:is(button,a,input,textarea,select,summary,[tabindex]):focus-visible,
+.ss-scene :is(button,textarea):focus-visible{
+  outline:2px solid #fff!important;
+  outline-offset:1px!important;
+  box-shadow:0 0 0 5px #132019!important;
+}
+
+.scene-caption{opacity:1;color:#47554c}
+.experience-sticky[data-tone=dark] .scene-caption{color:#dce4da}
+.step-rail button{opacity:.85}
+.step-rail button[aria-selected=true]{font-weight:600}
+.step-rail button::before{background:currentColor}
+.goal-tabs button{opacity:.85}
+.goal-tabs button[aria-selected=true]{font-weight:600}
+.text-cta{border-bottom-width:2px}
+.nav-short{display:none}
+.text-cta svg,.video-tools svg{stroke-width:1.9}
+
+/* The original dimensional surface is retained; small ink is now solid. */
+.ss-scene{--ss-ink:#132019;--ss-orange:#f46b47;--ss-bone:#f3eee2}
+.ss-sheet-index,.ss-sheet-foot,.ss-wing-word{opacity:1}
+.ss-sheet-foot{border-top-color:#13201980}
+.ss-scene[data-step="2"] .ss-sheet-foot{border-top-color:#f3eee280}
+.ss-paper::after{background:linear-gradient(115deg,#ffffff0d,transparent 45%)}
+.ss-action-line>span,.ss-draft>span,.ss-review-goal{color:#4a5747}
+.ss-note textarea::placeholder{color:#495545;opacity:1}
+.ss-action-button{color:#132019;font-weight:600}
+.ss-action-button:hover{background:#ff825f}
+.ss-identity-parts span:first-child{color:#92341f}
+
+.field input::placeholder,.field textarea::placeholder{color:#35251f;opacity:1}
+.field input,.field textarea,.field select{border-bottom-color:#35251f}
+.profile-context{color:#596350}
+.social-frame[data-channel=tiktok] .profile-context{color:#d4dece}
+.video-tools button:hover,.video-tools button:focus-visible{background:#13201912}
+.social-frame[data-channel=tiktok] .video-tools button:hover{background:#ffffff1c}
+
+/* The service pictograms are a repeated visual language, not decorative badges. */
+.service-row>button{grid-template-columns:44px 1fr 24px;gap:17px}
+.service-icon{width:34px;height:34px;display:grid;place-items:center;color:#a23d27}
+.service-row>button .service-icon svg{width:28px;height:28px;stroke-width:1.9;transform:none}
+.service-row>button[aria-expanded=true] .service-icon svg{transform:none}
+.service-row>button[aria-expanded=true] .service-name{color:#92341f}
+.service-row>button>svg{stroke-width:1.9}
+.service-row>button:hover .service-name{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
+.service-detail{padding-left:61px}
+.service-detail li{border-top-color:#16211d26}
+
+/* One compact editorial bridge after the dark media stage. */
+.connection-section{
+  background:var(--paper);color:var(--ink);
+  padding-top:64px;padding-bottom:70px;
+  display:grid;grid-template-columns:1.1fr .9fr;column-gap:10%;row-gap:28px;
+  border-bottom:1px solid var(--line);
+}
+.connection-section>.eyebrow{grid-column:1/-1;color:#4f5c55}
+.connection-section h2{
+  font:900 clamp(42px,4.05vw,64px)/.99 var(--body);
+  letter-spacing:-.045em;max-width:620px;margin:0;
+}
+.connection-section h2 em{font-size:1.12em;line-height:1.08;color:#92341f}
+.connection-bottom{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:24px}
+.connection-mark{display:none}
+.connection-bottom>p{font-size:18px;line-height:1.5;color:#4f5c55;max-width:430px}
+.connection-bottom .text-cta{font-size:16px;align-self:flex-start;justify-self:auto;color:var(--ink)}
+.services-section{padding-top:86px}
+.engagement-item>.number{color:#92341f}
+.engagement-item[data-selected=true]{border-color:#92341f}
+
+@media(max-width:760px){
+  .nav-full{display:none}
+  .nav-short{display:inline}
+  .connection-section{display:block;padding-top:44px;padding-bottom:46px}
+  .connection-section>.eyebrow{display:block;margin-bottom:24px}
+  .connection-section h2{font-size:clamp(36px,9vw,56px);margin:0 0 26px;max-width:560px}
+  .connection-bottom{gap:20px}
+  .connection-bottom>p{font-size:16px;max-width:460px}
+  .connection-bottom .text-cta{font-size:15px}
+  .service-row>button{grid-template-columns:30px 1fr 20px;gap:12px}
+  .service-icon{width:28px;height:28px}
+  .service-row>button .service-icon svg{width:25px;height:25px}
+  .service-detail{padding-left:42px}
+  .services-section{padding-top:60px}
+}
+@media(max-width:359px){
+  .service-row>button{grid-template-columns:26px 1fr 18px;gap:9px}
+  .service-row>button .service-icon svg{width:23px;height:23px}
+  .service-name{font-size:23px}
+  .service-detail{padding-left:35px}
+}
+@media(prefers-reduced-motion:reduce){
+  .text-cta svg,.service-row>button svg{transition:none}
+}
