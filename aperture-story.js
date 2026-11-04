@@ -16,13 +16,15 @@ function create({story,stage,world,scenes}){
  document.documentElement.classList.add('aperture-mode','continuous-studio');
  function setStatic(value){value=!!value;if(value===staticView)return;staticView=value;plane.hidden=value;for(const r of records){if(value)r.marker.after(r.element);else r.layer.append(r.element);r.layer.inert=value;}if(value){photo.style.display='';photo.removeAttribute('aria-hidden');second.hidden=true;track.style.transform='none';stage.removeAttribute('data-ap-phase');}else second.hidden=false;}
  function getFrame(p,{flow=false}={}){
-  const active=p<1.04?0:p<1.91?1:p<2.91?2:3;
-  const opacity=Array(5).fill(0);opacity[active]=active===0?1-smooth(.12,.30,p):active===1?smooth(1.04,1.18,p):1;
+  const active=p<.86?0:p<1.91?1:p<2.91?2:3;
+  const opacity=Array(5).fill(0);opacity[active]=active===0?1-smooth(.18,.38,p):active===1?smooth(.86,1.03,p):1;
   return{active,opacity,enter:Array(5).fill(1),leave:Array(5).fill(0)};
  }
  function getPose(p,{small=false,material='aluminium',light=75}={}){
-  const back=0,travel=smooth(.30,1.14,p);
-  return{material,layout:small?'compact':'wide',rotation:mix(-.28,.28,back),cameraZoom:small?mix(.98,.92,back):mix(.84,.46,back),cameraOrbit:mix(-.06,.12,back),cameraLift:mix(0,.02,back),cameraShiftX:small?0:mix(.03,-.40,back),cameraShiftY:small?mix(-.17,0,back):mix(-.02,-.20,back),assembly:0,lightAim:0,light:p>4?light:mix(75,100,smooth(.2,.7,p)),storyTravel:travel,boardVisibility:smooth(.30,.55,p)*(1-smooth(1.145,1.22,p)),boardExposure:smooth(.70,1.12,p)*(1-back)};
+  const travel=smooth(.24,.98,p),breath=Math.sin(Math.PI*travel);
+  // Pull back during the orbit, then meet the exact original board projection.
+  // This keeps the lamp's edge legible instead of filling the screen with metal.
+  return{material,layout:small?'compact':'wide',rotation:-.28,cameraZoom:(small?.98:.84)-breath*.14,cameraOrbit:-.06,cameraLift:breath*.07,cameraShiftX:small?0:.03,cameraShiftY:small?-.17:-.02,assembly:0,lightAim:0,light:p>4?light:mix(75,100,smooth(.2,.7,p)),storyTravel:travel,boardVisibility:smooth(.24,.43,p)*(1-smooth(1.145,1.22,p)),boardExposure:smooth(.60,.98,p)};
  }
  function projectQuad(points){
   const [p0,p1,p2,p3]=points;const dx1=p1.x-p2.x,dx2=p3.x-p2.x,dx3=p0.x-p1.x+p2.x-p3.x,dy1=p1.y-p2.y,dy2=p3.y-p2.y,dy3=p0.y-p1.y+p2.y-p3.y;

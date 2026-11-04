@@ -7,7 +7,7 @@
   const words = {
     nl: {
       title: 'Minder handwerk.<br><em>Meer ruimte.</em>', intro: 'Breng terugkerend werk in kaart met je eigen cijfers. Verken hoeveel tijd een verbetering kan vrijmaken.',
-      example: 'Rekenvoorbeeld. Pas het aan naar jouw situatie.', own: 'Jouw scenario. De verbetering is een aanname.', process: 'Welk werk komt steeds terug?',
+      example: 'Rekenvoorbeeld. Pas het aan naar jouw situatie.', own: 'Jouw scenario. De verbetering is een aanname.', compactExample: 'Voorbeeld · pas je cijfers aan', compactOwn: 'Jouw scenario · op basis van je aannames', inputContext: 'Teamtotaal en interne uurkosten, geen verkooptarief.', process: 'Welk werk komt steeds terug?',
       processes: {enquiries:'Aanvragen opvolgen', quotes:'Offertes voorbereiden', content:'Content verwerken', admin:'Administratie', other:'Een ander proces'},
       hours: 'Teamuren per week', hoursHint: 'Het totaal voor dit proces, voor iedereen samen.', rate: 'Interne kosten per uur', rateHint: 'Een eigen inschatting van de kosten, geen verkooptarief.', reduction: 'Stel dat dit minder tijd kost', reductionHint: 'Kies een scenario. Wat haalbaar is onderzoeken we samen.',
       currency: 'Rekenvaluta', currencyHint: 'Vul je uurkosten in deze valuta in. Bedragen worden niet omgerekend.', unitHours: 'uur', perHour: '/ uur', weekly: 'uur per week vrij', remaining: 'Terugkerend werk', freed: 'Ruimte voor ander werk', visual: 'Verdeling van je ingevoerde tijd',
@@ -19,7 +19,7 @@
     },
     en: {
       title: 'Less manual work.<br><em>More room.</em>', intro: 'Put numbers to recurring work. Use your own figures to explore the time an improvement could free up.',
-      example: 'An example. Adjust it to your situation.', own: 'Your scenario. The improvement is an assumption.', process: 'Which work keeps coming back?',
+      example: 'An example. Adjust it to your situation.', own: 'Your scenario. The improvement is an assumption.', compactExample: 'Example · adjust your figures', compactOwn: 'Your scenario · based on your assumptions', inputContext: 'Team total and internal hourly cost, not your selling rate.', process: 'Which work keeps coming back?',
       processes: {enquiries:'Following up enquiries', quotes:'Preparing quotes', content:'Processing content', admin:'Administration', other:'Another process'},
       hours: 'Team hours per week', hoursHint: 'The total for this process, across everyone involved.', rate: 'Internal cost per hour', rateHint: 'Your estimated cost, not your selling rate.', reduction: 'What if this took less time?', reductionHint: 'Choose a scenario. We explore what is feasible together.',
       currency: 'Calculation currency', currencyHint: 'Enter your hourly cost in this currency. No exchange rate is applied.', unitHours: 'hours', perHour: '/ hour', weekly: 'hours freed per week', remaining: 'Recurring work', freed: 'Room for other work', visual: 'How your entered time is divided',
@@ -44,7 +44,7 @@
       <input id="calc-slider" type="range" min="0" max="100" step="1" value="50" aria-label="Stel dat dit minder tijd kost" aria-describedby="calc-reduction-hint"><small id="calc-reduction-hint" data-calc-copy="reductionHint"></small>
       </div><div class="calc-settings"><details class="calc-assumptions"><summary><span data-calc-copy="assumptions"></span><svg aria-hidden="true"><use href="#plus"/></svg></summary><div><label class="calc-field calc-weeks"><span data-calc-copy="weeks"></span><input id="calc-weeks" type="number" min="1" max="52" step="1" value="48" required></label><p data-calc-copy="formula"></p><p><span data-calc-copy="baseline"></span>: <strong id="calc-baseline"></strong></p></div></details>
       <button class="calc-reset" type="button" data-calc-copy="reset"></button><p class="calc-error" role="status" hidden></p>
-    </div></div><div class="calc-results"><div class="calc-stage"><p class="calc-result-label" data-calc-copy="potential"></p><div class="calc-weekly"><output id="calc-weekly">4</output><span data-calc-copy="weekly"></span></div><p class="calc-result-context"><span data-calc-current-process></span><span data-calc-reduction-summary></span></p>
+    </div></div><div class="calc-results"><div class="calc-stage"><p class="calc-result-label" data-calc-copy="potential"></p><div class="calc-weekly"><output id="calc-weekly">4</output><span data-calc-copy="weekly"></span></div><p class="calc-mobile-input-note" data-calc-copy="inputContext"></p><p class="calc-result-context"><span data-calc-current-process></span><span data-calc-reduction-summary></span></p>
       <div class="calc-comparison" role="group"><div class="calc-rail-heading"><span data-calc-copy="currentWeek"></span><strong id="calc-current-hours"></strong></div><div class="calc-rail calc-current-track" aria-hidden="true"><i></i></div>
       <div class="calc-rail-heading"><span data-calc-copy="scenarioWeek"></span><strong id="calc-remaining-hours"></strong></div><div class="calc-rail calc-scenario-track" aria-hidden="true"><i class="calc-rail-used"></i><i class="calc-rail-free"></i></div>
       <div class="calc-split-key"><span><i></i><span data-calc-copy="remains"></span></span><span><i></i><span data-calc-copy="released"></span></span></div></div>
@@ -65,16 +65,23 @@
   const compact = matchMedia('(max-width:760px)');
   const layout = $('.calc-layout'), inputGroup = $('.calc-inputs'), resultGroup = $('.calc-results');
   const inputParts = [...inputGroup.children], resultParts = [...resultGroup.children];
+  const scenario = $('#calc-scenario'), figures = $('.calc-number-row');
+  const scenarioHome = document.createComment('Calculator scenario position');
+  const figuresHome = document.createComment('Calculator figures position');
+  scenario.before(scenarioHome); figures.before(figuresHome);
   function compose() {
     if (compact.matches) {
-      [resultParts[0], inputParts[1], inputParts[0], resultParts[1], inputParts[2], ...resultParts.slice(2)].forEach(part => layout.append(part));
+      $('.calc-weekly').before(scenario);
+      $('.calc-mobile-input-note').before(figures);
+      [resultParts[0], inputParts[1], inputParts[0], resultParts[1], ...resultParts.slice(2), inputParts[2]].forEach(part => layout.append(part));
     } else {
+      scenarioHome.after(scenario); figuresHome.after(figures);
       inputParts.forEach(part => inputGroup.append(part));
       resultParts.forEach(part => resultGroup.append(part));
     }
     root.dataset.layout = compact.matches ? 'mobile' : 'desktop';
   }
-  compact.addEventListener('change', compose);
+  compact.addEventListener('change', () => { compose(); update(); });
   compose();
   const notice = document.createElement('div'); notice.className = 'calculator-selection'; notice.hidden = true;
   notice.innerHTML = '<p></p><button type="button"></button>';
@@ -103,7 +110,7 @@
     $('[data-calc-symbol]').textContent=currencies[currency];
     root.dataset.valid=String(!!result);$('.calc-use').disabled=!result;
     $('.calc-error').hidden=!!result;$('.calc-error').textContent=result?'':error;
-    $('#calc-scenario').textContent=custom?c.own:c.example;
+    $('#calc-scenario').textContent=compact.matches?(custom?c.compactOwn:c.compactExample):(custom?c.own:c.example);
     $('#calc-weekly').textContent=result?number(result.weeklyFreedHours):'…';
     root.dataset.compactNumber=String(!!result&&number(result.weeklyFreedHours).length>4);
     $('#calc-annual').textContent=result?number(result.annualFreedHours):'…';

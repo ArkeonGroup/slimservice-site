@@ -36,8 +36,7 @@
   const disclosure = document.querySelector('#process-check');
   if (disclosure) disclosure.open = true;
   const gate = document.createElement('div');
-  gate.className = 'continuity-grid-gate'; gate.setAttribute('aria-hidden', 'true');
-  gate.innerHTML = Array.from({ length: 24 }, (_, i) => '<i style="--cell:' + i + '"></i>').join('');
+  gate.className = 'continuity-material-seam'; gate.setAttribute('aria-hidden', 'true');
   if (disclosure) disclosure.before(gate);
   const transfer = document.createElement('div');
   transfer.className = 'continuity-transfer'; transfer.setAttribute('aria-hidden', 'true');
@@ -63,11 +62,6 @@
   function paintBoundaries(height, still) {
     const gateProgress = still ? 1 : boundaryProgress(gate, height);
     gate.style.setProperty('--gate-progress', gateProgress.toFixed(4));
-    gate.querySelectorAll('i').forEach((cell, index) => {
-      // One direction, one advancing construction edge. No random timing.
-      const column = index % 12, row = Math.floor(index / 12);
-      cell.style.setProperty('--cell-open', (still ? 1 : smooth((gateProgress - column * .018 - row * .08) / .65)).toFixed(4));
-    });
     const progress = still ? 1 : boundaryProgress(transfer, height);
     transfer.style.setProperty('--transfer-progress', progress.toFixed(4));
     const width = matrix.clientWidth;

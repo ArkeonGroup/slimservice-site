@@ -12,3 +12,21 @@
 @media(max-width:760px){.pc-case-context.has-cargo-symbol{grid-template-columns:52px minmax(0,1fr);gap:4px 12px;padding:12px}.case-handoff-target{width:52px;height:52px}.case-handoff-target img{width:32px;height:32px}.has-cargo-symbol .pc-context-value{font-size:13px}}
 html[data-slim-motion=reduced] .pc-case-context.is-cargo-arriving,html[data-slim-motion=reduced] .is-cargo-arriving .case-handoff-target{animation:none}
 @media(prefers-reduced-motion:reduce){.pc-case-context.is-cargo-arriving,.is-cargo-arriving .case-handoff-target{animation:none}}
+.case-handoff-flight{position:fixed;z-index:24;overflow:hidden;pointer-events:none;border-top:2px solid #d9ac48;background:color-mix(in srgb,#f3ebdd calc((1 - var(--handoff-fold))*100%),#1b3025);box-shadow:0 20px 55px -28px #06110b55;contain:layout paint}
+.case-handoff-flight[hidden]{display:none}
+.case-handoff-flight>.handoff-source-copy{position:absolute!important;inset:0;width:100%;max-width:none;margin:0;padding:22px 24px;display:block;opacity:var(--handoff-source);transform:none;box-shadow:none;border:0;background:transparent}
+.case-handoff-flight>.handoff-destination-copy{position:absolute!important;inset:0;width:100%;height:100%;margin:0;opacity:var(--handoff-destination);transform:none;border:0;background:transparent;color:#e7e8dc;align-content:center}
+.case-handoff-flight .pc-context-label,.case-handoff-flight .pc-context-route{color:#cbd4c6}
+.case-handoff-flight .pc-context-value{color:#f3f0e8}
+.case-cargo.handoff-departed,.pc-case-context.handoff-receiving{opacity:0!important}
+@media(min-width:1001px){
+ .digital-architecture .architecture-heading{display:block;min-height:275px;padding-right:44%;padding-bottom:38px}
+ .architecture-heading>p{margin:0 0 20px}.architecture-heading>div{display:block}
+ .digital-architecture .architecture-heading h2{font-size:clamp(38px,3.5vw,54px);max-width:650px}
+ .digital-architecture .architecture-intro{margin-top:24px;max-width:560px}
+ .digital-architecture .architecture-copy{display:none}
+ .digital-architecture .architecture-body{padding-top:30px}
+}
+@media(max-width:1000px){.case-handoff-flight{display:none!important}}
+html[data-slim-motion=reduced] .case-handoff-flight{display:none!important}
+@media(prefers-reduced-motion:reduce){.case-handoff-flight{display:none!important}}

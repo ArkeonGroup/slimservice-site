@@ -74,3 +74,71 @@ html[data-slim-motion="reduced"] .process-console *{animation:none!important;tra
  .pc-command-row{display:grid;grid-template-columns:14px minmax(0,1fr);gap:8px 8px;padding:14px 18px 7px;margin:0}.pc-run{grid-column:1/-1;grid-row:1;justify-self:stretch;justify-content:space-between;min-height:50px;font-size:16px!important}.pc-prompt{grid-row:2}.pc-command{grid-row:2;font-size:16px!important;width:100%;padding:10px 0}
  .pc-bottom{padding:10px 18px 5px;font-size:11px;line-height:1.5}.pc-command-hint{padding:0 18px 14px;max-width:none;font-size:11px}.pc-local{margin-top:2px}
 }
+
+/* The sample proves the outcome before asking visitors to run the process. */
+.process-console .pc-filename,.process-console .pc-input-note,.process-console .pc-bottom,.process-console .pc-command-hint{display:none}
+.process-console .pc-top{padding-block:10px}
+.process-console .pc-title-row{padding-top:16px;padding-bottom:12px}
+.process-console .pc-title{font-size:clamp(25px,2.1vw,30px)!important}
+.process-console .pc-state{font:11px/1.35 var(--font-body,Arial,sans-serif);color:#b9c9b8}
+.process-console .pc-examples{padding-bottom:18px}
+.process-console .pc-document-label{margin-bottom:14px}
+.process-console .pc-message{font-size:clamp(18px,1.4vw,21px);line-height:1.46}
+.process-console .pc-result-heading{margin-bottom:18px}
+.process-console .pc-result-title{font-size:clamp(28px,2.25vw,34px);line-height:1.12}
+.process-console .pc-brief-fields{gap:16px 22px;margin-bottom:18px}
+.process-console .pc-brief-fields>div{padding-top:10px}
+.process-console .pc-missing{padding:10px 13px;gap:3px}
+.process-console .pc-review-note{margin:13px 0 0!important}
+.process-console .pc-export{margin-top:16px}
+.pc-workflow-summary{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:44px;list-style:none;cursor:pointer;font-size:13px;color:#d0d9cb}
+.pc-workflow-summary::-webkit-details-marker{display:none}
+.pc-workflow-summary svg{width:16px;height:16px;transform:rotate(90deg);transition:transform .2s}
+.pc-workflow-details[open] .pc-workflow-summary svg{transform:rotate(-90deg)}
+.pc-workflow-summary:focus-visible{outline:2px solid #ffc69a;outline-offset:3px}
+.pc-workflow-details[open] .pc-rules-title{margin-top:10px!important}
+.process-console[data-phase="1"] .pc-brief-fields>div,.process-console[data-phase="2"] .pc-brief-fields>div{animation:pc-field-trace .65s ease-out both}
+.process-console[data-phase="1"] .pc-brief-fields>div:nth-child(2),.process-console[data-phase="2"] .pc-brief-fields>div:nth-child(2){animation-delay:.08s}
+.process-console[data-phase="1"] .pc-brief-fields>div:nth-child(3),.process-console[data-phase="2"] .pc-brief-fields>div:nth-child(3){animation-delay:.16s}
+.process-console[data-phase="1"] .pc-brief-fields>div:nth-child(4),.process-console[data-phase="2"] .pc-brief-fields>div:nth-child(4){animation-delay:.24s}
+@keyframes pc-field-trace{from{border-top-color:#aa683c;background:#c28a4b18}to{border-top-color:#2d48352e;background:transparent}}
+@media(min-width:761px){
+ .process-console #pc-panel-input{padding:22px 30px 20px}
+ .process-console #pc-panel-result{padding:22px 30px}
+ .process-console #pc-panel-result .pc-document-label{padding-bottom:14px;margin-bottom:18px}
+ .process-console #pc-panel-rules{padding:2px 30px 4px}
+ .process-console .pc-workflow-details[open]{padding-bottom:14px}
+ .process-console #pc-panel-input .pc-command-row{display:grid;grid-template-columns:14px minmax(0,1fr);gap:7px 8px;margin-top:22px;padding:18px 0 0;border-top:1px solid #b4c7ae38}
+ .process-console #pc-panel-input .pc-run{grid-column:1/-1;grid-row:1;justify-content:space-between;min-height:48px;padding:11px 16px;font-size:15px!important}
+ .process-console #pc-panel-input .pc-prompt{grid-row:2;font-size:18px}
+ .process-console #pc-panel-input .pc-command{grid-row:2;width:100%;font-size:12px!important;min-width:0;padding:6px 0;color:#b8c9b2}
+ .process-console .pc-case-context{top:72px}
+ .process-console .pc-apply{margin-top:17px;padding-top:16px}
+}
+@media(min-width:761px) and (max-width:1100px){
+ .process-console .pc-title{font-size:25px!important}
+ .process-console .pc-title-row{align-items:flex-start}
+ .process-console .pc-state{max-width:110px;white-space:normal;text-align:right}
+ .process-console #pc-panel-input,.process-console #pc-panel-result{padding-inline:24px}
+ .process-console #pc-panel-rules{padding-inline:24px}
+ .process-console .pc-case-context{top:70px}
+}
+@media(max-width:760px){
+ .process-console .pc-title-row{padding:16px 18px 12px}
+ .process-console .pc-title{font-size:25px!important;max-width:24ch}
+ .process-console .pc-state{display:none}
+ .process-console .pc-examples{padding-bottom:14px}
+ .process-console .pc-case-context{margin-bottom:12px}
+ .process-console #pc-panel-input,.process-console #pc-panel-rules,.process-console #pc-panel-result{padding:20px 18px}
+ .process-console .pc-workflow-summary{display:none}
+ .process-console .pc-workflow-details[open] .pc-rules-title{margin-top:0!important}
+ .process-console .pc-brief-fields{gap:11px;margin-bottom:16px}
+ .process-console .pc-result-title{font-size:30px}
+ .process-console .pc-result-heading{margin-bottom:16px}
+ .process-console .pc-brief-fields dd{font-size:16px}
+ .process-console .pc-review-note{font-size:12px!important;line-height:1.45!important}
+ .process-console .pc-command-row{padding-bottom:10px}
+ .process-console .pc-command{font-size:14px!important;padding:6px 0}
+ .process-console .pc-run{font-size:15px!important;min-height:48px}
+ .process-console .pc-prompt{font-size:18px}
+}

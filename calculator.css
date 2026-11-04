@@ -25,6 +25,7 @@ body #calculator.calculator-study.calculator .calc-heading h2{font:600 clamp(36p
 body #calculator.calculator-study.calculator .calc-heading>p{max-width:430px;font-size:18px;line-height:1.55;color:#c9d3c8;margin:0}
 body #calculator.calculator-study.calculator .calc-layout{display:grid;grid-template-columns:minmax(0,.84fr) minmax(0,1.16fr);gap:8%;align-items:start}
 .calc-main-inputs,.calc-adjustment{min-width:0}
+.calc-mobile-input-note{display:none}
 .calculator-study .calc-scenario{font-size:13px;line-height:1.4;color:#e8b496;margin:0 0 24px;padding:0 0 16px;border-color:#e5e5cf30}
 .calculator-study .calc-field{gap:9px;line-height:1.35}
 .calculator-study .calc-field select,.calculator-study .calc-field input,.calculator-study .calc-currency-row select{background:#21352b;border-color:#6c8172;border-radius:2px}
@@ -70,24 +71,30 @@ body #calculator.calculator-study.calculator .calc-totals{grid-template-columns:
  .calc-result-context{flex-direction:column;gap:3px}.calculator-study .calc-totals output{font-size:32px}
 }
 @media(max-width:760px){
- body #calculator.calculator-study.calculator .calc-heading{display:block;margin-bottom:30px}
+ body #calculator.calculator-study.calculator .calc-heading{display:block;margin-bottom:20px}
  body #calculator.calculator-study.calculator .calc-heading h2{font-size:clamp(32px,8.7vw,44px);line-height:1.06;max-width:19ch}
  body #calculator.calculator-study.calculator .calc-heading>p{font-size:16px;line-height:1.5;margin-top:18px}
  body #calculator.calculator-study.calculator .calc-layout{display:flex;flex-direction:column;gap:0}
  body #calculator.calculator-study.calculator .calc-inputs,body #calculator.calculator-study.calculator .calc-results{display:contents}
- body #calculator.calculator-study.calculator .calc-stage{order:0;width:100%;padding:24px 0 0;border-top:1px solid #b88b6666}
- body #calculator.calculator-study.calculator .calc-weekly output{font-size:110px;line-height:.84}.calculator-study .calc-weekly{gap:18px}.calculator-study .calc-weekly>span{font-size:17px}
+ body #calculator.calculator-study.calculator .calc-stage{order:0;width:100%;padding:18px 0 0;border-top:1px solid #b88b6666}
+ body #calculator.calculator-study.calculator .calc-weekly output{font-size:94px;line-height:.84}.calculator-study .calc-weekly{gap:18px}.calculator-study .calc-weekly>span{font-size:17px}
  body #calculator.calculator-study.calculator[data-compact-number=true] .calc-weekly output{font-size:72px}
- .calc-result-label{font-size:13px;margin-bottom:14px}.calc-result-context{font-size:12px;margin:20px 0 23px;gap:10px}
- .calc-comparison{padding-top:18px}.calc-rail{height:22px;margin-bottom:23px}.calc-scenario-track{margin-bottom:12px}.calc-rail-heading{font-size:13px;margin-bottom:9px}.calc-split-key{font-size:12px}
- .calc-adjustment{order:1;width:100%;padding:26px 0 24px;border-bottom:1px solid #eeecdf30}
- .calc-main-inputs{order:2;width:100%;padding-top:26px}.calculator-study .calc-scenario{margin-bottom:21px;padding-bottom:0;border:0;font-size:13px}
+ .calc-result-label{display:none}.calc-result-context{font-size:12px;margin:14px 0 16px;gap:10px}
+ .calc-comparison{padding-top:12px}.calc-rail{height:18px;margin-bottom:17px}.calc-scenario-track{margin-bottom:10px}.calc-rail-heading{font-size:13px;margin-bottom:8px}.calc-split-key{font-size:12px}
+ .calc-adjustment{order:1;width:100%;padding:18px 0;border-bottom:1px solid #eeecdf30}
+ .calc-main-inputs{order:2;width:100%;padding-top:20px}.calculator-study .calc-scenario{margin:0 0 15px;padding:0;border:0;font-size:12px;line-height:1.4}
  .calculator-study .calc-field{font-size:14px}.calculator-study .calc-field small,.calculator-study #calc-reduction-hint{font-size:12px}.calculator-study .calc-field select,.calculator-study .calc-currency-row select{font-size:16px}.calculator-study .calc-number-row{gap:16px;margin-top:22px}
- .calculator-study .calc-input-wrap input{font-size:27px}.calculator-study .calc-currency-row{margin-top:19px}.calculator-study .calc-percent input{font-size:24px}.calculator-study .calc-currency-row small{font-size:12px}
+ .calculator-study .calc-input-wrap input{font-size:27px}.calculator-study .calc-currency-row{margin-top:14px}.calculator-study .calc-percent input{font-size:24px}.calculator-study .calc-currency-row small{font-size:12px}
+ body #calculator.calculator-study.calculator .calc-stage .calc-number-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:end;gap:14px;margin:18px 0 0}
+ .calculator-study .calc-stage .calc-number-row .calc-field{font-size:12px;gap:6px}
+ .calculator-study .calc-stage .calc-number-row .calc-field small{position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+ .calculator-study .calc-stage .calc-input-wrap input{min-height:48px;padding:8px 42px 8px 12px;font-size:25px}
+ .calculator-study .calc-stage .calc-input-wrap>span{top:14px;right:12px;font-size:12px}
+ .calc-mobile-input-note{display:block;color:#bdcabc;font-size:12px;line-height:1.45;margin:8px 0 0}
  body #calculator.calculator-study.calculator .calc-totals{order:3;width:100%;grid-template-columns:.7fr 1.3fr;gap:18px;margin:26px 0 0;padding:24px 0 0}
  .calculator-study .calc-totals output{font-size:36px}.calculator-study .calc-totals span{font-size:12px}
- .calc-settings{order:4;width:100%}.calculator-study .calc-assumptions{margin-top:24px}.calculator-study .calc-reset{margin-top:4px}
- .calculator-study .calc-caution{order:5;width:100%;font-size:12px;margin-top:15px}.calculator-study .calc-use{order:6;margin-top:20px;font-size:16px;min-height:56px}.calculator-study .calc-local{order:7;font-size:12px}
+ .calc-settings{order:7;width:100%}.calculator-study .calc-assumptions{margin-top:22px}.calculator-study .calc-reset{margin-top:4px}
+ .calculator-study .calc-caution{order:4;width:100%;font-size:12px;margin-top:15px}.calculator-study .calc-use{order:5;margin-top:16px;font-size:16px;min-height:56px}.calculator-study .calc-local{order:6;font-size:12px}
 }
 @media(max-width:359px){
  body #calculator.calculator-study.calculator .calc-weekly output{font-size:94px}.calculator-study .calc-weekly>span{font-size:16px}

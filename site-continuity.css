@@ -174,8 +174,7 @@
 .site-continuous.continuity-architecture .light-next .continuity-bridge-body p{font-size:clamp(19px,1.65vw,24px);line-height:1.5;color:#f3f0e8!important}
 .site-continuous.continuity-architecture .light-next .light-action{color:#f3f0e8!important;border-color:#f3f0e8!important;font-size:16px}
 /* The ordered cells become the actual calculator's dark surface. */
-.continuity-grid-gate{position:relative;height:160px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:1fr 1fr;background:var(--architecture-paper);overflow:hidden;pointer-events:none}
-.continuity-grid-gate>i{background:var(--architecture-dark);border:1px solid #ffffff0c;transform:scaleY(var(--cell-open,1));transform-origin:bottom}
+.continuity-material-seam{height:1px;background:#b7b6a3;pointer-events:none}
 .site-continuous.continuity-architecture .process-disclosure{margin:0;padding:0 var(--gutter);background:var(--architecture-dark);color:#f3f0e8;border-top:0}
 .site-continuous.continuity-architecture .process-disclosure>summary{padding-top:28px;padding-bottom:32px;min-height:116px;border-bottom:1px solid #e5e5cf26}
 .site-continuous.continuity-architecture .process-disclosure>summary::before{background:#dba17c;opacity:.7}

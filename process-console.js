@@ -7,11 +7,11 @@
       examples:'Kies een voorbeeld', choices:['Website','Transport','Content'], inputName:'binnenkomend-bericht.txt', rulesName:'aanvraag.flow', resultName:'projectbriefing.txt',
       inputTitle:'Zo komt een vraag binnen.', inputNote:'Fictief bericht. Geen klantgegevens of echte boeking.', rulesTitle:'Vaste stappen. Jij houdt de regie.',
       commandLabel:'Voorbeeldcommando', commandHint:'Commando: start website, transport of content',
-      start:'Maak briefing', review:'Bevestig controle', restart:'Opnieuw', ready:'Kies en probeer', busy:'Gegevens ordenen', waiting:'Controle nodig', complete:'Briefing beschikbaar',
+      start:'Bekijk hoe dit ontstaat', review:'Bevestig controle', restart:'Speel het proces opnieuw', ready:'Van bericht naar overzicht', busy:'Gegevens ordenen', waiting:'Controle nodig', complete:'Briefing beschikbaar',
       rule0:'lees de gekozen voorbeeldaanvraag', rule1:'orden doel, inhoud en planning', rule2:'markeer ontbrekende informatie', rule3:'wacht op jouw controle', rule4:'maak een bruikbare tekstbriefing',
       local:'Lokaal voorbeeld. Niets wordt verstuurd.', unknown:'Gebruik start website, start transport of start content.',
       resultEmpty:'Eén bericht wordt een overzicht waarmee je verder kunt.', outline:'Dit halen we uit het bericht', inputLabel:'De vraag', resultLabel:'Het overzicht',
-      resultTitle:'Conceptbriefing', reviewedTitle:'Gecontroleerde voorbeeldbriefing', missing:'Nog afstemmen', reviewNote:'Controleer de gegevens. Open punten blijven in de briefing staan.', doneNote:'Klaar om te gebruiken als gespreksstart. Open punten zijn nog niet ingevuld.',
+      previewTitle:'Voorbeeldbriefing', previewNote:'Doorloop dit fictieve voorbeeld: ordenen, controleren en exporteren.', resultTitle:'Controleer de briefing', reviewedTitle:'Gecontroleerde briefing', workflow:'Bekijk de werkwijze', missing:'Nog afstemmen', reviewNote:'Controleer de gegevens. Open punten blijven in de briefing staan.', doneNote:'Gecontroleerd als voorbeeld. De open punten blijven zichtbaar.',
       copy:'Kopieer briefing', download:'Download .txt', copied:'Briefing gekopieerd.', downloaded:'Download gestart.', copyFailed:'Kopiëren niet beschikbaar. Selecteer de tekst of download het bestand.',
       statusIdle:'Eén bericht. Vier bruikbare velden.', statusReview:'Jouw controle is nodig vóór export.', statusDone:'Gecontroleerd. De open punten blijven zichtbaar.',
       exportTitle:'SLIMSERVICE | VOORBEELDBRIEFING', exportNotice:'Fictieve gegevens. Lokaal gestructureerd uit het gekozen voorbeeld; geen echte klantaanvraag.', source:'Oorspronkelijk bericht', next:'Vervolgstap', checked:'Status: door de bezoeker gecontroleerd als voorbeeld. Open punten zijn niet beantwoord.',
@@ -25,11 +25,11 @@
       examples:'Choose an example', choices:['Website','Transport','Content'], inputName:'incoming-message.txt', rulesName:'enquiry.flow', resultName:'project-brief.txt',
       inputTitle:'This is how an enquiry arrives.', inputNote:'Fictional message. No customer data or actual booking.', rulesTitle:'Defined steps. You stay in control.',
       commandLabel:'Example command', commandHint:'Command: start website, transport or content',
-      start:'Create brief', review:'Confirm review', restart:'Run again', ready:'Choose and try', busy:'Organising details', waiting:'Review needed', complete:'Brief available',
+      start:'See how it takes shape', review:'Confirm review', restart:'Replay the process', ready:'From message to overview', busy:'Organising details', waiting:'Review needed', complete:'Brief available',
       rule0:'read the selected example enquiry', rule1:'organise purpose, scope and timing', rule2:'flag missing information', rule3:'wait for your review', rule4:'prepare a usable text brief',
       local:'Local example. Nothing is sent.', unknown:'Use start website, start transport or start content.',
       resultEmpty:'One message becomes a clear starting point for the next step.', outline:'What we extract from the message', inputLabel:'The enquiry', resultLabel:'The overview',
-      resultTitle:'Draft brief', reviewedTitle:'Reviewed example brief', missing:'Still to confirm', reviewNote:'Check the details. Open questions stay in the brief.', doneNote:'Ready to use as a conversation starter. Open questions remain unanswered.',
+      previewTitle:'Example brief', previewNote:'Try this fictional example: organise, review and export.', resultTitle:'Review the brief', reviewedTitle:'Reviewed brief', workflow:'Explore the workflow', missing:'Still to confirm', reviewNote:'Check the details. Open questions stay in the brief.', doneNote:'Reviewed as an example. Open questions remain visible.',
       copy:'Copy brief', download:'Download .txt', copied:'Brief copied.', downloaded:'Download started.', copyFailed:'Copy is unavailable. Select the text or download the file.',
       statusIdle:'One message. Four useful fields.', statusReview:'Your review is required before export.', statusDone:'Reviewed. Open questions remain visible.',
       exportTitle:'SLIMSERVICE | EXAMPLE BRIEF', exportNotice:'Fictional data. Structured locally from the selected example; not an actual customer enquiry.', source:'Original message', next:'Next step', checked:'Status: reviewed by the visitor as an example. Open questions have not been answered.',
@@ -55,7 +55,7 @@
     shop:{nl:{label:'Winkellevering',load:'Winkelvoorraad, omvang nog onbekend',message:'Ik wil graag voorraad uit Schiebroek naar mijn winkel in Hillegersberg laten brengen. Welke informatie hebben jullie nodig?'},en:{label:'Shop delivery',load:'Shop stock, size not yet known',message:'I would like stock delivered from Schiebroek to my shop in Hillegersberg. What information do you need?'}}
   };
   const names=['website','transport','content'];
-  let root,locale=document.documentElement.lang==='en'?'en':'nl',tab='input',phase=0,example='website',timer=0,active=false,draft=null,userChanged=false;
+  let root,locale=document.documentElement.lang==='en'?'en':'nl',tab='result',phase=0,example='website',timer=0,active=false,draft=null,userChanged=false;
   let cargo=window.SlimCaseCargo?.getState().cargo||'furniture',selectedProcess=null;
   const reduced=matchMedia('(prefers-reduced-motion:reduce)');
   const compact=matchMedia('(max-width:760px)');
@@ -76,8 +76,8 @@
   function compose(){
     if(!root)return;
     const form=root.querySelector('.pc-command-row'),hint=root.querySelector('.pc-command-hint');
-    if(compact.matches){root.querySelector('.pc-workspace').after(form);root.querySelector('.pc-bottom').after(hint);}
-    else{root.querySelector('#pc-panel-input').append(form,hint);}
+    if(compact.matches){root.querySelector('.pc-workspace').after(form);root.querySelector('.pc-bottom').after(hint);root.querySelector('.pc-workflow-details').open=true;}
+    else{root.querySelector('#pc-panel-input').append(form,hint);if(phase===0)root.querySelector('.pc-workflow-details').open=false;}
   }
   function render(){
     if(!root)return;
@@ -102,17 +102,14 @@
     });
     text('.pc-input-label',c().inputLabel);text('.pc-result-label',c().resultLabel);
     for(const name of ['input','rules','result'])text(`[data-pc-name="${name}"]`,c()[name+'Name']);
-    text('.pc-input-title',c().inputTitle);text('.pc-message',data().message);text('.pc-input-note',c().inputNote);text('.pc-rules-title',c().rulesTitle);
+    text('.pc-input-title',c().inputTitle);text('.pc-message',data().message);text('.pc-input-note',c().inputNote);text('.pc-rules-title',c().rulesTitle);text('.pc-workflow-summary span',c().workflow);
     root.querySelector('.pc-code').innerHTML=Array.from({length:5},(_,index)=>`<div class="pc-code-line ${phase===4||(phase>0&&index<phase)?'is-done':''} ${phase>0&&phase<4&&index===phase?'is-current':''}"><span class="pc-code-number">0${index+1}</span><span class="pc-rule-verb">${['read','shape','check','review','export'][index]}</span><span class="pc-rule-body">${escape(c()['rule'+index])}</span><i>${phase===4||(phase>0&&index<phase)?'✓':phase>0&&phase<4&&index===phase?'●':''}</i></div>`).join('');
-    text('.pc-result-title',phase===4?c().reviewedTitle:c().resultTitle);
-    text('.pc-result-empty',isBusy()?c().busy:c().resultEmpty);root.querySelector('.pc-result-empty').hidden=phase>=3;
-    root.querySelector('.pc-outline').hidden=phase>=3;
-    root.querySelector('.pc-outline').setAttribute('aria-label',c().outline);
-    root.querySelector('.pc-outline').innerHTML=data().fields.map(([label],index)=>`<li><span>0${index+1}</span><strong>${escape(label)}</strong>${icon('arrow')}</li>`).join('');
-    root.querySelector('.pc-result-details').hidden=phase<3;
+    text('.pc-result-title',phase===4?c().reviewedTitle:phase===3?c().resultTitle:c().previewTitle);
+    root.querySelector('.pc-result-details').hidden=false;
     root.querySelector('.pc-brief-fields').innerHTML=data().fields.map(([label,value])=>`<div><dt>${escape(label)}</dt><dd>${escape(value)}</dd></div>`).join('');
     text('.pc-missing-label',c().missing);text('.pc-missing-value',data().missing.join(' · '));
-    text('.pc-review-note',phase===4?c().doneNote:c().reviewNote);
+    text('.pc-review-note',phase===4?c().doneNote:phase===3?c().reviewNote:c().previewNote);
+    root.querySelector('.pc-export').hidden=phase<3;
     for(const action of ['copy','download']){const button=root.querySelector(`[data-pc-action="${action}"]`);button.disabled=phase!==4;button.querySelector('span').textContent=c()[action];}
     const input=root.querySelector('.pc-command');input.disabled=isBusy();input.setAttribute('aria-label',c().commandLabel);input.placeholder=command();
     if(draft===null)draft=command();if(document.activeElement!==input)input.value=draft;
@@ -122,7 +119,7 @@
   function chooseTab(next,focus=false){tab=next;render();if(focus)root.querySelector(`[data-pc-tab="${tab}"]`).focus({preventScroll:true});}
   function chooseExample(next,explicit=true){
     if(!names.includes(next))return;
-    stop();if(explicit)userChanged=true;example=next;draft=command();phase=0;tab='input';hideFallback();render();
+    stop();if(explicit)userChanged=true;example=next;draft=command();phase=0;tab='result';hideFallback();root.querySelector('.pc-workflow-details').open=compact.matches;render();
   }
   function parse(value){
     const match=value.toLowerCase().trim().match(/^(?:start\s+)?(website|transport|content|aanvraag|enquiry|request|offerte|quote)$/);
@@ -138,7 +135,7 @@
     if(phase===3){phase=4;tab='result';render();announce(c().statusDone);return;}
     const chosen=parse(root.querySelector('.pc-command').value);
     if(!chosen){announce(c().unknown);text('.pc-status-line',c().unknown);root.querySelector('.pc-command').focus({preventScroll:true});return;}
-    stop();example=chosen;draft=command();hideFallback();phase=isStill()?3:1;tab=phase===3?'result':'rules';render();announce(phase===3?c().statusReview:c().busy);
+    stop();example=chosen;draft=command();hideFallback();phase=isStill()?3:1;tab=phase===3?'result':'rules';root.querySelector('.pc-workflow-details').open=true;render();announce(phase===3?c().statusReview:c().busy);
     if(phase!==3&&active&&!document.hidden)timer=setTimeout(advance,650);
   }
   function briefText(){
@@ -166,8 +163,8 @@
       <div class="pc-tabs" role="tablist">${['input','rules','result'].map((name,index)=>`<button id="pc-tab-${name}" type="button" role="tab" data-pc-tab="${name}" aria-controls="pc-panel-${name}"><small>0${index+1}</small><span></span></button>`).join('')}</div>
       <div class="pc-workspace">
         <div id="pc-panel-input" role="tabpanel" tabindex="0" aria-labelledby="pc-tab-input" data-pc-panel="input"><div class="pc-document-label"><span>01</span><strong class="pc-input-label"></strong></div><span class="pc-filename" data-pc-name="input"></span><p class="pc-input-title"></p><blockquote class="pc-message"></blockquote><p class="pc-input-note"></p></div>
-        <div id="pc-panel-rules" role="tabpanel" tabindex="0" aria-labelledby="pc-tab-rules" data-pc-panel="rules"><span class="pc-filename" data-pc-name="rules"></span><p class="pc-rules-title"></p><div class="pc-code"></div></div>
-        <div id="pc-panel-result" role="tabpanel" tabindex="0" aria-labelledby="pc-tab-result" data-pc-panel="result"><div class="pc-document-label"><span>02</span><strong class="pc-result-label"></strong>${icon('icon-system')}</div><div class="pc-result-heading"><strong class="pc-result-title"></strong><span class="pc-filename" data-pc-name="result"></span></div><p class="pc-result-empty"></p><ol class="pc-outline"></ol><div class="pc-result-details"><dl class="pc-brief-fields"></dl><div class="pc-missing"><strong class="pc-missing-label"></strong><span class="pc-missing-value"></span></div><p class="pc-review-note"></p><div class="pc-export"><button type="button" data-pc-action="copy">${icon('copy')}<span></span></button><button type="button" data-pc-action="download">${icon('download')}<span></span></button></div><div class="pc-apply"><a href="#project" data-service-select="systems" data-pc-apply><span class="pc-apply-label"></span>${icon('diagonal')}</a><p class="pc-apply-note"></p></div></div><textarea class="pc-copy-fallback" readonly hidden rows="5"></textarea></div>
+        <div id="pc-panel-rules" role="tabpanel" tabindex="0" aria-labelledby="pc-tab-rules" data-pc-panel="rules"><details class="pc-workflow-details"><summary class="pc-workflow-summary"><span></span>${icon('arrow')}</summary><p class="pc-rules-title"></p><div class="pc-code"></div></details></div>
+        <div id="pc-panel-result" role="tabpanel" tabindex="0" aria-labelledby="pc-tab-result" data-pc-panel="result"><div class="pc-document-label"><span>02</span><strong class="pc-result-label"></strong>${icon('icon-system')}</div><div class="pc-result-heading"><strong class="pc-result-title"></strong></div><div class="pc-result-details"><dl class="pc-brief-fields"></dl><div class="pc-missing"><strong class="pc-missing-label"></strong><span class="pc-missing-value"></span></div><p class="pc-review-note"></p><div class="pc-export"><button type="button" data-pc-action="copy">${icon('copy')}<span></span></button><button type="button" data-pc-action="download">${icon('download')}<span></span></button></div><div class="pc-apply"><a href="#project" data-service-select="systems" data-pc-apply><span class="pc-apply-label"></span>${icon('diagonal')}</a><p class="pc-apply-note"></p></div></div><textarea class="pc-copy-fallback" readonly hidden rows="5"></textarea></div>
       </div>
       <form class="pc-command-row"><span aria-hidden="true" class="pc-prompt">›</span><input class="pc-command" type="text" maxlength="40" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="pc-command-hint"><button class="pc-run" type="submit"><span></span>${icon('arrow')}</button></form>
       <div class="pc-bottom"><span class="pc-status-line"></span><span class="pc-local"></span></div><span class="pc-command-hint" id="pc-command-hint"></span><span class="pc-announcement sr-only" role="status" aria-live="polite"></span>`;
