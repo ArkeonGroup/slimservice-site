@@ -5,8 +5,8 @@
   const state={locale:'nl',goal:'visibility',step:0,channel:'instagram',service:null,engagement:null,decision:null};
   const copy=window.STUDIO_COPY, hero=$('.experience'), sticky=$('.experience-sticky'), video=$('#case-video');
   const extra={
-    nl:{sceneLabel:'Interactieve werkwijze · Geen live koppelingen',scrollLabel:'Scroll. Zie het samenkomen.',skipExperience:'Bekijk de mogelijkheden',ambitionLabel:'Jouw bedrijf, jouw vertrekpunt',ambitionTitle:'Waar wil jij<br><em>naartoe?</em>',goalAction:'Dit is mijn vertrekpunt',webCaseTab:'De website',contentCaseTab:'Het verhaal',contentCaseHeading:'Hetzelfde merk.<br><em>Een ander podium.</em>',caseRole:'Eén case. Webdesign en branded content, met echte Bateman-assets.',connectionTitle:'Ook achter<br><em>de schermen.</em>',connectionAction:'Ontdek onze expertise',servicesTitle:'Verschillende<br>disciplines.<br><em>Eén richting.</em>',projectEyebrow:'Een goed begin',projectTitle:'Wat wil jij<br>in beweging<br><em>zetten?</em>',whatsappBrief:'Open in WhatsApp',footerLine:'Strategie. Creatie. Technologie.',serviceAction:'Dit past bij mijn project',engagementAction:'Dit past bij mijn vraag',selected:'Geselecteerd',chosenService:'Gekozen expertise',chosenEngagement:'Samenwerking',goalGroup:'Kies je ambitie',stepGroup:'Verken de werkwijze',caseGroup:'Verken de Bateman-case',decisionNote:'Je hebt de controle in het voorbeeld verkend. Voor een echt project spreken we de controlepunten samen af.',briefSubject:'Een project voor SlimService',briefOpening:'Hoi SlimService, ik wil graag mijn project bespreken.',briefClosing:'Laten we bespreken wat een passende eerste stap is.'},
-    en:{sceneLabel:'Interactive process · No live connections',scrollLabel:'Scroll. See it come together.',skipExperience:'Explore the possibilities',ambitionLabel:'Your business, your starting point',ambitionTitle:'Where do you<br><em>want to go?</em>',goalAction:'This is my starting point',webCaseTab:'The website',contentCaseTab:'The story',contentCaseHeading:'The same identity.<br><em>A different stage.</em>',caseRole:'One case. Web design and branded content, using real Bateman assets.',connectionTitle:'Behind the<br><em>scenes, too.</em>',connectionAction:'Explore our expertise',servicesTitle:'Different<br>disciplines.<br><em>One direction.</em>',projectEyebrow:'A good beginning',projectTitle:'What would you<br>like to set<br><em>in motion?</em>',whatsappBrief:'Open in WhatsApp',footerLine:'Strategy. Creativity. Technology.',serviceAction:'This fits my project',engagementAction:'This fits my brief',selected:'Selected',chosenService:'Selected expertise',chosenEngagement:'Working together',goalGroup:'Choose your ambition',stepGroup:'Explore the process',caseGroup:'Explore the Bateman case',decisionNote:'You have explored the review controls in the example. We agree the actual checkpoints together for a real project.',briefSubject:'A project for SlimService',briefOpening:'Hello SlimService, I would like to discuss my project.',briefClosing:'Let’s discuss a suitable first step.'}
+    nl:{sceneLabel:'Interactieve werkwijze · Geen live koppelingen',scrollLabel:'Scroll. Zie het samenkomen.',skipExperience:'Bekijk de mogelijkheden',ambitionLabel:'Jouw bedrijf, jouw vertrekpunt',ambitionTitle:'Waar wil jij<br><em>naartoe?</em>',goalAction:'Dit is mijn vertrekpunt',webCaseTab:'De website',contentCaseTab:'Het verhaal',contentCaseHeading:'Hetzelfde merk.<br><em>Een ander podium.</em>',caseRole:'Eén case. Webdesign en branded content, met echte Bateman-assets.',connectionTitle:'Ook achter<br><em>de schermen.</em>',connectionAction:'Ontdek onze expertise',servicesTitle:'Verschillende<br>disciplines.<br><em>Eén richting.</em>',projectEyebrow:'Een goed begin',projectTitle:'Wat wil jij<br>in beweging<br><em>zetten?</em>',whatsappBrief:'Open in WhatsApp',footerLine:'Strategie. Creatie. Technologie.',serviceAction:'Dit past bij mijn project',engagementAction:'Bespreek deze aanpak',selected:'Geselecteerd',chosenService:'Gekozen expertise',chosenEngagement:'Samenwerking',goalGroup:'Kies je ambitie',stepGroup:'Verken de werkwijze',caseGroup:'Verken de Bateman-case',decisionNote:'Je hebt de controle in het voorbeeld verkend. Voor een echt project spreken we de controlepunten samen af.',briefSubject:'Een project voor SlimService',briefOpening:'Hoi SlimService, ik wil graag mijn project bespreken.',briefClosing:'Laten we bespreken wat een passende eerste stap is.'},
+    en:{sceneLabel:'Interactive process · No live connections',scrollLabel:'Scroll. See it come together.',skipExperience:'Explore the possibilities',ambitionLabel:'Your business, your starting point',ambitionTitle:'Where do you<br><em>want to go?</em>',goalAction:'This is my starting point',webCaseTab:'The website',contentCaseTab:'The story',contentCaseHeading:'The same identity.<br><em>A different stage.</em>',caseRole:'One case. Web design and branded content, using real Bateman assets.',connectionTitle:'Behind the<br><em>scenes, too.</em>',connectionAction:'Explore our expertise',servicesTitle:'Different<br>disciplines.<br><em>One direction.</em>',projectEyebrow:'A good beginning',projectTitle:'What would you<br>like to set<br><em>in motion?</em>',whatsappBrief:'Open in WhatsApp',footerLine:'Strategy. Creativity. Technology.',serviceAction:'This fits my project',engagementAction:'Discuss this approach',selected:'Selected',chosenService:'Selected expertise',chosenEngagement:'Working together',goalGroup:'Choose your ambition',stepGroup:'Explore the process',caseGroup:'Explore the Bateman case',decisionNote:'You have explored the review controls in the example. We agree the actual checkpoints together for a real project.',briefSubject:'A project for SlimService',briefOpening:'Hello SlimService, I would like to discuss my project.',briefClosing:'Let’s discuss a suitable first step.'}
   };
   const t=k=>copy[state.locale][k], e=k=>extra[state.locale][k];
   let manualProcess=false;
@@ -26,7 +26,7 @@
     setScene();
   }
   function updateScroll(){
-    scrollFrame=0;const rect=hero.getBoundingClientRect();
+    scrollFrame=0;if(document.documentElement.classList.contains('has-journey'))return;const rect=hero.getBoundingClientRect();
     const p=staticMode()?0:clamp(-rect.top/Math.max(1,hero.offsetHeight-innerHeight));
     const intro=staticMode()?(manualProcess?0:1):1-smooth(.05,.16,p);
     const story=staticMode()?(manualProcess?1:0):smooth(.11,.22,p);
@@ -68,12 +68,13 @@
   function chooseGoal(goal,announceChoice=false){
     if(!t('goals')[goal])return;
     if(state.goal!==goal){state.decision=null;announce('');}
-    state.goal=goal;renderGoal();
+    state.goal=goal;renderGoal();window.dispatchEvent(new CustomEvent('studio:goal',{detail:{goal:state.goal}}));
     if(announceChoice)announce(t('goals')[goal].label);
   }
   function renderSelectionContext(){
     const details=[];const service=t('services').find(s=>s.id===state.service),eng=t('engagements').find(s=>s.id===state.engagement);
     if(service)details.push(`${e('chosenService')}: ${service.name}`);if(eng)details.push(`${e('chosenEngagement')}: ${eng.name}`);
+    const process=window.SlimProcessConsole?.getSelectionLabel?.(state.locale);if(process)details.push(process);
     $('.selection-context').textContent=details.join(' · ');$('.selection-context').hidden=!details.length;
   }
   function setLocale(locale,remember=false){
@@ -81,6 +82,15 @@
     $('.brief-status').textContent='';
     document.title=state.locale==='nl'?'SlimService | Sterk zichtbaar. Slim verbonden.':'SlimService | Built to stand out. Made to connect.';
     $('meta[name="description"]').content=t('heroIntro');
+    // Runtime metadata follows the chosen language. Static unfurls use the
+    // language-neutral studio identity in index.html (crawlers may not run JS).
+    $('meta[property="og:title"]').content=document.title;
+    $('meta[property="og:description"]').content=t('heroIntro');
+    $('meta[property="og:locale"]').content=state.locale==='nl'?'nl_NL':'en_GB';
+    $('meta[property="og:locale:alternate"]').content=state.locale==='nl'?'en_GB':'nl_NL';
+    $('meta[property="og:url"]').content='https://slimservice.nl/?lang='+state.locale;
+    $('meta[name="twitter:title"]').content=document.title;
+    $('meta[name="twitter:description"]').content=t('heroIntro');
     $$('[data-i18n]').forEach(el=>{if(t(el.dataset.i18n)!==undefined)el.textContent=t(el.dataset.i18n);});
     $$('[data-copy]').forEach(el=>el.innerHTML=e(el.dataset.copy));
     $$('[data-i18n-label]').forEach(el=>el.setAttribute('aria-label',t(el.dataset.i18nLabel)));
@@ -101,6 +111,7 @@
     event.preventDefault();items[next].focus({preventScroll:true});choose(items[next]);
   }
   document.addEventListener('click',event=>{
+    if(event.defaultPrevented)return;
     const b=event.target.closest('button,a');if(!b)return;
     if(b.dataset.locale)setLocale(b.dataset.locale,true);
     if(b.dataset.process!==undefined)chooseStep(Number(b.dataset.process));
@@ -125,6 +136,11 @@
   window.addEventListener('studio:calculator',event=>{
     if(event.detail?.selected===true){state.service='systems';chooseGoal('operations');renderSelectionContext();}
     else if(event.detail?.selected===false&&!$('.brief-result').hidden)renderBrief();
+  });
+  window.addEventListener('studio:process',event=>{
+    if(event.detail?.selected!==true)return;
+    state.service='systems';chooseGoal('operations');renderSelectionContext();
+    if(!$('.brief-result').hidden)renderBrief();
   });
   function selectChannel(channel){
     if(!['instagram','tiktok','facebook'].includes(channel))return;state.channel=channel;
@@ -160,6 +176,10 @@
     if(service)lines.push(`${e('chosenService')}: ${service.name}`);if(eng)lines.push(`${e('chosenEngagement')}: ${eng.name}`);
     const calculation=window.SlimCalculator?.getBrief?.(state.locale);
     if(calculation)lines.push('',calculation);
+    const lightStudy=window.SlimLightStory?.getBrief?.(state.locale);
+    if(lightStudy)lines.push('',lightStudy);
+    const process=window.SlimProcessConsole?.getBrief?.(state.locale);
+    if(process)lines.push('',process);
     lines.push('',e('briefClosing'));return lines.join('\n');
   }
   window.addEventListener('studio:open-website',event=>{modalOpener=event.detail.opener;video.pause();dialog.showModal();$('.dialog-close').focus({preventScroll:true});});

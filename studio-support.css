@@ -1,0 +1,155 @@
+/* A quieter supporting rhythm after the two project chapters. */
+.studio-support{--paper:#f6f4ee;--ink:#17201c;--muted:#4d5751;--line:#17201c2b}
+.studio-support .connection-section[hidden],.studio-support .story-current[hidden],.studio-support .story-seam[hidden]{display:none!important}
+.studio-support #expertise,.studio-support #samenwerken,.studio-support #vertrouwen{background:var(--paper);color:var(--ink);padding-top:82px;padding-bottom:82px}
+.studio-support #expertise .section-top{margin-bottom:35px}
+.studio-support #expertise .section-number,.studio-support #project .section-number{display:none}
+.studio-support .eyebrow{color:#58645c;letter-spacing:.08em;font-size:12px}
+.studio-support #expertise .services-layout{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:9%}
+.studio-support #expertise .services-intro{position:static}
+.studio-support #services-title,.studio-support #engagement-title,.studio-support #trust-title{font:600 clamp(32px,3.15vw,47px)/1.1 var(--body);letter-spacing:-.035em;max-width:560px}
+.studio-support #expertise .services-intro>p{font-size:18px;line-height:1.6;margin-top:24px;max-width:420px;color:var(--muted)}
+.studio-support .service-row>button{min-height:82px;padding:22px 0;grid-template-columns:26px 1fr 20px;gap:16px}
+.studio-support .service-name{font-size:clamp(22px,2.1vw,31px);line-height:1.16}
+.studio-support .service-row>button[aria-expanded=true] .service-name{color:#993a23}
+.studio-support .service-row>button .service-icon svg{transform:none;stroke-width:1.75}
+.studio-support .service-row>button>svg{stroke-width:1.75}
+.studio-support .service-detail{padding:0 0 26px 42px}
+.studio-support .service-detail>p{font-size:17px;line-height:1.6;color:var(--muted);margin-bottom:16px}
+.studio-support .service-detail li{font-size:16px;line-height:1.45;padding:9px 0}
+.studio-support .service-detail .text-cta{font-size:15px;min-height:44px;gap:20px}
+.studio-support .support-calculator-link{display:flex;width:fit-content;border-top:1px solid var(--line);margin-top:12px!important;padding-top:12px;color:#993a23}
+.studio-support .expertise-visual:not([data-expertise=content]){display:none}
+.studio-support .expertise-visual[data-expertise=content]{margin-top:30px}
+.studio-support .expertise-visual figcaption{padding:18px 0;border-bottom:0}
+.studio-support .ev-label{display:none}
+.studio-support .ev-output{font-size:15px;max-width:450px}
+.studio-support .ev-title{font-size:20px}
+.studio-support .ev-note,.studio-support .ev-index{font-size:12px;letter-spacing:.025em}
+.studio-support .ev-cell-label{font-size:12px;letter-spacing:.045em}
+.studio-support .ev-type-name{font-size:14px}
+.studio-support .ev-type-samples small,.studio-support .ev-icon-grid small,.studio-support .ev-type-piece .ev-body-sample{font-size:12px;line-height:1.4}
+.studio-support .ev-palette small{font-size:12px;letter-spacing:0}
+.studio-support .ev-palette>span{flex-wrap:wrap;gap:5px 8px}
+.process-disclosure{margin:0 var(--gutter) 20px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper);color:var(--ink)}
+.process-disclosure>summary{display:grid;grid-template-columns:42px 1fr auto;gap:24px;align-items:center;list-style:none;cursor:pointer;padding:27px 0;min-height:114px}
+.process-disclosure>summary::-webkit-details-marker{display:none}
+.process-disclosure-icon{display:grid;place-items:center;border:1px solid #17201c38;border-radius:50%;width:42px;height:42px}
+.process-disclosure-icon svg{height:22px;width:22px}
+.process-disclosure-copy{display:flex;flex-direction:column;gap:8px;min-width:0}
+.process-disclosure-copy strong{font:600 clamp(21px,2vw,29px)/1.15 var(--body);letter-spacing:-.02em}
+.process-disclosure-copy>span{font-size:16px;line-height:1.4;color:var(--muted)}
+.process-disclosure-action{display:flex;align-items:center;gap:30px;font-size:15px;font-weight:600}
+.process-disclosure-action svg{width:20px;height:20px;transition:transform .2s}
+.process-disclosure[open]>.process-disclosure-action svg,.process-disclosure[open]>summary .process-disclosure-action svg{transform:rotate(45deg)}
+.process-disclosure>summary:focus-visible{outline:2px solid #993a23;outline-offset:6px}
+.process-disclosure #calculator{padding:45px clamp(20px,4vw,58px) 52px;scroll-margin-top:96px;margin:0 0 26px}
+.process-disclosure .calc-heading{margin-bottom:34px;gap:6%;grid-template-columns:1fr 1fr}
+.process-disclosure #calculator-title{font:600 clamp(28px,2.8vw,39px)/1.12 var(--body);letter-spacing:-.025em;color:#f6f4ee}
+.process-disclosure .calc-heading>p{font-size:17px;line-height:1.55}
+.process-disclosure .calc-layout{gap:7%}
+.studio-support #samenwerken{padding-top:56px;padding-bottom:70px}
+.studio-support .engagement-head{border:0;padding-top:0;grid-template-columns:.5fr 1.1fr 1fr;gap:6%}
+.studio-support .engagement-head>.eyebrow{padding-top:6px}
+.studio-support .engagement-head>p{font-size:17px;line-height:1.6;max-width:430px;color:var(--muted)}
+.studio-support .engagement-list{margin-top:40px;gap:5%}
+.studio-support .engagement-item{display:flex;flex-direction:column;align-items:stretch;padding-top:18px;border-top:1px solid var(--line);border-bottom:0}
+.studio-support .engagement-item>.number{font:600 13px/1 var(--body);color:#993a23;margin-bottom:20px;letter-spacing:.03em}
+.studio-support .engagement-item h3{font-size:25px;margin-bottom:14px}
+.studio-support .engagement-item>p{font-size:16px;line-height:1.55;min-height:0;max-width:none;color:var(--muted)}
+.studio-support .engagement-item button{font-size:15px;margin-top:auto;padding-top:18px;min-height:62px}
+.studio-support #vertrouwen{border-top:1px solid var(--line);padding-top:60px;padding-bottom:70px}
+.studio-support .trust-heading{display:block;margin-bottom:30px}
+.studio-support .trust-heading>.eyebrow,.studio-support .trust-heading>p,.studio-support .trust-signature,.studio-support .trust-practical>.eyebrow{display:none}
+.studio-support .trust-layout{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:9%}
+.studio-support .trust-person{padding:0;background:transparent;color:var(--ink)}
+.studio-support .trust-person h3{font:600 27px/1.15 var(--body);letter-spacing:-.025em;margin:14px 0 12px}
+.studio-support .trust-person-label{color:var(--muted);font-size:13px;line-height:1.4;justify-content:flex-start;gap:18px}
+.studio-support .trust-person>p{color:var(--muted);font-size:16px;line-height:1.6;max-width:360px}
+.studio-support .trust-person>.text-cta{font-size:16px;color:var(--ink);margin-top:14px;gap:28px}
+.studio-support .trust-registration{color:var(--muted);border-top:1px solid var(--line);font-size:13px;margin-top:22px;padding-top:17px;max-width:360px}
+.studio-support .trust-registration strong{color:var(--ink);font-size:14px}
+.studio-support .trust-registration>svg{border-color:#993a23;color:#993a23}
+.studio-support .trust-faq summary{min-height:72px;font-size:18px;padding:21px 0;gap:12px}
+.studio-support .trust-faq details>p{font-size:16px;line-height:1.6;color:var(--muted);padding:0 28px 24px 38px}
+.studio-support .project-section{background:#d96340;color:#17201c;padding-top:74px;padding-bottom:80px}
+.studio-support .project-section .eyebrow,.studio-support .project-section input::placeholder,.studio-support .project-section textarea::placeholder{color:#17201c;opacity:1}
+.studio-support .project-intro h2{font-size:clamp(48px,5vw,76px);max-width:480px;line-height:.99}
+.studio-support .project-layout{gap:10%}
+.studio-support .project-intro>p{font-size:18px;line-height:1.55;margin:25px 0 28px;max-width:410px}
+.studio-support .contact-next{font-size:15px!important;max-width:410px!important}
+.studio-support .form-note{font-size:13px}
+.studio-support .launch-footer.site-footer{background:#17201c;padding-top:54px}
+.studio-support .footer-column>.eyebrow{color:#f2a38b;font-size:12px}
+/* One optical weight for interface icons; client brand artwork stays original. */
+.studio-support .service-icon svg,.studio-support .engagement-output svg,.studio-support .text-cta svg,.studio-support .engagement-item button svg,.studio-support .process-disclosure svg,.studio-support .trust-faq summary svg{stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.studio-support .engagement-item button svg{transition:transform .2s var(--ease)}
+.studio-support .engagement-item button:hover svg{transform:translate(2px,-2px)}
+.studio-support .direct-contact>a{min-height:48px;gap:24px}
+.studio-support .form-note{line-height:1.5;max-width:46ch}
+.studio-support .footer-column>a{min-height:44px}
+.studio-support .direction-link svg,.studio-support .direction-cta svg,.studio-support .site-header nav svg{stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:1000px){
+ .studio-support #expertise .services-layout,.studio-support .trust-layout{gap:6%;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
+ .process-disclosure-action>span{display:none}
+ .studio-support .engagement-head{grid-template-columns:1fr 1fr;gap:24px 6%}
+ .studio-support .engagement-head>.eyebrow{grid-column:1/-1}
+}
+@media(max-width:760px){
+ .studio-support #expertise,.studio-support #samenwerken,.studio-support #vertrouwen{padding-top:52px;padding-bottom:52px}
+ .studio-support #expertise .section-top{margin-bottom:25px}
+ .studio-support #expertise .services-layout{display:block}
+ .studio-support #services-title,.studio-support #engagement-title,.studio-support #trust-title{font-size:34px;max-width:430px}
+ .studio-support #expertise .services-intro>p{font-size:17px;margin-top:20px;max-width:480px}
+ .studio-support .services-intro{margin-bottom:30px}
+ .studio-support .service-row>button{min-height:76px;padding:20px 0;grid-template-columns:23px 1fr 18px;gap:13px}
+ .studio-support .service-name{font-size:25px}
+ .studio-support .service-detail{padding:0 0 24px}
+ .studio-support .service-detail>p,.studio-support .service-detail>ul,.studio-support .service-detail>.text-cta{margin-left:36px}
+ .studio-support .service-detail>p,.studio-support .service-detail li{font-size:16px}
+ .studio-support .expertise-visual[data-expertise=content]{margin:0 0 22px}
+ .process-disclosure{margin-bottom:0}
+ .process-disclosure>summary{grid-template-columns:1fr 20px;gap:16px;padding:25px 0;min-height:108px}
+ .process-disclosure-icon{display:none}
+ .process-disclosure-copy strong{font-size:23px}
+ .process-disclosure-copy>span{font-size:15px}
+ .process-disclosure-action{gap:0}
+ .process-disclosure #calculator{padding:30px 18px 34px;margin:0 0 20px;scroll-margin-top:80px}
+ .process-disclosure .calc-heading{display:block}
+ .process-disclosure #calculator-title{font-size:28px}
+ .process-disclosure .calc-heading>p{font-size:16px;margin-top:18px}
+ .process-disclosure .calc-layout{grid-template-columns:1fr;gap:30px}
+ .process-disclosure .calc-number-row{grid-template-columns:1fr;gap:20px}
+ .process-disclosure .calc-totals{grid-template-columns:1fr;gap:20px}
+ .process-disclosure .calc-legend{font-size:11px;gap:12px}
+ .studio-support .engagement-head{display:block}
+ .studio-support .engagement-head>.eyebrow{display:block;margin-bottom:23px}
+ .studio-support .engagement-head>p{font-size:17px;margin-top:20px;max-width:480px}
+ .studio-support .engagement-list{grid-template-columns:1fr;gap:22px;margin-top:30px}
+ .studio-support .engagement-item{padding:23px 0 0 40px}
+ .studio-support .engagement-item>.number{position:absolute;left:0;top:28px;font-size:12px;margin:0}
+ .studio-support .engagement-item h3{font-size:24px}
+ .studio-support .engagement-item>p{font-size:16px;max-width:480px}
+ .studio-support .trust-layout{grid-template-columns:1fr;gap:34px}
+ .studio-support .trust-person{max-width:none}
+ .studio-support .trust-person-label{flex-direction:row;font-size:13px}
+ .studio-support .trust-person h3{font-size:26px}
+ .studio-support .trust-faq summary{font-size:17px;min-height:74px;grid-template-columns:22px 1fr 18px;gap:10px}
+ .studio-support .trust-faq details>p{padding-left:32px;padding-right:10px;font-size:16px}
+ .studio-support .project-section{padding-top:52px;padding-bottom:58px}
+ .studio-support .project-layout{gap:36px}
+ .studio-support .project-intro h2{font-size:clamp(44px,11.5vw,67px)}
+ .studio-support .project-intro>p{font-size:17px}
+ .studio-support .contact-next{font-size:14px!important}
+ .studio-support .launch-footer.site-footer{padding-top:42px}
+}
+@media(max-width:359px){
+ .studio-support #services-title,.studio-support #engagement-title,.studio-support #trust-title{font-size:30px}
+ .studio-support .service-name{font-size:22px}
+ .studio-support .service-detail>p,.studio-support .service-detail>ul,.studio-support .service-detail>.text-cta{margin-left:0}
+ .process-disclosure-copy strong{font-size:21px}
+ .process-disclosure #calculator{padding:26px 14px 30px}
+ .process-disclosure .calc-use{font-size:16px;padding:12px}
+ .studio-support .trust-person-label{flex-direction:column;gap:4px}
+}
+@media(prefers-reduced-motion:reduce){.process-disclosure-action svg,.studio-support .engagement-item button svg{transition:none}}

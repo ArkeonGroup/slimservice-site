@@ -1,0 +1,224 @@
+/* Light becomes the work. Geometry belongs to aperture-story.js. */
+html.aperture-mode{--ap-paper-colour:#f3f0e8;--ap-ink:#17251d;--ap-muted:#516055}
+.aperture-mode .light-stage{perspective:none;isolation:isolate}
+.aperture-mode .light-stage::before{content:"";position:absolute;inset:0;z-index:1;background:var(--ap-paper-colour);opacity:var(--ap-paper,0);pointer-events:none}
+.aperture-mode .light-world{z-index:0}
+.aperture-mode .light-scenes{z-index:4;pointer-events:none}
+.aperture-mode .light-beam{opacity:.35}
+.aperture-mode .light-floor-line{z-index:6}
+.aperture-mode .light-story:not(.light-static) .light-copy{transform:none;opacity:1}
+.aperture-mode .light-story:not(.light-static) .light-copy h1{font-size:clamp(60px,6.1vw,100px);line-height:1.01;letter-spacing:-.048em}
+.aperture-mode .light-story:not(.light-static) .light-intro .light-copy{top:27%;width:51%;max-width:800px}
+.aperture-mode .light-story:not(.light-static) .light-intro .light-body{max-width:420px;line-height:1.55}
+.aperture-mode .light-story:not(.light-static) .light-own{bottom:116px;right:var(--gutter);font-size:11px;letter-spacing:.015em}
+.aperture-plane{position:absolute;z-index:3;left:var(--ap-x,0px);top:var(--ap-y,0px);width:var(--ap-w,0px);height:var(--ap-h,0px);opacity:var(--ap-opacity,0);border-radius:var(--ap-radius,0px);background:#e9e7de;transform:perspective(1600px) rotateX(var(--ap-rx,0deg)) rotateY(var(--ap-ry,0deg));transform-origin:50% 50%;transform-style:preserve-3d;overflow:hidden;box-shadow:0 24px 70px #09130d1f;pointer-events:none;will-change:transform,width,height,left,top}
+.aperture-plane::after{content:"";position:absolute;inset:0;z-index:5;border:1px solid #ffffff24;border-radius:inherit;pointer-events:none}
+.aperture-plane::before{content:"";position:absolute;inset:0;z-index:0;background:#ffdb9f;opacity:var(--ap-heat,0);pointer-events:none}
+.light-stage[data-ap-phase="intro"] .aperture-plane{background:#ffedc2;box-shadow:0 0 65px #ffd08b65,0 20px 100px #edbb6433}
+.aperture-layer{position:absolute;inset:0;z-index:1;width:100%;height:100%;visibility:hidden;pointer-events:none;overflow:hidden}
+.aperture-layer[data-ap-active="true"],.aperture-layer[data-ap-outgoing="true"]{visibility:visible}
+.aperture-layer[data-ap-active="true"]{pointer-events:auto}
+.aperture-mode .aperture-plane .light-surface,
+.aperture-mode .aperture-plane .light-content-surfaces{position:absolute;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;margin:0!important;transform:none!important;filter:none!important;box-shadow:none!important;perspective:none;will-change:auto}
+.aperture-paper .light-story{--light-fg:#17251d;--light-muted:#516055;--light-accent:#a23f28}
+.aperture-paper .light-story:not(.light-static) .light-copy h2,
+.aperture-paper .light-story:not(.light-static) .light-copy h2 em{color:var(--ap-ink)}
+.aperture-paper .light-chapter-number>span,.aperture-paper .light-body,.aperture-paper .light-case-scope{color:var(--ap-muted)}
+.aperture-paper .light-action{color:var(--ap-ink);border-bottom-color:#17251d80}
+.aperture-paper .light-case-choices button{color:var(--ap-muted)}
+.aperture-paper .light-case-choices button[aria-pressed=true]{color:var(--ap-ink);border-bottom-color:#a23f28}
+.aperture-paper .light-bottom,.aperture-paper .light-bottom button,.aperture-paper .light-scroll-cue{color:#516055}
+.aperture-paper .light-chapters button[aria-current=step]{color:var(--ap-ink)}
+.aperture-paper .light-chapters button i,.aperture-paper .light-progress>span{background:#a23f28}
+.aperture-paper .light-floor-line{background:#17251d26}
+.aperture-paper .light-progress{background:#17251d20}
+.aperture-paper.light-on-stage .site-header{background:#f3f0e8ed!important;color:var(--ap-ink)!important;border-bottom-color:#17251d20}
+.aperture-paper.light-on-stage .site-header .wordmark,
+.aperture-paper.light-on-stage .site-header .languages button,
+.aperture-paper.light-on-stage .site-header nav a,
+.aperture-paper.light-on-stage .direction-menu{color:var(--ap-ink)}
+.aperture-paper.light-on-stage .site-header .languages{color:var(--ap-muted)}
+.aperture-paper.light-on-stage .site-header .nav-contact{border-color:#516055}
+.aperture-paper.light-on-stage .site-header.menu-open nav{background:var(--ap-paper-colour)}
+.aperture-paper.light-on-stage .site-header.menu-open nav a{border-color:#17251d26}
+.aperture-paper .light-story :focus-visible{outline-color:#a23f28}
+
+/* Brand: the light opens a complete identity sheet. */
+.aperture-mode .light-story:not(.light-static) .light-brand .light-copy{left:var(--gutter);right:var(--gutter);top:118px;width:auto;max-width:none;display:grid;grid-template-columns:1.5fr .65fr;column-gap:10%;align-items:center}
+.aperture-mode .light-story:not(.light-static) .light-brand .light-chapter-number{grid-column:1/-1;margin-bottom:15px}
+.aperture-mode .light-story:not(.light-static) .light-brand .light-copy h2{font-size:clamp(43px,4.35vw,68px);line-height:1.02;letter-spacing:-.04em}
+.aperture-mode .light-story:not(.light-static) .light-brand .light-body{font-size:17px;line-height:1.5;max-width:350px;margin:0;align-self:end;padding-bottom:4px}
+.aperture-mode .aperture-plane .light-identity{display:grid;grid-template-columns:1.12fr 1fr;grid-template-rows:1fr 38px;background:#e8e6dd;color:#17251d;border:0}
+.aperture-mode .aperture-plane .light-identity-main{padding:30px 38px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-width:0}
+.aperture-mode .aperture-plane .light-panel-kicker{font-size:11px;line-height:1.4;letter-spacing:.08em}
+.aperture-mode .aperture-plane .light-identity-logo{display:block;width:100%;height:auto;max-height:150px;object-fit:contain;margin:24px 0 27px}
+.aperture-mode .aperture-plane .light-identity-rule{width:100%;background:#17251d33}
+.aperture-mode .aperture-plane .light-identity-main>p{font-size:clamp(26px,2.4vw,38px);line-height:1.15;margin:18px 0 0;max-width:none}
+.aperture-mode .aperture-plane .light-identity-details{display:grid;grid-template-columns:1fr 1fr;border-top:0;border-left:1px solid #17251d26;min-width:0}
+.aperture-mode .aperture-plane .light-identity-type{padding:30px 24px;display:grid;align-content:center;grid-template-columns:1fr 1fr;gap:10px 14px;border-right:1px solid #17251d26;min-width:0}
+.aperture-mode .aperture-plane .light-identity-type>span{font-size:11px;letter-spacing:.07em;margin-bottom:17px}
+.aperture-mode .aperture-plane .light-identity-type strong{font-size:clamp(49px,4.4vw,70px);line-height:1}
+.aperture-mode .aperture-plane .light-identity-type small{font-size:11px;line-height:1.35}
+.aperture-mode .aperture-plane .light-identity-character{padding:30px 19px;grid-template-columns:1fr;grid-template-rows:auto 1fr 1fr;gap:10px;align-items:center;background:#1b3025}
+.aperture-mode .aperture-plane .light-identity-character>span{font-size:11px;letter-spacing:.07em;grid-column:auto}
+.aperture-mode .aperture-plane .light-identity-character>img{width:100%;height:105px;max-height:100%;object-fit:contain}
+.aperture-mode .aperture-plane .light-identity-colours{grid-column:1/-1;border-top:1px solid #17251d26;min-height:38px}
+.aperture-mode .aperture-plane .light-identity-colours i{height:100%;width:48px}
+.aperture-mode .aperture-plane .light-identity-colours>span{font-size:11px;color:#465548;padding:0 17px}
+
+/* Work: the project takes the frame; controls form a clear editorial rail. */
+.aperture-mode .light-story:not(.light-static) .light-work .light-copy{top:104px;left:var(--gutter);right:var(--gutter);width:auto;max-width:none;display:grid;grid-template-columns:minmax(0,1fr) auto auto;grid-template-rows:auto auto;column-gap:32px;row-gap:0;align-items:center}
+.aperture-mode .light-story:not(.light-static) .light-work .light-chapter-number{display:none}
+.aperture-mode .light-story:not(.light-static) .light-work .light-copy h2{grid-column:1;grid-row:1/3;font-size:clamp(30px,2.75vw,43px);line-height:1.04;letter-spacing:-.035em;max-width:590px}
+.aperture-mode .light-story:not(.light-static) .light-work .light-body{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.aperture-mode .light-story:not(.light-static) .light-work .light-case-choices{grid-column:2;grid-row:1;gap:23px;margin:0}
+.aperture-mode .light-story:not(.light-static) .light-work .light-case-choices button{font-size:15px;min-height:44px;white-space:nowrap}
+.aperture-mode .light-story:not(.light-static) .light-work .light-case-scope{grid-column:2;grid-row:2;margin:0;padding-top:5px;font-size:12px;line-height:1.35}
+.aperture-mode .light-story:not(.light-static) .light-work .light-copy>.light-action{grid-column:3;grid-row:1/3;margin:0;align-self:center;font-size:14px;gap:22px;min-height:44px;white-space:nowrap}
+.aperture-mode .aperture-plane .light-website{display:grid;grid-template-rows:minmax(0,1fr) 42px;background:#e8e6dd;color:#17251d;overflow:hidden}
+.aperture-mode .aperture-plane .light-browser-bar{display:none}
+.aperture-mode .aperture-plane .light-website-image{display:block;grid-row:1;width:100%;height:100%;aspect-ratio:auto;object-fit:contain;object-position:center;background:#e8e6dd}
+.aperture-mode .aperture-plane .light-website figcaption{grid-row:2;align-items:center;display:flex;justify-content:space-between;gap:20px;padding:0 22px;border-top:1px solid #17251d26;background:#e8e6dd;font-size:11px}
+.aperture-mode .aperture-plane .light-website figcaption strong{font-size:13px}
+.aperture-mode .aperture-plane .light-website figcaption span{color:#465548}
+
+/* Content: one surface separates into two purposeful, aligned formats. */
+.aperture-mode .light-story:not(.light-static) .light-content .light-copy{top:108px;left:var(--gutter);right:var(--gutter);width:auto;max-width:none;display:grid;grid-template-columns:1.2fr .8fr auto;gap:35px;align-items:center}
+.aperture-mode .light-story:not(.light-static) .light-content .light-chapter-number{display:none}
+.aperture-mode .light-story:not(.light-static) .light-content .light-copy h2{font-size:clamp(33px,3.05vw,48px);line-height:1.03;letter-spacing:-.035em}
+.aperture-mode .light-story:not(.light-static) .light-content .light-body{font-size:16px;line-height:1.5;max-width:370px;margin:0}
+.aperture-mode .light-story:not(.light-static) .light-content .light-copy>.light-action{margin:0;font-size:14px;min-height:44px;gap:20px;max-width:230px}
+.light-stage[data-ap-phase="content"] .aperture-plane{background:transparent;box-shadow:none;overflow:visible}
+.light-stage[data-ap-phase="content"] .aperture-plane::after{border:0}
+.aperture-mode .aperture-plane .light-content-surfaces{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(20px,4vw,64px);align-items:stretch;overflow:visible}
+.aperture-mode .aperture-plane .light-content-print{position:relative;inset:auto;width:auto;height:100%;max-width:none!important;display:grid;grid-template-rows:40px minmax(0,1fr) auto;gap:17px;margin:0;padding:26px;transform:translateX(calc(var(--ap-split,1)*-8px))!important;transform-origin:center;box-shadow:none;filter:none;background:#e8e6dd;color:#17251d;overflow:hidden}
+.aperture-mode .aperture-plane .light-content-print>img.light-print-logo{width:auto;max-width:55%;height:40px;aspect-ratio:auto;margin:0;object-fit:contain;object-position:left center}
+.aperture-mode .aperture-plane .light-content-print>img:not(.light-print-logo){width:100%;height:100%;min-height:0;aspect-ratio:auto;object-fit:cover;object-position:center 46%;margin:0;display:block}
+.aperture-mode .aperture-plane .light-content-print figcaption{font-size:clamp(22px,2.1vw,32px);line-height:1.15;max-width:none;margin:0;padding-top:1px}
+.aperture-mode .aperture-plane .light-content-film{position:relative;inset:auto;width:calc((var(--ap-h,500px) - 31px)*.5625);height:100%;max-width:none;margin:0;transform:translateX(calc((1 - var(--ap-split,1))*-40%))!important;transform-origin:center;box-shadow:none;filter:none;display:grid;grid-template-rows:minmax(0,1fr) 31px}
+.aperture-mode .aperture-plane .light-film-frame{grid-row:1;width:100%;height:100%;aspect-ratio:9/16;border:0;border-radius:0;box-shadow:none}
+.aperture-mode .aperture-plane .light-film-play{left:14px;right:14px;bottom:14px;min-height:46px;border:1px solid #ffffff66;font-size:14px;background:#101b16f2}
+.aperture-mode .aperture-plane .light-content-film figcaption{grid-row:2;display:flex;align-items:center;justify-content:flex-end;padding:0;color:#465548;font-size:12px}
+.aperture-mode .aperture-plane .light-video-error{color:#9f3c26}
+
+/* Systems: choose a useful application, then explore the material study. */
+.aperture-mode .light-systems .light-copy h2{font-size:clamp(38px,3.65vw,58px);max-width:610px}
+.aperture-mode .light-systems .light-body{max-width:440px}
+.aperture-mode .light-configuration{backdrop-filter:none;background:#101b16e6;transform:none!important}
+.aperture-mode .light-usecases{display:grid;gap:0;border-top:1px solid #dbe7d52b;border-bottom:1px solid #dbe7d52b;margin:18px 0}
+.aperture-mode .light-usecases button{display:grid;grid-template-columns:24px 1fr 20px;align-items:center;gap:12px;min-height:48px;width:100%;padding:12px 0;border:0;border-bottom:1px solid #dbe7d52b;background:transparent;color:#bdc9bf;text-align:left;font-size:16px;line-height:1.3;cursor:pointer}
+.aperture-mode .light-usecases button:last-child{border-bottom:0}
+.aperture-mode .light-usecases button>span{font-size:11px;color:#829486;font-variant-numeric:tabular-nums}
+.aperture-mode .light-usecases button>strong{font-size:inherit;font-weight:600}
+.aperture-mode .light-usecases button>svg{width:18px;height:18px;color:#829486}
+.aperture-mode .light-usecases button[aria-pressed="true"],.aperture-mode .light-usecases button[aria-selected="true"]{color:#f6f4ee}
+.aperture-mode .light-usecases button[aria-pressed="true"]>svg,.aperture-mode .light-usecases button[aria-selected="true"]>svg,.aperture-mode .light-usecases button[aria-pressed="true"]>span{color:#f2a38b}
+.aperture-mode .light-lab-controls{border-top:1px solid #dbe7d52b;margin:15px 0 0;padding:0}
+.aperture-mode .light-lab-controls>summary{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:48px;cursor:pointer;list-style:none;font-size:14px;color:#c0c9be}
+.aperture-mode .light-lab-controls>summary::-webkit-details-marker{display:none}
+.aperture-mode .light-lab-controls>summary::after{content:"+";font-size:22px;color:#f6f4ee}
+.aperture-mode .light-lab-controls[open]>summary::after{content:"−"}
+.aperture-mode .light-lab-controls[open]{padding-bottom:12px}
+.aperture-mode .light-lab-controls .light-materials{margin-top:8px}
+.aperture-mode .light-lab-controls .light-intensity{margin-top:5px}
+.aperture-mode .light-lab-controls .light-config-flow,.aperture-mode .light-lab-controls .light-config-summary{display:none}
+@media(min-width:761px){.aperture-mode .light-story:not(.light-static) .light-configuration:has(.light-lab-controls[open]) .light-usecases button[aria-pressed="false"]{display:none}}
+.aperture-mode .light-usecase-outcome,.aperture-mode .light-usecase-result,.aperture-mode [data-light-usecase-outcome]{font-size:16px;line-height:1.5;max-width:500px;color:#c0c9be;margin:16px 0}
+
+/* Height, rather than arbitrary scaling, sets the laptop reading budget. */
+@media(min-width:761px) and (max-height:800px){
+ .aperture-mode .light-story:not(.light-static) .light-intro .light-copy{top:25%}
+ .aperture-mode .light-story:not(.light-static) .light-copy h1{font-size:clamp(52px,5.5vw,80px)}
+ .aperture-mode .light-story:not(.light-static) .light-brand .light-copy{top:104px;grid-template-columns:1.3fr .7fr;gap:18px 10%}
+ .aperture-mode .light-story:not(.light-static) .light-brand .light-chapter-number{display:none}
+ .aperture-mode .light-story:not(.light-static) .light-brand .light-copy h2{font-size:clamp(36px,3.4vw,47px)}
+ .aperture-mode .light-story:not(.light-static) .light-brand .light-body{font-size:16px;line-height:1.45}
+ .aperture-mode .light-story:not(.light-static) .light-work .light-copy{top:100px;column-gap:24px}
+ .aperture-mode .light-story:not(.light-static) .light-work .light-copy h2{font-size:30px}
+ .aperture-mode .light-story:not(.light-static) .light-content .light-copy{top:104px;gap:24px}
+ .aperture-mode .light-story:not(.light-static) .light-content .light-copy h2{font-size:32px}
+ .aperture-mode .light-story:not(.light-static) .light-content .light-body{font-size:14px;line-height:1.4}
+ .aperture-mode .aperture-plane .light-identity-main{padding:22px 30px}
+ .aperture-mode .aperture-plane .light-identity-logo{max-height:100px;margin:15px 0 18px}
+ .aperture-mode .aperture-plane .light-identity-main>p{font-size:28px;margin-top:14px}
+ .aperture-mode .aperture-plane .light-identity-type{padding:20px}
+ .aperture-mode .aperture-plane .light-identity-type strong{font-size:50px}
+ .aperture-mode .aperture-plane .light-identity-character{padding:20px 14px;gap:8px}
+ .aperture-mode .aperture-plane .light-identity-character>img{height:75px}
+ .aperture-mode .aperture-plane .light-content-print{padding:20px;gap:12px;grid-template-rows:30px minmax(0,1fr) auto}
+ .aperture-mode .aperture-plane .light-content-print>img.light-print-logo{height:30px}
+ .aperture-mode .aperture-plane .light-content-print figcaption{font-size:24px}
+ .aperture-mode .light-usecases{margin:12px 0}
+ .aperture-mode .light-usecases button{font-size:15px;min-height:44px;padding:10px 0}
+ .aperture-mode .light-lab-controls{margin-top:10px}
+ .aperture-mode .light-usecase-outcome,.aperture-mode .light-usecase-result,.aperture-mode [data-light-usecase-outcome]{font-size:14px;margin:12px 0}
+}
+@media(min-width:761px) and (max-width:1100px){
+ .aperture-mode .light-story:not(.light-static) .light-brand .light-copy{grid-template-columns:1.3fr .8fr;column-gap:5%}
+ .aperture-mode .light-story:not(.light-static) .light-work .light-copy{column-gap:18px;grid-template-columns:minmax(0,1fr) auto}
+ .aperture-mode .light-story:not(.light-static) .light-work .light-copy h2{grid-row:1/4;font-size:31px}
+ .aperture-mode .light-story:not(.light-static) .light-work .light-case-choices{gap:18px}
+ .aperture-mode .light-story:not(.light-static) .light-work .light-copy>.light-action{grid-column:2;grid-row:3;justify-self:start;font-size:13px}
+ .aperture-mode .light-story:not(.light-static) .light-work .light-case-scope{font-size:11px;padding-top:1px}
+ .aperture-mode .light-story:not(.light-static) .light-content .light-copy{grid-template-columns:1fr 1fr;gap:12px 30px}
+ .aperture-mode .light-story:not(.light-static) .light-content .light-copy h2{grid-row:1/3;font-size:34px}
+ .aperture-mode .light-story:not(.light-static) .light-content .light-copy>.light-action{grid-column:2;font-size:13px;justify-self:start}
+}
+
+@media(max-width:760px){
+ .aperture-mode .light-story:not(.light-static) .light-intro .light-copy{top:112px;left:var(--gutter);right:var(--gutter);width:auto;max-width:none}
+ .aperture-mode .light-story:not(.light-static) .light-copy h1{font-size:clamp(38px,8.7vw,62px);line-height:1.02}
+ .aperture-mode .light-story:not(.light-static) .light-intro .light-body{font-size:16px;line-height:1.5}
+ .aperture-mode .light-story:not(.light-static) .light-own{font-size:10px;bottom:103px}
+ .aperture-mode .aperture-plane{box-shadow:0 18px 36px #09130d20}
+ .aperture-mode .light-story:not(.light-static) .light-brand .light-copy,
+ .aperture-mode .light-story:not(.light-static) .light-content .light-copy{display:block;top:104px;left:var(--gutter);right:var(--gutter);width:auto;max-width:none}
+ .aperture-mode .light-story:not(.light-static) .light-brand .light-chapter-number{display:none}
+ .aperture-mode .light-story:not(.light-static) .light-brand .light-copy h2,
+ .aperture-mode .light-story:not(.light-static) .light-content .light-copy h2{font-size:clamp(30px,7.7vw,44px);line-height:1.04;max-width:520px}
+ .aperture-mode .light-story:not(.light-static) .light-brand .light-body,
+ .aperture-mode .light-story:not(.light-static) .light-content .light-body{font-size:14px;line-height:1.45;margin:15px 0 0;max-width:490px;padding:0}
+ .aperture-mode .light-story:not(.light-static) .light-content .light-copy>.light-action{margin-top:9px;min-height:44px;font-size:14px;max-width:none}
+ .aperture-mode .aperture-plane .light-identity{grid-template-columns:1fr;grid-template-rows:42% minmax(0,1fr) 28px}
+ .aperture-mode .aperture-plane .light-identity-main{padding:12px 20px;display:flex;align-items:center;justify-content:center}
+ .aperture-mode .aperture-plane .light-panel-kicker{font-size:9px}
+ .aperture-mode .aperture-plane .light-identity-logo{width:94%;max-width:350px;max-height:78px;margin:12px 0 4px}
+ .aperture-mode .aperture-plane .light-identity-rule,.aperture-mode .aperture-plane .light-identity-main>p{display:none}
+ .aperture-mode .aperture-plane .light-identity-details{border-left:0;border-top:1px solid #17251d26;grid-template-columns:1.06fr 1fr;min-height:0}
+ .aperture-mode .aperture-plane .light-identity-type{padding:13px 15px;gap:6px 11px}
+ .aperture-mode .aperture-plane .light-identity-type>span{font-size:10px;margin-bottom:6px}
+ .aperture-mode .aperture-plane .light-identity-type strong{font-size:40px}
+ .aperture-mode .aperture-plane .light-identity-type small{font-size:10px;line-height:1.3}
+ .aperture-mode .aperture-plane .light-identity-character{padding:13px 12px;grid-template-columns:1fr 1fr;grid-template-rows:auto 1fr;gap:8px}
+ .aperture-mode .aperture-plane .light-identity-character>span{grid-column:1/-1;font-size:10px}
+ .aperture-mode .aperture-plane .light-identity-character>img{height:75px;max-height:100%}
+ .aperture-mode .aperture-plane .light-identity-colours{min-height:28px}
+ .aperture-mode .aperture-plane .light-identity-colours i{width:25px}
+ .aperture-mode .aperture-plane .light-identity-colours>span{font-size:10px;padding:0 9px}
+ .aperture-mode .light-story:not(.light-static) .light-work .light-copy{top:104px;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto auto;gap:0 10px}
+ .aperture-mode .light-story:not(.light-static) .light-work .light-copy h2{grid-column:1/-1;grid-row:1;font-size:clamp(29px,7.7vw,42px);line-height:1.04;max-width:520px}
+ .aperture-mode .light-story:not(.light-static) .light-work .light-case-choices{grid-column:1/-1;grid-row:2;gap:24px;margin-top:12px}
+ .aperture-mode .light-story:not(.light-static) .light-work .light-case-choices button{font-size:14px}
+ .aperture-mode .light-story:not(.light-static) .light-work .light-case-scope{grid-column:1;grid-row:3;font-size:11px;max-width:190px;line-height:1.35;padding:0;align-self:center}
+ .aperture-mode .light-story:not(.light-static) .light-work .light-copy>.light-action{grid-column:2;grid-row:3;font-size:12px;gap:10px;min-height:44px;white-space:normal;max-width:125px}
+ .aperture-mode .light-story:not(.light-static) .light-work .light-copy>.light-action svg{width:18px;height:18px}
+ .aperture-mode .aperture-plane .light-website{grid-template-rows:minmax(0,1fr) 40px}
+ .aperture-mode .aperture-plane .light-website figcaption{padding:0 12px;gap:12px;font-size:9px}
+ .aperture-mode .aperture-plane .light-website figcaption strong{font-size:11px}
+ .aperture-mode .aperture-plane .light-website figcaption span{max-width:130px;line-height:1.3;text-align:right}
+ .aperture-mode .aperture-plane .light-content-surfaces{gap:14px}
+ .aperture-mode .aperture-plane .light-content-print{padding:12px;gap:12px;grid-template-rows:26px minmax(0,1fr) auto;transform:none!important}
+ .aperture-mode .aperture-plane .light-content-print>img.light-print-logo{height:26px;width:100%;max-width:100%}
+ .aperture-mode .aperture-plane .light-content-print figcaption{font-size:17px;line-height:1.12}
+ .aperture-mode .aperture-plane .light-content-film{width:calc((var(--ap-h,350px) - 26px)*.5625);grid-template-rows:minmax(0,1fr) 26px;transform:none!important}
+ .aperture-mode .aperture-plane .light-film-play{left:7px;right:7px;bottom:8px;min-height:44px;font-size:11px;gap:6px;padding:8px 5px}
+ .aperture-mode .aperture-plane .light-film-play svg{width:15px;height:15px}
+ .aperture-mode .aperture-plane .light-content-film figcaption{font-size:10px}
+ .aperture-mode .light-systems .light-copy h2{font-size:clamp(32px,7.8vw,48px)}
+ .aperture-mode .light-usecases button{font-size:16px;min-height:50px}
+ .aperture-mode .light-usecase-outcome,.aperture-mode .light-usecase-result,.aperture-mode [data-light-usecase-outcome]{font-size:15px;line-height:1.5}
+ .aperture-mode .light-lab-controls>summary{font-size:14px;min-height:48px}
+ .aperture-mode .light-lab-controls .light-materials label{font-size:14px;min-height:44px}
+ .aperture-mode .light-lab-controls .light-intensity input{height:44px}
+}
+@media(prefers-reduced-motion:reduce){.aperture-mode .aperture-plane{display:none;will-change:auto}}

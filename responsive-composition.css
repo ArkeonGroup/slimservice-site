@@ -1,0 +1,187 @@
+/* Capacity is explained once, in the calculator. No second decorative block row. */
+html.site-continuous .continuity-transfer{display:none}
+.responsive-intro-art{display:none}
+
+@media(max-width:760px){
+  /* A mobile opening is a sequence: statement, material, then the invitation. */
+  html .light-story.mobile-composed .light-intro{
+    min-height:0;
+    padding:106px var(--gutter) 32px;
+    background:#101b16;
+  }
+  html .light-story.mobile-composed .light-intro::after{display:none}
+  html .light-story.mobile-composed .light-intro .light-copy{max-width:none;width:100%}
+  html .light-story.mobile-composed .light-intro h1{
+    font-size:clamp(38px,10.8vw,68px);
+    line-height:1.02;
+    letter-spacing:-.045em;
+    max-width:none;
+  }
+  html .light-story.mobile-composed .light-intro h1 em{white-space:normal}
+  html .light-story.mobile-composed .responsive-intro-art{
+    display:block;
+    position:relative;
+    height:clamp(210px,30svh,300px);
+    margin:20px calc(var(--gutter)*-1) 23px;
+    overflow:hidden;
+    background:#101b16;
+  }
+  .responsive-intro-art img{
+    display:block;width:100%;height:100%;object-fit:cover;object-position:68% 50%;
+  }
+  html .light-story.mobile-composed .light-intro .light-body{
+    margin:0;max-width:36ch;font-size:17px;line-height:1.45;
+  }
+  html .light-story.mobile-composed .light-intro .light-action{
+    margin-top:19px;min-height:48px;font-size:16px;gap:44px;
+  }
+  html .light-story.mobile-composed .light-intro .light-skip{
+    margin-top:3px;padding-block:9px;font-size:13px;min-height:44px;
+  }
+  html .light-story.mobile-composed .light-intro .light-own{
+    position:relative;inset:auto;margin:16px 0 0;text-align:left;font-size:11px;line-height:1.4;
+  }
+
+  /* The actual media precedes supporting prose on a phone. */
+  html .light-story.mobile-composed .light-brand,
+  html .light-story.mobile-composed .light-content,
+  html .light-story.mobile-composed .light-work{
+    padding:48px var(--gutter) 52px;
+  }
+  html .light-story.mobile-composed .light-chapter:not(.light-intro) .light-copy{
+    width:100%;max-width:none;
+  }
+  html .light-story.mobile-composed .light-chapter-number{
+    margin-bottom:16px;font-size:10px;line-height:1.4;gap:13px;
+  }
+  html .light-story.mobile-composed .light-chapter-number>span{
+    font-size:10px;letter-spacing:.05em;
+  }
+  html .light-story.mobile-composed .light-chapter:not(.light-intro) .light-copy h2{
+    font-size:clamp(35px,9.6vw,55px);line-height:1.04;letter-spacing:-.04em;
+    max-width:16ch;
+  }
+  html .light-story.mobile-composed .light-static-bateman,
+  html .light-story.mobile-composed .light-website{
+    margin:25px 0 0;width:100%;max-width:none;box-shadow:none;
+  }
+  html .light-story.mobile-composed .light-static-bateman img{
+    width:100%;display:block;aspect-ratio:1.6;object-fit:cover;object-position:top;
+  }
+  html .light-story.mobile-composed .light-static-bateman figcaption{
+    padding:12px 0 0;font-size:12px;line-height:1.4;color:#c0c9be;
+  }
+  html .light-story.mobile-composed .light-website figcaption{
+    padding:12px 13px;align-items:baseline;gap:10px;
+  }
+  html .light-story.mobile-composed .light-website figcaption strong{font-size:13px}
+  html .light-story.mobile-composed .light-website figcaption span{font-size:11px;line-height:1.4}
+  html .light-story.mobile-composed .responsive-case-notes{margin-top:24px;max-width:42ch}
+  html .light-story.mobile-composed .responsive-case-notes .light-body{
+    margin:0;font-size:17px;line-height:1.5;max-width:none;
+  }
+  html .light-story.mobile-composed .responsive-case-notes .light-action{
+    margin-top:15px;min-height:46px;font-size:15px;gap:26px;
+  }
+  html .light-story.mobile-composed .responsive-case-notes .light-case-scope{
+    margin:12px 0 0;font-size:12px;line-height:1.4;
+  }
+  html .light-story.mobile-composed .case-evidence{
+    margin-top:27px;padding-top:20px;gap:16px;
+  }
+  html .light-story.mobile-composed .case-evidence>div{
+    grid-template-columns:76px minmax(0,1fr);gap:13px;
+  }
+  html .light-story.mobile-composed .case-evidence dd{font-size:14px;line-height:1.5}
+
+  /* Film and identity are consecutive proofs, never a compressed desktop collage. */
+  html .light-story.mobile-composed .light-content-surfaces{
+    position:relative;inset:auto;display:flex;flex-direction:column;
+    gap:0;width:100%;height:auto;max-width:none;margin:26px 0 0;perspective:none;
+  }
+  html .light-story.mobile-composed .light-content-film{
+    position:relative;inset:auto;display:block;flex:none;
+    width:min(100%,calc(62svh * .5625));max-width:340px;height:auto;
+    margin:0 auto;transform:none;filter:none;
+  }
+  html .light-story.mobile-composed .light-film-frame{
+    width:100%;height:auto;aspect-ratio:9/16;border-radius:0;
+    border:1px solid #f4efe234;box-shadow:none;
+  }
+  html .light-story.mobile-composed .light-film-play{
+    left:10px;right:10px;bottom:10px;min-height:46px;padding:10px;
+    font-size:14px;gap:9px;
+  }
+  html .light-story.mobile-composed .light-film-play svg{width:17px;height:17px}
+  html .light-story.mobile-composed .light-content-film figcaption{
+    font-size:12px;line-height:1.4;padding-top:10px;
+  }
+  html .light-story.mobile-composed .light-content-surfaces>.responsive-case-notes{
+    margin-top:25px;margin-bottom:30px;
+  }
+  html .light-story.mobile-composed .light-content-print.case-brandplate{
+    position:relative;inset:auto;width:100%;max-width:none;height:auto;
+    margin:0;padding:21px;transform:none;filter:none;box-shadow:none;
+  }
+  html .light-story.mobile-composed .case-brandplate .case-brandplate-header{
+    gap:16px;align-items:center;
+  }
+  html .light-story.mobile-composed .case-brandplate .case-brandplate-header img{
+    width:55%;height:62px;
+  }
+  html .light-story.mobile-composed .case-brandplate .case-brandplate-header>span{
+    font-size:22px;line-height:1.12;max-width:105px;
+  }
+  html .light-story.mobile-composed .case-brandplate .case-brandplate-body{
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;padding:21px 0;
+  }
+  html .light-story.mobile-composed .case-brandplate .case-brandplate-character img{
+    width:82%;max-height:84px;
+  }
+  html .light-story.mobile-composed .case-brandplate .case-brandplate-details{
+    grid-template-columns:minmax(0,1fr) 54px;gap:13px;
+  }
+  html .light-story.mobile-composed .case-brandplate figcaption{font-size:23px;line-height:1.2}
+
+  /* An enquiry example: one choice, its meaning, then a next action. */
+  html .light-story.mobile-composed .case-cargo{
+    margin-top:28px;padding:22px 18px 19px;gap:16px;box-shadow:none;
+  }
+  html .light-story.mobile-composed .case-cargo-heading h3{font-size:28px;line-height:1.1;margin-bottom:20px}
+  html .light-story.mobile-composed .case-cargo-options button{min-height:90px}
+  html .light-story.mobile-composed .case-cargo-output{padding-top:18px}
+  html .light-story.mobile-composed .case-cargo-live dl{gap:17px}
+  html .light-story.mobile-composed .case-cargo-live dd{font-size:17px;line-height:1.35}
+  html .light-story.mobile-composed .case-cargo-route{
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;
+    margin-top:19px;padding-top:17px;border-top:1px solid #173f3524;
+  }
+  html .light-story.mobile-composed .case-cargo-route>span{font-size:12px}
+  html .light-story.mobile-composed .case-cargo-route>strong{font-size:14px}
+  html .light-story.mobile-composed .case-cargo-explainer{font-size:13px;line-height:1.45}
+  html .light-story.mobile-composed .case-cargo-brief{min-height:48px;margin-top:18px;font-size:16px}
+}
+
+@media(max-width:359px){
+  html .light-story.mobile-composed .light-intro{padding-top:102px;padding-bottom:26px}
+  html .light-story.mobile-composed .light-intro h1{font-size:37px}
+  html .light-story.mobile-composed .responsive-intro-art{height:210px;margin-top:18px;margin-bottom:19px}
+  html .light-story.mobile-composed .light-intro .light-body{font-size:16px;line-height:1.45}
+  html .light-story.mobile-composed .light-intro .light-action{margin-top:15px}
+  html .light-story.mobile-composed .light-chapter:not(.light-intro) .light-copy h2{font-size:32px}
+  html .light-story.mobile-composed .responsive-case-notes .light-body{font-size:16px}
+  html .light-story.mobile-composed .light-content-print.case-brandplate{padding:17px}
+  html .light-story.mobile-composed .case-brandplate .case-brandplate-header{gap:12px}
+  html .light-story.mobile-composed .case-brandplate .case-brandplate-header>span{font-size:19px}
+  html .light-story.mobile-composed .case-brandplate .case-brandplate-body{gap:11px}
+  html .light-story.mobile-composed .case-brandplate .case-brandplate-sample strong{width:40px;font-size:44px}
+  html .light-story.mobile-composed .case-brandplate .case-brandplate-serif strong{font-size:39px}
+  html .light-story.mobile-composed .case-brandplate .case-brandplate-sample>span{font-size:12px}
+  html .light-story.mobile-composed .case-cargo{padding-inline:15px}
+  html .light-story.mobile-composed .case-cargo-options button{font-size:12px}
+}
+
+@media(min-width:520px) and (max-width:760px){
+  .responsive-intro-art img{object-fit:contain}
+  html .light-story.mobile-composed .light-intro h1{max-width:none}
+}

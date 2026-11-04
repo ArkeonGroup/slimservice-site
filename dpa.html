@@ -10,15 +10,13 @@
 <meta property="og:site_name" content="SlimService">
 <meta property="og:title" content="Verwerkersovereenkomst (DPA) | SlimService">
 <meta property="og:url" content="https://slimservice.nl/dpa.html">
-<meta property="og:image" content="https://slimservice.nl/assets/og-image.png">
+<meta property="og:image" content="https://slimservice.nl/assets/social-preview.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/assets/logos/apple-touch-icon.png">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta name="theme-color" content="#07060A">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:Source;src:url('assets/fonts/SourceSansPro-Regular.ttf') format('truetype');font-display:swap}@font-face{font-family:Source;src:url('assets/fonts/SourceSansPro-Semibold.ttf') format('truetype');font-weight:600 800;font-display:swap}
 :root{--void:#07060A;--surface:#111019;--surface2:#181624;--line:rgba(255,255,255,.07);--line2:rgba(255,255,255,.13);--text:#F0EEF8;--muted:#6B6880;--faint:rgba(240,238,248,.55);--g:#00FF88;--g-dim:rgba(0,255,136,.08);--g-ring:rgba(0,255,136,.22);--f-d:'Syne',system-ui,sans-serif;--f-m:'DM Mono','Courier New',monospace;--r:4px;--r-md:12px;--r-lg:18px;--ease:cubic-bezier(.4,0,.2,1)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -47,8 +45,8 @@ a:focus-visible{outline:2px solid var(--g);outline-offset:2px;border-radius:2px}
 .toc-toggle:focus-visible{outline:2px solid var(--g);outline-offset:-2px}
 .toc-toggle svg{width:16px;height:16px;transition:transform .2s var(--ease);flex-shrink:0}
 .toc.open .toc-toggle svg{transform:rotate(180deg)}
-.toc-content{max-height:0;overflow:hidden;transition:max-height .3s var(--ease)}
-.toc.open .toc-content{max-height:500px}
+.toc-content[hidden]{display:none}
+.toc-content{overflow:hidden}
 .toc-list{padding:0 20px 20px;display:grid;grid-template-columns:1fr;gap:6px}
 @media(min-width:500px){.toc-list{grid-template-columns:repeat(2,1fr);gap:8px 20px}}
 .toc-item{font-size:13px;color:var(--faint);border:none;display:flex;gap:8px;padding:4px 0}
@@ -81,6 +79,8 @@ a:focus-visible{outline:2px solid var(--g);outline-offset:2px;border-radius:2px}
 .footer-text{font-family:var(--f-m);font-size:11px;color:var(--muted);letter-spacing:.04em}
 .footer-text a{color:var(--g);margin:0 4px}
 @media print{body{background:#fff;color:#000}.header,.toc,.footer{display:none}.article{page-break-inside:avoid}}
+:root{--f-d:Source,Arial,sans-serif;--f-m:Source,Arial,sans-serif;--muted:#aaa7b7;--faint:#ccc8d4}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.toc-content,.toc-toggle svg{transition:none}}
 </style>
 </head>
 <body>
@@ -107,11 +107,11 @@ a:focus-visible{outline:2px solid var(--g);outline-offset:2px;border-radius:2px}
   </div>
 
   <nav class="toc" id="toc" aria-label="Inhoudsopgave">
-    <button class="toc-toggle" aria-expanded="false" aria-controls="toc-content" onclick="this.closest('.toc').classList.toggle('open');this.setAttribute('aria-expanded',this.closest('.toc').classList.contains('open'))">
+    <button class="toc-toggle" type="button" aria-expanded="false" aria-controls="toc-content" onclick="const open = this.closest('.toc').classList.toggle('open'); this.setAttribute('aria-expanded', String(open)); const content = document.getElementById('toc-content'); content.hidden = !open; content.inert = !open;">
       <span>Inhoudsopgave (16 artikelen)</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
     </button>
-    <div class="toc-content" id="toc-content">
+    <div class="toc-content" id="toc-content" hidden inert>
       <div class="toc-list">
         <a href="#art-1" class="toc-item"><span>1</span> Definities</a>
         <a href="#art-2" class="toc-item"><span>2</span> Rollen</a>
