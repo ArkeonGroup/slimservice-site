@@ -30,7 +30,11 @@ function create({story,stage,world,scenes}){
   const [p0,p1,p2,p3]=points;const dx1=p1.x-p2.x,dx2=p3.x-p2.x,dx3=p0.x-p1.x+p2.x-p3.x,dy1=p1.y-p2.y,dy2=p3.y-p2.y,dy3=p0.y-p1.y+p2.y-p3.y;
   const den=dx1*dy2-dx2*dy1;const g=Math.abs(den)<1e-8?0:(dx3*dy2-dx2*dy3)/den,h=Math.abs(den)<1e-8?0:(dx1*dy3-dx3*dy1)/den;
   const a=p1.x-p0.x+g*p1.x,b=p3.x-p0.x+h*p3.x,d=p1.y-p0.y+g*p1.y,e=p3.y-p0.y+h*p3.y;
-  plane.style.transform=`matrix3d(${a/1000},${d/1000},0,${g/1000},${b/625},${e/625},0,${h/625},0,0,1,0,${p0.x},${p0.y},0,1)`;
+  // Once the board is flat, leave the projective compositor. Keeping nested
+  // coplanar 3D layers can drop an image during a stationary reading hold.
+  plane.style.transform=Math.abs(g)<1e-8&&Math.abs(h)<1e-8
+   ?`matrix(${a/1000},${d/1000},${b/625},${e/625},${p0.x},${p0.y})`
+   :`matrix3d(${a/1000},${d/1000},0,${g/1000},${b/625},${e/625},0,${h/625},0,0,1,0,${p0.x},${p0.y},0,1)`;
  }
  function paint(p,{small=false,inline=false,renderer,selectedCase='bateman',caseManual=false}={}){
   lastProgress=p;if(staticView){plane.hidden=true;return;}
@@ -43,8 +47,8 @@ function create({story,stage,world,scenes}){
   let corners=projection?.board;
   const w=stage.clientWidth,h=stage.clientHeight;
   const contentScale=smooth(1.64,2.06,p),bikeScale=smooth(2.68,3.12,p);
-  const top=small?h*.47:mix(h*.28,h*(h<=800?.34:.29),bikeScale);
-  const availableHeight=mix(mix(h*.47,h*.56,contentScale),Math.min(h*.52,w*.49/1.6),bikeScale);
+  const top=small?h*.47:mix(h*(h<=800?.32:.28),h*(h<=800?.34:.29),bikeScale);
+  const availableHeight=mix(mix(h*(h<=800?.42:.47),h*(h<=800?.52:.56),contentScale),Math.min(h*.52,w*.49/1.6),bikeScale);
   const width=small?w*.88:Math.min(w*.88,Math.max(190,availableHeight)*1.6),height=width/1.6;
   const settled=rect(mix((w-width)/2,w*.05,bikeScale),top,width,height);
   if(!corners)corners=settled;
@@ -62,8 +66,8 @@ function create({story,stage,world,scenes}){
   // Hold each face readable, then cross its edge within a short scroll interval.
   // The outgoing and incoming faces still meet at the chapter boundary without overlap.
   const webAmount=p<2.36?1-smooth(1.84,1.91,p):smooth(2.91,2.98,p);
-  work.layer.style.visibility=p<1.91||p>=2.91?'visible':'hidden';work.layer.style.opacity='1';work.layer.style.transform=`perspective(1800px) rotateX(${(1-webAmount)*(p<2.36?-87:87)}deg)`;work.layer.inert=owner!==1&&owner!==3;work.layer.setAttribute('aria-hidden',String(work.layer.inert));work.layer.dataset.apActive=String(!work.layer.inert);work.layer.setAttribute('aria-labelledby','light-title-'+(owner===1?1:3));
-  const content=records[2],contentAmount=smooth(1.91,1.98,p)*(1-smooth(2.84,2.91,p));content.layer.style.visibility=p>=1.91&&p<2.91?'visible':'hidden';content.layer.style.opacity='1';content.layer.style.transform=`perspective(1800px) rotateX(${(1-contentAmount)*(p<2.36?87:-87)}deg)`;content.layer.inert=owner!==2;content.layer.setAttribute('aria-hidden',String(content.layer.inert));content.layer.dataset.apActive=String(!content.layer.inert);
+  work.layer.style.visibility=p<1.91||p>=2.91?'visible':'hidden';work.layer.style.opacity='1';work.layer.style.transform=webAmount===1?'none':`perspective(1800px) rotateX(${(1-webAmount)*(p<2.36?-87:87)}deg)`;work.layer.inert=owner!==1&&owner!==3;work.layer.setAttribute('aria-hidden',String(work.layer.inert));work.layer.dataset.apActive=String(!work.layer.inert);work.layer.setAttribute('aria-labelledby','light-title-'+(owner===1?1:3));
+  const content=records[2],contentAmount=smooth(1.91,1.98,p)*(1-smooth(2.84,2.91,p));content.layer.style.visibility=p>=1.91&&p<2.91?'visible':'hidden';content.layer.style.opacity='1';content.layer.style.transform=contentAmount===1?'none':`perspective(1800px) rotateX(${(1-contentAmount)*(p<2.36?87:-87)}deg)`;content.layer.inert=owner!==2;content.layer.setAttribute('aria-hidden',String(content.layer.inert));content.layer.dataset.apActive=String(!content.layer.inert);
   plane.classList.toggle('continuous-arrived',p>1.25);plane.style.setProperty('--continuous-split','1');plane.inert=p<1.17;
   lastGeometry={corners:current,owner,caseAmount,travel:renderer?.getStats().state.storyTravel,sourceReady};
  }
