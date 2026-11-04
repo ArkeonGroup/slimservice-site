@@ -10,8 +10,8 @@
   const copy = {
     nl: {
       proof: 'De ontwerpkeuzes achter Bateman',
-      labels: ['Vraag', 'Keuze', 'Resultaat'],
-      evidence: ['Hoe maak je vakmanschap online voelbaar?', 'Projectbeeld, merkdetails en contact in één lijn.', 'Een portfolio met een duidelijke route naar een aanvraag.'],
+      labels: ['Laat het zien', 'Maak het eigen', 'Maak contact makkelijk'],
+      evidence: ['Echte projectbeelden geven het vakwerk de hoofdrol.', 'Een herkenbare identiteit verbindt website en content.', 'De contactroute blijft dichtbij het werk dat overtuigt.'],
       brandSystem: 'Eén merk. Elk detail.', type: 'Typografie', character: 'Karakter', icons: 'Diensten', palette: 'Merkpalet', brandCaption: 'Van website naar bewegend beeld.',
       badgeAlt: 'Originele Trevor Approved-badge van Bateman', duckAlt: 'Origineel Bateman-eendje met bouwhelm',
       carpentry: 'Timmerwerk', fitting: 'Montage', garden: 'Tuinruimtes',
@@ -26,8 +26,8 @@
     },
     en: {
       proof: 'The design decisions behind Bateman',
-      labels: ['Question', 'Decision', 'Outcome'],
-      evidence: ['How can craftsmanship feel tangible online?', 'Project imagery, identity and contact work together.', 'A portfolio with a clear route to an enquiry.'],
+      labels: ['Show the work', 'Make it distinctive', 'Make contact simple'],
+      evidence: ['Real project imagery puts the craftsmanship first.', 'A recognisable identity connects the website and its content.', 'The enquiry route stays close to the work that earns interest.'],
       brandSystem: 'One identity. Every detail.', type: 'Typography', character: 'Character', icons: 'Services', palette: 'Brand palette', brandCaption: 'From website to moving image.',
       badgeAlt: 'Original Bateman Trevor Approved badge', duckAlt: 'Original Bateman duck character with a hard hat',
       carpentry: 'Carpentry', fitting: 'Fitting', garden: 'Garden rooms',

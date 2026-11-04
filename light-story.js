@@ -13,16 +13,16 @@
       chapters: ['Het begint hier', 'Bateman: website', 'Bateman: merk & content', 'De Bakfietsmaat', 'Van ontwerp naar toepassing'],
       stageLabel: 'Verken SlimService in vier hoofdstukken', own: 'Light Study 01 · Een eigen ontwerpstudie', labDrawer:'Achter het licht: verken onze ontwerpstudie',
       brandTitle: 'Een merk dat<br><em>je werk laat spreken.</em>',
-      brandBody: 'Batemans vakwerk moest ook online voelbaar worden. Projectbeelden krijgen de hoofdrol; een rustige structuur brengt bezoekers van eerste indruk naar contact.',
+      brandBody: 'Laat eerst het vakwerk zien. Echte projectbeelden, herkenbare merkdetails en een directe contactroute geven bezoekers vertrouwen om de volgende stap te zetten.',
       brandNote: 'Bateman Construction · Originele merkassets', brandCaption: 'Eén identiteit. In ieder detail.',
       brandType: 'Typografie', brandCharacter: 'Karakter', brandPalette: 'Kleur',
       workTitle: 'Van een volle lading.<br><em>Naar een heldere aanvraag.</em>',
       batemanBody: 'Batemans werk krijgt de ruimte. Een eigen merk, een duidelijke website en bewegend beeld vertellen hetzelfde verhaal.',
-      bakfietsBody: 'Wat wil je vervoeren? De Bakfietsmaat maakt die eerste keuze concreet. Van herkenbare ladingen naar een vooraf ingevulde WhatsApp-aanvraag.',
+      bakfietsBody: 'Van interesse naar een concrete vraag. Kies een lading en zie hoe die keuze meegaat naar de aanvraag. Minder uitleg vooraf, meer houvast voor het gesprek.',
       batemanScope: 'Webdesign · Merkuitwerking · Content', bakfietsScope: 'Merkidentiteit · Webdesign · Interactie',
       visit: 'Bezoek de website', detail: 'Bekijk merk & content', websiteNote: 'Werkelijk ontworpen websites',
       contentTitle: 'Eén eigen karakter.<br><em>Overal herkenbaar.</em>',
-      contentBody: 'Hetzelfde Bateman-verhaal, van logo en typografie tot de herkenbare badge, het karakter en de film. Een merk werkt pas als die keuzes elkaar versterken.',
+      contentBody: 'Herkenning stopt niet bij de website. Logo, letters, kleur, badge en film vormen één beeldtaal. Zo blijft hetzelfde vakmanschap zichtbaar, op ieder kanaal.',
       contentNote: 'Bateman Construction · Bestaande hero-film', contentStill: 'Van een eigen beeldtaal naar bewegend beeld.',
       play: 'Speel de film', pause: 'Pauzeer de film', channels: 'Verken de kanaalvoorbeelden',
       videoError: 'De film is niet beschikbaar. Het oorspronkelijke beeld blijft zichtbaar.',
@@ -47,16 +47,16 @@
       chapters: ['It starts here', 'Bateman: website', 'Bateman: brand & content', 'De Bakfietsmaat', 'From design to application'],
       stageLabel: 'Explore SlimService in four chapters', own: 'Light Study 01 · An independent design study', labDrawer:'Behind the light: explore our design study',
       brandTitle: 'A brand that lets<br><em>your work speak.</em>',
-      brandBody: 'Bateman’s craftsmanship needed to come through online. Project imagery takes the lead; a calm structure guides visitors from a first impression to getting in touch.',
+      brandBody: 'Show the craft first. Real project imagery, distinctive brand details and a direct contact route give visitors the confidence to take the next step.',
       brandNote: 'Bateman Construction · Original brand assets', brandCaption: 'One identity. In every detail.',
       brandType: 'Typography', brandCharacter: 'Character', brandPalette: 'Colour',
       workTitle: 'From a full load.<br><em>To a clear enquiry.</em>',
       batemanBody: 'A distinctive identity and website that put Bateman’s work first. Moving imagery carries the same character across its digital presence.',
-      bakfietsBody: 'What do you need to move? De Bakfietsmaat makes that first choice tangible. From recognisable cargo to a prefilled WhatsApp enquiry.',
+      bakfietsBody: 'Turn interest into a specific question. Choose a load and see that choice travel into the enquiry. Less explaining upfront, a clearer starting point for the conversation.',
       batemanScope: 'Web design · Brand expression · Content', bakfietsScope: 'Brand identity · Web design · Interaction',
       visit: 'Visit the website', detail: 'Explore identity & content', websiteNote: 'Real websites we designed',
       contentTitle: 'One distinct character.<br><em>Recognisable everywhere.</em>',
-      contentBody: 'The same Bateman story, from its logo and typography to the recognisable badge, character and film. A brand works when those choices reinforce one another.',
+      contentBody: 'Recognition goes beyond the website. Logo, type, colour, badge and film form one visual language. The same craftsmanship comes through on every channel.',
       contentNote: 'Bateman Construction · Existing hero film', contentStill: 'A distinctive visual identity, brought into motion.',
       play: 'Play the film', pause: 'Pause the film', channels: 'Explore the channel previews',
       videoError: 'The film is unavailable. You can still view the original imagery.',
@@ -76,12 +76,14 @@
     }
   };
   const text = key => `<span data-light-copy="${key}"></span>`;
-  const chapter = (n,title,body,extra='') => `<div class="light-copy"><p class="light-chapter-number">0${n+1}<span data-light-chapter="${n}"></span></p><${n===0?'h1':'h2'} data-light-copy="${title}" id="light-title-${n}"></${n===0?'h1':'h2'}><p class="light-body" data-light-copy="${body}"></p>${extra}</div>`;
-  const story = document.createElement('section');
-  story.id='top';story.className='light-story';story.setAttribute('aria-label','SlimService');
-  story.innerHTML=`<span class="light-anchor light-anchor-work" id="werk"></span>
+  const chapter = (n,title,body,extra='') => `<div class="light-copy"><p class="light-chapter-number">0${n+1}<span data-light-chapter="${n}"></span></p><${n===0?'h1':'h2'} data-light-copy="${title}" id="light-title-${n}"></${n===0?'h1':'h2'}>${n===0?'<figure class="responsive-intro-art" aria-hidden="true"><img src="assets/lab/light-study-01-mobile.webp" width="768" height="432" alt="" decoding="async"></figure>':''}<p class="light-body" data-light-copy="${body}"></p>${extra}</div>`;
+  // The final opening is already in the HTML. Hydrate it without replacing the
+  // first viewport, so deferred builders never expose an older presentation.
+  const story = document.querySelector('[data-light-shell]') || document.createElement('section');
+  story.id='top';story.classList.add('light-story');story.setAttribute('aria-label','SlimService');
+  if(!story.hasChildNodes())story.innerHTML=`<span class="light-anchor light-anchor-work" id="werk"></span>
   <div class="light-stage" id="light-stage" data-light-phase="0">
-    <div class="light-world" aria-hidden="true"><img class="light-world-poster" src="assets/lab/light-study-01.webp" srcset="assets/lab/light-study-01-mobile.webp 768w, assets/lab/light-study-01.webp 1536w" sizes="100vw" alt="" fetchpriority="high"><canvas id="light-canvas"></canvas><div class="light-atmosphere"></div><div class="light-beam"></div><div class="light-floor-line"></div></div>
+    <div class="light-world" aria-hidden="true"><img class="light-world-poster" src="assets/lab/lamp-first-frame.webp" width="2400" height="1000" alt="" fetchpriority="high"><canvas id="light-canvas"></canvas><div class="light-atmosphere"></div><div class="light-beam"></div><div class="light-floor-line"></div></div>
     <div class="light-scenes">
       <article class="light-chapter light-intro" data-light-scene="0" aria-labelledby="light-title-0">
         ${chapter(0,'title','intro',`<button type="button" class="light-action" data-light-jump="1">${text('explore')}${icon('down')}</button><a class="light-skip" href="#expertise">${text('skip')}</a>`)}
@@ -234,7 +236,7 @@
       const focus=document.activeElement;
       const focusedIndex=pendingFocus===null&&focus?.matches('a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible')?scenes.slice(0,4).findIndex(scene=>scene.contains(focus)):-1;
       const surfaceFocus=focus?.closest('.aperture-layer');const surfaceIndex=surfaceFocus&&focus.matches(':focus-visible')?({brand:1,work:active===1?1:3,content:2}[surfaceFocus.dataset.apertureLayer]):-1;
-      if(focusedIndex>=0)progress=focusedIndex===1?1.40:focusedIndex+.18;else if(surfaceIndex>=0)progress=surfaceIndex===1?1.40:surfaceIndex+.18;
+      if(focusedIndex>=0)progress=focusedIndex===1?1.47:focusedIndex+.18;else if(surfaceIndex>=0)progress=surfaceIndex===1?1.47:surfaceIndex+.18;
       const frame=aperture?.getFrame(progress,{small:narrow.matches,flow});
       const visibility=scenes.map((scene,i)=>{if(frame)return {enter:1,leave:0,opacity:i===frame.active?(Array.isArray(frame.opacity)?frame.opacity[i]:frame.opacity):0};const enter=i===0?1:ease((progress-i+.20)/.28),leave=i===(flow?3:4)?0:ease((progress-i-.76)/.24);return {enter,leave,opacity:flow&&i===4?0:enter*(1-leave)};});
       const next=frame?frame.active:visibility.reduce((best,item,i)=>item.opacity>visibility[best].opacity?i:best,0);setActive(next);
@@ -244,14 +246,14 @@
         if(i===4){scene.removeAttribute('style');scene.inert=false;scene.removeAttribute('aria-hidden');return;}
         const {enter,leave,opacity}=visibility[i];
         scene.style.setProperty('--chapter-in',enter.toFixed(4));scene.style.setProperty('--chapter-out',leave.toFixed(4));scene.style.opacity=opacity.toFixed(4);
-        scene.inert=i!==active;scene.setAttribute('aria-hidden',String(i!==active));
+        scene.inert=i!==active||opacity<.5;scene.setAttribute('aria-hidden',String(i!==active||opacity<.5));
         scene.style.visibility=opacity>.001?'visible':'hidden';
       });
       stage.style.setProperty('--light-progress',String(clamp(progress/scrollSpan())));
       stage.style.setProperty('--light-travel',String(progress));
     }
     if(flowVisible&&flowRect.top<innerHeight*.6){setActive(4);progress=4;}
-    if(pendingFocus!==null&&active===pendingFocus&&(staticView||(flow&&pendingFocus===4)||pendingFocus===0||progress>=pendingFocus+.08)){
+    if(pendingFocus!==null&&active===pendingFocus&&(staticView||(flow&&pendingFocus===4)||pendingFocus===0||progress>=(pendingFocus===1?1.45:pendingFocus+.08))){
       const heading=scenes[pendingFocus].querySelector('h1,h2');pendingFocus=null;heading.tabIndex=-1;heading.focus({preventScroll:true});
     }
     if(!staticView&&progress>2.92&&!video.paused)video.pause();
@@ -266,7 +268,14 @@
     if(aperture&&!staticView)Object.assign(pose,aperture.getPose(progress,{small,material,light}));
     if(inlinePreview()){Object.assign(pose,{storyTravel:0,boardVisibility:0,boardExposure:0,rotation:objectRotation*Math.PI/180,light,layout:'compact',cameraZoom:.92,cameraOrbit:.1,cameraLift:0,cameraShiftX:0,cameraShiftY:0,assembly:0});}
     const signature=JSON.stringify(pose);
-    if(renderer&&signature!==lastPose){renderer.setState(pose);renderer.render();lastPose=signature;}
+    if(renderer&&signature!==lastPose){
+      renderer.setState(pose);
+      // Readiness means a successful render, not merely an allocated context.
+      if(renderer.render()){
+        lastPose=signature;
+        story.dataset.renderer='ready';mobileSystems.dataset.renderer='ready';
+      }
+    }
     aperture?.paint(progress,{small,inline:inlinePreview(),renderer,selectedCase,caseManual});
   }
   function queue(){if(!raf&&!disposed)raf=requestAnimationFrame(paint);}
@@ -275,7 +284,9 @@
     const size=stage.getBoundingClientRect();
     if(renderer){renderer.resize(inlinePreview()?staticPreview.clientWidth:size.width,staticCanvasHeight(),devicePixelRatio);lastPose='';}
     story.querySelector('#werk').style.top=isStatic()?Math.max(0,scenes[1].offsetTop)+'px':((story.offsetHeight-innerHeight)*(1.18/scrollSpan()))+'px';
-    queue();
+    // Resizing clears the WebGL buffer. Repaint in the same task so it cannot
+    // expose a blank frame between a resize callback and the next animation.
+    if(renderer){if(raf)cancelAnimationFrame(raf);paint();}else queue();
   }
   function staticCanvasHeight(){return inlinePreview()?staticPreview.clientHeight:stage.clientHeight;}
   function failRenderer(){unavailable=true;story.dataset.renderer='unavailable';mobileSystems.dataset.renderer='unavailable';story.querySelector('.light-fallback').hidden=false;previewStatus.hidden=false;renderer?.dispose();renderer=null;lastPose='';}
@@ -290,7 +301,7 @@
       renderer?.dispose();
       renderer=engine.create(canvas);
       renderer.resize(inlinePreview()?staticPreview.clientWidth:stage.clientWidth,staticCanvasHeight(),devicePixelRatio);
-      story.dataset.renderer='ready';mobileSystems.dataset.renderer='ready';
+      story.dataset.renderer='loading';mobileSystems.dataset.renderer='loading';
       story.querySelector('.light-fallback').hidden=true;previewStatus.hidden=true;
       unavailable=false;lastPose='';queue();
     }catch{failRenderer();}
@@ -298,7 +309,7 @@
   }
   function jump(index,focus=false,instant=false){
     index=clamp(index,0,3);const top=scrollY+story.getBoundingClientRect().top;
-    const destination=isStatic()||(mobileFlow()&&index===4)?scrollY+scenes[index].getBoundingClientRect().top-88:top+(story.offsetHeight-innerHeight)*((index===0?0:index===1?1.40:index+.18)/scrollSpan());
+    const destination=isStatic()||(mobileFlow()&&index===4)?scrollY+scenes[index].getBoundingClientRect().top-88:top+(story.offsetHeight-innerHeight)*((index===0?0:index===1?1.47:index+.18)/scrollSpan());
     pendingFocus=focus?index:null;
     window.scrollTo({top:destination,behavior:reduced.matches||instant?'instant':'smooth'});queue();
     history.replaceState(null,'',location.pathname+location.search+(index===0?'#top':index>=1&&index<=3?'#werk':'#lab'));
@@ -331,7 +342,7 @@
   video.addEventListener('error',()=>{story.querySelector('.light-video-error').hidden=false;});
   canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();failRenderer();});
   canvas.addEventListener('webglcontextrestored',()=>{unavailable=false;initRenderer();queue();});
-  const resizeObserver=new ResizeObserver(()=>{if(renderer){renderer.resize(inlinePreview()?staticPreview.clientWidth:stage.clientWidth,staticCanvasHeight(),devicePixelRatio);lastPose='';}queue();});resizeObserver.observe(stage);resizeObserver.observe(staticPreview);
+  const resizeObserver=new ResizeObserver(resize);resizeObserver.observe(stage);resizeObserver.observe(staticPreview);
   window.addEventListener('scroll',queue,{passive:true});window.addEventListener('resize',resize,{passive:true});
   story.addEventListener('focusout',queue);
   [reduced,narrow,short].forEach(media=>media.addEventListener('change',()=>{applyMode();localize();resize();}));

@@ -37,3 +37,31 @@ html.site-continuous body #expertise.architecture-enhanced{padding:0;border:0;ov
 @media(min-width:761px){.architecture-heading{grid-template-columns:.7fr 2fr;gap:5%;padding-bottom:38px}.architecture-heading h2{font-size:clamp(38px,4vw,60px)}.architecture-heading>div{grid-template-columns:1.1fr 1fr;gap:7%}}
 @media(max-width:1000px) and (min-width:761px){.architecture-copy{grid-template-columns:1fr 2fr}.architecture-cta{grid-column:2;justify-self:start;margin-top:-8px}}
 @media(max-width:760px){.digital-architecture{padding-top:48px}.architecture-heading{gap:17px}.architecture-heading>div>p{font-size:16px;line-height:1.5;margin-top:20px}.architecture-body{padding:24px 0 29px}.architecture-copy{display:block;margin-bottom:18px}.architecture-discipline{font-size:13px}.architecture-description,.architecture-copy>.architecture-cta{display:none}.architecture-demo{margin-inline:calc(var(--gutter,24px)*-1)}.architecture-demo-note{margin:16px var(--gutter,24px) 0;font-size:12px}.architecture-footer{gap:15px}.architecture-footer p{font-size:24px}}
+
+/* The brief is a useful outcome, then a question about the visitor's own work. */
+.architecture-footer{display:block;padding:34px 0 22px;border-top:0;--architecture-route-progress:0}
+.architecture-route{position:relative;display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;padding:22px 0 0;margin-bottom:38px;color:#5b685d;font:500 12px/1.4 var(--body)}
+.architecture-route::before,.architecture-route::after{content:'';position:absolute;inset:0 0 auto;height:1px;background:#18251e33}
+.architecture-route::after{background:#a05b3d;transform:scaleX(var(--architecture-route-progress));transform-origin:left}
+.architecture-route span{position:relative}.architecture-route span::before{content:'';position:absolute;left:0;top:-25px;width:7px;height:7px;background:#f6f4ee;border:1px solid #7e8a7d;border-radius:50%}
+.architecture-route span:last-child{text-align:right}.architecture-route span:last-child::before{left:auto;right:0}
+.architecture-next-copy{display:grid;grid-template-columns:1fr 1fr;gap:8%;align-items:end}
+.architecture-footer .architecture-next-title{font:600 clamp(31px,3.3vw,48px)/1.04 var(--body);letter-spacing:-.04em;margin:0}
+.architecture-next-title em{font:italic 400 1.06em/1.03 var(--display);letter-spacing:-.02em}
+.architecture-footer .architecture-next-body{font:400 16px/1.5 var(--body);letter-spacing:0;max-width:39ch;margin:0 0 17px;color:#47564a}
+.architecture-footer a{display:inline-flex;justify-content:space-between;gap:40px;font-weight:600;text-decoration:none;border-bottom:1px solid #293b2c;padding-bottom:4px}
+.architecture-footer a svg{transition:transform .2s}.architecture-footer a:hover svg{transform:translateY(3px)}
+@media(max-width:760px){
+ .architecture-heading{padding-bottom:23px}.architecture-heading>div>p{font-size:15px;line-height:1.5;margin-top:18px}
+ .architecture-body{padding-top:22px}.architecture-copy{margin-bottom:15px}
+ .architecture-footer{padding-top:17px;padding-bottom:10px}
+ .architecture-route{gap:12px;padding-top:19px;margin-bottom:26px;font-size:11px}
+ .architecture-route span::before{top:-22px}
+ .architecture-next-copy{display:block}
+ .architecture-footer .architecture-next-title{font-size:34px}
+ .architecture-footer .architecture-next-body{font-size:15px;margin-top:19px;margin-bottom:13px;max-width:34ch}
+ .architecture-footer a{min-height:46px;font-size:15px}
+}
+@media(prefers-reduced-motion:reduce){.architecture-route::after{transform:none}.architecture-footer a svg{transition:none}}
+html[data-slim-motion=reduced] .architecture-route::after{transform:none}
+html[data-slim-motion=reduced] .architecture-footer a svg{transition:none}

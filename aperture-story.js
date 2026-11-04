@@ -17,7 +17,7 @@ function create({story,stage,world,scenes}){
  function setStatic(value){value=!!value;if(value===staticView)return;staticView=value;plane.hidden=value;for(const r of records){if(value)r.marker.after(r.element);else r.layer.append(r.element);r.layer.inert=value;}if(value){photo.style.display='';photo.removeAttribute('aria-hidden');second.hidden=true;track.style.transform='none';stage.removeAttribute('data-ap-phase');}else second.hidden=false;}
  function getFrame(p,{flow=false}={}){
   const active=p<.86?0:p<1.91?1:p<2.91?2:3;
-  const opacity=Array(5).fill(0);opacity[active]=active===0?1-smooth(.18,.38,p):active===1?smooth(.86,1.03,p):1;
+  const opacity=Array(5).fill(0);opacity[active]=active===0?1-smooth(.18,.38,p):active===1?smooth(1.38,1.45,p):1;
   return{active,opacity,enter:Array(5).fill(1),leave:Array(5).fill(0)};
  }
  function getPose(p,{small=false,material='aluminium',light=75}={}){
@@ -47,10 +47,21 @@ function create({story,stage,world,scenes}){
   let corners=projection?.board;
   const w=stage.clientWidth,h=stage.clientHeight;
   const contentScale=smooth(1.64,2.06,p),bikeScale=smooth(2.68,3.12,p);
-  const top=small?h*.47:mix(h*(h<=800?.32:.28),h*(h<=800?.34:.29),bikeScale);
-  const availableHeight=mix(mix(h*(h<=800?.42:.47),h*(h<=800?.52:.56),contentScale),Math.min(h*.52,w*.49/1.6),bikeScale);
-  const width=small?w*.88:Math.min(w*.88,Math.max(190,availableHeight)*1.6),height=width/1.6;
-  const settled=rect(mix((w-width)/2,w*.05,bikeScale),top,width,height);
+  // Work is the subject, not a small slide in the room. The first website shares
+  // its reading hold with a narrow evidence column; identity then owns the stage.
+  // Keep the bottom controls and the short-laptop CTA outside the image bounds.
+  const mediaTop=h<=800?Math.max(226,h*.315):Math.max(235,h*.245);
+  const mediaHeight=Math.max(190,h-mediaTop-106);
+  const websiteWidth=Math.min(w*.65,mediaHeight*1.6);
+  const identityWidth=Math.min(w*.82,mediaHeight*1.6);
+  const cargoWidth=Math.min(w*.49,h*.52*1.6);
+  const width=small?w*.88:mix(mix(websiteWidth,identityWidth,contentScale),cargoWidth,bikeScale),height=width/1.6;
+  const top=small?h*.47:mix(mediaTop,h*(h<=800?.34:.29),bikeScale);
+  const websiteLeft=w*.05,identityLeft=(w-identityWidth)/2;
+  const left=small?(w-width)/2:mix(mix(websiteLeft,identityLeft,contentScale),w*.05,bikeScale);
+  const settled=rect(left,top,width,height);
+  stage.style.setProperty('--case-evidence-left',`${websiteLeft+websiteWidth+Math.max(32,w*.035)}px`);
+  stage.style.setProperty('--case-evidence-top',`${mediaTop+12}px`);
   if(!corners)corners=settled;
   const arrival=smooth(1.17,1.38,p);
   const current=corners.map((q,i)=>({x:mix(q.x,settled[i].x,arrival),y:mix(q.y,settled[i].y,arrival)}));
@@ -61,7 +72,7 @@ function create({story,stage,world,scenes}){
   // The first case completes before the next one enters. Change the underlying
   // website only while its surface is off-screen behind the Bateman brand/film.
   caseAmount=p<2.36?0:1;
-  if(photo.getAttribute('src')!=='assets/bateman-website.png')photo.src='assets/bateman-website.png';track.style.transform=`translateX(${-caseAmount*50}%)`;second.hidden=false;photo.alt=document.documentElement.lang==='en'?'Bateman Construction, website design':'Bateman Construction, ontworpen website';photo.setAttribute('aria-hidden',String(caseAmount>.5));second.setAttribute('aria-hidden',String(caseAmount<=.5));
+  if(photo.getAttribute('src')!=='assets/bateman-website.png')photo.src='assets/bateman-website.png';track.style.transform=caseAmount===0?'none':'translateX(-50%)';second.hidden=false;photo.alt=document.documentElement.lang==='en'?'Bateman Construction, website design':'Bateman Construction, ontworpen website';photo.setAttribute('aria-hidden',String(caseAmount>.5));second.setAttribute('aria-hidden',String(caseAmount<=.5));
   for(const r of records){r.layer.style.visibility='hidden';r.layer.inert=true;r.layer.setAttribute('aria-hidden','true');r.layer.dataset.apActive='false';}
   // Hold each face readable, then cross its edge within a short scroll interval.
   // The outgoing and incoming faces still meet at the chapter boundary without overlap.

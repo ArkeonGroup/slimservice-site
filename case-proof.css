@@ -2,6 +2,18 @@
 @font-face{font-family:CaseBatemanBarlow;font-style:normal;font-weight:600;font-display:swap;src:url('assets/fonts/barlow-600.woff2') format('woff2')}
 .case-evidence{position:absolute;z-index:5;left:var(--gutter);right:var(--gutter);bottom:91px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4%;margin:0;padding:17px 0 0;border-top:1px solid #d3dfce55;color:#e8ece3}
 .case-evidence>div{min-width:0}.case-evidence dt{display:flex;align-items:center;gap:12px;margin:0 0 8px;font:600 13px/1.25 var(--body);color:#e9b092}.case-evidence-number{font-weight:400;color:#acbca9}.case-evidence dd{margin:0;max-width:340px;font:400 15px/1.45 var(--body)}
+@media(min-width:761px){
+ .continuous-studio .light-story:not(.light-static) .case-evidence{left:var(--case-evidence-left,72%);right:var(--gutter);top:var(--case-evidence-top,30%);bottom:auto;display:grid;grid-template-columns:1fr;gap:25px;padding:0;border:0}
+ .continuous-studio .light-story:not(.light-static) .case-evidence>div{padding-top:15px;border-top:1px solid #d3dfce45}
+ .continuous-studio .light-story:not(.light-static) .case-evidence dt{font-size:clamp(14px,1.05vw,18px);gap:10px;margin-bottom:10px}
+ .continuous-studio .light-story:not(.light-static) .case-evidence dd{font-size:clamp(15px,1.1vw,19px);line-height:1.5;max-width:32ch}
+}
+@media(min-width:761px) and (max-height:800px){
+ .continuous-studio .light-story:not(.light-static) .case-evidence{gap:18px}
+ .continuous-studio .light-story:not(.light-static) .case-evidence>div{padding-top:11px}
+ .continuous-studio .light-story:not(.light-static) .case-evidence dt{font-size:14px;margin-bottom:6px}
+ .continuous-studio .light-story:not(.light-static) .case-evidence dd{font-size:14px;line-height:1.4}
+}
 /* A single typographic plate, built at the presentation plane's native size. */
 .continuous-studio .aperture-plane .light-content-print.case-brandplate,.case-brandplate{display:flex;flex-direction:column;gap:0;padding:28px 30px 24px;background:#e8e6dd;color:#191d1a;box-sizing:border-box}
 .case-brandplate .case-brandplate-header{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-bottom:22px;border-bottom:1px solid #191d1a40}

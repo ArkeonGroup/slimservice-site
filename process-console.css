@@ -142,3 +142,24 @@ html[data-slim-motion="reduced"] .process-console *{animation:none!important;tra
  .process-console .pc-run{font-size:15px!important;min-height:48px}
  .process-console .pc-prompt{font-size:18px}
 }
+
+/* Review ends in a concrete action, not just another status label. */
+.pc-next{margin-top:18px;padding-top:17px;border-top:1px solid #263d2d2b}
+.pc-next-label{display:block;color:#284431;font:600 13px/1.4 var(--body)}
+.process-console .pc-next-action{font:400 15px/1.48 var(--body);color:#394e3d;margin:7px 0 0;max-width:44ch}
+.process-console[data-phase="4"] .pc-review-note{display:none}
+@media(max-width:760px){
+ .process-console:not([data-view="rules"]) .pc-prompt,.process-console:not([data-view="rules"]) .pc-command{display:none}
+ .process-console:not([data-view="rules"]) .pc-command-row{display:block;padding:12px 18px 16px}
+ .process-console:not([data-view="rules"]) .pc-run{width:100%}
+ .process-console .pc-title-row{padding-top:14px;padding-bottom:10px}
+ .process-console .pc-title{font-size:24px!important;line-height:1.15!important}
+ .process-console #pc-panel-result{padding-top:17px;padding-bottom:17px}
+ .process-console .pc-result-heading{margin-bottom:13px}
+ .process-console .pc-brief-fields{gap:9px;margin-bottom:14px}
+ .process-console .pc-brief-fields>div{padding-top:9px}
+ .process-console .pc-review-note{margin-top:10px!important}
+ .process-console .pc-next{margin-top:15px;padding-top:14px}
+ .process-console .pc-next-action{font-size:14px;line-height:1.5}
+ .process-console .pc-apply{margin-top:16px;padding-top:15px}
+}

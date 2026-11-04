@@ -15,8 +15,9 @@
       copy:'Kopieer briefing', download:'Download .txt', copied:'Briefing gekopieerd.', downloaded:'Download gestart.', copyFailed:'Kopiëren niet beschikbaar. Selecteer de tekst of download het bestand.',
       statusIdle:'Eén bericht. Vier bruikbare velden.', statusReview:'Jouw controle is nodig vóór export.', statusDone:'Gecontroleerd. De open punten blijven zichtbaar.',
       exportTitle:'SLIMSERVICE | VOORBEELDBRIEFING', exportNotice:'Fictieve gegevens. Lokaal gestructureerd uit het gekozen voorbeeld; geen echte klantaanvraag.', source:'Oorspronkelijk bericht', next:'Vervolgstap', checked:'Status: door de bezoeker gecontroleerd als voorbeeld. Open punten zijn niet beantwoord.',
-      nextStep:'Vraag de ontbrekende informatie op voordat je een offerte, planning of publicatie bevestigt.',
-      context:'De keuze uit het werk', contextNote:'Dezelfde lading. Dezelfde voorbeeldroute.', apply:'Zoiets voor mijn bedrijf', applyNote:'Neem het proces mee naar je aanvraag, zonder de voorbeeldgegevens.', applied:'Proces gekozen. Vertel ons nu wat jouw bedrijf nodig heeft.',
+      nextStep:'Vraag de ontbrekende informatie op voordat je een offerte, planning of publicatie bevestigt.', nextLabel:'Hiermee kun je verder',
+      nextActions:{website:'Spreek een opleverdatum af en verzamel budget en beeldmateriaal. Daarna kun je de scope en offerte bepalen.',transport:'Vraag de exacte adressen, datum en afmetingen op. Controleer daarna of de rit past voordat je de boeking bevestigt.',content:'Verzamel de merkbestanden en beeldrechten, stem de publicatiedatum af en leg de content voor aan de eigenaar.'},
+      context:'Je keuze wordt de briefing', contextNote:'Dezelfde lading. Dezelfde voorbeeldroute.', apply:'Zoiets voor mijn bedrijf', applyNote:'Neem het proces mee naar je aanvraag, zonder de voorbeeldgegevens.', applied:'Proces gekozen. Vertel ons nu wat jouw bedrijf nodig heeft.',
       selection:'Gekozen proces', processNames:{website:'Website-aanvragen ordenen',transport:'Vervoersaanvragen ordenen',content:'Contentbriefings voorbereiden'},
       processBriefs:{website:'Website-aanvragen structureren op doel, inhoud en planning. Ontbrekende informatie zichtbaar maken en laten controleren.',transport:'Vervoersaanvragen structureren op lading en route. Ontbrekende adressen en planning zichtbaar maken en laten controleren.',content:'Werkbeelden en merkbestanden ordenen tot een contentbriefing, met een menselijke controle vóór publicatie.'}
     },
@@ -33,8 +34,9 @@
       copy:'Copy brief', download:'Download .txt', copied:'Brief copied.', downloaded:'Download started.', copyFailed:'Copy is unavailable. Select the text or download the file.',
       statusIdle:'One message. Four useful fields.', statusReview:'Your review is required before export.', statusDone:'Reviewed. Open questions remain visible.',
       exportTitle:'SLIMSERVICE | EXAMPLE BRIEF', exportNotice:'Fictional data. Structured locally from the selected example; not an actual customer enquiry.', source:'Original message', next:'Next step', checked:'Status: reviewed by the visitor as an example. Open questions have not been answered.',
-      nextStep:'Request the missing information before confirming a quote, schedule or publication.',
-      context:'The choice from the case', contextNote:'Same load. Same example route.', apply:'Build this for my business', applyNote:'Carry the process into your enquiry, without the sample details.', applied:'Process selected. Tell us what your own business needs.',
+      nextStep:'Request the missing information before confirming a quote, schedule or publication.', nextLabel:'A practical next step',
+      nextActions:{website:'Agree a launch date and collect the budget and imagery. Then define the scope and prepare a quote.',transport:'Request the exact addresses, date and dimensions. Check the journey is feasible before confirming a booking.',content:'Collect brand files and image permissions, agree a publication date and send the content to the owner for review.'},
+      context:'Your choice becomes the brief', contextNote:'Same load. Same example route.', apply:'Build this for my business', applyNote:'Carry the process into your enquiry, without the sample details.', applied:'Process selected. Tell us what your own business needs.',
       selection:'Selected process', processNames:{website:'Structure website enquiries',transport:'Structure transport enquiries',content:'Prepare content briefs'},
       processBriefs:{website:'Structure website enquiries by purpose, scope and timing. Flag missing information for a person to review.',transport:'Structure transport enquiries by load and route. Flag missing addresses and timing for a person to review.',content:'Organise project imagery and brand assets into a content brief, with a person reviewing before publication.'}
     }
@@ -109,6 +111,7 @@
     root.querySelector('.pc-brief-fields').innerHTML=data().fields.map(([label,value])=>`<div><dt>${escape(label)}</dt><dd>${escape(value)}</dd></div>`).join('');
     text('.pc-missing-label',c().missing);text('.pc-missing-value',data().missing.join(' · '));
     text('.pc-review-note',phase===4?c().doneNote:phase===3?c().reviewNote:c().previewNote);
+    root.querySelector('.pc-next').hidden=phase!==4;text('.pc-next-label',c().nextLabel);text('.pc-next-action',c().nextActions[example]);
     root.querySelector('.pc-export').hidden=phase<3;
     for(const action of ['copy','download']){const button=root.querySelector(`[data-pc-action="${action}"]`);button.disabled=phase!==4;button.querySelector('span').textContent=c()[action];}
     const input=root.querySelector('.pc-command');input.disabled=isBusy();input.setAttribute('aria-label',c().commandLabel);input.placeholder=command();
@@ -139,7 +142,7 @@
     if(phase!==3&&active&&!document.hidden)timer=setTimeout(advance,650);
   }
   function briefText(){
-    return [c().exportTitle,c().exportNotice,'',c().source+':',data().message,'',...data().fields.map(([label,value])=>`${label}: ${value}`),'',c().missing+':',...data().missing.map(value=>`- ${value}`),'',c().next+':',c().nextStep,'',c().checked].join('\n');
+    return [c().exportTitle,c().exportNotice,'',c().source+':',data().message,'',...data().fields.map(([label,value])=>`${label}: ${value}`),'',c().missing+':',...data().missing.map(value=>`- ${value}`),'',c().next+':',c().nextActions[example],'',c().checked].join('\n');
   }
   function hideFallback(){if(root)root.querySelector('.pc-copy-fallback').hidden=true;}
   async function copyBrief(){
@@ -164,7 +167,7 @@
       <div class="pc-workspace">
         <div id="pc-panel-input" role="tabpanel" tabindex="0" aria-labelledby="pc-tab-input" data-pc-panel="input"><div class="pc-document-label"><span>01</span><strong class="pc-input-label"></strong></div><span class="pc-filename" data-pc-name="input"></span><p class="pc-input-title"></p><blockquote class="pc-message"></blockquote><p class="pc-input-note"></p></div>
         <div id="pc-panel-rules" role="tabpanel" tabindex="0" aria-labelledby="pc-tab-rules" data-pc-panel="rules"><details class="pc-workflow-details"><summary class="pc-workflow-summary"><span></span>${icon('arrow')}</summary><p class="pc-rules-title"></p><div class="pc-code"></div></details></div>
-        <div id="pc-panel-result" role="tabpanel" tabindex="0" aria-labelledby="pc-tab-result" data-pc-panel="result"><div class="pc-document-label"><span>02</span><strong class="pc-result-label"></strong>${icon('icon-system')}</div><div class="pc-result-heading"><strong class="pc-result-title"></strong></div><div class="pc-result-details"><dl class="pc-brief-fields"></dl><div class="pc-missing"><strong class="pc-missing-label"></strong><span class="pc-missing-value"></span></div><p class="pc-review-note"></p><div class="pc-export"><button type="button" data-pc-action="copy">${icon('copy')}<span></span></button><button type="button" data-pc-action="download">${icon('download')}<span></span></button></div><div class="pc-apply"><a href="#project" data-service-select="systems" data-pc-apply><span class="pc-apply-label"></span>${icon('diagonal')}</a><p class="pc-apply-note"></p></div></div><textarea class="pc-copy-fallback" readonly hidden rows="5"></textarea></div>
+        <div id="pc-panel-result" role="tabpanel" tabindex="0" aria-labelledby="pc-tab-result" data-pc-panel="result"><div class="pc-document-label"><span>02</span><strong class="pc-result-label"></strong>${icon('icon-system')}</div><div class="pc-result-heading"><strong class="pc-result-title"></strong></div><div class="pc-result-details"><dl class="pc-brief-fields"></dl><div class="pc-missing"><strong class="pc-missing-label"></strong><span class="pc-missing-value"></span></div><p class="pc-review-note"></p><div class="pc-next" hidden><strong class="pc-next-label"></strong><p class="pc-next-action"></p></div><div class="pc-export"><button type="button" data-pc-action="copy">${icon('copy')}<span></span></button><button type="button" data-pc-action="download">${icon('download')}<span></span></button></div><div class="pc-apply"><a href="#project" data-service-select="systems" data-pc-apply><span class="pc-apply-label"></span>${icon('diagonal')}</a><p class="pc-apply-note"></p></div></div><textarea class="pc-copy-fallback" readonly hidden rows="5"></textarea></div>
       </div>
       <form class="pc-command-row"><span aria-hidden="true" class="pc-prompt">›</span><input class="pc-command" type="text" maxlength="40" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="pc-command-hint"><button class="pc-run" type="submit"><span></span>${icon('arrow')}</button></form>
       <div class="pc-bottom"><span class="pc-status-line"></span><span class="pc-local"></span></div><span class="pc-command-hint" id="pc-command-hint"></span><span class="pc-announcement sr-only" role="status" aria-live="polite"></span>`;

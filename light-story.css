@@ -1,4 +1,8 @@
 /* One studio, one source of light, five editorial reveals. */
+/* The authored opening is present before the deferred builders run. */
+html.light-story-mode main>.showcase,html.light-story-mode #studio-opening{display:none!important}
+html.light-story-mode{background:#101b16}
+.light-fonts-pending .light-intro .light-copy,.light-fonts-pending .site-header{visibility:hidden}
 .light-story[data-renderer=unavailable] .light-world-poster{opacity:.24}
 .light-story[data-renderer=unavailable] .light-configuration{background:#101b16f2}
 .light-stage[data-light-phase="4"] .light-fallback{left:var(--gutter);right:auto;max-width:360px}
@@ -14,6 +18,12 @@ html.light-story-mode .direction-opening,html.light-story-mode .direction-projec
 .light-anchor{position:absolute;left:0;width:1px;height:1px;pointer-events:none}.light-anchor-start{top:0}.light-anchor-work{top:46%}
 .light-world{position:absolute;inset:0;overflow:hidden;pointer-events:none}.light-world-poster,.light-world canvas{position:absolute;inset:0;width:100%;height:100%;display:block}.light-world-poster{object-fit:cover;object-position:center;opacity:.65}.light-world canvas{opacity:0;transition:opacity .6s;mask-image:linear-gradient(to bottom,transparent,#000 13%,#000 90%,transparent);-webkit-mask-image:linear-gradient(to bottom,transparent,#000 13%,#000 90%,transparent)}
 [data-renderer=ready] .light-world canvas{opacity:1}[data-renderer=ready] .light-world-poster{opacity:0}.light-atmosphere{position:absolute;inset:0;background:linear-gradient(90deg,#101b16d9 0%,#101b16aa 28%,#101b1600 60%);pointer-events:none}
+/* Exact capture of this renderer's first camera: match vertical field of view
+   across desktop aspect ratios, then hand over only after a successful draw. */
+.continuous-studio .light-story:not(.light-static) .light-world-poster{height:100%;width:auto;max-width:none;left:72%;right:auto;transform:translateX(-72%);opacity:1;object-fit:fill}
+.continuous-studio .light-story:not(.light-static):not([data-renderer=ready]) .light-world canvas{opacity:0!important}
+.continuous-studio .light-story[data-renderer=ready]:not(.light-static) .light-world-poster{opacity:0}
+.continuous-studio .light-world canvas{transition:none}
 .light-beam{position:absolute;width:77vw;height:74vh;left:32%;top:18%;border-radius:50%;background:radial-gradient(ellipse,#ebbd7024 0%,#e4ac6010 38%,transparent 69%);mix-blend-mode:screen;transform:rotate(calc(-26deg + var(--light-travel)*10deg));opacity:.7;pointer-events:none}
 .light-floor-line{position:absolute;left:var(--gutter);right:var(--gutter);bottom:96px;height:1px;background:#cedbcc20}
 .light-scenes{position:absolute;inset:0}.light-chapter{position:absolute;inset:0;--chapter-in:0;--chapter-out:0;opacity:0;visibility:hidden;transform-style:preserve-3d;pointer-events:none}.light-chapter>*{pointer-events:auto}.light-intro{opacity:1;visibility:visible;--chapter-in:1}
