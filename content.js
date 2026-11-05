@@ -6,8 +6,8 @@ window.STUDIO_COPY = {
     "description": "Strategie, webdesign, content en systemen voor bedrijven. SlimService verbindt een helder verhaal met goed ontworpen digitale oplossingen.",
     "skip": "Ga naar de inhoud",
     "navigation": "Hoofdnavigatie",
-    "work": "Mogelijkheden",
-    "workShort": "Ontdek",
+    "work": "Werk",
+    "workShort": "Werk",
     "process": "Werkwijze",
     "language": "Taal",
     "headingOne": "Sterk zichtbaar.",
@@ -186,7 +186,7 @@ window.STUDIO_COPY = {
       {
         "id": "strategy",
         "name": "Strategie & merk",
-        "description": "Een helder vertrekpunt voor wat je vertelt, maakt en kiest.",
+        "description": "Maak duidelijk wat je biedt, voor wie je er bent en waarom klanten voor je kiezen. Dat vormt de basis voor je verhaal en je uitstraling.",
         "deliverables": [
           "Positionering en kernboodschap",
           "Creatieve richting en merkuitstraling",
@@ -196,7 +196,7 @@ window.STUDIO_COPY = {
       {
         "id": "web",
         "name": "Webdesign & conversie",
-        "description": "Websites die je bedrijf herkenbaar maken en bezoekers verder helpen.",
+        "description": "Van eerste indruk tot aanvraag: een website die je aanbod helder maakt en bezoekers de weg wijst.",
         "deliverables": [
           "Websites en landingspagina’s",
           "Navigatie, inhoud en interactieontwerp",
@@ -206,9 +206,9 @@ window.STUDIO_COPY = {
       {
         "id": "content",
         "name": "Content & marketing",
-        "description": "Een merk leeft in meer dan een logo. We verbinden je visuele identiteit, herkenbare merkdetails en content tot een verhaal dat op ieder kanaal klopt.",
+        "description": "Van merkidentiteit tot campagne: herkenbare content voor je website en sociale kanalen. Met formats waarmee je verder kunt.",
         "deliverables": [
-          "Logo, badges, karakters en visuele merktaal",
+          "Logo, badges, merkfiguren en visuele merktaal",
           "Branded posts, Reels, webcontent en campagneconcepten",
           "Samenhangende formats, contentplanning en review"
         ]
@@ -216,7 +216,7 @@ window.STUDIO_COPY = {
       {
         "id": "systems",
         "name": "Systemen & automatisering",
-        "description": "Digitale oplossingen die terugkerend werk overzichtelijker maken.",
+        "description": "Minder overtypen en zoeken. We verbinden tools en vereenvoudigen terugkerende taken, met menselijke controle waar die nodig is.",
         "deliverables": [
           "Interne tools en klantportalen",
           "Koppelingen en werkprocessen",
@@ -241,35 +241,35 @@ window.STUDIO_COPY = {
     "philosophyControl": "Technologie ondersteunt het werk. Jij houdt zicht op beslissingen, inhoud en publicatie.",
     "engagementEyebrow": "Samenwerken",
     "engagementHeading": "Begin waar het nodig is.",
-    "engagementIntro": "Van een gerichte vraag tot een samenhangend traject. We maken vooraf duidelijk wat we doen, wat je ontvangt en waar jouw inbreng nodig is.",
+    "engagementIntro": "Je kunt beginnen met advies, een nieuw project of verbetering van wat er al staat. We spreken vooraf af wat we opleveren en wanneer jouw input nodig is.",
     "engagements": [
       {
         "id": "focus",
         "name": "Scherpstellen",
-        "description": "Voor een vraagstuk dat eerst richting nodig heeft. We onderzoeken wat er speelt en bepalen de eerstvolgende zinvolle stap.",
-        "output": "Een heldere vraag, prioriteiten en een concrete aanpak."
+        "description": "Je weet dat er iets moet veranderen, maar nog niet waar te beginnen. We bekijken je bedrijf, je klanten en wat nu de meeste aandacht verdient.",
+        "output": "Duidelijke prioriteiten en een voorstel voor de uitvoering."
       },
       {
         "id": "build",
         "name": "Ontwerpen & bouwen",
-        "description": "Voor een concrete website, campagne of digitale oplossing. We werken van richting en ontwerp naar een resultaat dat je kunt gebruiken.",
+        "description": "Een website, campagne of digitale tool van eerste ontwerp tot oplevering. Met vaste momenten om mee te kijken en bij te sturen.",
         "output": "Een afgebakend project met duidelijke oplevering en overdracht."
       },
       {
         "id": "evolve",
         "name": "Doorontwikkelen",
-        "description": "Voor bedrijven die hun bestaande werk gericht willen verbeteren. We kiezen samen wat aandacht verdient en bouwen daarop voort.",
+        "description": "Je website, content of systeem staat al. We verbeteren wat werkt, lossen knelpunten op en voegen toe wat je bedrijf verder helpt.",
         "output": "Afgesproken verbeteringen, evaluatiemomenten en vervolgstappen."
       }
     ],
     "briefEyebrow": "Jouw volgende stap",
     "briefHeading": "Wat wil jij in beweging brengen?",
-    "briefIntro": "Vertel kort over je bedrijf en je vraag. Maak er een projectbrief van die je kunt bewaren en delen.",
+    "briefIntro": "Vertel wat je wilt verbeteren. Stuur ons direct een bericht, of zet je idee hieronder kort op papier.",
     "brief": {
       "goalLabel": "Waar wil je aan werken?",
       "businessLabel": "Je bedrijf",
       "businessPlaceholder": "Wat doet je bedrijf en voor wie?",
-      "needLabel": "Je vraag of ambitie",
+      "needLabel": "Wat wil je verbeteren?",
       "needPlaceholder": "Wat wil je veranderen, maken of verbeteren?",
       "whenLabel": "Wanneer wil je beginnen?",
       "whenOptions": [
@@ -290,26 +290,26 @@ window.STUDIO_COPY = {
           "label": "De planning staat nog open"
         }
       ],
-      "prepare": "Maak mijn projectbrief",
-      "summaryTitle": "Jouw projectbrief",
-      "summaryIntro": "Een vertrekpunt voor een gesprek over je project.",
+      "prepare": "Zet mijn bericht klaar",
+      "summaryTitle": "Jouw bericht",
+      "summaryIntro": "Lees je bericht nog even door. Open het daarna in je e-mailapp of WhatsApp, of bewaar een kopie.",
       "summaryGoal": "Doel",
       "summaryBusiness": "Bedrijf",
-      "summaryNeed": "Vraag of ambitie",
+      "summaryNeed": "Wat ik wil verbeteren",
       "summaryWhen": "Gewenste start",
       "summaryMissing": "Nog niet ingevuld",
-      "copy": "Kopieer de brief",
+      "copy": "Kopieer het bericht",
       "download": "Download als tekst",
-      "edit": "Pas mijn brief aan",
-      "copied": "Projectbrief gekopieerd.",
-      "copyFailed": "Kopiëren lukt hier niet. Selecteer de tekst of download de brief.",
-      "downloaded": "De download van je projectbrief is gestart.",
-      "localNote": "Hier wordt niets automatisch verstuurd. Open een e-mailconcept of bewaar je brief door de tekst te kopiëren of te downloaden.",
+      "edit": "Pas mijn bericht aan",
+      "copied": "Bericht gekopieerd.",
+      "copyFailed": "Kopiëren lukt hier niet. Selecteer de tekst of download het bericht.",
+      "downloaded": "De download van je bericht is gestart.",
+      "localNote": "Je stelt hier alleen een bericht op. Er wordt niets automatisch verstuurd.",
       "validationBusiness": "Vertel kort wat je bedrijf doet.",
-      "validationNeed": "Beschrijf kort je vraag of ambitie.",
+      "validationNeed": "Beschrijf kort wat je wilt veranderen, maken of verbeteren.",
       "downloadFilename": "slimservice-projectbrief.txt",
       "email": "Open een e-mailconcept",
-      "emailNote": "Je e-mailapp opent een concept met je projectbrief. Je controleert en verstuurt het zelf."
+      "emailNote": "Je e-mailapp of WhatsApp opent met je bericht. Je controleert en verstuurt het zelf."
     },
     "contactEmail": "hello@slimservice.nl",
     "contactWhatsappLabel": "Neem contact op via WhatsApp"
@@ -319,8 +319,8 @@ window.STUDIO_COPY = {
     "description": "Strategy, web design, content and systems for businesses. SlimService connects a clear story with carefully designed digital solutions.",
     "skip": "Skip to the content",
     "navigation": "Main navigation",
-    "work": "Possibilities",
-    "workShort": "Explore",
+    "work": "Work",
+    "workShort": "Work",
     "process": "Process",
     "language": "Language",
     "headingOne": "Built to stand out.",
@@ -499,7 +499,7 @@ window.STUDIO_COPY = {
       {
         "id": "strategy",
         "name": "Strategy & brand",
-        "description": "A clear starting point for what you say, make and choose.",
+        "description": "Define what you offer, who it is for and why customers choose you. Give your brand a clear message and a distinctive identity.",
         "deliverables": [
           "Positioning and core message",
           "Creative direction and visual identity",
@@ -509,7 +509,7 @@ window.STUDIO_COPY = {
       {
         "id": "web",
         "name": "Web design & conversion",
-        "description": "Websites that make your business recognisable and help visitors take the next step.",
+        "description": "From first impression to enquiry: a website that explains your offer and makes the next step clear.",
         "deliverables": [
           "Websites and landing pages",
           "Navigation, content and interaction design",
@@ -519,7 +519,7 @@ window.STUDIO_COPY = {
       {
         "id": "content",
         "name": "Content & marketing",
-        "description": "An identity lives beyond its logo. We connect your visual identity, distinctive brand details and content into a coherent story across channels.",
+        "description": "From brand identity to campaign: distinctive content for your website and social channels, with formats you can keep using.",
         "deliverables": [
           "Logo, badges, characters and a visual brand language",
           "Branded posts, Reels, web content and campaign concepts",
@@ -529,7 +529,7 @@ window.STUDIO_COPY = {
       {
         "id": "systems",
         "name": "Systems & automation",
-        "description": "Digital solutions that make recurring work easier to manage.",
+        "description": "Less retyping and searching. We connect your tools and simplify recurring tasks, with human oversight where it matters.",
         "deliverables": [
           "Internal tools and customer portals",
           "Integrations and workflows",
@@ -554,35 +554,35 @@ window.STUDIO_COPY = {
     "philosophyControl": "Technology supports the work. You keep oversight of decisions, content and publication.",
     "engagementEyebrow": "Working together",
     "engagementHeading": "Start where it matters.",
-    "engagementIntro": "From a focused question to a connected project. We agree what we will do, what you will receive and where your input is needed.",
+    "engagementIntro": "Start with advice, a new project or improvements to what you already have. We agree the deliverables and when we will need your input before work begins.",
     "engagements": [
       {
         "id": "focus",
         "name": "Find the direction",
-        "description": "For a question that needs clarity first. We explore what is happening and identify the next useful step.",
-        "output": "A clear question, priorities and a concrete approach."
+        "description": "You know something needs to change, but are not sure where to start. We look at your business, your customers and what needs attention first.",
+        "output": "Clear priorities and a proposal for the work ahead."
       },
       {
         "id": "build",
         "name": "Design & build",
-        "description": "For a specific website, campaign or digital solution. We move from direction and design to something you can use.",
+        "description": "A website, campaign or digital tool, from first design to delivery. With agreed review points so you can follow progress and help shape the result.",
         "output": "A defined project with clear deliverables and handover."
       },
       {
         "id": "evolve",
-        "name": "Develop further",
-        "description": "For businesses that want to improve existing work with purpose. We decide together what needs attention and build on it.",
+        "name": "Refine & develop",
+        "description": "Build on your existing website, content or systems. We refine what works, resolve sticking points and add what your business needs next.",
         "output": "Agreed improvements, review points and next steps."
       }
     ],
     "briefEyebrow": "Your next step",
     "briefHeading": "What would you like to move forward?",
-    "briefIntro": "Tell us a little about your business and your question. Turn it into a project brief you can keep and share.",
+    "briefIntro": "Tell us what you would like to improve. Send us a message directly, or use the form to put your ideas into words.",
     "brief": {
       "goalLabel": "What would you like to work on?",
       "businessLabel": "Your business",
       "businessPlaceholder": "What does your business do, and who is it for?",
-      "needLabel": "Your question or ambition",
+      "needLabel": "What would you like to improve?",
       "needPlaceholder": "What would you like to change, create or improve?",
       "whenLabel": "When would you like to begin?",
       "whenOptions": [
@@ -603,26 +603,26 @@ window.STUDIO_COPY = {
           "label": "The timing is still open"
         }
       ],
-      "prepare": "Create my project brief",
-      "summaryTitle": "Your project brief",
-      "summaryIntro": "A starting point for a conversation about your project.",
+      "prepare": "Prepare my enquiry",
+      "summaryTitle": "Your enquiry",
+      "summaryIntro": "Review your message, then open it in your email app or WhatsApp. You can also keep a copy.",
       "summaryGoal": "Goal",
       "summaryBusiness": "Business",
-      "summaryNeed": "Question or ambition",
+      "summaryNeed": "What I would like to improve",
       "summaryWhen": "Preferred start",
       "summaryMissing": "Not provided yet",
-      "copy": "Copy the brief",
+      "copy": "Copy the message",
       "download": "Download as text",
-      "edit": "Edit my brief",
-      "copied": "Project brief copied.",
-      "copyFailed": "Copying is not available here. Select the text or download the brief.",
-      "downloaded": "Your project brief download has started.",
-      "localNote": "Nothing is sent automatically here. Open an email draft or keep your brief by copying or downloading the text.",
+      "edit": "Edit my enquiry",
+      "copied": "Message copied.",
+      "copyFailed": "Copying is not available here. Select the text or download the message.",
+      "downloaded": "Your message download has started.",
+      "localNote": "This form prepares a message for you. Nothing is sent automatically.",
       "validationBusiness": "Briefly describe what your business does.",
-      "validationNeed": "Briefly describe your question or ambition.",
+      "validationNeed": "Briefly describe what you would like to change, create or improve.",
       "downloadFilename": "slimservice-project-brief.txt",
       "email": "Open an email draft",
-      "emailNote": "Your email app opens a draft with your project brief. You review and send it yourself."
+      "emailNote": "Your email app or WhatsApp opens with your message. You review and send it yourself."
     },
     "contactEmail": "hello@slimservice.nl",
     "contactWhatsappLabel": "Contact us on WhatsApp"

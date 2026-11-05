@@ -4,8 +4,8 @@
   const copy = {
     nl: {
       eyebrow: 'Achter SlimService', title: 'Goed werk begint<br>met <em>goed contact.</em>',
-      intro: 'Een sterke digitale ervaring begint met begrijpen wat jouw bedrijf nodig heeft. We maken de vraag concreet, kiezen een passende aanpak en spreken af wat je ontvangt.',
-      founder: 'Direct contact', location: 'Rotterdam, Nederland', identity: 'Strategie, creatie en technologie komen hier samen rond jouw vraag.',
+      intro: 'We beginnen met je bedrijf en wat je wilt bereiken. Je krijgt een voorstel met de werkzaamheden, planning en kosten voordat we aan de slag gaan.',
+      founder: 'Direct contact', location: 'Rotterdam, Nederland', identity: 'Een vast aanspreekpunt voor je merk, website, content en digitale systemen.',
       contact: 'Laten we kennismaken', business: 'Geregistreerd bij de KvK', practical: 'Voor we beginnen',
       faqs: [
         ['Kan ik met één onderdeel beginnen?', 'Ja. Een website, een merkuitwerking, content of een afgebakend systeem kan een zelfstandig project zijn. We kijken ook naar wat er al is, zodat nieuw werk daarop aansluit.'],
@@ -16,12 +16,12 @@
       footerLine: 'Van eerste idee tot iets dat werkt.', explore: 'Verkennen', contactLabel: 'Contact', details: 'Bedrijfsgegevens',
       links: [['Mogelijkheden', '#werk'], ['Expertise', '#expertise'], ['Samenwerken', '#samenwerken'], ['Project bespreken', '#project']],
       country: 'Rotterdam, Nederland', privacy: 'Privacy', terms: 'Voorwaarden', up: 'Naar boven',
-      next: 'Na je bericht bespreken we je vraag en een passende eerste stap. Heb je al een concreet project? De projectbrief hieronder helpt je op weg.'
+      next: 'Een uitgewerkt plan is niet nodig. Na je bericht bespreken we wat je wilt bereiken en waar we kunnen beginnen.'
     },
     en: {
       eyebrow: 'Behind SlimService', title: 'Good work starts<br>with <em>a conversation.</em>',
-      intro: 'A strong digital experience starts with understanding your business. We make the brief clear, choose a suitable approach and agree what you will receive.',
-      founder: 'Direct contact', location: 'Rotterdam, the Netherlands', identity: 'Strategy, creativity and technology come together around your business needs.',
+      intro: 'We start with your business and what you want to achieve. Before work begins, you receive a proposal setting out the scope, timing and costs.',
+      founder: 'Direct contact', location: 'Rotterdam, the Netherlands', identity: 'One point of contact for your brand, website, content and digital systems.',
       contact: 'Let’s talk', business: 'Registered with the Dutch Chamber of Commerce', practical: 'Before we begin',
       faqs: [
         ['Can I start with one part?', 'Yes. A website, brand identity, content or a defined system can be a standalone project. We also look at what you already have, so the new work fits.'],
@@ -31,8 +31,8 @@
       ],
       footerLine: 'From the first idea to something that works.', explore: 'Explore', contactLabel: 'Contact', details: 'Business details',
       links: [['Possibilities', '#werk'], ['Expertise', '#expertise'], ['Working together', '#samenwerken'], ['Discuss a project', '#project']],
-      country: 'Rotterdam, the Netherlands', privacy: 'Privacy', terms: 'Terms (Dutch)', up: 'Back to top',
-      next: 'After your message, we discuss your brief and a suitable first step. Already have a project in mind? The project brief below helps you get started.'
+      country: 'Rotterdam, the Netherlands', privacy: 'Privacy', terms: 'Terms', up: 'Back to top',
+      next: 'You do not need a finished brief. After your message, we discuss what you want to achieve and where to begin.'
     }
   };
   const project = document.querySelector('#project');
@@ -62,7 +62,7 @@
       <nav class="footer-column" aria-label="${c.explore}"><span class="eyebrow">${c.explore}</span>${c.links.map(([label,url])=>`<a href="${url}">${label}</a>`).join('')}</nav>
       <div class="footer-column"><span class="eyebrow">${c.contactLabel}</span><a href="mailto:hello@slimservice.nl">hello@slimservice.nl</a><a href="https://wa.me/31687699731" target="_blank" rel="noopener">+31 (0)6 8769 9731 ${icon('diagonal')}</a><span>${c.country}</span></div>
       <div class="footer-business"><span>KvK 93320132</span><span>BTW / VAT NL005015462B59</span></div>
-      <div class="footer-bottom"><span>© <span id="year">${new Date().getFullYear()}</span> SlimService</span><a href="privacy.html?lang=${lang}">${c.privacy}</a><a href="voorwaarden.html">${c.terms}</a><a href="#top" class="footer-up"><span>${c.up}</span>${icon('diagonal')}</a></div>`;
+      <div class="footer-bottom"><span>© <span id="year">${new Date().getFullYear()}</span> SlimService</span><a href="privacy.html?lang=${lang}">${c.privacy}</a><a href="voorwaarden.html?lang=${lang}">${c.terms}</a><a href="#top" class="footer-up"><span>${c.up}</span>${icon('diagonal')}</a></div>`;
   }
   section.addEventListener('toggle', event => {
     if (!event.target.matches('details[open]')) return;
