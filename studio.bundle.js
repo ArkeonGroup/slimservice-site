@@ -1705,10 +1705,11 @@ function create({story,stage,world,scenes}){
  const work=records[1],photo=work.element.querySelector('.light-website-image'),track=document.createElement('div');track.className='continuous-case-track';photo.before(track);track.append(photo);
  const second=new Image();second.src='assets/bakfietsmaat/website.jpg';second.alt='De Bakfietsmaat, ontworpen website';second.width=1440;second.height=900;second.className='continuous-second-case';track.append(second);
  const source=new Image();source.src='assets/bateman-website.png';
- let staticView=false,inView=true,lastProgress=0,lastProjection=null,lastGeometry=null,sourceReady=false,caseAmount=0;
+ let staticView=false,compactView=false,inView=true,lastProgress=0,lastProjection=null,lastGeometry=null,sourceReady=false,caseAmount=0;
  source.addEventListener('load',()=>{sourceReady=true;window.dispatchEvent(new Event('resize'));});
  document.documentElement.classList.add('aperture-mode','continuous-studio');
- function setStatic(value){value=!!value;if(value===staticView)return;staticView=value;plane.hidden=value;for(const r of records){if(value)r.marker.after(r.element);else r.layer.append(r.element);r.layer.inert=value;}if(value){photo.style.display='';photo.removeAttribute('aria-hidden');second.hidden=true;track.style.transform='none';stage.removeAttribute('data-ap-phase');}else second.hidden=false;}
+ function setStatic(value){value=!!value;if(value===staticView)return;staticView=value;plane.hidden=value;for(const r of records){if(value||(compactView&&r.name==='content'))r.marker.after(r.element);else r.layer.append(r.element);r.layer.inert=value;}if(value){photo.style.display='';photo.removeAttribute('aria-hidden');second.hidden=true;track.style.transform='none';stage.removeAttribute('data-ap-phase');}else second.hidden=false;}
+ function setCompact(value){value=!!value;if(value===compactView)return;compactView=value;const r=records[2];if(value||staticView)r.marker.after(r.element);else r.layer.append(r.element);r.element.style.removeProperty('transform');r.element.style.removeProperty('visibility');r.element.inert=false;}
  function getFrame(p,{flow=false}={}){
   const active=p<.86?0:p<1.91?1:p<2.91?2:3;
   const opacity=Array(5).fill(0);opacity[active]=active===0?1-smooth(.18,.38,p):active===1?smooth(1.38,1.45,p):1;
@@ -1718,7 +1719,7 @@ function create({story,stage,world,scenes}){
   const travel=smooth(.24,.98,p),breath=Math.sin(Math.PI*travel);
   // Pull back during the orbit, then meet the exact original board projection.
   // This keeps the lamp's edge legible instead of filling the screen with metal.
-  return{material,layout:small?'compact':'wide',rotation:-.28,cameraZoom:(small?.98:.84)-breath*.14,cameraOrbit:-.06,cameraLift:breath*.07,cameraShiftX:small?0:.03,cameraShiftY:small?-.17:-.02,assembly:0,lightAim:0,light:p>4?light:mix(75,100,smooth(.2,.7,p)),storyTravel:travel,boardVisibility:smooth(.24,.43,p)*(1-smooth(1.145,1.22,p)),boardExposure:smooth(.60,.98,p)};
+  return{material,layout:small?'compact':'wide',rotation:-.28+(small?breath*.22:0),cameraZoom:(small?1.02:.84)-breath*(small?.10:.14),cameraOrbit:small?-.12+breath*.10:-.06,cameraLift:breath*(small?.04:.07),cameraShiftX:small?0:.03,cameraShiftY:small?-.035:-.02,assembly:0,lightAim:0,light:p>4?light:mix(75,100,smooth(.2,.7,p)),storyTravel:travel,boardVisibility:smooth(.24,.43,p)*(1-smooth(1.145,1.22,p)),boardExposure:smooth(.60,.98,p)};
  }
  function projectQuad(points){
   const [p0,p1,p2,p3]=points;const dx1=p1.x-p2.x,dx2=p3.x-p2.x,dx3=p0.x-p1.x+p2.x-p3.x,dy1=p1.y-p2.y,dy2=p3.y-p2.y,dy3=p0.y-p1.y+p2.y-p3.y;
@@ -1749,10 +1750,10 @@ function create({story,stage,world,scenes}){
   const websiteWidth=Math.min(w*.65,mediaHeight*1.6);
   const identityWidth=Math.min(w*.82,mediaHeight*1.6);
   const cargoWidth=Math.min(w*.49,h*.52*1.6);
-  const width=small?w*.88:mix(mix(websiteWidth,identityWidth,contentScale),cargoWidth,bikeScale),height=width/1.6;
-  const top=small?h*.47:mix(mediaTop,h*(h<=800?.34:.29),bikeScale);
+  const width=small?mix(w-32,w*.43,bikeScale):mix(mix(websiteWidth,identityWidth,contentScale),cargoWidth,bikeScale),height=width/1.6;
+  const top=small?mix(Math.max(210,h*.27),104,bikeScale):mix(mediaTop,h*(h<=800?.34:.29),bikeScale);
   const websiteLeft=w*.05,identityLeft=(w-identityWidth)/2;
-  const left=small?(w-width)/2:mix(mix(websiteLeft,identityLeft,contentScale),w*.05,bikeScale);
+  const left=small?mix(16,w-width-16,bikeScale):mix(mix(websiteLeft,identityLeft,contentScale),w*.05,bikeScale);
   const settled=rect(left,top,width,height);
   stage.style.setProperty('--case-evidence-left',`${websiteLeft+websiteWidth+Math.max(32,w*.035)}px`);
   stage.style.setProperty('--case-evidence-top',`${mediaTop+12}px`);
@@ -1773,12 +1774,18 @@ function create({story,stage,world,scenes}){
   const webAmount=p<2.36?1-smooth(1.84,1.91,p):smooth(2.91,2.98,p);
   work.layer.style.visibility=p<1.91||p>=2.91?'visible':'hidden';work.layer.style.opacity='1';work.layer.style.transform=webAmount===1?'none':`perspective(1800px) rotateX(${(1-webAmount)*(p<2.36?-87:87)}deg)`;work.layer.inert=owner!==1&&owner!==3;work.layer.setAttribute('aria-hidden',String(work.layer.inert));work.layer.dataset.apActive=String(!work.layer.inert);work.layer.setAttribute('aria-labelledby','light-title-'+(owner===1?1:3));
   const content=records[2],contentAmount=smooth(1.91,1.98,p)*(1-smooth(2.84,2.91,p));content.layer.style.visibility=p>=1.91&&p<2.91?'visible':'hidden';content.layer.style.opacity='1';content.layer.style.transform=contentAmount===1?'none':`perspective(1800px) rotateX(${(1-contentAmount)*(p<2.36?87:-87)}deg)`;content.layer.inert=owner!==2;content.layer.setAttribute('aria-hidden',String(content.layer.inert));content.layer.dataset.apActive=String(!content.layer.inert);
+  if(compactView){
+    // A portrait brand surface keeps real text and controls at native size. It
+    // receives the same fold as the physical board, instead of shrinking a desktop collage.
+    content.element.style.transform=contentAmount===1?'none':`perspective(900px) rotateX(${(1-contentAmount)*(p<2.36?80:-80)}deg) translateZ(${(1-contentAmount)*-90}px)`;
+    content.element.style.visibility=p>=1.91&&p<2.91?'visible':'hidden';content.element.inert=owner!==2;
+  }
   plane.classList.toggle('continuous-arrived',p>1.25);plane.style.setProperty('--continuous-split','1');plane.inert=p<1.17;
   lastGeometry={corners:current,owner,caseAmount,travel:renderer?.getStats().state.storyTravel,sourceReady};
  }
  function setInView(value){inView=!!value;}
- function getState(){return{progress:lastProgress,static:staticView,inView,geometry:lastGeometry,projection:lastProjection?.board||null,planeVisible:!plane.hidden};}
- return Object.freeze({setStatic,getFrame,getPose,paint,setInView,getState});
+ function getState(){return{progress:lastProgress,static:staticView,compact:compactView,inView,geometry:lastGeometry,projection:lastProjection?.board||null,planeVisible:!plane.hidden};}
+ return Object.freeze({setStatic,setCompact,getFrame,getPose,paint,setInView,getState});
 }
 window.SlimApertureScene=Object.freeze({create});
 })();
@@ -1871,7 +1878,7 @@ window.SlimApertureScene=Object.freeze({create});
   story.id='top';story.classList.add('light-story');story.setAttribute('aria-label','SlimService');
   if(!story.hasChildNodes())story.innerHTML=`<span class="light-anchor light-anchor-work" id="werk"></span>
   <div class="light-stage" id="light-stage" data-light-phase="0">
-    <div class="light-world" aria-hidden="true"><img class="light-world-poster" src="assets/lab/lamp-first-frame.webp" width="2400" height="1000" alt="" fetchpriority="high"><canvas id="light-canvas"></canvas><div class="light-atmosphere"></div><div class="light-beam"></div><div class="light-floor-line"></div></div>
+    <div class="light-world" aria-hidden="true"><picture><source media="(max-width:760px)" srcset="assets/lab/lamp-first-frame-mobile.webp"><img class="light-world-poster" src="assets/lab/lamp-first-frame.webp" width="2400" height="1000" alt="" fetchpriority="high"></picture><canvas id="light-canvas"></canvas><div class="light-atmosphere"></div><div class="light-beam"></div><div class="light-floor-line"></div></div>
     <div class="light-scenes">
       <article class="light-chapter light-intro" data-light-scene="0" aria-labelledby="light-title-0">
         ${chapter(0,'title','intro',`<button type="button" class="light-action" data-light-jump="1">${text('explore')}${icon('down')}</button><a class="light-skip" href="#expertise">${text('skip')}</a>`)}
@@ -1923,12 +1930,13 @@ window.SlimApertureScene=Object.freeze({create});
   const rotationInput=$('#light-rotation');let objectRotation=6;
   mobileSystems.append(systems);systems.querySelector('.light-lab-controls').open=true;
   const video=story.querySelector('video'),videoButton=story.querySelector('[data-light-play]');
-  const reduced=matchMedia('(prefers-reduced-motion:reduce)'), narrow=matchMedia('(max-width:760px)'), short=matchMedia('(max-height:620px), (max-width:760px) and (max-height:760px)');
+  const reduced=matchMedia('(prefers-reduced-motion:reduce)'), narrow=matchMedia('(max-width:760px)'), short=matchMedia('(max-height:520px) and (orientation:landscape)');
   let locale=document.documentElement.lang==='en'?'en':'nl';
   let usecase='web',material='aluminium',light=75,selectedCase='bateman',caseManual=false,caseManualOwner=-1,active=0,progress=0,renderer=null,raf=0,nearby=true,manualStill=false,unavailable=false,disposed=false,lastPose='',included=false,includedConfiguration=null,pendingFocus=null,lastStatic=null,lastFlow=null;
-  const isStatic=()=>manualStill||reduced.matches||short.matches||narrow.matches;
+  const isStatic=()=>manualStill||reduced.matches||short.matches||unavailable;
   const mobileFlow=()=>narrow.matches&&!isStatic();
   const scrollSpan=()=>3.65;
+  const scrollDistance=()=>Math.max(1,story.offsetHeight-stage.clientHeight);
   const inlinePreview=()=>world.parentElement===staticPreview;
   const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
   const ease=v=>{v=clamp(v);return v*v*(3-2*v);};
@@ -1946,6 +1954,11 @@ window.SlimApertureScene=Object.freeze({create});
     locale=document.documentElement.lang==='en'?'en':'nl';
     story.querySelector('.aperture-plane')?.setAttribute('aria-label',locale==='en'?'Work revealed by light':'Werk in het licht');
     for(const el of document.querySelectorAll('[data-light-copy]')){const value=t(el.dataset.lightCopy);if(value!==undefined)el.innerHTML=value;}
+    if(mobileFlow()){
+      const titles=locale==='en'?['Craft.<br><em>Made visible.</em>','One identity.<br><em>Everywhere.</em>','Every load.<br><em>A clear enquiry.</em>']:['Vakwerk.<br><em>In beeld.</em>','Eén merk.<br><em>Overal eigen.</em>','Elke lading.<br><em>Een heldere vraag.</em>'];
+      titles.forEach((title,i)=>scenes[i+1].querySelector('h2').innerHTML=title);
+      scenes[2].querySelector('.light-body').textContent=locale==='en'?'Logo, type, colour and film. One recognisable identity.':'Logo, letters, kleur en film. Eén herkenbaar merk.';
+    }
     document.querySelectorAll('[data-light-chapter]').forEach(el=>el.textContent=t('chapters')[+el.dataset.lightChapter]);
     systems.querySelectorAll('[data-light-flow]').forEach(el=>el.textContent=t('flow')[+el.dataset.lightFlow]);
     story.querySelector('[data-light-nav-label]').setAttribute('aria-label',t('stageLabel'));
@@ -1956,14 +1969,14 @@ window.SlimApertureScene=Object.freeze({create});
     videoButton.querySelector('[data-light-play-label]').textContent=t(video.paused?'play':'pause');
     story.querySelector('[data-light-motion-label]').textContent=t(isStatic()?'motionOn':'motionOff');
     story.querySelector('.light-motion').setAttribute('aria-pressed',String(isStatic()));
-    story.querySelector('.light-motion').hidden=reduced.matches||short.matches||narrow.matches;
+    story.querySelector('.light-motion').hidden=reduced.matches||short.matches||unavailable;
     systems.querySelector('.light-usecases').setAttribute('aria-label',t('configSubtitle'));
     systems.querySelectorAll('[data-light-usecase-label]').forEach(el=>el.textContent=t('usecases')[el.dataset.lightUsecaseLabel]);
     syncConfig();syncCase();queue();
   }
   function syncCase(){
     const bike=selectedCase==='bakfiets',name=bike?'De Bakfietsmaat':'Bateman Construction',url=bike?'https://debakfietsmaat.nl/#laden':'https://batemanconstruction.co.uk/';
-    story.querySelector('.light-work .light-body').textContent=t('bakfietsBody');
+    story.querySelector('.light-work .light-body').textContent=mobileFlow()?(locale==='en'?'Choose a load. See how that choice becomes a useful enquiry.':'Kies een lading. Zie hoe die keuze een bruikbare aanvraag wordt.'):t('bakfietsBody');
     story.querySelector('.light-case-scope').textContent=t('bakfietsScope');
     story.querySelector('.light-case-link').href='https://debakfietsmaat.nl/#laden';
     story.querySelector('.light-case-domain').textContent=new URL(url).hostname;
@@ -1994,12 +2007,13 @@ window.SlimApertureScene=Object.freeze({create});
   function applyMode(){
     const staticView=isStatic(),flow=mobileFlow();if(lastStatic===staticView&&lastFlow===flow)return;
     const restoreChapter=lastStatic!==null&&nearby?active:null;
-    story.classList.toggle('light-static',staticView);aperture?.setStatic(staticView);
+    story.classList.toggle('light-static',staticView);story.classList.toggle('mobile-spatial',flow);aperture?.setStatic(staticView);aperture?.setCompact(flow);
     story.querySelector('.light-static-bateman').hidden=!staticView;
     if(staticView){selectedCase='bakfiets';syncCase();}
     story.classList.toggle('light-mobile-flow',flow);
     if(staticView)staticPreview.append(world);else stage.prepend(world);
     lastStatic=staticView;lastFlow=flow;lastPose='';
+    window.dispatchEvent(new CustomEvent('slim:scene-mode',{detail:{static:staticView,mobile:flow}}));
     if(renderer)renderer.resize(inlinePreview()?staticPreview.clientWidth:stage.clientWidth,staticCanvasHeight(),devicePixelRatio);
     if(restoreChapter!==null)requestAnimationFrame(()=>jump(restoreChapter,false,true));
   }
@@ -2018,11 +2032,11 @@ window.SlimApertureScene=Object.freeze({create});
       if(selectedCase!=='bakfiets'){selectedCase='bakfiets';syncCase();}
       progress=active;stage.style.setProperty('--light-progress',String(active/4));
     }else{
-      progress=clamp(-rect.top/Math.max(1,story.offsetHeight-innerHeight))*scrollSpan();
+      progress=clamp(-rect.top/scrollDistance())*scrollSpan();
       // Keyboard-operated controls stay readable until their owner leaves them.
       // Explicit chapter navigation releases this hold and focuses its heading.
       const focus=document.activeElement;
-      const focusedIndex=pendingFocus===null&&focus?.matches('a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible')?scenes.slice(0,4).findIndex(scene=>scene.contains(focus)):-1;
+      const focusedIndex=pendingFocus===null&&focus?.matches('a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,[role=tabpanel]:focus-visible')?scenes.slice(0,4).findIndex(scene=>scene.contains(focus)):-1;
       const surfaceFocus=focus?.closest('.aperture-layer');const surfaceIndex=surfaceFocus&&focus.matches(':focus-visible')?({brand:1,work:active===1?1:3,content:2}[surfaceFocus.dataset.apertureLayer]):-1;
       if(focusedIndex>=0)progress=focusedIndex===1?1.47:focusedIndex+.18;else if(surfaceIndex>=0)progress=surfaceIndex===1?1.47:surfaceIndex+.18;
       const frame=aperture?.getFrame(progress,{small:narrow.matches,flow});
@@ -2071,13 +2085,13 @@ window.SlimApertureScene=Object.freeze({create});
     applyMode();
     const size=stage.getBoundingClientRect();
     if(renderer){renderer.resize(inlinePreview()?staticPreview.clientWidth:size.width,staticCanvasHeight(),devicePixelRatio);lastPose='';}
-    story.querySelector('#werk').style.top=isStatic()?Math.max(0,scenes[1].offsetTop)+'px':((story.offsetHeight-innerHeight)*(1.18/scrollSpan()))+'px';
+    story.querySelector('#werk').style.top=isStatic()?Math.max(0,scenes[1].offsetTop)+'px':(scrollDistance()*(1.18/scrollSpan()))+'px';
     // Resizing clears the WebGL buffer. Repaint in the same task so it cannot
     // expose a blank frame between a resize callback and the next animation.
     if(renderer){if(raf)cancelAnimationFrame(raf);paint();}else queue();
   }
   function staticCanvasHeight(){return inlinePreview()?staticPreview.clientHeight:stage.clientHeight;}
-  function failRenderer(){unavailable=true;story.dataset.renderer='unavailable';mobileSystems.dataset.renderer='unavailable';story.querySelector('.light-fallback').hidden=false;previewStatus.hidden=false;renderer?.dispose();renderer=null;lastPose='';}
+  function failRenderer(){unavailable=true;story.dataset.renderer='unavailable';mobileSystems.dataset.renderer='unavailable';story.querySelector('.light-fallback').hidden=false;previewStatus.hidden=false;renderer?.dispose();renderer=null;lastPose='';applyMode();localize();resize();}
   let rendererLoading=false;
   async function initRenderer(){
     if(rendererLoading)return;
@@ -2097,7 +2111,7 @@ window.SlimApertureScene=Object.freeze({create});
   }
   function jump(index,focus=false,instant=false){
     index=clamp(index,0,3);const top=scrollY+story.getBoundingClientRect().top;
-    const destination=isStatic()||(mobileFlow()&&index===4)?scrollY+scenes[index].getBoundingClientRect().top-88:top+(story.offsetHeight-innerHeight)*((index===0?0:index===1?1.47:index+.18)/scrollSpan());
+    const destination=isStatic()||(mobileFlow()&&index===4)?scrollY+scenes[index].getBoundingClientRect().top-88:top+scrollDistance()*((index===0?0:index===1?1.47:index+.18)/scrollSpan());
     pendingFocus=focus?index:null;
     window.scrollTo({top:destination,behavior:reduced.matches||instant?'instant':'smooth'});queue();
     history.replaceState(null,'',location.pathname+location.search+(index===0?'#top':index>=1&&index<=3?'#werk':'#lab'));
@@ -2171,6 +2185,40 @@ window.SlimApertureScene=Object.freeze({create});
   thread.className = 'continuity-thread'; thread.setAttribute('aria-hidden', 'true');
   thread.innerHTML = '<span></span><i></i>'; document.body.append(thread);
   root.classList.add('site-continuous', 'continuity-architecture');
+
+  // The final light falls on the visitor's own inputs. Only explicit selections
+  // are carried here; fictional customer details never enter this receipt.
+  const project=document.querySelector('#project'),projectIntro=project?.querySelector('.project-intro');
+  const receipt=document.createElement('aside');receipt.className='project-thread-receipt';
+  receipt.innerHTML='<div class="project-thread-heading"><span aria-hidden="true"></span><strong></strong></div><p class="project-thread-empty"></p><dl></dl><p class="project-thread-note"></p>';
+  projectIntro?.append(receipt);
+  const receiptCopy={
+    nl:{title:'Jouw vertrekpunt',ready:'Je brief staat klaar',empty:'Van wat je hebt verkend naar wat jouw bedrijf nodig heeft.',business:'Bedrijf',need:'Je vraag',process:'Werkwijze',scenario:'Rekenscenario',note:'Je kiest zelf wanneer en hoe je contact opneemt.'},
+    en:{title:'Your starting point',ready:'Your brief is ready',empty:'From what you have explored to what your business needs.',business:'Business',need:'Your question',process:'Workflow',scenario:'Time scenario',note:'You decide when and how to get in touch.'}
+  };
+  let receiptFrame=0;
+  function renderReceipt(){
+    receiptFrame=0;const locale=root.lang==='en'?'en':'nl',c=receiptCopy[locale],rows=[];
+    const business=document.querySelector('#business')?.value.trim(),need=document.querySelector('#need')?.value.trim();
+    const selectedProcess=window.SlimProcessConsole?.getSelectionLabel?.(locale);
+    const selectedScenario=window.SlimCalculator?.getBrief?.(locale);
+    if(business)rows.push([c.business,business]);
+    if(need)rows.push([c.need,need.length>150?need.slice(0,147)+'…':need]);
+    if(selectedProcess)rows.push([c.process,selectedProcess]);
+    if(selectedScenario){const values=selectedScenario.split('\n');rows.push([c.scenario,[values[1],values[3],values[4],values[5]].filter(Boolean).join(' · ')]);}
+    const ready=!!project?.querySelector('.brief-result:not([hidden])');
+    receipt.dataset.ready=String(ready);receipt.dataset.filled=String(rows.length>0);
+    receipt.setAttribute('aria-label',c.title);receipt.querySelector('strong').textContent=ready?c.ready:c.title;
+    receipt.querySelector('.project-thread-empty').textContent=c.empty;receipt.querySelector('.project-thread-empty').hidden=rows.length>0;
+    receipt.querySelector('.project-thread-note').textContent=c.note;
+    const list=receipt.querySelector('dl');list.replaceChildren();
+    for(const [label,value] of rows){const row=document.createElement('div'),term=document.createElement('dt'),definition=document.createElement('dd');term.textContent=label;definition.textContent=value;row.append(term,definition);list.append(row);}
+  }
+  function queueReceipt(){if(!receiptFrame)receiptFrame=requestAnimationFrame(renderReceipt);}
+  addEventListener('studio:calculator',queueReceipt);addEventListener('studio:process',queueReceipt);
+  project?.addEventListener('input',queueReceipt);project?.addEventListener('change',queueReceipt);
+  const briefForm=project?.querySelector('#brief-form');if(briefForm)new MutationObserver(queueReceipt).observe(briefForm,{attributes:true,attributeFilter:['hidden']});
+  new MutationObserver(queueReceipt).observe(root,{attributes:true,attributeFilter:['lang']});queueReceipt();
 
   const bridge = document.querySelector('.light-next');
   if (bridge && !bridge.querySelector('.continuity-bridge-stage')) {
@@ -2326,8 +2374,18 @@ window.SlimApertureScene=Object.freeze({create});
   root.innerHTML=`<header class="architecture-heading"><p data-architecture-copy="eyebrow"></p><div><h2 id="architecture-title" data-architecture-copy="title"></h2><p class="architecture-intro" data-architecture-copy="intro"></p></div></header><div class="architecture-body"><div class="architecture-copy"><p class="architecture-discipline"><svg aria-hidden="true"><use href="#icon-system"/></svg><span data-architecture-copy="label"></span></p><p class="architecture-description" data-architecture-copy="body"></p><a class="architecture-cta" href="#project" data-service-select="systems"><span data-architecture-copy="cta"></span><svg aria-hidden="true"><use href="#diagonal"/></svg></a></div><div class="architecture-demo"><div class="architecture-console-slot"></div><p class="architecture-demo-note" data-architecture-copy="note"></p></div></div><footer class="architecture-footer"><div class="architecture-route" aria-hidden="true"><span data-architecture-route="0"></span><span data-architecture-route="1"></span><span data-architecture-route="2"></span></div><div class="architecture-next-copy"><p class="architecture-next-title" data-architecture-copy="bridge"></p><div><p class="architecture-next-body" data-architecture-copy="bridgeBody"></p><a href="#calculator"><span data-architecture-copy="next"></span><svg aria-hidden="true"><use href="#down"/></svg></a></div></div></footer>`;
   section.append(root);section.classList.add('architecture-enhanced');section.dataset.architectureReady='true';section.dataset.headerTone='light';section.setAttribute('aria-labelledby','architecture-title');
   const lightStudy=document.querySelector('.light-lab-drawer');if(lightStudy)root.append(lightStudy);
+  // The calculator owns the one large question about time. This seam names
+  // the next action instead of asking the same question in three headings.
+  root.querySelector('[data-architecture-copy="bridge"]').remove();
+  root.querySelector('.architecture-next-copy').classList.add('is-calculator-link');
+  const disclosure=document.querySelector('#process-check');
+  const disclosureTitle=disclosure?.querySelector('.process-disclosure-copy strong');
+  const disclosureAction=disclosure?.querySelector('.process-disclosure-action>span');
+  disclosureTitle?.removeAttribute('data-support');disclosureAction?.removeAttribute('data-support');
   let locale='';
-  function localize(){locale=document.documentElement.lang==='en'?'en':'nl';const c=copy[locale];root.querySelectorAll('[data-architecture-copy]').forEach(el=>el.innerHTML=c[el.dataset.architectureCopy]);root.querySelectorAll('[data-architecture-route]').forEach(el=>el.textContent=c.bridgeLabels[+el.dataset.architectureRoute]);}
+  function calculatorLabel(){if(disclosureAction)disclosureAction.textContent=locale==='en'?(disclosure.open?'Hide calculator':'Open calculator'):(disclosure.open?'Verberg calculator':'Open calculator');}
+  function localize(){locale=document.documentElement.lang==='en'?'en':'nl';const c=copy[locale];root.querySelectorAll('[data-architecture-copy]').forEach(el=>el.innerHTML=c[el.dataset.architectureCopy]);root.querySelectorAll('[data-architecture-route]').forEach(el=>el.textContent=c.bridgeLabels[+el.dataset.architectureRoute]);if(disclosureTitle)disclosureTitle.textContent=locale==='en'?'Your process, in numbers':'Jouw proces, in cijfers';calculatorLabel();}
+  disclosure?.addEventListener('toggle',calculatorLabel);
   const footer=root.querySelector('.architecture-footer'),reduce=matchMedia('(prefers-reduced-motion:reduce)');
   let frame=0;
   function trace(){frame=0;const bounds=footer.getBoundingClientRect(),still=reduce.matches||document.documentElement.dataset.slimMotion==='reduced';const progress=still?1:Math.max(0,Math.min(1,(innerHeight*.92-bounds.top)/(innerHeight*.55)));footer.style.setProperty('--architecture-route-progress',progress.toFixed(3));}
@@ -2670,23 +2728,39 @@ window.SlimApertureScene=Object.freeze({create});
   'use strict';
   const story=document.querySelector('.light-story'),source=document.querySelector('.case-cargo'),context=document.querySelector('.pc-case-context');
   if(!story||!source||!context)return;
-  const compact=matchMedia('(max-width:1000px)'),reduce=matchMedia('(prefers-reduced-motion:reduce)');
+  const compact=matchMedia('(max-width:760px)'),reduce=matchMedia('(prefers-reduced-motion:reduce)');
   const symbol=document.createElement('span');symbol.className='case-handoff-target';symbol.setAttribute('aria-hidden','true');
   symbol.innerHTML='<img width="64" height="64" alt="">';context.prepend(symbol);context.classList.add('has-cargo-symbol');
   const flight=document.createElement('div');flight.className='case-handoff-flight';flight.setAttribute('aria-hidden','true');flight.inert=true;flight.hidden=true;document.body.append(flight);
   const clamp=v=>Math.max(0,Math.min(1,v)),smooth=(a,b,v)=>{const t=clamp((v-a)/(b-a));return t*t*(3-2*t);},mix=(a,b,t)=>a+(b-a)*t;
   let frame=0,geometry=null,progress=0,flying=false,copyDirty=true,cargo=null;
-  const disabled=()=>compact.matches||reduce.matches||document.documentElement.dataset.slimMotion==='reduced'||story.classList.contains('light-static')||context.hidden||document.hidden;
+  const snapshotProperties=['display','position','top','right','bottom','left','box-sizing','width','height','min-width','max-width','min-height','max-height','padding-top','padding-right','padding-bottom','padding-left','margin-top','margin-right','margin-bottom','margin-left','border-top','border-right','border-bottom','border-left','border-radius','background','box-shadow','color','font-family','font-size','font-weight','font-style','line-height','letter-spacing','text-align','text-transform','white-space','grid-template-columns','grid-template-rows','grid-column','grid-row','column-gap','row-gap','align-items','justify-content','align-content','justify-items','align-self','justify-self','flex-direction','flex-wrap','flex-basis','flex-grow','flex-shrink','object-fit','object-position','overflow','opacity','visibility'];
+  function freezeFace(original,clone){
+    // The flight lives outside #top. Freeze the rendered face before moving it,
+    // including mobile-specific grid and type rules that no longer match there.
+    const originals=[original,...original.querySelectorAll('*')],clones=[clone,...clone.querySelectorAll('*')];
+    originals.forEach((node,index)=>{const computed=getComputedStyle(node),target=clones[index];for(const property of snapshotProperties)target.style.setProperty(property,computed.getPropertyValue(property));target.style.animation='none';target.style.transition='none';});
+  }
+  const disabled=()=>reduce.matches||document.documentElement.dataset.slimMotion==='reduced'||story.classList.contains('light-static')||context.hidden||document.hidden;
   function restore(){flight.hidden=true;source.classList.remove('handoff-departed');context.classList.remove('handoff-receiving');flying=false;}
   function cloneContent(){
     const a=source.cloneNode(true),b=context.cloneNode(true);
-    a.classList.add('handoff-source-copy');a.classList.remove('handoff-departed');a.style.padding=getComputedStyle(source).padding;b.classList.add('handoff-destination-copy');b.classList.remove('handoff-receiving');b.hidden=false;
+    freezeFace(source,a);freezeFace(context,b);
+    a.classList.add('handoff-source-copy');a.classList.remove('handoff-departed');b.classList.add('handoff-destination-copy');b.classList.remove('handoff-receiving','is-cargo-arriving');b.hidden=false;
     for(const node of [a,b]){node.removeAttribute('id');node.removeAttribute('aria-live');node.querySelectorAll('[id]').forEach(el=>el.removeAttribute('id'));}
-    flight.replaceChildren(a,b);copyDirty=false;
+    const selected=source.querySelector('[data-case-cargo][aria-pressed="true"]'),selectedImage=selected?.querySelector('img');
+    a.querySelector('[data-case-cargo][aria-pressed="true"] img')?.style.setProperty('visibility','hidden');b.querySelector('.case-handoff-target')?.style.setProperty('visibility','hidden');
+    const glyph=document.createElement('span');glyph.className='handoff-cargo-glyph';
+    if(selectedImage)glyph.append(selectedImage.cloneNode(true));
+    const label=document.createElement('span');label.className='handoff-cargo-label';label.textContent=selected?.querySelector('[data-case-option]')?.textContent||'';
+    flight.replaceChildren(a,b,glyph,label);copyDirty=false;
   }
   function measure(){
-    const s=story.getBoundingClientRect(),a=source.getBoundingClientRect(),b=context.getBoundingClientRect(),release=s.bottom+scrollY-innerHeight;
-    geometry={start:release,end:b.top+scrollY-innerHeight*.34,from:{x:a.x,y:a.y+Math.max(0,scrollY-release),w:a.width,h:a.height},to:{x:b.x,y:innerHeight*.34,w:b.width,h:b.height}};
+    const s=story.getBoundingClientRect(),a=source.getBoundingClientRect(),b=context.getBoundingClientRect();
+    const stageHeight=story.querySelector('.light-stage')?.clientHeight||innerHeight;
+    const release=s.bottom+scrollY-stageHeight,targetY=innerHeight*(compact.matches?.29:.34);
+    const selectedImage=source.querySelector('[data-case-cargo][aria-pressed="true"] img'),destinationGlyph=symbol.getBoundingClientRect(),destinationImage=symbol.querySelector('img').getBoundingClientRect(),selectedRect=selectedImage?.getBoundingClientRect();
+    geometry={start:release,end:b.top+scrollY-targetY,from:{x:a.x,y:a.y+Math.max(0,scrollY-release),w:a.width,h:a.height},to:{x:b.x,y:targetY,w:b.width,h:b.height},glyphFrom:selectedRect?{x:selectedRect.x-a.x-10,y:selectedRect.y-a.y-10,w:selectedRect.width+20,h:selectedRect.height+20,imageW:selectedRect.width,imageH:selectedRect.height}:null,glyphTo:{x:destinationGlyph.x-b.x,y:destinationGlyph.y-b.y,w:destinationGlyph.width,h:destinationGlyph.height,imageW:destinationImage.width,imageH:destinationImage.height}};
   }
   function paint(){
     frame=0;if(disabled()||(source.contains(document.activeElement)&&document.activeElement.matches(':focus-visible'))){restore();return;}
@@ -2695,12 +2769,20 @@ window.SlimApertureScene=Object.freeze({create});
     progress=clamp((scrollY-g.start)/(g.end-g.start));
     if(progress<=0||progress>=1){restore();return;}
     if(copyDirty)cloneContent();flying=true;flight.hidden=false;source.classList.add('handoff-departed');context.classList.add('handoff-receiving');
-    const t=smooth(0,1,progress),fold=smooth(0,.48,progress),a=g.from,b=g.to;
-    Object.assign(flight.style,{left:mix(a.x,b.x,t)+'px',top:mix(a.y,b.y,t)+'px',width:mix(a.w,b.w,t)+'px',height:mix(a.h,b.h,fold)+'px'});
-    flight.style.setProperty('--handoff-fold',smooth(.04,.24,progress));flight.style.setProperty('--handoff-source',1-smooth(.02,.16,progress));flight.style.setProperty('--handoff-destination',smooth(.17,.30,progress));
+    const t=smooth(0,1,progress),fold=smooth(.08,.31,progress),a=g.from,b=g.to,width=mix(a.w,b.w,t),destinationInset=Math.max(0,(width-b.w)/2);
+    Object.assign(flight.style,{left:mix(a.x,b.x,t)+'px',top:mix(a.y,b.y,t)+'px',width:width+'px',height:mix(a.h,b.h,fold)+'px'});
+    const destination=flight.querySelector('.handoff-destination-copy');destination.style.setProperty('left',destinationInset+'px','important');
+    // Typography leaves before the next typography arrives. The actual selected
+    // cargo icon stays visible between them, so the card never becomes a blank
+    // slab and its two different text layouts never dissolve through each other.
+    flight.style.setProperty('--handoff-fold',smooth(.055,.25,progress));flight.style.setProperty('--handoff-source',1-smooth(.015,.09,progress));flight.style.setProperty('--handoff-destination',smooth(.25,.36,progress));
+    flight.style.setProperty('--handoff-label',smooth(.09,.12,progress)*(1-smooth(.22,.25,progress)));
+    const glyph=flight.querySelector('.handoff-cargo-glyph'),label=flight.querySelector('.handoff-cargo-label');
+    if(g.glyphFrom){const gt=smooth(.05,.32,progress),ga=g.glyphFrom,gb=g.glyphTo,gx=mix(ga.x,gb.x+destinationInset,gt),gy=mix(ga.y,gb.y,gt),gw=mix(ga.w,gb.w,gt),gh=mix(ga.h,gb.h,gt);Object.assign(glyph.style,{left:gx+'px',top:(gy-2)+'px',width:gw+'px',height:gh+'px'});Object.assign(glyph.querySelector('img').style,{width:mix(ga.imageW,gb.imageW,gt)+'px',height:mix(ga.imageH,gb.imageH,gt)+'px'});Object.assign(label.style,{left:(gx+gw/2)+'px',top:(gy+gh+6)+'px'});}
+    flight.classList.toggle('is-compact',compact.matches);
   }
   function queue(){if(!frame)frame=requestAnimationFrame(paint);}
-  function refresh(){geometry=null;queue();}
+  function refresh(){geometry=null;copyDirty=true;queue();}
   function sync(){const selected=document.querySelector('[data-case-cargo][aria-pressed="true"]'),img=selected?.querySelector('img');cargo=selected?.dataset.caseCargo||null;if(img)symbol.querySelector('img').src=img.getAttribute('src');copyDirty=true;refresh();}
   addEventListener('scroll',queue,{passive:true});addEventListener('resize',refresh,{passive:true});addEventListener('slim:cargo',sync);addEventListener('slim:motion',refresh);
   compact.addEventListener('change',refresh);reduce.addEventListener('change',refresh);document.addEventListener('visibilitychange',refresh);document.addEventListener('focusin',queue);
@@ -2713,7 +2795,7 @@ window.SlimApertureScene=Object.freeze({create});
 })();
 /* responsive-composition.js */
 ;(()=>{
-/* Mobile is an editorial reading sequence. Desktop keeps its existing stage. */
+/* Portrait has its own spatial stage. Reduced motion remains an editorial reading sequence. */
 (() => {
   'use strict';
   const story = document.querySelector('.light-story');
@@ -2761,9 +2843,17 @@ window.SlimApertureScene=Object.freeze({create});
   const panelAttributes = new Map([identity, film].filter(Boolean).map(panel => [panel, new Map(['id', 'role', 'aria-labelledby', 'tabindex'].map(name => [name, panel.getAttribute(name)]))]));
   let proof = 'identity';
   let mobile = false;
+  let composition = '';
+  const evidence=story.querySelector('.case-evidence');
+  const evidenceMarker=document.createComment('case evidence reading position');
+  evidence?.before(evidenceMarker);
+  const evidenceDetails=document.createElement('details');
+  evidenceDetails.className='mobile-design-notes';
+  evidenceDetails.innerHTML='<summary><span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>';
 
   function syncProof() {
     const english = document.documentElement.lang === 'en';
+    evidenceDetails.querySelector('summary span').textContent=english?'The design decisions':'De ontwerpkeuzes';
     proofTabs.setAttribute('aria-label', english ? 'Explore the Bateman identity' : 'Verken het Bateman-merk');
     proofButtons.forEach(button => {
       const selected = button.dataset.proof === proof;
@@ -2799,11 +2889,17 @@ window.SlimApertureScene=Object.freeze({create});
   new MutationObserver(syncProof).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
 
   function compose() {
-    const next = narrow.matches;
-    if (next === mobile) return;
-    mobile = next;
-    story.classList.toggle('mobile-composed', mobile);
-    if (mobile) {
+    const next=narrow.matches?(story.classList.contains('light-static')?'static':'spatial'):'wide';
+    if(next===composition)return;
+    composition=next;mobile=narrow.matches;
+    const reading=next==='static';
+    story.classList.toggle('mobile-composed', reading);
+    introArt.remove();proofTabs.remove();
+    for(const record of records){record.moved.forEach(({node,marker})=>marker.after(node));record.notes.remove();}
+    if(evidenceMarker.parentNode&&evidence)evidenceMarker.after(evidence);
+    evidenceDetails.remove();
+    if(film&&filmMarker.parentNode)filmMarker.after(film);
+    if (reading) {
       intro?.querySelector('h1')?.after(introArt);
       for (const record of records) {
         record.moved.forEach(({ node }) => record.notes.append(node));
@@ -2818,10 +2914,12 @@ window.SlimApertureScene=Object.freeze({create});
           record.chapter.append(record.notes);
         }
       }
+    }
+    if(mobile){
+      content?.media.prepend(proofTabs);
+      if(next==='spatial'&&evidence){evidenceDetails.append(evidence);records[0].chapter.append(evidenceDetails);}
       syncProof();
-    } else {
-      introArt.remove();
-      proofTabs.remove();
+    }else{
       for (const [panel, attributes] of panelAttributes) {
         panel.hidden = false;
         for (const [name, value] of attributes) {
@@ -2829,19 +2927,15 @@ window.SlimApertureScene=Object.freeze({create});
           else panel.setAttribute(name, value);
         }
       }
-      for (const record of records) {
-        record.moved.forEach(({ node, marker }) => marker.after(node));
-        record.notes.remove();
-      }
-      if (film && filmMarker.parentNode) filmMarker.after(film);
     }
   }
 
   narrow.addEventListener('change', compose);
+  window.addEventListener('slim:scene-mode',compose);
   syncProof();
   compose();
   window.SlimResponsiveComposition = Object.freeze({
-    getState: () => ({ mobile, cases: records.length, proof, filmConnected: !!film?.isConnected })
+    getState: () => ({ mobile, composition, cases: records.length, proof, filmConnected: !!film?.isConnected })
   });
 })();
 

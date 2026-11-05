@@ -65,3 +65,21 @@ html.site-continuous body #expertise.architecture-enhanced{padding:0;border:0;ov
 @media(prefers-reduced-motion:reduce){.architecture-route::after{transform:none}.architecture-footer a svg{transition:none}}
 html[data-slim-motion=reduced] .architecture-route::after{transform:none}
 html[data-slim-motion=reduced] .architecture-footer a svg{transition:none}
+/* A short seam connects the example to the visitor's own numbers. */
+.architecture-footer .architecture-next-copy.is-calculator-link{display:block}
+.architecture-next-copy.is-calculator-link>div{display:flex;align-items:center;justify-content:space-between;gap:40px}
+.architecture-next-copy.is-calculator-link .architecture-next-body{margin:0;max-width:52ch;font-size:16px}
+.architecture-next-copy.is-calculator-link a{flex-shrink:0}
+.site-continuous.continuity-architecture .process-disclosure>summary{min-height:78px;padding-top:18px;padding-bottom:18px}
+.site-continuous.continuity-architecture .process-disclosure-copy strong{font-size:16px;font-weight:500;letter-spacing:0}
+.site-continuous.continuity-architecture .process-disclosure-copy>span{display:none}
+.site-continuous.continuity-architecture .process-disclosure-icon{width:34px;height:34px}
+.site-continuous.continuity-architecture .process-disclosure-action{font-size:12px}
+@media(max-width:760px){
+ .architecture-next-copy.is-calculator-link>div{display:block}
+ .architecture-next-copy.is-calculator-link .architecture-next-body{font-size:15px;margin:0 0 10px;max-width:36ch}
+ .site-continuous.continuity-architecture .process-disclosure>summary{min-height:72px;padding-block:15px}
+ .site-continuous.continuity-architecture .process-disclosure-copy strong{font-size:14px}
+ .site-continuous.continuity-architecture .process-disclosure-action{font-size:11px}
+ .site-continuous.continuity-architecture .process-disclosure-icon{display:none}
+}

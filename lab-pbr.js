@@ -50,17 +50,20 @@ function reflectionStudio(renderer){
   // A soft photographic key gives the form its gradient; long, narrower cards
   // define the folded edge. Keep dark space between them so metal reads as a
   // reflective surface, rather than an evenly lit grey coating.
-  const softbox=scalarTexture(128,(x,y)=>Math.pow(Math.sin(Math.PI*(x+.5)/128),.55)*Math.pow(Math.sin(Math.PI*(y+.5)/128),.28));
+  const softbox=scalarTexture(128,(x,y)=>{const nx=((x+.5)/128-.5)*2,ny=((y+.5)/128-.5)*2;return Math.exp(-Math.pow(nx/.76,6)-Math.pow(ny/.88,8));});
   softbox.wrapS=softbox.wrapT=THREE.ClampToEdgeWrapping;
   const panel=(position,w,h,color,intensity,target)=>{const m=new THREE.MeshBasicMaterial({map:softbox,color:new THREE.Color(color).multiplyScalar(intensity),side:THREE.DoubleSide}),p=new THREE.Mesh(new THREE.PlaneGeometry(w,h),m);p.position.fromArray(position);p.lookAt(...target);studio.add(p);};
-  panel([-3.5,5.2,4.8],2.2,5.8,0xfff4df,2.4,[-1,1.6,0]);
-  panel([4.8,3.3,-3.2],.48,5.7,0xe0e9e8,2.8,[-1,1.6,0]);
-  panel([-5.5,2.7,-1.5],1.25,3.8,0xffdbac,1.6,[-1,1.6,0]);
-  panel([1,6.2,0],2.4,.75,0xffffff,2.1,[-1,1,0]);
-  panel([4.8,1.2,-5.8],.34,5.8,0xfff2df,4.1,[0,1.2,0]);
+  panel([-3.5,5.2,4.8],3.25,6.1,0xfff4df,1.95,[-1,1.6,0]);
+  panel([4.8,3.3,-3.2],.76,5.7,0xe0e9e8,2.15,[-1,1.6,0]);
+  panel([-5.5,2.7,-1.5],1.7,3.8,0xffdbac,1.35,[-1,1.6,0]);
+  panel([1,6.2,0],4.6,2.2,0xffffff,1.6,[-1,1,0]);
+  // The visible stem reflects below the horizon, whereas its bend reflects
+  // above it. This one tall, feathered card spans both directions so the
+  // highlight describes the entire ribbon instead of stopping mid-stem.
+  panel([4.8,-.3,-4.6],1.8,11,0xfff2df,1.85,[0,1.2,0]);
   // Broad fill stays dim. It separates the unlit face from the green room
   // without filling the whole bend with a second pale reflection.
-  panel([5.7,1.6,-5.2],1.8,6,0xd4d9d2,.38,[0,1.2,0]);
+  panel([5.7,-2.8,-5.2],3.0,3.8,0xf1bd83,.72,[0,.5,0]);
   const pmrem=new THREE.PMREMGenerator(renderer);pmrem.compileCubemapShader();const target=pmrem.fromScene(studio,.04,.1,40,{size:256});pmrem.dispose();studio.traverse(o=>{o.geometry?.dispose();o.material?.dispose();});softbox.dispose();return target;
 }
 export function create(canvas){
@@ -69,52 +72,60 @@ export function create(canvas){
   const renderer=new THREE.WebGLRenderer({canvas,alpha:false,antialias:true,depth:true,stencil:false,powerPreference:'high-performance'});
   renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1;renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFShadowMap;
   const scene=new THREE.Scene();scene.background=new THREE.Color('#0c1712');scene.fog=new THREE.FogExp2('#0c1712',.021);
-  const environment=reflectionStudio(renderer);scene.environment=environment.texture;scene.environmentIntensity=.85;
+  const environment=reflectionStudio(renderer);scene.environment=environment.texture;scene.environmentIntensity=.9;
   const camera=new THREE.PerspectiveCamera(28,1,.03,70),root=new THREE.Group(),metalGroup=new THREE.Group(),diffuserGroup=new THREE.Group();root.add(metalGroup,diffuserGroup);scene.add(root);
   const textures=[],materials=[],geometries=[],ownT=t=>(textures.push(t),t),ownM=m=>(materials.push(m),m),ownG=g=>(geometries.push(g),g);
   const size=512,field=randomField(size);
   const valueNoise=(x,y)=>{const ix=Math.floor(x),iy=Math.floor(y),fx=x-ix,fy=y-iy,sx=fx*fx*(3-2*fx),sy=fy*fy*(3-2*fy),at=(a,b)=>field[((b%size+size)%size)*size+(a%size+size)%size];return mix(mix(at(ix,iy),at(ix+1,iy),sx),mix(at(ix,iy+1),at(ix+1,iy+1),sx),sy);};
   const grain=ownT(scalarTexture(size,(x,y)=>.30+field[y*size+x]*.18+valueNoise(x*.18,y*.18)*.30));grain.repeat.set(1,2);
-  const ceramicColor=ownT(scalarTexture(size,(x,y)=>.82+field[y*size+x]*.08+valueNoise(x*.2,y*.2)*.10));ceramicColor.repeat.set(1,2);
+  const ceramicColor=ownT(scalarTexture(size,(x,y)=>.91+field[y*size+x]*.025+valueNoise(x*.13,y*.13)*.065));ceramicColor.repeat.set(1,2);
   // Direct tangent-space micro-normal avoids height derivatives turning fine
   // brushing into a ribbed sheet. No regular sine bands and no large bump scale.
   const brushData=new Uint8Array(size*size*4);
   for(let y=0;y<size;y++)for(let x=0;x<size;x++){const i=(y*size+x)*4,line=field[y*size],micro=field[y*size+x];brushData[i]=Math.round(128+(micro-.5)*2);brushData[i+1]=Math.round(128+(line-.5)*6);brushData[i+2]=255;brushData[i+3]=255;}
-  const brush=ownT(new THREE.DataTexture(brushData,size,size));brush.wrapS=brush.wrapT=THREE.RepeatWrapping;brush.generateMipmaps=true;brush.minFilter=THREE.LinearMipmapLinearFilter;brush.magFilter=THREE.LinearFilter;brush.repeat.set(3,5.5);brush.anisotropy=Math.min(4,renderer.capabilities.getMaxAnisotropy());brush.needsUpdate=true;
+  const brush=ownT(new THREE.DataTexture(brushData,size,size));brush.wrapS=brush.wrapT=THREE.RepeatWrapping;brush.generateMipmaps=true;brush.minFilter=THREE.LinearMipmapLinearFilter;brush.magFilter=THREE.LinearFilter;brush.repeat.set(2.5,7.5);brush.anisotropy=Math.min(4,renderer.capabilities.getMaxAnisotropy());brush.needsUpdate=true;
   // Roughness carries only microcontrast. Large correlated changes read as
   // milled grooves at hero scale, rather than a finely brushed sheet.
   const brushRough=ownT(scalarTexture(size,(x,y)=>.92+.075*(field[y*size]-.5)+.012*(field[y*size+x]-.5)));brushRough.repeat.copy(brush.repeat);
-  const metal=ownM(new THREE.MeshPhysicalMaterial({color:'#d0cdc3',metalness:1,roughness:.235,roughnessMap:brushRough,normalMap:brush,normalScale:new THREE.Vector2(.18,.25),anisotropy:.58,anisotropyRotation:0,envMapIntensity:1.12}));
+  const brushTone=ownT(scalarTexture(size,(x,y)=>.965+.024*(field[y*size]-.5)+.009*(field[y*size+x]-.5)));brushTone.repeat.copy(brush.repeat);brushTone.anisotropy=brush.anisotropy;
+  // Small directional reflectance variation survives the broad photographic
+  // softbox without adding a glossy coat or noisy normal-map scratches.
+  const metal=ownM(new THREE.MeshPhysicalMaterial({color:'#cdc9be',map:brushTone,metalness:1,roughness:.27,roughnessMap:brushRough,normalMap:brush,normalScale:new THREE.Vector2(.10,.18),anisotropy:.62,anisotropyRotation:0,envMapIntensity:1.0}));
   const ribbon=new THREE.Mesh(ownG(ribbonGeometry()),metal);ribbon.castShadow=ribbon.receiveShadow=true;metalGroup.add(ribbon);
-  const ceramic=ownM(new THREE.MeshPhysicalMaterial({color:'#ac6443',map:ceramicColor,metalness:0,roughness:.76,clearcoat:.045,clearcoatRoughness:.63,bumpMap:grain,bumpScale:.009,envMapIntensity:.26}));
+  const ceramic=ownM(new THREE.MeshPhysicalMaterial({color:'#b66a46',map:ceramicColor,metalness:0,roughness:.78,clearcoat:.025,clearcoatRoughness:.72,bumpMap:grain,bumpScale:.0028,envMapIntensity:.3}));
   // Object-space grain keeps the fine clay surface present where the lathe's
   // side-wall UVs compress. It affects pigmentation and microsurface roughness.
   ceramic.onBeforeCompile=shader=>{
     shader.vertexShader='varying vec3 vClayPosition;\n'+shader.vertexShader;
     shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvClayPosition=position;');
-    shader.fragmentShader='varying vec3 vClayPosition;\n'+shader.fragmentShader;
+    shader.fragmentShader=`varying vec3 vClayPosition;
+      float clayHash(vec3 p){return fract(sin(dot(p,vec3(12.9898,78.233,37.719)))*43758.5453);}
+      float clayNoise(vec3 p){vec3 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
+        return mix(mix(mix(clayHash(i),clayHash(i+vec3(1,0,0)),f.x),mix(clayHash(i+vec3(0,1,0)),clayHash(i+vec3(1,1,0)),f.x),f.y),
+          mix(mix(clayHash(i+vec3(0,0,1)),clayHash(i+vec3(1,0,1)),f.x),mix(clayHash(i+vec3(0,1,1)),clayHash(i+vec3(1,1,1)),f.x),f.y),f.z);}
+    `+shader.fragmentShader;
     shader.fragmentShader=shader.fragmentShader.replace('#include <color_fragment>',`#include <color_fragment>
-      float clayGrain=fract(sin(dot(floor(vClayPosition*230.),vec3(12.9898,78.233,37.719)))*43758.5453);
-      diffuseColor.rgb*=.95+clayGrain*.10;`);
+      float clayGrain=clayNoise(vClayPosition*95.);
+      diffuseColor.rgb*=.975+clayGrain*.05;`);
   };
   const base=new THREE.Mesh(ownG(ceramicGeometry()),ceramic);base.castShadow=base.receiveShadow=true;root.add(base);
   const insetGeometry=ownG(new THREE.ExtrudeGeometry(roundedShape(1.8,.78,.065),{depth:.016,bevelEnabled:true,bevelSize:.008,bevelThickness:.006,bevelSegments:4,curveSegments:20,steps:1}));insetGeometry.rotateX(Math.PI/2);insetGeometry.translate(-2.08,2.807,0);
   const diffuserMat=ownM(new THREE.MeshPhysicalMaterial({color:'#fff1cf',metalness:0,roughness:.43,emissive:'#ffcb7e',emissiveIntensity:1.6,envMapIntensity:.2}));diffuserGroup.add(new THREE.Mesh(insetGeometry,diffuserMat));
   const floorNoise=ownT(scalarTexture(size,(x,y)=>.28+field[y*size+x]*.14+valueNoise(x*.19,y*.19)*.32+valueNoise(x*.047,y*.047)*.12));floorNoise.repeat.set(36,36);
   const floorColor=ownT(scalarTexture(size,(x,y)=>.65+valueNoise(x*.19,y*.19)*.24+field[y*size+x]*.11));floorColor.repeat.set(36,36);
-  const floorMat=ownM(new THREE.MeshStandardMaterial({color:'#26291f',map:floorColor,roughness:.86,bumpMap:floorNoise,bumpScale:.018,envMapIntensity:.12}));
+  const floorMat=ownM(new THREE.MeshStandardMaterial({color:'#26291f',map:floorColor,roughness:.88,bumpMap:floorNoise,bumpScale:.008,envMapIntensity:.12}));
   const floor=new THREE.Mesh(ownG(new THREE.PlaneGeometry(180,180)),floorMat);floor.rotation.x=-Math.PI/2;floor.receiveShadow=true;scene.add(floor);
   scene.add(new THREE.HemisphereLight('#bbd0c6','#19170f',.06));
-  const key=new THREE.RectAreaLight('#fff6e5',1.55,3.2,5.6);key.position.set(-3.5,5.2,4.8);key.lookAt(-1.1,1.7,0);scene.add(key);
+  const key=new THREE.RectAreaLight('#fff6e5',1.95,3.6,5.9);key.position.set(-3.5,5.2,4.8);key.lookAt(-1.1,1.7,0);scene.add(key);
   const edge=new THREE.RectAreaLight('#dce6e4',1.4,.52,4.5);edge.position.set(3.8,3.4,-3);edge.lookAt(-1,1.8,0);scene.add(edge);
   const lampArea=new THREE.RectAreaLight('#ffe0b0',24,1.77,.77);scene.add(lampArea);
   const lampSpot=new THREE.SpotLight('#ffdcaa',42,18,.68,.78,2);lampSpot.castShadow=true;lampSpot.shadow.mapSize.set(1024,1024);lampSpot.shadow.bias=-.00015;lampSpot.shadow.normalBias=.015;lampSpot.shadow.radius=3;scene.add(lampSpot,lampSpot.target);
-  const bounce=new THREE.RectAreaLight('#efb978',2.1,2.6,1.2);bounce.position.set(-1.7,.6,1);bounce.lookAt(-.3,2,0);root.add(bounce);
+  const bounce=new THREE.RectAreaLight('#efb978',2.65,2.6,1.2);bounce.position.set(-1.7,.55,1.25);bounce.lookAt(-.3,2,0);root.add(bounce);
   // A compact occlusion core anchors the ceramic rim. The softer tail follows
   // the lamp's left-hand emitter; both live in the original single shadow
   // plane, so this does not add a render pass or change the board projection.
   const contactData=new Uint8Array(128*128*4);for(let y=0;y<128;y++)for(let x=0;x<128;x++){const px=(x/127-.5)*3.1+.55,pz=(y/127-.5)*2,d=Math.hypot(px/.73,pz/.73),tail=Math.hypot((px-.35)/1.25,(pz+.08)/.72),core=(1-ease(.77,1.12,d))*.72,cast=(1-ease(.25,1,tail))*.24,i=(y*128+x)*4;contactData[i+3]=Math.round(clamp(core+cast)*255);}
-  const contactTexture=ownT(new THREE.DataTexture(contactData,128,128));contactTexture.needsUpdate=true;
+  const contactTexture=ownT(new THREE.DataTexture(contactData,128,128));contactTexture.magFilter=contactTexture.minFilter=THREE.LinearFilter;contactTexture.wrapS=contactTexture.wrapT=THREE.ClampToEdgeWrapping;contactTexture.needsUpdate=true;
   const contact=new THREE.Mesh(ownG(new THREE.PlaneGeometry(3.1,2)),ownM(new THREE.MeshBasicMaterial({map:contactTexture,transparent:true,depthWrite:false,toneMapped:false})));contact.rotation.x=-Math.PI/2;contact.position.set(.55,.002,0);scene.add(contact);
   const boardGeometry=ownG(new THREE.PlaneGeometry(4.2,2.625));boardGeometry.rotateX(-Math.PI/2);
   // Standard Three texture upload flips source Y; z-negative therefore keeps v=1.
@@ -131,7 +142,7 @@ export function create(canvas){
   function resize(width,height,dpr=1){if(disposed)return;viewWidth=Math.max(1,Number(width)||1);viewHeight=Math.max(1,Number(height)||1);const cap=viewWidth<700?1100000:2600000,ratio=Math.min(2,Math.max(1,Number(dpr)||1),Math.sqrt(cap/(viewWidth*viewHeight)));renderer.setPixelRatio(ratio);renderer.setSize(viewWidth,viewHeight,false);}
   function cameraState(){
     const travel=state.storyTravel,aspect=viewWidth/viewHeight,compact=state.layout==='compact',rotation=state.rotation+ease(.48,.98,travel)*1.45,ic=Math.cos(state.rotation),is=Math.sin(state.rotation);
-    const originalTarget=[-1.05*ic,1.45+state.assembly*.275,1.05*is],target=originalTarget.map((v,i)=>mix(v,[-5.2,.026,0][i],travel));
+    const originalTarget=[-1.05*ic,1.45+state.assembly*.275,1.05*is],target=originalTarget.map((v,i)=>mix(v,[-5.2,.026,0][i],compact?ease(0,.78,travel):travel));
     const co=Math.cos(state.cameraOrbit),si=Math.sin(state.cameraOrbit),startOffset=[4.5*co+6.3*si,.53+state.cameraLift,6.3*co-4.5*si],startRadius=Math.hypot(...startOffset),azimuth=mix(Math.atan2(startOffset[0],startOffset[2]),0,travel),elevation=mix(Math.asin(startOffset[1]/startRadius),Math.PI/2-.00001,travel),radius=mix(startRadius,7.4,travel);
     const offset=[Math.sin(azimuth)*Math.cos(elevation)*radius,Math.sin(elevation)*radius,Math.cos(azimuth)*Math.cos(elevation)*radius],eye=add(target,offset),forward=normalize(multiply(offset,-1)),right=normalize(cross(forward,[0,1,0])),up=cross(right,forward);
     const originalLens=(compact?Math.min(1.85,aspect*1.60):1.95)*state.cameraZoom/(1+state.assembly*.12),endHeight=compact?.88*aspect/1.6:.56,lens=mix(originalLens,endHeight*7.4/2.625,travel),shiftX=mix((compact?0:aspect*.19)+state.cameraShiftX*aspect,0,travel),shiftY=mix(.035+state.cameraShiftY,compact?-.07:-.06,travel);
@@ -140,8 +151,8 @@ export function create(canvas){
   }
   function render(){
     if(disposed||renderer.getContext().isContextLost())return false;const start=performance.now(),c=cameraState();camera.position.fromArray(c.eye);camera.up.set(0,1,0);camera.lookAt(...c.target);camera.aspect=c.aspect;camera.fov=THREE.MathUtils.radToDeg(2*Math.atan(.5/c.lens));camera.updateProjectionMatrix();camera.projectionMatrix.elements[8]=-2*c.shiftX/c.aspect;camera.projectionMatrix.elements[9]=-2*c.shiftY;camera.projectionMatrixInverse.copy(camera.projectionMatrix).invert();
-    root.rotation.y=c.rotation;metalGroup.position.y=state.assembly*.55;diffuserGroup.position.y=state.assembly*.30;const power=state.light/100;lampArea.position.fromArray(c.emitter);lampArea.lookAt(...add(c.emitter,c.beamDirection));lampArea.intensity=power*24;lampSpot.position.fromArray(add(c.emitter,multiply(c.beamDirection,.04)));lampSpot.target.position.fromArray(add(c.emitter,multiply(c.beamDirection,7)));lampSpot.intensity=power*42;bounce.intensity=power*2.1;diffuserMat.emissiveIntensity=.25+power*1.9;
-    if(state.material==='bronze'){metal.color.set('#a37a48');metal.roughness=.28;}else if(state.material==='graphite'){metal.color.set('#434c47');metal.roughness=.36;}else{metal.color.set('#d0cdc3');metal.roughness=.235;}
+    root.rotation.y=c.rotation;metalGroup.position.y=state.assembly*.55;diffuserGroup.position.y=state.assembly*.30;const power=state.light/100;lampArea.position.fromArray(c.emitter);lampArea.lookAt(...add(c.emitter,c.beamDirection));lampArea.intensity=power*24;lampSpot.position.fromArray(add(c.emitter,multiply(c.beamDirection,.04)));lampSpot.target.position.fromArray(add(c.emitter,multiply(c.beamDirection,7)));lampSpot.intensity=power*42;bounce.intensity=power*2.65;diffuserMat.emissiveIntensity=.25+power*1.9;
+    if(state.material==='bronze'){metal.color.set('#ab8050');metal.roughness=.30;}else if(state.material==='graphite'){metal.color.set('#434c47');metal.roughness=.38;}else{metal.color.set('#cdc9be');metal.roughness=.27;}
     board.visible=projectReady&&state.boardVisibility>.001;boardUniforms.visibility.value=state.boardVisibility;boardUniforms.exposure.value=state.boardExposure;boardUniforms.sourceLight.value.fromArray(c.emitter);boardUniforms.sourceDir.value.fromArray(c.beamDirection);boardUniforms.power.value=power;renderer.render(scene,camera);frames++;lastDrawMs=performance.now()-start;return true;
   }
   function getProjection(){
@@ -151,7 +162,10 @@ export function create(canvas){
     const bounds=pts=>{const x=Math.min(...pts.map(p=>p.x)),y=Math.min(...pts.map(p=>p.y)),r=Math.max(...pts.map(p=>p.x)),b=Math.max(...pts.map(p=>p.y));return{x,y,width:r-x,height:b-y,visible:pts.some(p=>p.visible)};},floor=add(c.emitter,multiply(c.beamDirection,c.emitter[1]/Math.max(-c.beamDirection[1],.1)));
     return{width:viewWidth,height:viewHeight,board,boardBounds:bounds(board),emitter:project(c.emitter),diffuser,diffuserBounds:bounds(diffuser),floorTarget:project(floor),camera:{...c}};
   }
+  // Render and read within the same task: WebGL's drawing buffer is transient.
+  // Used only for local poster/QA export; never installs a second render loop.
+  function capture({type='image/png',quality=.95}={}){if(!render())return null;return canvas.toDataURL(type,clamp(quality));}
   function getStats(){return{renderer:'three-webgl-pbr',version:THREE.REVISION,frames,lastDrawMs,state:{...state},projectReady,projectSource,width:canvas.width,height:canvas.height,cssWidth:viewWidth,cssHeight:viewHeight,contextLost:renderer.getContext().isContextLost(),disposed,triangles:renderer.info.render.triangles,drawCalls:renderer.info.render.calls};}
   function dispose(){if(disposed)return;disposed=true;projectTexture?.dispose();textures.forEach(t=>t.dispose());materials.forEach(m=>m.dispose());geometries.forEach(g=>g.dispose());environment.dispose();renderer.dispose();}
-  return Object.freeze({setState,setProjectImage,resize,render,dispose,getStats,getProjection});
+  return Object.freeze({setState,setProjectImage,resize,render,capture,dispose,getStats,getProjection});
 }

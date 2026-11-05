@@ -14,8 +14,12 @@ html[data-slim-motion=reduced] .pc-case-context.is-cargo-arriving,html[data-slim
 @media(prefers-reduced-motion:reduce){.pc-case-context.is-cargo-arriving,.is-cargo-arriving .case-handoff-target{animation:none}}
 .case-handoff-flight{position:fixed;z-index:24;overflow:hidden;pointer-events:none;border-top:2px solid #d9ac48;background:color-mix(in srgb,#f3ebdd calc((1 - var(--handoff-fold))*100%),#1b3025);box-shadow:0 20px 55px -28px #06110b55;contain:layout paint}
 .case-handoff-flight[hidden]{display:none}
-.case-handoff-flight>.handoff-source-copy{position:absolute!important;inset:0;width:100%;max-width:none;margin:0;padding:22px 24px;display:block;opacity:var(--handoff-source);transform:none;box-shadow:none;border:0;background:transparent}
-.case-handoff-flight>.handoff-destination-copy{position:absolute!important;inset:0;width:100%;height:100%;margin:0;opacity:var(--handoff-destination);transform:none;border:0;background:transparent;color:#e7e8dc;align-content:center}
+.case-handoff-flight>.handoff-source-copy{position:absolute!important;top:-2px!important;left:0!important;right:auto!important;bottom:auto!important;margin:0!important;opacity:var(--handoff-source)!important;visibility:visible!important;transform:none!important;box-shadow:none!important;background:transparent!important}
+.case-handoff-flight>.handoff-destination-copy{position:absolute!important;top:-2px!important;right:auto!important;bottom:auto!important;margin:0!important;display:grid!important;opacity:var(--handoff-destination)!important;visibility:visible!important;transform:none!important;animation:none!important;border-color:transparent!important;background:transparent!important;color:#e7e8dc;align-content:center}
+.handoff-cargo-glyph{position:absolute;z-index:3;display:grid;place-items:center;pointer-events:none}
+.handoff-cargo-glyph::before{content:'';position:absolute;inset:0;background:#e4d7ab;border:1px solid #577367;opacity:var(--handoff-fold);z-index:-1}
+.handoff-cargo-glyph>img{display:block;object-fit:contain;margin:0;max-width:none}
+.handoff-cargo-label{position:absolute;z-index:3;width:170px;transform:translateX(-50%);font:600 14px/1.35 var(--body);text-align:center;color:color-mix(in srgb,#173f35 calc((1 - var(--handoff-fold))*100%),#e7e8dc);opacity:var(--handoff-label);pointer-events:none}
 .case-handoff-flight .pc-context-label,.case-handoff-flight .pc-context-route{color:#cbd4c6}
 .case-handoff-flight .pc-context-value{color:#f3f0e8}
 .case-cargo.handoff-departed,.pc-case-context.handoff-receiving{opacity:0!important}
@@ -27,6 +31,10 @@ html[data-slim-motion=reduced] .pc-case-context.is-cargo-arriving,html[data-slim
  .digital-architecture .architecture-copy{display:none}
  .digital-architecture .architecture-body{padding-top:30px}
 }
-@media(max-width:1000px){.case-handoff-flight{display:none!important}}
+@media(max-width:760px){
+ .case-handoff-flight{box-shadow:0 12px 35px -18px #06110b66}
+ .case-handoff-flight .pc-context-value{font-size:13px;line-height:1.35}
+ .case-handoff-flight .pc-context-label,.case-handoff-flight .pc-context-route{font-size:11px;line-height:1.35}
+}
 html[data-slim-motion=reduced] .case-handoff-flight{display:none!important}
 @media(prefers-reduced-motion:reduce){.case-handoff-flight{display:none!important}}

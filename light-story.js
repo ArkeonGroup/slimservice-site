@@ -83,7 +83,7 @@
   story.id='top';story.classList.add('light-story');story.setAttribute('aria-label','SlimService');
   if(!story.hasChildNodes())story.innerHTML=`<span class="light-anchor light-anchor-work" id="werk"></span>
   <div class="light-stage" id="light-stage" data-light-phase="0">
-    <div class="light-world" aria-hidden="true"><img class="light-world-poster" src="assets/lab/lamp-first-frame.webp" width="2400" height="1000" alt="" fetchpriority="high"><canvas id="light-canvas"></canvas><div class="light-atmosphere"></div><div class="light-beam"></div><div class="light-floor-line"></div></div>
+    <div class="light-world" aria-hidden="true"><picture><source media="(max-width:760px)" srcset="assets/lab/lamp-first-frame-mobile.webp"><img class="light-world-poster" src="assets/lab/lamp-first-frame.webp" width="2400" height="1000" alt="" fetchpriority="high"></picture><canvas id="light-canvas"></canvas><div class="light-atmosphere"></div><div class="light-beam"></div><div class="light-floor-line"></div></div>
     <div class="light-scenes">
       <article class="light-chapter light-intro" data-light-scene="0" aria-labelledby="light-title-0">
         ${chapter(0,'title','intro',`<button type="button" class="light-action" data-light-jump="1">${text('explore')}${icon('down')}</button><a class="light-skip" href="#expertise">${text('skip')}</a>`)}
@@ -135,12 +135,13 @@
   const rotationInput=$('#light-rotation');let objectRotation=6;
   mobileSystems.append(systems);systems.querySelector('.light-lab-controls').open=true;
   const video=story.querySelector('video'),videoButton=story.querySelector('[data-light-play]');
-  const reduced=matchMedia('(prefers-reduced-motion:reduce)'), narrow=matchMedia('(max-width:760px)'), short=matchMedia('(max-height:620px), (max-width:760px) and (max-height:760px)');
+  const reduced=matchMedia('(prefers-reduced-motion:reduce)'), narrow=matchMedia('(max-width:760px)'), short=matchMedia('(max-height:520px) and (orientation:landscape)');
   let locale=document.documentElement.lang==='en'?'en':'nl';
   let usecase='web',material='aluminium',light=75,selectedCase='bateman',caseManual=false,caseManualOwner=-1,active=0,progress=0,renderer=null,raf=0,nearby=true,manualStill=false,unavailable=false,disposed=false,lastPose='',included=false,includedConfiguration=null,pendingFocus=null,lastStatic=null,lastFlow=null;
-  const isStatic=()=>manualStill||reduced.matches||short.matches||narrow.matches;
+  const isStatic=()=>manualStill||reduced.matches||short.matches||unavailable;
   const mobileFlow=()=>narrow.matches&&!isStatic();
   const scrollSpan=()=>3.65;
+  const scrollDistance=()=>Math.max(1,story.offsetHeight-stage.clientHeight);
   const inlinePreview=()=>world.parentElement===staticPreview;
   const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
   const ease=v=>{v=clamp(v);return v*v*(3-2*v);};
@@ -158,6 +159,11 @@
     locale=document.documentElement.lang==='en'?'en':'nl';
     story.querySelector('.aperture-plane')?.setAttribute('aria-label',locale==='en'?'Work revealed by light':'Werk in het licht');
     for(const el of document.querySelectorAll('[data-light-copy]')){const value=t(el.dataset.lightCopy);if(value!==undefined)el.innerHTML=value;}
+    if(mobileFlow()){
+      const titles=locale==='en'?['Craft.<br><em>Made visible.</em>','One identity.<br><em>Everywhere.</em>','Every load.<br><em>A clear enquiry.</em>']:['Vakwerk.<br><em>In beeld.</em>','Eén merk.<br><em>Overal eigen.</em>','Elke lading.<br><em>Een heldere vraag.</em>'];
+      titles.forEach((title,i)=>scenes[i+1].querySelector('h2').innerHTML=title);
+      scenes[2].querySelector('.light-body').textContent=locale==='en'?'Logo, type, colour and film. One recognisable identity.':'Logo, letters, kleur en film. Eén herkenbaar merk.';
+    }
     document.querySelectorAll('[data-light-chapter]').forEach(el=>el.textContent=t('chapters')[+el.dataset.lightChapter]);
     systems.querySelectorAll('[data-light-flow]').forEach(el=>el.textContent=t('flow')[+el.dataset.lightFlow]);
     story.querySelector('[data-light-nav-label]').setAttribute('aria-label',t('stageLabel'));
@@ -168,14 +174,14 @@
     videoButton.querySelector('[data-light-play-label]').textContent=t(video.paused?'play':'pause');
     story.querySelector('[data-light-motion-label]').textContent=t(isStatic()?'motionOn':'motionOff');
     story.querySelector('.light-motion').setAttribute('aria-pressed',String(isStatic()));
-    story.querySelector('.light-motion').hidden=reduced.matches||short.matches||narrow.matches;
+    story.querySelector('.light-motion').hidden=reduced.matches||short.matches||unavailable;
     systems.querySelector('.light-usecases').setAttribute('aria-label',t('configSubtitle'));
     systems.querySelectorAll('[data-light-usecase-label]').forEach(el=>el.textContent=t('usecases')[el.dataset.lightUsecaseLabel]);
     syncConfig();syncCase();queue();
   }
   function syncCase(){
     const bike=selectedCase==='bakfiets',name=bike?'De Bakfietsmaat':'Bateman Construction',url=bike?'https://debakfietsmaat.nl/#laden':'https://batemanconstruction.co.uk/';
-    story.querySelector('.light-work .light-body').textContent=t('bakfietsBody');
+    story.querySelector('.light-work .light-body').textContent=mobileFlow()?(locale==='en'?'Choose a load. See how that choice becomes a useful enquiry.':'Kies een lading. Zie hoe die keuze een bruikbare aanvraag wordt.'):t('bakfietsBody');
     story.querySelector('.light-case-scope').textContent=t('bakfietsScope');
     story.querySelector('.light-case-link').href='https://debakfietsmaat.nl/#laden';
     story.querySelector('.light-case-domain').textContent=new URL(url).hostname;
@@ -206,12 +212,13 @@
   function applyMode(){
     const staticView=isStatic(),flow=mobileFlow();if(lastStatic===staticView&&lastFlow===flow)return;
     const restoreChapter=lastStatic!==null&&nearby?active:null;
-    story.classList.toggle('light-static',staticView);aperture?.setStatic(staticView);
+    story.classList.toggle('light-static',staticView);story.classList.toggle('mobile-spatial',flow);aperture?.setStatic(staticView);aperture?.setCompact(flow);
     story.querySelector('.light-static-bateman').hidden=!staticView;
     if(staticView){selectedCase='bakfiets';syncCase();}
     story.classList.toggle('light-mobile-flow',flow);
     if(staticView)staticPreview.append(world);else stage.prepend(world);
     lastStatic=staticView;lastFlow=flow;lastPose='';
+    window.dispatchEvent(new CustomEvent('slim:scene-mode',{detail:{static:staticView,mobile:flow}}));
     if(renderer)renderer.resize(inlinePreview()?staticPreview.clientWidth:stage.clientWidth,staticCanvasHeight(),devicePixelRatio);
     if(restoreChapter!==null)requestAnimationFrame(()=>jump(restoreChapter,false,true));
   }
@@ -230,11 +237,11 @@
       if(selectedCase!=='bakfiets'){selectedCase='bakfiets';syncCase();}
       progress=active;stage.style.setProperty('--light-progress',String(active/4));
     }else{
-      progress=clamp(-rect.top/Math.max(1,story.offsetHeight-innerHeight))*scrollSpan();
+      progress=clamp(-rect.top/scrollDistance())*scrollSpan();
       // Keyboard-operated controls stay readable until their owner leaves them.
       // Explicit chapter navigation releases this hold and focuses its heading.
       const focus=document.activeElement;
-      const focusedIndex=pendingFocus===null&&focus?.matches('a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible')?scenes.slice(0,4).findIndex(scene=>scene.contains(focus)):-1;
+      const focusedIndex=pendingFocus===null&&focus?.matches('a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,[role=tabpanel]:focus-visible')?scenes.slice(0,4).findIndex(scene=>scene.contains(focus)):-1;
       const surfaceFocus=focus?.closest('.aperture-layer');const surfaceIndex=surfaceFocus&&focus.matches(':focus-visible')?({brand:1,work:active===1?1:3,content:2}[surfaceFocus.dataset.apertureLayer]):-1;
       if(focusedIndex>=0)progress=focusedIndex===1?1.47:focusedIndex+.18;else if(surfaceIndex>=0)progress=surfaceIndex===1?1.47:surfaceIndex+.18;
       const frame=aperture?.getFrame(progress,{small:narrow.matches,flow});
@@ -283,13 +290,13 @@
     applyMode();
     const size=stage.getBoundingClientRect();
     if(renderer){renderer.resize(inlinePreview()?staticPreview.clientWidth:size.width,staticCanvasHeight(),devicePixelRatio);lastPose='';}
-    story.querySelector('#werk').style.top=isStatic()?Math.max(0,scenes[1].offsetTop)+'px':((story.offsetHeight-innerHeight)*(1.18/scrollSpan()))+'px';
+    story.querySelector('#werk').style.top=isStatic()?Math.max(0,scenes[1].offsetTop)+'px':(scrollDistance()*(1.18/scrollSpan()))+'px';
     // Resizing clears the WebGL buffer. Repaint in the same task so it cannot
     // expose a blank frame between a resize callback and the next animation.
     if(renderer){if(raf)cancelAnimationFrame(raf);paint();}else queue();
   }
   function staticCanvasHeight(){return inlinePreview()?staticPreview.clientHeight:stage.clientHeight;}
-  function failRenderer(){unavailable=true;story.dataset.renderer='unavailable';mobileSystems.dataset.renderer='unavailable';story.querySelector('.light-fallback').hidden=false;previewStatus.hidden=false;renderer?.dispose();renderer=null;lastPose='';}
+  function failRenderer(){unavailable=true;story.dataset.renderer='unavailable';mobileSystems.dataset.renderer='unavailable';story.querySelector('.light-fallback').hidden=false;previewStatus.hidden=false;renderer?.dispose();renderer=null;lastPose='';applyMode();localize();resize();}
   let rendererLoading=false;
   async function initRenderer(){
     if(rendererLoading)return;
@@ -309,7 +316,7 @@
   }
   function jump(index,focus=false,instant=false){
     index=clamp(index,0,3);const top=scrollY+story.getBoundingClientRect().top;
-    const destination=isStatic()||(mobileFlow()&&index===4)?scrollY+scenes[index].getBoundingClientRect().top-88:top+(story.offsetHeight-innerHeight)*((index===0?0:index===1?1.47:index+.18)/scrollSpan());
+    const destination=isStatic()||(mobileFlow()&&index===4)?scrollY+scenes[index].getBoundingClientRect().top-88:top+scrollDistance()*((index===0?0:index===1?1.47:index+.18)/scrollSpan());
     pendingFocus=focus?index:null;
     window.scrollTo({top:destination,behavior:reduced.matches||instant?'instant':'smooth'});queue();
     history.replaceState(null,'',location.pathname+location.search+(index===0?'#top':index>=1&&index<=3?'#werk':'#lab'));

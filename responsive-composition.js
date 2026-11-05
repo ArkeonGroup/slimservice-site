@@ -1,4 +1,4 @@
-/* Mobile is an editorial reading sequence. Desktop keeps its existing stage. */
+/* Portrait has its own spatial stage. Reduced motion remains an editorial reading sequence. */
 (() => {
   'use strict';
   const story = document.querySelector('.light-story');
@@ -46,9 +46,17 @@
   const panelAttributes = new Map([identity, film].filter(Boolean).map(panel => [panel, new Map(['id', 'role', 'aria-labelledby', 'tabindex'].map(name => [name, panel.getAttribute(name)]))]));
   let proof = 'identity';
   let mobile = false;
+  let composition = '';
+  const evidence=story.querySelector('.case-evidence');
+  const evidenceMarker=document.createComment('case evidence reading position');
+  evidence?.before(evidenceMarker);
+  const evidenceDetails=document.createElement('details');
+  evidenceDetails.className='mobile-design-notes';
+  evidenceDetails.innerHTML='<summary><span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>';
 
   function syncProof() {
     const english = document.documentElement.lang === 'en';
+    evidenceDetails.querySelector('summary span').textContent=english?'The design decisions':'De ontwerpkeuzes';
     proofTabs.setAttribute('aria-label', english ? 'Explore the Bateman identity' : 'Verken het Bateman-merk');
     proofButtons.forEach(button => {
       const selected = button.dataset.proof === proof;
@@ -84,11 +92,17 @@
   new MutationObserver(syncProof).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
 
   function compose() {
-    const next = narrow.matches;
-    if (next === mobile) return;
-    mobile = next;
-    story.classList.toggle('mobile-composed', mobile);
-    if (mobile) {
+    const next=narrow.matches?(story.classList.contains('light-static')?'static':'spatial'):'wide';
+    if(next===composition)return;
+    composition=next;mobile=narrow.matches;
+    const reading=next==='static';
+    story.classList.toggle('mobile-composed', reading);
+    introArt.remove();proofTabs.remove();
+    for(const record of records){record.moved.forEach(({node,marker})=>marker.after(node));record.notes.remove();}
+    if(evidenceMarker.parentNode&&evidence)evidenceMarker.after(evidence);
+    evidenceDetails.remove();
+    if(film&&filmMarker.parentNode)filmMarker.after(film);
+    if (reading) {
       intro?.querySelector('h1')?.after(introArt);
       for (const record of records) {
         record.moved.forEach(({ node }) => record.notes.append(node));
@@ -103,10 +117,12 @@
           record.chapter.append(record.notes);
         }
       }
+    }
+    if(mobile){
+      content?.media.prepend(proofTabs);
+      if(next==='spatial'&&evidence){evidenceDetails.append(evidence);records[0].chapter.append(evidenceDetails);}
       syncProof();
-    } else {
-      introArt.remove();
-      proofTabs.remove();
+    }else{
       for (const [panel, attributes] of panelAttributes) {
         panel.hidden = false;
         for (const [name, value] of attributes) {
@@ -114,18 +130,14 @@
           else panel.setAttribute(name, value);
         }
       }
-      for (const record of records) {
-        record.moved.forEach(({ node, marker }) => marker.after(node));
-        record.notes.remove();
-      }
-      if (film && filmMarker.parentNode) filmMarker.after(film);
     }
   }
 
   narrow.addEventListener('change', compose);
+  window.addEventListener('slim:scene-mode',compose);
   syncProof();
   compose();
   window.SlimResponsiveComposition = Object.freeze({
-    getState: () => ({ mobile, cases: records.length, proof, filmConnected: !!film?.isConnected })
+    getState: () => ({ mobile, composition, cases: records.length, proof, filmConnected: !!film?.isConnected })
   });
 })();

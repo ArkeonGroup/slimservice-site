@@ -22,6 +22,40 @@
   thread.innerHTML = '<span></span><i></i>'; document.body.append(thread);
   root.classList.add('site-continuous', 'continuity-architecture');
 
+  // The final light falls on the visitor's own inputs. Only explicit selections
+  // are carried here; fictional customer details never enter this receipt.
+  const project=document.querySelector('#project'),projectIntro=project?.querySelector('.project-intro');
+  const receipt=document.createElement('aside');receipt.className='project-thread-receipt';
+  receipt.innerHTML='<div class="project-thread-heading"><span aria-hidden="true"></span><strong></strong></div><p class="project-thread-empty"></p><dl></dl><p class="project-thread-note"></p>';
+  projectIntro?.append(receipt);
+  const receiptCopy={
+    nl:{title:'Jouw vertrekpunt',ready:'Je brief staat klaar',empty:'Van wat je hebt verkend naar wat jouw bedrijf nodig heeft.',business:'Bedrijf',need:'Je vraag',process:'Werkwijze',scenario:'Rekenscenario',note:'Je kiest zelf wanneer en hoe je contact opneemt.'},
+    en:{title:'Your starting point',ready:'Your brief is ready',empty:'From what you have explored to what your business needs.',business:'Business',need:'Your question',process:'Workflow',scenario:'Time scenario',note:'You decide when and how to get in touch.'}
+  };
+  let receiptFrame=0;
+  function renderReceipt(){
+    receiptFrame=0;const locale=root.lang==='en'?'en':'nl',c=receiptCopy[locale],rows=[];
+    const business=document.querySelector('#business')?.value.trim(),need=document.querySelector('#need')?.value.trim();
+    const selectedProcess=window.SlimProcessConsole?.getSelectionLabel?.(locale);
+    const selectedScenario=window.SlimCalculator?.getBrief?.(locale);
+    if(business)rows.push([c.business,business]);
+    if(need)rows.push([c.need,need.length>150?need.slice(0,147)+'…':need]);
+    if(selectedProcess)rows.push([c.process,selectedProcess]);
+    if(selectedScenario){const values=selectedScenario.split('\n');rows.push([c.scenario,[values[1],values[3],values[4],values[5]].filter(Boolean).join(' · ')]);}
+    const ready=!!project?.querySelector('.brief-result:not([hidden])');
+    receipt.dataset.ready=String(ready);receipt.dataset.filled=String(rows.length>0);
+    receipt.setAttribute('aria-label',c.title);receipt.querySelector('strong').textContent=ready?c.ready:c.title;
+    receipt.querySelector('.project-thread-empty').textContent=c.empty;receipt.querySelector('.project-thread-empty').hidden=rows.length>0;
+    receipt.querySelector('.project-thread-note').textContent=c.note;
+    const list=receipt.querySelector('dl');list.replaceChildren();
+    for(const [label,value] of rows){const row=document.createElement('div'),term=document.createElement('dt'),definition=document.createElement('dd');term.textContent=label;definition.textContent=value;row.append(term,definition);list.append(row);}
+  }
+  function queueReceipt(){if(!receiptFrame)receiptFrame=requestAnimationFrame(renderReceipt);}
+  addEventListener('studio:calculator',queueReceipt);addEventListener('studio:process',queueReceipt);
+  project?.addEventListener('input',queueReceipt);project?.addEventListener('change',queueReceipt);
+  const briefForm=project?.querySelector('#brief-form');if(briefForm)new MutationObserver(queueReceipt).observe(briefForm,{attributes:true,attributeFilter:['hidden']});
+  new MutationObserver(queueReceipt).observe(root,{attributes:true,attributeFilter:['lang']});queueReceipt();
+
   const bridge = document.querySelector('.light-next');
   if (bridge && !bridge.querySelector('.continuity-bridge-stage')) {
     const heading = bridge.querySelector(':scope > h2');

@@ -11,8 +11,18 @@
   root.innerHTML=`<header class="architecture-heading"><p data-architecture-copy="eyebrow"></p><div><h2 id="architecture-title" data-architecture-copy="title"></h2><p class="architecture-intro" data-architecture-copy="intro"></p></div></header><div class="architecture-body"><div class="architecture-copy"><p class="architecture-discipline"><svg aria-hidden="true"><use href="#icon-system"/></svg><span data-architecture-copy="label"></span></p><p class="architecture-description" data-architecture-copy="body"></p><a class="architecture-cta" href="#project" data-service-select="systems"><span data-architecture-copy="cta"></span><svg aria-hidden="true"><use href="#diagonal"/></svg></a></div><div class="architecture-demo"><div class="architecture-console-slot"></div><p class="architecture-demo-note" data-architecture-copy="note"></p></div></div><footer class="architecture-footer"><div class="architecture-route" aria-hidden="true"><span data-architecture-route="0"></span><span data-architecture-route="1"></span><span data-architecture-route="2"></span></div><div class="architecture-next-copy"><p class="architecture-next-title" data-architecture-copy="bridge"></p><div><p class="architecture-next-body" data-architecture-copy="bridgeBody"></p><a href="#calculator"><span data-architecture-copy="next"></span><svg aria-hidden="true"><use href="#down"/></svg></a></div></div></footer>`;
   section.append(root);section.classList.add('architecture-enhanced');section.dataset.architectureReady='true';section.dataset.headerTone='light';section.setAttribute('aria-labelledby','architecture-title');
   const lightStudy=document.querySelector('.light-lab-drawer');if(lightStudy)root.append(lightStudy);
+  // The calculator owns the one large question about time. This seam names
+  // the next action instead of asking the same question in three headings.
+  root.querySelector('[data-architecture-copy="bridge"]').remove();
+  root.querySelector('.architecture-next-copy').classList.add('is-calculator-link');
+  const disclosure=document.querySelector('#process-check');
+  const disclosureTitle=disclosure?.querySelector('.process-disclosure-copy strong');
+  const disclosureAction=disclosure?.querySelector('.process-disclosure-action>span');
+  disclosureTitle?.removeAttribute('data-support');disclosureAction?.removeAttribute('data-support');
   let locale='';
-  function localize(){locale=document.documentElement.lang==='en'?'en':'nl';const c=copy[locale];root.querySelectorAll('[data-architecture-copy]').forEach(el=>el.innerHTML=c[el.dataset.architectureCopy]);root.querySelectorAll('[data-architecture-route]').forEach(el=>el.textContent=c.bridgeLabels[+el.dataset.architectureRoute]);}
+  function calculatorLabel(){if(disclosureAction)disclosureAction.textContent=locale==='en'?(disclosure.open?'Hide calculator':'Open calculator'):(disclosure.open?'Verberg calculator':'Open calculator');}
+  function localize(){locale=document.documentElement.lang==='en'?'en':'nl';const c=copy[locale];root.querySelectorAll('[data-architecture-copy]').forEach(el=>el.innerHTML=c[el.dataset.architectureCopy]);root.querySelectorAll('[data-architecture-route]').forEach(el=>el.textContent=c.bridgeLabels[+el.dataset.architectureRoute]);if(disclosureTitle)disclosureTitle.textContent=locale==='en'?'Your process, in numbers':'Jouw proces, in cijfers';calculatorLabel();}
+  disclosure?.addEventListener('toggle',calculatorLabel);
   const footer=root.querySelector('.architecture-footer'),reduce=matchMedia('(prefers-reduced-motion:reduce)');
   let frame=0;
   function trace(){frame=0;const bounds=footer.getBoundingClientRect(),still=reduce.matches||document.documentElement.dataset.slimMotion==='reduced';const progress=still?1:Math.max(0,Math.min(1,(innerHeight*.92-bounds.top)/(innerHeight*.55)));footer.style.setProperty('--architecture-route-progress',progress.toFixed(3));}
