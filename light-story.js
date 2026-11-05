@@ -326,7 +326,7 @@
     const usecaseButton=event.target.closest('[data-light-usecase]');if(usecaseButton){usecase=usecaseButton.dataset.lightUsecase;syncConfig();return;}
     const caseButton=event.target.closest('[data-light-case]');if(caseButton){selectedCase='bakfiets';caseManual=true;caseManualOwner=3;syncCase();if(!isStatic())jump(3,false,true);return;}
     if(event.target.closest('[data-light-dialog]')){if(!isStatic())jump(2,false,true);video.pause();window.SlimStudioWork?.openDetail('content',{opener:event.target.closest('button')});return;}
-    if(event.target.closest('[data-light-play]')){if(!isStatic())jump(2,false,true);if(video.paused){document.querySelectorAll('video').forEach(other=>{if(other!==video)other.pause();});video.src||='assets/bateman-hero-mobile.mp4';video.play().catch(()=>{story.querySelector('.light-video-error').hidden=false;});}else video.pause();return;}
+    if(event.target.closest('[data-light-play]')){if(!isStatic())jump(2,false,true);if(video.paused){document.querySelectorAll('video').forEach(other=>{if(other!==video)other.pause();});story.querySelector('.light-video-error').hidden=true;video.src||='assets/bateman-hero-mobile.mp4';video.play().catch(error=>{if(error.name!=='AbortError')story.querySelector('.light-video-error').hidden=false;});}else video.pause();return;}
     if(event.target.closest('.light-motion')){manualStill=!isStatic();document.documentElement.dataset.slimMotion=manualStill?'reduced':'full';window.dispatchEvent(new CustomEvent('slim:motion',{detail:{reduced:manualStill}}));story.classList.toggle('light-static',isStatic());localize();resize();jump(active,false);return;}
     if(event.target.closest('[data-light-retry]')){unavailable=false;initRenderer();queue();}
     if(event.target.closest('.light-config-cta')){
@@ -344,7 +344,7 @@
   systems.querySelector('.light-lab-controls').addEventListener('toggle',queue);
   mobileSystems.addEventListener('toggle',()=>{lastPose='';resize();});
   function syncPlayback(){const playing=!video.paused;videoButton.querySelector('[data-light-play-label]').textContent=t(playing?'pause':'play');videoButton.querySelector('use').setAttribute('href',playing?'#pause':'#play');videoButton.setAttribute('aria-label',t(playing?'pause':'play'));}
-  video.addEventListener('play',syncPlayback);video.addEventListener('pause',syncPlayback);video.addEventListener('ended',syncPlayback);
+  video.addEventListener('play',syncPlayback);video.addEventListener('playing',()=>{story.querySelector('.light-video-error').hidden=true;});video.addEventListener('pause',syncPlayback);video.addEventListener('ended',syncPlayback);
   video.addEventListener('timeupdate',()=>{const seconds=Math.floor(video.currentTime);story.querySelector('.light-film-time').textContent=`${Math.floor(seconds/60)}:${String(seconds%60).padStart(2,'0')} / 0:15`;});
   video.addEventListener('error',()=>{story.querySelector('.light-video-error').hidden=false;});
   canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();failRenderer();});
